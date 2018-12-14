@@ -1,0 +1,166 @@
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.csprojAssemblyReference.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.Properties.Resources.resources
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.frmPrincipal.resources
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.GenerateResource.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.CoreCompileInputs.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Kosturas.exe.config
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Kosturas.exe
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Kosturas.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Domain.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\EntityFramework.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Helpers.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Mvc.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Razor.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Domain.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Domain.dll.config
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\EntityFramework.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Helpers.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Mvc.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Razor.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.CopyComplete
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.exe
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Kosturas.exe.config
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Kosturas.exe
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Kosturas.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Domain.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\EntityFramework.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Helpers.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Mvc.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Razor.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Domain.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\Domain.dll.config
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\EntityFramework.xml
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Helpers.xml
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Mvc.xml
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.Razor.xml
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.xml
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.csprojAssemblyReference.cache
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.Properties.Resources.resources
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmEmpleado.resources
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.frmPrincipal.resources
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.GenerateResource.cache
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.CoreCompileInputs.cache
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.CopyComplete
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.exe
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmSucursal.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\Kosturas.exe.config
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\Kosturas.exe
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\Kosturas.pdb
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\Domain.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\EntityFramework.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.Helpers.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.Mvc.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.Razor.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\Domain.pdb
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\Domain.dll.config
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\EntityFramework.xml
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.Helpers.xml
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.Mvc.xml
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.Razor.xml
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.xml
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.csprojAssemblyReference.cache
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.Properties.Resources.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmEmpleado.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.frmPrincipal.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmSucursal.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.GenerateResource.cache
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.CoreCompileInputs.cache
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.CopyComplete
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.exe
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.pdb
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmNuevaOrden.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmOrdenPorDia.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmNuevaVenta.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmTotalOrden.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmReportesSMS.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmMantenimientos.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmMedioPagos.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmCorreosSMS.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.Form1.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmServicios.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmOfertas.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmImpresionesAutomaticas.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmDetallesOrdenes.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmOpcionesOrdenes.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmAfiliados.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.Login.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.CorreosSMSFacturas.resources
+C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmSeguimientos.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\Kosturas.exe.config
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\Kosturas.exe
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\Kosturas.pdb
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\Domain.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\EntityFramework.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.Helpers.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.Mvc.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.Razor.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\Domain.pdb
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\Domain.dll.config
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\EntityFramework.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.Helpers.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.Mvc.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.Razor.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.csprojAssemblyReference.cache
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.Properties.Resources.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.CorreosSMSFacturas.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmAfiliados.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.Form1.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmCorreosSMS.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmDetallesOrdenes.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmEmpleado.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmImpresionesAutomaticas.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmMantenimientos.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmMedioPagos.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmNuevaOrden.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmNuevaVenta.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmOfertas.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmOpcionesOrdenes.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmOrdenPorDia.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.frmPrincipal.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmReportesSMS.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmSeguimientos.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmServicios.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmSucursal.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmTotalOrden.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.Login.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.GenerateResource.cache
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.CoreCompileInputs.cache
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.CopyComplete
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.exe
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.pdb

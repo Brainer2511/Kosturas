@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{674DB928-C4B3-427F-B47C-938A42D43882}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Kosturas</RootNamespace>
+    <AssemblyName>Kosturas</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\ListViewExtender.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\DataContextLocal.cs" />
+    <Compile Include="View\CorreosSMSFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CorreosSMSFacturas.Designer.cs">
+      <DependentUpon>CorreosSMSFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmAfiliados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmAfiliados.Designer.cs">
+      <DependentUpon>frmAfiliados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCorreosSMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCorreosSMS.Designer.cs">
+      <DependentUpon>frmCorreosSMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmDetallesOrdenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmDetallesOrdenes.Designer.cs">
+      <DependentUpon>frmDetallesOrdenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmEmpleado.Designer.cs">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmImpresionesAutomaticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmImpresionesAutomaticas.Designer.cs">
+      <DependentUpon>frmImpresionesAutomaticas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmMantenimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmMantenimientos.Designer.cs">
+      <DependentUpon>frmMantenimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmMedioPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmMedioPagos.Designer.cs">
+      <DependentUpon>frmMedioPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmNuevaOrden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmNuevaOrden.Designer.cs">
+      <DependentUpon>frmNuevaOrden.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmNuevaVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmNuevaVenta.Designer.cs">
+      <DependentUpon>frmNuevaVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmOfertas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmOfertas.Designer.cs">
+      <DependentUpon>frmOfertas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmOpcionesOrdenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmOpcionesOrdenes.Designer.cs">
+      <DependentUpon>frmOpcionesOrdenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmOrdenPorDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmOrdenPorDia.Designer.cs">
+      <DependentUpon>frmOrdenPorDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\frmReportesSMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmReportesSMS.Designer.cs">
+      <DependentUpon>frmReportesSMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmSeguimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmSeguimientos.Designer.cs">
+      <DependentUpon>frmSeguimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmServicios.Designer.cs">
+      <DependentUpon>frmServicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmSucursal.Designer.cs">
+      <DependentUpon>frmSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmTotalOrden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmTotalOrden.Designer.cs">
+      <DependentUpon>frmTotalOrden.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmLogin .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmLogin .Designer.cs">
+      <DependentUpon>frmLogin .cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\CorreosSMSFacturas.resx">
+      <DependentUpon>CorreosSMSFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmAfiliados.resx">
+      <DependentUpon>frmAfiliados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCorreosSMS.resx">
+      <DependentUpon>frmCorreosSMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmDetallesOrdenes.resx">
+      <DependentUpon>frmDetallesOrdenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmEmpleado.resx">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmImpresionesAutomaticas.resx">
+      <DependentUpon>frmImpresionesAutomaticas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmMantenimientos.resx">
+      <DependentUpon>frmMantenimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmMedioPagos.resx">
+      <DependentUpon>frmMedioPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmNuevaOrden.resx">
+      <DependentUpon>frmNuevaOrden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmNuevaVenta.resx">
+      <DependentUpon>frmNuevaVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmOfertas.resx">
+      <DependentUpon>frmOfertas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmOpcionesOrdenes.resx">
+      <DependentUpon>frmOpcionesOrdenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmOrdenPorDia.resx">
+      <DependentUpon>frmOrdenPorDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmReportesSMS.resx">
+      <DependentUpon>frmReportesSMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmSeguimientos.resx">
+      <DependentUpon>frmSeguimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmServicios.resx">
+      <DependentUpon>frmServicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmSucursal.resx">
+      <DependentUpon>frmSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmTotalOrden.resx">
+      <DependentUpon>frmTotalOrden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmLogin .resx">
+      <DependentUpon>frmLogin .cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{77abfc81-335b-4dcd-9e0d-c49c264858e1}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AMARU-ICON-WHITE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\36577e1f1835887.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo-banner-verde.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-button-png-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8g3nZKyH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fundo-verde-claro %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0406732_Cartulina L_Verde__240_gr.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Verde01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Verde02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
