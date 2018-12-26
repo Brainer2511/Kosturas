@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,8 +21,16 @@ namespace Kosturas.View
         public DetalleTarea detalle = new DetalleTarea();
         public Servicios servicio = new Servicios();
         public int ClienteId { get; set; }
+        //public int Datox { get; set; }
+        //public int DAtoY { get; set; }
+
+        int m = 0;
+        int Datox = 0;
+        int DAtoY = 0;
+        int DAtoYdos = 50;
         int paginas = 0;
         int pagina = 1;
+        int dato = 0;
         public object x { get; set; }
         private Cliente cliente=new Cliente();
         
@@ -34,16 +43,19 @@ namespace Kosturas.View
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
-            
+
+
+          
+            //Table.Controls.Add(new Label { Text = "Type:", Anchor = AnchorStyles.Left, AutoSize = true }, 0, 0);
+            //Table.Controls.Add(new ComboBox { Dock = DockStyle.Fill }, 0, 1);
             if (ClienteId>0 )
             {
                 cargar();
             }
 
+
+
           
-        
-         
           
           
             this.pv2.Visible = false;
@@ -90,9 +102,11 @@ namespace Kosturas.View
                 botones.Name = item.PrendaId.ToString();
                 botones.Location = new Point(x, y);
                 botones.Size = new Size(100, 100);
-                botones.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+                botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
                 botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
                 botones.Click += new EventHandler(ClickPrendas);
+                botones.MouseLeave += new EventHandler(Mouseleave);
+                botones.MouseEnter += new EventHandler(Mouseover);
                 this.Prueba.Controls.Add(botones);
 
 
@@ -116,7 +130,50 @@ namespace Kosturas.View
 
 
         }
+        void Mouseover(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
 
+       
+            object id = btr.Name;
+            id= btr.BackColor =Color.OliveDrab;
+            id = btr.ForeColor = Color.White;
+          
+
+        }
+        void Mouseleave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = Color.White;
+            id = btr.ForeColor = System.Drawing.Color.Black;
+       
+
+        }
+        void MouseoverCombo(object sender, EventArgs e)
+        {
+            ComboBox btr = sender as ComboBox;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = Color.OliveDrab;
+            id = btr.ForeColor = Color.White;
+
+
+        }
+        void MouseleaveCombo(object sender, EventArgs e)
+        {
+            ComboBox btr = sender as ComboBox;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = Color.White;
+            id = btr.ForeColor = System.Drawing.Color.Black;
+
+
+        }
         private void cargar()
         {
             txtNombre.Text = cliente.Nombre;
@@ -138,353 +195,632 @@ namespace Kosturas.View
         }
         void ClickPrendas(object sender, EventArgs e)
         {
-
+            this.label5.Text = "1";
             Button btn = sender as Button;
             var id = int.Parse(btn.Name);
             prenda = db.Prendas.Find(id);
 
+            var dato = db.Prendas.Where(u => u.PrendaId == id).ToList();
 
-            DataGridViewRow row = new DataGridViewRow();
-            row.CreateCells(dvgOrdenes);
-            row.Cells[0].Value = prenda.TipoRopa;
-            dvgOrdenes.Rows.Add(row);
-            row = new DataGridViewRow();
-            row.CreateCells(dvgOrdenes);
-            row.Cells[0].Value = prenda.Tareas.FirstOrDefault().NombreTareas;
-            row.Cells[1].Value = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
-            dvgOrdenes.Rows.Add(row);
+            Panel Table = new Panel();
+            //  Table.AutoScroll = true;
+            Table.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            Table.Location = new Point(Datox, DAtoY);
+            Table.Size = new Size(897, 50);
+            Table.BackColor = Color.DarkGray;
 
-            DataGridViewImageColumn NuevaOrden = new DataGridViewImageColumn();
-            NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\pesa.png");
-            dvgOrdenes.Columns.Add(NuevaOrden);
+            Table.Name = "P_" + prenda.PrendaId.ToString();
 
-            DataGridViewImageColumn DuplicarPrenda = new DataGridViewImageColumn();
-            DuplicarPrenda.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\duplicar.png");
-            dvgOrdenes.Columns.Add(DuplicarPrenda);
-
-
-            DataGridViewImageColumn mascinco = new DataGridViewImageColumn();
-            mascinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomas.png");
-            dvgOrdenes.Columns.Add(mascinco);
-
-            DataGridViewImageColumn masuno = new DataGridViewImageColumn();
-            masuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomas.png");
-            dvgOrdenes.Columns.Add(masuno);
-
-
-            DataGridViewImageColumn menoscinco = new DataGridViewImageColumn();
-            menoscinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomenos.png");
-            dvgOrdenes.Columns.Add(menoscinco);
-
-            DataGridViewImageColumn menosuno = new DataGridViewImageColumn();
-            menosuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomenos.png");
-            dvgOrdenes.Columns.Add(menosuno);
-
-            DataGridViewImageColumn agregartarea = new DataGridViewImageColumn();
-            agregartarea.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\nuevot.png");
-            dvgOrdenes.Columns.Add(agregartarea);
-
-            DataGridViewImageColumn eliminartarea = new DataGridViewImageColumn();
-            eliminartarea.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
-            dvgOrdenes.Columns.Add(eliminartarea);
-
-
-            var total = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < total; i++)
+            var d = 0;
+            var f = 0;
+            var o = 0;
+            foreach (var item in dato)
             {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
+
+                var botonesdos = new Label();
+                botonesdos.Size = new System.Drawing.Size(70, 45);
+                botonesdos.Location = new Point(0, 0);
+
+                botonesdos.Text = "X" + item.TipoRopa;
+                botonesdos.Name = item.TipoRopa;
+
+
+
+                var Prioridad = new Button();
+
+
+                Prioridad.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\primera.png");
+
+                Prioridad.BackColor = System.Drawing.Color.DarkGray;
+                Prioridad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                Prioridad.Location = new Point(634, 6);
+                Prioridad.FlatAppearance.BorderSize = 0;
+                Prioridad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                Prioridad.Size = new System.Drawing.Size(32, 34);
+                Prioridad.TabIndex = 142;
+                Prioridad.UseVisualStyleBackColor = false;
+
+
+                Prioridad.Name = item.PrendaId.ToString();
+                Prioridad.Click += new EventHandler(ClickNuevaOrden);
+
+                var Duplicar = new Button();
+
+                Duplicar.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\duplicar.png");
+
+                Duplicar.BackColor = System.Drawing.Color.DarkGray;
+                Duplicar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                Duplicar.FlatAppearance.BorderSize = 0;
+                Duplicar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                Duplicar.Location = new Point(666, 6);
+                Duplicar.Size = new System.Drawing.Size(32, 34);
+                Duplicar.TabIndex = 142;
+                Duplicar.UseVisualStyleBackColor = false;
+                Duplicar.Click += new EventHandler(ClickDuplicar);
+
+                Duplicar.Name = item.PrendaId.ToString();
+
+                var cantidad = new Button();
+
+
+                cantidad.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\qrd.png");
+
+                cantidad.BackColor = System.Drawing.Color.DarkGray;
+                cantidad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                cantidad.FlatAppearance.BorderSize = 0;
+                cantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                cantidad.Location = new Point(698, 6);
+                cantidad.Size = new System.Drawing.Size(32, 34);
+                cantidad.TabIndex = 142;
+                cantidad.UseVisualStyleBackColor = false;
+
+
+                cantidad.Name = item.PrendaId.ToString();
+
+                var mascinco = new Button();
+
+
+                mascinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomas.png");
+
+                mascinco.BackColor = System.Drawing.Color.DarkGray;
+                mascinco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                mascinco.FlatAppearance.BorderSize = 0;
+                mascinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                mascinco.Location = new Point(730, 6);
+                mascinco.Size = new System.Drawing.Size(32, 34);
+                mascinco.TabIndex = 142;
+                mascinco.UseVisualStyleBackColor = false;
+                mascinco.Click += new EventHandler(Clickcincomas);
+
+                mascinco.Name = item.PrendaId.ToString();
+
+                var masuno = new Button();
+
+
+                masuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomas.png");
+
+                masuno.BackColor = System.Drawing.Color.DarkGray;
+                masuno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                masuno.FlatAppearance.BorderSize = 0;
+                masuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                masuno.Location = new Point(762, 6);
+                masuno.Size = new System.Drawing.Size(32, 34);
+                masuno.TabIndex = 142;
+                masuno.UseVisualStyleBackColor = false;
+                masuno.Click += new EventHandler(Clickunomas);
+
+                masuno.Name = item.PrendaId.ToString();
+
+                var menosuno = new Button();
+
+                menosuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomenos.png");
+
+                menosuno.BackColor = System.Drawing.Color.DarkGray;
+                menosuno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                menosuno.FlatAppearance.BorderSize = 0;
+                menosuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                menosuno.Location = new Point(794, 6);
+                menosuno.Size = new System.Drawing.Size(32, 34);
+                menosuno.TabIndex = 142;
+                menosuno.UseVisualStyleBackColor = false;
+                menosuno.Click += new EventHandler(Clickunomenos);
+                menosuno.Name = item.PrendaId.ToString();
+                var menoscinco = new Button();
+
+                menoscinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomenos.png");
+
+                menoscinco.BackColor = System.Drawing.Color.DarkGray;
+                menoscinco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                menoscinco.FlatAppearance.BorderSize = 0;
+                menoscinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                menoscinco.Location = new Point(828, 6);
+                menoscinco.Size = new System.Drawing.Size(32, 34);
+                menoscinco.TabIndex = 142;
+                menoscinco.UseVisualStyleBackColor = false;
+                menoscinco.Click += new EventHandler(Clickcincomenos);
+
+                menoscinco.Name = item.PrendaId.ToString();
+                var agregartarea = new Button();
+
+                agregartarea.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\taps.png");
+
+                agregartarea.BackColor = System.Drawing.Color.DarkGray;
+                agregartarea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                agregartarea.FlatAppearance.BorderSize = 0;
+                agregartarea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                agregartarea.Location = new Point(860, 6);
+                agregartarea.Size = new System.Drawing.Size(32, 34);
+                agregartarea.TabIndex = 142;
+                agregartarea.Click += new EventHandler(ClickAddtax);
+                agregartarea.UseVisualStyleBackColor = false;
+
+                agregartarea.Name = item.PrendaId.ToString();
+
+
+                Table.Controls.Add(botonesdos);
+
+                Table.Controls.Add(Prioridad);
+                Table.Controls.Add(Duplicar);
+                Table.Controls.Add(cantidad);
+                Table.Controls.Add(mascinco);
+                Table.Controls.Add(masuno);
+                Table.Controls.Add(menosuno);
+                Table.Controls.Add(menoscinco);
+                Table.Controls.Add(agregartarea);
+
+
+
             }
-            var btnAtras = new Button();
-            btnAtras.BackColor = System.Drawing.Color.WhiteSmoke;
-            btnAtras.ForeColor = System.Drawing.Color.Black;
-            btnAtras.Location = new System.Drawing.Point(49, 600);
-            btnAtras.Name = "btnAtras";
-            btnAtras.Size = new System.Drawing.Size(106, 41);
-            btnAtras.TabIndex = 145;
-            btnAtras.Text = "Atras";
-            btnAtras.UseVisualStyleBackColor = false;
-            btnAtras.Click += new System.EventHandler(ClickAtrasPrendasInicio);
-            this.Prueba.Controls.Add(btnAtras);
-            servicios();
+
+
+            Panel TableDos = new Panel();
+            TableDos.Name = "Ganazo";
+
+            TableDos.Location = new Point(Datox, DAtoYdos);
+            TableDos.Size = new Size(897, 45);
+            TableDos.BackColor = Color.White;
+            TableDos.MouseLeave += new EventHandler(Mouseleavetabla);
+            TableDos.MouseEnter += new EventHandler(Mouseovertabla);
+            TableDos.Click += new EventHandler(ClickBorrartax);
+
+            TableDos.Name = prenda.PrendaId.ToString();
+
+
+
+            var prueba =prenda.Tareas.FirstOrDefault().NombreTareas;
+            var pruebadostres = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareas;
+            var pruebados=prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
+      
+            var labeltarea = new Label();
+            labeltarea.Size = new System.Drawing.Size(70, 34);
+            labeltarea.Location = new Point(0, 10);
+
+            labeltarea.Text = prueba;
+            labeltarea.Name = prueba;
+
+            var labeldetalle = new Label();
+            labeldetalle.Size = new System.Drawing.Size(50, 34);
+            labeldetalle.Location = new Point(132, 10);
+            labeldetalle.Text = pruebadostres;
+            labeldetalle.Name = pruebadostres;
+
+            var labelprecio = new Label();
+            labelprecio.Size = new System.Drawing.Size(50, 34);
+            labelprecio.Location = new Point(182, 10);
+            labelprecio.Text = pruebados;
+            labelprecio.Name = pruebados;
+
+          
+
+
+            var agregartareados = new Button();
+
+            agregartareados.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
+            agregartareados.Name = prenda.PrendaId.ToString();
+            agregartareados.BackColor = System.Drawing.Color.White;
+            agregartareados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            agregartareados.FlatAppearance.BorderSize = 0;
+            agregartareados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            agregartareados.Location = new Point(860, 6);
+            agregartareados.Size = new System.Drawing.Size(32, 34);
+            agregartareados.TabIndex = 142;
+            agregartareados.UseVisualStyleBackColor = false;
+            agregartareados.Click += new EventHandler(ClickBorrartax);
+
+          //  agregartareados.Name = "DatosPrendasDos";
+
+
+            TableDos.Controls.Add(labeltarea);
+            TableDos.Controls.Add(labeldetalle);
+            TableDos.Controls.Add(labelprecio);
+            TableDos.Controls.Add(agregartareados);
+
+       
+
+            
+            //this.Controls.Add(Table);
+            //this.Controls.Add(TableDos);
+            this.panel3.Controls.Add(Table);
+            this.panel3.Controls.Add(TableDos);
+
+
+            this.label4.Text = prenda.TipoRopa;
+                this.label3.Text = "Nueva Orden:";
+
+
+
+                var total = Prueba.Controls.Count;
+                var lit = Prueba.Controls.OfType<Button>();
+                for (int i = 0; i < total; i++)
+                {
+                    Prueba.Controls.Remove(Prueba.Controls[0]);
+                }
+                var btnAtras = new Button();
+                btnAtras.BackColor = System.Drawing.Color.WhiteSmoke;
+                btnAtras.ForeColor = System.Drawing.Color.Black;
+                btnAtras.Location = new System.Drawing.Point(49, 600);
+                btnAtras.Name = "btnAtras";
+                btnAtras.Size = new System.Drawing.Size(106, 41);
+                btnAtras.TabIndex = 145;
+                btnAtras.Text = "Atras";
+                btnAtras.UseVisualStyleBackColor = false;
+                btnAtras.Click += new System.EventHandler(ClickAtrasPrendasInicio);
+                btnAtras.MouseLeave += new EventHandler(Mouseleave);
+                btn.MouseEnter += new EventHandler(Mouseover);
+                this.Prueba.Controls.Add(btnAtras);
+
+
+                servicios();
+            }
+        void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
+        {
+            //if (e.Column == 1 && e.Row == 0)
+            //    e.Graphics.DrawRectangle(new Pen(Color.Blue), e.CellBounds);
+
+            if (e.Column == 1 && e.Row == 0)
+            {
+                var rectangle = e.CellBounds;
+                rectangle.Inflate(-1, -1);
+
+                ControlPaint.DrawBorder3D(e.Graphics, rectangle, Border3DStyle.Raised, Border3DSide.All); // 3D border
+                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Red, ButtonBorderStyle.Dotted); // dotted border
+            }
+        }
+       
+        void Mouseovertabla(object sender, EventArgs e)
+        {
+            Panel btr = sender as Panel;
+           
+
+            object id = btr.Name;
+            id = btr.BackColor = Color.YellowGreen;
+            id = btr.ForeColor = Color.Black;
+
+
+        }
+        void Mouseleavetabla(object sender, EventArgs e)
+        {
+            Panel btr = sender as Panel;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = Color.White;
+            id = btr.ForeColor = System.Drawing.Color.Black;
+
+
         }
 
         void ClickServicios(object sender, EventArgs e)
-        {
-
-            Button btn = sender as Button;
-            var id = int.Parse(btn.Name);
-            servicio = db.Servicios.Find(id);
-            var total = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < total; i++)
             {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
-            }
-
-            var btnAtrasservicio = new Button();
-            btnAtrasservicio.BackColor = System.Drawing.Color.WhiteSmoke;
-            btnAtrasservicio.ForeColor = System.Drawing.Color.Black;
-            btnAtrasservicio.Location = new System.Drawing.Point(49, 600);
-            btnAtrasservicio.Name = "btnAtrasServicio";
-            btnAtrasservicio.Size = new System.Drawing.Size(106, 41);
-            btnAtrasservicio.TabIndex = 145;
-            btnAtrasservicio.Text = "Atras";
-            btnAtrasservicio.UseVisualStyleBackColor = false;
-            btnAtrasservicio.Click += new System.EventHandler(ClickAtrasServicio);
-            this.Prueba.Controls.Add(btnAtrasservicio);
-            Tareas(servicio);
-
-        }
-
-        void ClickTareaS(object sender, EventArgs e)
-        {
-
-            Button btn = sender as Button;
-            var id = int.Parse(btn.Name);
-            tarea = db.Tareas.Find(id);
-            var total = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < total; i++)
-            {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
-            }
-
-            var btnAtrasTareas = new Button();
-            btnAtrasTareas.BackColor = System.Drawing.Color.WhiteSmoke;
-            btnAtrasTareas.ForeColor = System.Drawing.Color.Black;
-            btnAtrasTareas.Location = new System.Drawing.Point(49, 600);
-            btnAtrasTareas.Name = "btnAtras";
-            btnAtrasTareas.Size = new System.Drawing.Size(106, 41);
-            btnAtrasTareas.TabIndex = 145;
-            btnAtrasTareas.Text = "Atras";
-            btnAtrasTareas.UseVisualStyleBackColor = false;
-            btnAtrasTareas.Click += new System.EventHandler(ClickAtrasTarea);
-            this.Prueba.Controls.Add(btnAtrasTareas);
-            detalletarea(tarea);
-        }
-        void ClickDetalletareas(object sender, EventArgs e)
-        {
 
 
-            Button btn = sender as Button;
-            var id = int.Parse(btn.Name);
-            detalle = db.DetalleTareas.Find(id);
-            var total = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < total; i++)
-            {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
-            }
-            mostrarcontroles(detalle);
-
-
-        }
-
-        void ClickAtrasprueba(object sender, EventArgs e)
-        {
-
-
-            // Button btn = sender as Button;
-            //    var id = int.Parse(btn.Name);
-            // var tarea = db.Tareas.ToList();
-            // var tarea = db.Tareas.Find(id);
-            var total = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < total; i++)
-            {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
-            }
-
-            var btnAtrasTareas = new Button();
-            btnAtrasTareas.BackColor = System.Drawing.Color.WhiteSmoke;
-            btnAtrasTareas.ForeColor = System.Drawing.Color.Black;
-            btnAtrasTareas.Location = new System.Drawing.Point(49, 600);
-            btnAtrasTareas.Name = "btnAtras";
-            btnAtrasTareas.Size = new System.Drawing.Size(106, 41);
-            btnAtrasTareas.TabIndex = 145;
-            btnAtrasTareas.Text = "Atras";
-            btnAtrasTareas.UseVisualStyleBackColor = false;
-            btnAtrasTareas.Click += new System.EventHandler(ClickAtrasTarea);
-            this.Prueba.Controls.Add(btnAtrasTareas);
-
-
-            detalletarea(tarea);
-
-
-        }
-
-        void ClickAtrasPrendasInicio(object sender, EventArgs e) {
-
-            var total = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < total; i++)
-            {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
-            }
-            var prendas = db.Prendas.Take(28).ToList();
-         
-            var x = 0;
-            var y = 0;
-            var l = 0;
-
-            foreach (var item in prendas)
-            {
-                var botones = new Button();
-                botones.BackgroundImageLayout = ImageLayout.Center;
-                if (!string.IsNullOrEmpty(item.Imagen))
+                Button btn = sender as Button;
+                var id = int.Parse(btn.Name);
+                servicio = db.Servicios.Find(id);
+                this.label4.Text = prenda.TipoRopa;
+                this.label3.Text = "Nueva " + btn.Text + " Orden:";
+                var total = Prueba.Controls.Count;
+                var lit = Prueba.Controls.OfType<Button>();
+                for (int i = 0; i < total; i++)
                 {
-                    botones.Image = Image.FromFile(@item.Imagen);
+                    Prueba.Controls.Remove(Prueba.Controls[0]);
                 }
-                botones.Text = item.TipoRopa;
-                botones.Name = item.PrendaId.ToString();
-                botones.Location = new Point(x, y);
-                botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-                botones.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-                botones.Size = new Size(100, 100);
-                botones.Click += new EventHandler(ClickPrendas);
-                this.Prueba.Controls.Add(botones);
 
+                var btnAtrasservicio = new Button();
+                btnAtrasservicio.BackColor = System.Drawing.Color.WhiteSmoke;
+                btnAtrasservicio.ForeColor = System.Drawing.Color.Black;
+                btnAtrasservicio.Location = new System.Drawing.Point(49, 600);
+                btnAtrasservicio.Name = "btnAtrasServicio";
+                btnAtrasservicio.Size = new System.Drawing.Size(106, 41);
+                btnAtrasservicio.TabIndex = 145;
+                btnAtrasservicio.Text = "Atras";
+                btnAtrasservicio.UseVisualStyleBackColor = false;
+                btnAtrasservicio.Click += new System.EventHandler(ClickAtrasServicio);
+                btnAtrasservicio.MouseLeave += new EventHandler(Mouseleave);
+                btnAtrasservicio.MouseEnter += new EventHandler(Mouseover);
+                this.Prueba.Controls.Add(btnAtrasservicio);
+                Tareas(servicio);
 
-                if (l == 3)
-                {
-
-                    l = 0;
-                    x = 0;
-                    y += 100;
-
-                }
-                else
-                {
-                    x += 100;
-
-                    l += 1;
-                }
             }
 
-        }
-
-        void ClickAtrasServicio(object sender, EventArgs e)
-        {
-            var total = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < total; i++)
+            void ClickTareaS(object sender, EventArgs e)
             {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
+
+                Button btn = sender as Button;
+                var id = int.Parse(btn.Name);
+                tarea = db.Tareas.Find(id);
+                this.label4.Text = prenda.TipoRopa + "-" + btn.Text;
+                this.label3.Text = "Nueva " + servicio.NombreServicio + " Orden:";
+                var total = Prueba.Controls.Count;
+                var lit = Prueba.Controls.OfType<Button>();
+                for (int i = 0; i < total; i++)
+                {
+                    Prueba.Controls.Remove(Prueba.Controls[0]);
+                }
+
+                var btnAtrasTareas = new Button();
+                btnAtrasTareas.BackColor = System.Drawing.Color.WhiteSmoke;
+                btnAtrasTareas.ForeColor = System.Drawing.Color.Black;
+                btnAtrasTareas.Location = new System.Drawing.Point(49, 600);
+                btnAtrasTareas.Name = "btnAtras";
+                btnAtrasTareas.Size = new System.Drawing.Size(106, 41);
+                btnAtrasTareas.TabIndex = 145;
+                btnAtrasTareas.Text = "Atras";
+                btnAtrasTareas.UseVisualStyleBackColor = false;
+                btnAtrasTareas.Click += new System.EventHandler(ClickAtrasTarea);
+                btnAtrasTareas.MouseLeave += new EventHandler(Mouseleave);
+                btnAtrasTareas.MouseEnter += new EventHandler(Mouseover);
+                this.Prueba.Controls.Add(btnAtrasTareas);
+                detalletarea(tarea);
             }
-
-            var servicios = prenda.Tareas.Select(t => t.Servicio).Distinct().Take(28).ToList();
-            var x = 0;
-            var y = 0;
-            var l = 0;
-
-            foreach (var item in servicios)
+            void ClickDetalletareas(object sender, EventArgs e)
             {
-                var botones = new Button();
-                botones.Text = item.NombreServicio;
-                botones.Name = item.ServiciosId.ToString();
-                botones.Location = new Point(x, y);
-                botones.Size = new Size(100, 100);
-                botones.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-                botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-                botones.Click += new EventHandler(ClickServicios);
-                this.Prueba.Controls.Add(botones);
 
 
-                if (l == 3)
+                Button btn = sender as Button;
+                var id = int.Parse(btn.Name);
+                detalle = db.DetalleTareas.Find(id);
+                this.label4.Text = prenda.TipoRopa + "-" + tarea.NombreTareas + "-" + btn.Text;
+                this.label3.Text = "Nueva " + servicio.NombreServicio + " Orden:";
+                var total = Prueba.Controls.Count;
+                var lit = Prueba.Controls.OfType<Button>();
+                for (int i = 0; i < total; i++)
                 {
-
-                    l = 0;
-                    x = 0;
-                    y += 100;
-
+                    Prueba.Controls.Remove(Prueba.Controls[0]);
                 }
-                else
-                {
-                    x += 100;
+                mostrarcontroles(detalle);
 
-                    l += 1;
-                }
+
             }
-            var btnAtras = new Button();
-            btnAtras.BackColor = System.Drawing.Color.WhiteSmoke;
-            btnAtras.ForeColor = System.Drawing.Color.Black;
-            btnAtras.Location = new System.Drawing.Point(49, 600);
-            btnAtras.Name = "btnAtras";
-            btnAtras.Size = new System.Drawing.Size(106, 41);
-            btnAtras.TabIndex = 145;
-            btnAtras.Text = "Atras";
-            btnAtras.UseVisualStyleBackColor = false;
-            btnAtras.Click += new System.EventHandler(ClickAtrasPrendasInicio);
-            this.Prueba.Controls.Add(btnAtras);
 
-
-        }
-        void ClickAtrasTarea(object sender, EventArgs e)
-        {
-            var total = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < total; i++)
+            void ClickAtrasprueba(object sender, EventArgs e)
             {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
-            }
-            var tareas = db.Tareas.Where(t => t.ServiciosId == servicio.ServiciosId && t.PrendaId == prenda.PrendaId).Take(28).ToList();
-            var x = 0;
-            var y = 0;
-            var l = 0;
 
-            foreach (var item in tareas)
+
+                // Button btn = sender as Button;
+                //    var id = int.Parse(btn.Name);
+                // var tarea = db.Tareas.ToList();
+                // var tarea = db.Tareas.Find(id);
+                this.label4.Text = prenda.TipoRopa + "-" + tarea.NombreTareas;
+                this.label3.Text = "Nueva " + servicio.NombreServicio + " Orden:";
+                var total = Prueba.Controls.Count;
+                var lit = Prueba.Controls.OfType<Button>();
+                for (int i = 0; i < total; i++)
+                {
+                    Prueba.Controls.Remove(Prueba.Controls[0]);
+                }
+
+                var btnAtrasTareas = new Button();
+                btnAtrasTareas.BackColor = System.Drawing.Color.WhiteSmoke;
+                btnAtrasTareas.ForeColor = System.Drawing.Color.Black;
+                btnAtrasTareas.Location = new System.Drawing.Point(49, 600);
+                btnAtrasTareas.Name = "btnAtras";
+                btnAtrasTareas.Size = new System.Drawing.Size(106, 41);
+                btnAtrasTareas.TabIndex = 145;
+                btnAtrasTareas.Text = "Atras";
+                btnAtrasTareas.UseVisualStyleBackColor = false;
+                btnAtrasTareas.Click += new System.EventHandler(ClickAtrasTarea);
+                btnAtrasTareas.MouseLeave += new EventHandler(Mouseleave);
+                btnAtrasTareas.MouseEnter += new EventHandler(Mouseover);
+                this.Prueba.Controls.Add(btnAtrasTareas);
+
+
+                detalletarea(tarea);
+
+
+            }
+
+            void ClickAtrasPrendasInicio(object sender, EventArgs e)
             {
-                var botones = new Button();
-                botones.Text = item.NombreTareas;
-                botones.Name = item.TareaId.ToString();
-                botones.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-                botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-                botones.Location = new Point(x, y);
-                botones.Size = new Size(100, 100);
-                botones.Click += new EventHandler(ClickTareaS);
-                this.Prueba.Controls.Add(botones);
 
-
-                if (l == 3)
+                var total = Prueba.Controls.Count;
+                var lit = Prueba.Controls.OfType<Button>();
+                for (int i = 0; i < total; i++)
                 {
-
-                    l = 0;
-                    x = 0;
-                    y += 100;
-
+                    Prueba.Controls.Remove(Prueba.Controls[0]);
                 }
-                else
+                var prendas = db.Prendas.Take(28).ToList();
+
+                var x = 0;
+                var y = 0;
+                var l = 0;
+
+                foreach (var item in prendas)
                 {
-                    x += 100;
+                    var botones = new Button();
+                    botones.BackgroundImageLayout = ImageLayout.Center;
+                    if (!string.IsNullOrEmpty(item.Imagen))
+                    {
+                        botones.Image = Image.FromFile(@item.Imagen);
+                    }
+                    botones.Text = item.TipoRopa;
+                    botones.Name = item.PrendaId.ToString();
+                    botones.Location = new Point(x, y);
+                    botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+                    botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+                    botones.Size = new Size(100, 100);
+                    botones.Click += new EventHandler(ClickPrendas);
+                    botones.MouseLeave += new EventHandler(Mouseleave);
+                    botones.MouseEnter += new EventHandler(Mouseover);
+                    this.Prueba.Controls.Add(botones);
 
-                    l += 1;
+
+                    if (l == 3)
+                    {
+
+                        l = 0;
+                        x = 0;
+                        y += 100;
+
+                    }
+                    else
+                    {
+                        x += 100;
+
+                        l += 1;
+                    }
                 }
+
             }
 
-            var btnAtrasservicio = new Button();
-            btnAtrasservicio.BackColor = System.Drawing.Color.WhiteSmoke;
-            btnAtrasservicio.ForeColor = System.Drawing.Color.Black;
-            btnAtrasservicio.Location = new System.Drawing.Point(49, 600);
-            btnAtrasservicio.Name = "btnAtrasServicio";
-            btnAtrasservicio.Size = new System.Drawing.Size(106, 41);
-            btnAtrasservicio.TabIndex = 145;
-            btnAtrasservicio.Text = "Atras";
-            btnAtrasservicio.UseVisualStyleBackColor = false;
-            btnAtrasservicio.Click += new System.EventHandler(ClickAtrasServicio);
-            this.Prueba.Controls.Add(btnAtrasservicio);
+            void ClickAtrasServicio(object sender, EventArgs e)
+            {
+
+                this.label4.Text = prenda.TipoRopa;
+                this.label3.Text = "Nueva Orden:";
+                var total = Prueba.Controls.Count;
+                var lit = Prueba.Controls.OfType<Button>();
+                for (int i = 0; i < total; i++)
+                {
+                    Prueba.Controls.Remove(Prueba.Controls[0]);
+                }
+
+                var servicios = prenda.Tareas.Select(t => t.Servicio).Distinct().Take(28).ToList();
+                var x = 0;
+                var y = 0;
+                var l = 0;
+
+                foreach (var item in servicios)
+                {
+                    var botones = new Button();
+                    botones.Text = item.NombreServicio;
+                    botones.Name = item.ServiciosId.ToString();
+                    botones.Location = new Point(x, y);
+                    botones.Size = new Size(100, 100);
+                    botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+                    botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+                    botones.Click += new EventHandler(ClickServicios);
+                    botones.MouseLeave += new EventHandler(Mouseleave);
+                    botones.MouseEnter += new EventHandler(Mouseover);
+                    this.Prueba.Controls.Add(botones);
 
 
-        }
+                    if (l == 3)
+                    {
+
+                        l = 0;
+                        x = 0;
+                        y += 100;
+
+                    }
+                    else
+                    {
+                        x += 100;
+
+                        l += 1;
+                    }
+                }
+                var btnAtras = new Button();
+                btnAtras.BackColor = System.Drawing.Color.WhiteSmoke;
+                btnAtras.ForeColor = System.Drawing.Color.Black;
+                btnAtras.Location = new System.Drawing.Point(49, 600);
+                btnAtras.Name = "btnAtras";
+                btnAtras.Size = new System.Drawing.Size(106, 41);
+                btnAtras.TabIndex = 145;
+                btnAtras.Text = "Atras";
+                btnAtras.UseVisualStyleBackColor = false;
+                btnAtras.Click += new System.EventHandler(ClickAtrasPrendasInicio);
+                btnAtras.MouseLeave += new EventHandler(Mouseleave);
+                btnAtras.MouseEnter += new EventHandler(Mouseover);
+                this.Prueba.Controls.Add(btnAtras);
 
 
+            }
+            void ClickAtrasTarea(object sender, EventArgs e)
+            {
+                this.label4.Text = prenda.TipoRopa;
+                this.label3.Text = "Nueva " + servicio.NombreServicio + " Orden:";
+                var total = Prueba.Controls.Count;
+                var lit = Prueba.Controls.OfType<Button>();
+                for (int i = 0; i < total; i++)
+                {
+                    Prueba.Controls.Remove(Prueba.Controls[0]);
+                }
+                var tareas = db.Tareas.Where(t => t.ServiciosId == servicio.ServiciosId && t.PrendaId == prenda.PrendaId).Take(28).ToList();
+                var x = 0;
+                var y = 0;
+                var l = 0;
+
+                foreach (var item in tareas)
+                {
+                    var botones = new Button();
+                    botones.Text = item.NombreTareas;
+                    botones.Name = item.TareaId.ToString();
+                    botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+                    botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+                    botones.Location = new Point(x, y);
+                    botones.Size = new Size(100, 100);
+                    botones.Click += new EventHandler(ClickTareaS);
+                    botones.MouseLeave += new EventHandler(Mouseleave);
+                    botones.MouseEnter += new EventHandler(Mouseover);
+                    this.Prueba.Controls.Add(botones);
+
+
+                    if (l == 3)
+                    {
+
+                        l = 0;
+                        x = 0;
+                        y += 100;
+
+                    }
+                    else
+                    {
+                        x += 100;
+
+                        l += 1;
+                    }
+                }
+
+                var btnAtrasservicio = new Button();
+                btnAtrasservicio.BackColor = System.Drawing.Color.WhiteSmoke;
+                btnAtrasservicio.ForeColor = System.Drawing.Color.Black;
+                btnAtrasservicio.Location = new System.Drawing.Point(49, 600);
+                btnAtrasservicio.Name = "btnAtrasServicio";
+                btnAtrasservicio.Size = new System.Drawing.Size(106, 41);
+                btnAtrasservicio.TabIndex = 145;
+                btnAtrasservicio.Text = "Atras";
+                btnAtrasservicio.UseVisualStyleBackColor = false;
+                btnAtrasservicio.Click += new System.EventHandler(ClickAtrasServicio);
+                btnAtrasservicio.MouseLeave += new EventHandler(Mouseleave);
+                btnAtrasservicio.MouseEnter += new EventHandler(Mouseover);
+                this.Prueba.Controls.Add(btnAtrasservicio);
+
+
+            }
+
+        
 
 
         public void mostrarcontroles(DetalleTarea detalle)
         {
 
+          //  dato = int.Parse(label5.Text);
+            
+        
+            var Resultado = int.Parse(detalle.Precio) * dato;
 
-            this.txtPrecioTotal.Text = detalle.Precio;
+            this.txtPrecioTotal.Text =Resultado.ToString();
 
             var botonlimpiar = new Button();
             //   botonlimpiar.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Kosturas\\Resources\\search.png");
@@ -493,6 +829,8 @@ namespace Kosturas.View
             botonlimpiar.Location = new Point(0, 72);
             botonlimpiar.Size = new Size(100, 200);
             botonlimpiar.Click += new EventHandler(cliclBorrarPrecio);
+            botonlimpiar.MouseLeave += new EventHandler(Mouseleave);
+            botonlimpiar.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botonlimpiar);
 
             var boton0 = new Button();
@@ -501,6 +839,8 @@ namespace Kosturas.View
             boton0.Location = new Point(202, 222);
             boton0.Size = new Size(100, 50);
             boton0.Click += new EventHandler(btn0_Click);
+            boton0.MouseLeave += new EventHandler(Mouseleave);
+            boton0.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(boton0);
 
             var botonpor = new Button();
@@ -509,6 +849,8 @@ namespace Kosturas.View
             botonpor.Location = new Point(102, 222);
             botonpor.Size = new Size(100, 50);
             botonpor.Click += new EventHandler(btnpor_Click);
+            botonpor.MouseLeave += new EventHandler(Mouseleave);
+            botonpor.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botonpor);
 
             var botonretroceso = new Button();
@@ -517,6 +859,8 @@ namespace Kosturas.View
             botonretroceso.Location = new Point(302, 222);
             botonretroceso.Size = new Size(100, 50);
             botonretroceso.Click += new EventHandler(btnretroceso_Click);
+            botonretroceso.MouseLeave += new EventHandler(Mouseleave);
+            botonretroceso.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botonretroceso);
 
             var x = 102;
@@ -542,43 +886,61 @@ namespace Kosturas.View
                 if (i == 0)
                 {
                     boton1.Click += new EventHandler(btn1_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
 
                 }
                 if (i == 1)
                 {
                     boton1.Click += new EventHandler(btn2_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
 
                 }
                 if (i == 2)
                 {
                     boton1.Click += new EventHandler(btn3_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
 
                 }
                 if (i == 3)
                 {
                     boton1.Click += new EventHandler(btn4_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
                 }
                 if (i == 4)
                 {
                     boton1.Click += new EventHandler(btn5_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
 
                 }
                 if (i == 5)
                 {
                     boton1.Click += new EventHandler(btn6_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
 
                 }
                 if (i == 6)
                 {
                     boton1.Click += new EventHandler(btn7_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
                 }
                 if (i == 7)
                 {
                     boton1.Click += new EventHandler(btn8_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
                 }
                 if (i == 8)
                 {
                     boton1.Click += new EventHandler(btn9_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
                 }
               
 
@@ -601,11 +963,15 @@ namespace Kosturas.View
             }
 
             var botonmas = new Button();
-            botonmas.Text = "+";
+           // botonmas.Text = "+";
+            botonmas.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\mas.png");
+            
             botonmas.Name = "btnmas";
             botonmas.Location = new Point(0, 330);
             botonmas.Size = new Size(76, 169);
             botonmas.Click += new EventHandler(ClickPrendas);
+            botonmas.MouseLeave += new EventHandler(Mouseleave);
+            botonmas.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botonmas);
 
 
@@ -620,11 +986,15 @@ namespace Kosturas.View
             this.Prueba.Controls.Add(txtboxdato);
 
             var combo = new ComboBox();
-            combo.Text = "";
+            combo.Text = "Selecione una Oferta";
             combo.Name = "cmbofertas";
+            combo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            combo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             combo.Location = new Point(3, 520);
-            combo.Size = new Size(274, 21);
-            //  combo.Click += new EventHandler(ClickPrendas);
+            combo.Size = new Size(274, 30);
+            combo.MouseLeave += new EventHandler(MouseleaveCombo);
+            combo.MouseEnter += new EventHandler(MouseoverCombo);
             this.Prueba.Controls.Add(combo);
             var ofertas =
          from a in db.Ofertas
@@ -635,11 +1005,15 @@ namespace Kosturas.View
             combo.DisplayMember = "Names";
 
             var combodos = new ComboBox();
-            combodos.Text = "";
+            combodos.Text = "Selecione Un afiliado";
             combodos.Name = "cmbafiliados";
-            combodos.Location = new Point(3, 550);
-            combodos.Size = new Size(274, 21);
-            //   combodos.Click += new EventHandler(ClickPrendas);
+            combodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+           combodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            combodos.Location = new Point(3, 560);
+            combodos.Size = new Size(274, 30);
+            combodos.MouseLeave += new EventHandler(MouseleaveCombo);
+            combodos.MouseEnter += new EventHandler(MouseoverCombo);
             this.Prueba.Controls.Add(combodos);
 
             var afiliados =
@@ -656,19 +1030,46 @@ namespace Kosturas.View
             botox1.Text = "X";
             botox1.Name = "btnx1";
             botox1.Location = new Point(283, 520);
-            botox1.Size = new Size(30, 25);
+            botox1.Size = new Size(45, 40);
             botox1.Click += new EventHandler(ClickPrendas);
+            botox1.MouseLeave += new EventHandler(Mouseleave);
+            botox1.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botox1);
+
+            var botonimagen = new Button();
+            // botonmas.Text = "+";
+            botonimagen.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\asterisco.png");
+
+            botonimagen.Name = "asterisco1";
+            botonimagen.Location = new Point(333, 520);
+            botonimagen.Size = new Size(45, 40);
+            botonimagen.Click += new EventHandler(ClickPrendas);
+            botonimagen.MouseLeave += new EventHandler(Mouseleave);
+            botonimagen.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(botonimagen);
+
+            var botonimagendos = new Button();
+            // botonmas.Text = "+";
+            botonimagendos.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\asterisco.png");
+
+            botonimagendos.Name = "asterisco2";
+            botonimagendos.Location = new Point(333, 560);
+            botonimagendos.Size = new Size(45, 40);
+            botonimagendos.Click += new EventHandler(ClickPrendas);
+            botonimagendos.MouseLeave += new EventHandler(Mouseleave);
+            botonimagendos.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(botonimagendos);
+
 
             var botox2 = new Button();
             botox2.Text = "X";
             botox2.Name = "btnx2";
-            botox2.Location = new Point(283, 550);
-            botox2.Size = new Size(30, 25);
+            botox2.Location = new Point(283, 560);
+            botox2.Size = new Size(45, 40);
             botox2.Click += new EventHandler(ClickPrendas);
+            botox2.MouseLeave += new EventHandler(Mouseleave);
+            botox2.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botox2);
-
-
 
             var precio = new Label();
             precio.AutoSize = true;
@@ -705,26 +1106,30 @@ namespace Kosturas.View
             var btnNuevoItem = new Button();
             btnNuevoItem.BackColor = System.Drawing.Color.WhiteSmoke;
             btnNuevoItem.ForeColor = System.Drawing.Color.Black;
-            btnNuevoItem.Location = new System.Drawing.Point(277, 600);
+            btnNuevoItem.Location = new System.Drawing.Point(277, 630);
             btnNuevoItem.Name = "btnNuevoItem";
             btnNuevoItem.Size = new System.Drawing.Size(106, 41);
             btnNuevoItem.TabIndex = 146;
             btnNuevoItem.Text = "Nuevo Item";
             btnNuevoItem.UseVisualStyleBackColor = false;
             btnNuevoItem.Click += new System.EventHandler(ClickAtrasPrendasInicio);
+            btnNuevoItem.MouseLeave += new EventHandler(Mouseleave);
+            btnNuevoItem.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(btnNuevoItem);
 
 
             var btnAtras = new Button();
             btnAtras.BackColor = System.Drawing.Color.WhiteSmoke;
             btnAtras.ForeColor = System.Drawing.Color.Black;
-            btnAtras.Location = new System.Drawing.Point(49, 600);
+            btnAtras.Location = new System.Drawing.Point(49, 630);
             btnAtras.Name = "btnAtras";
             btnAtras.Size = new System.Drawing.Size(106, 41);
             btnAtras.TabIndex = 145;
             btnAtras.Text = "Atras";
             btnAtras.UseVisualStyleBackColor = false;
             btnAtras.Click += new System.EventHandler(ClickAtrasprueba);
+            btnAtras.MouseLeave += new EventHandler(Mouseleave);
+            btnAtras.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(btnAtras);
 
             var label2 = new Label();
@@ -824,11 +1229,13 @@ namespace Kosturas.View
                 }
                 botones.Text = item.NombreServicio;
                 botones.Name = item.ServiciosId.ToString();
-                botones.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+                botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
                 botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
                 botones.Location = new Point(x, y);
                 botones.Size = new Size(100, 100);
                 botones.Click += new EventHandler(ClickServicios);
+                botones.MouseLeave += new EventHandler(Mouseleave);
+                botones.MouseEnter += new EventHandler(Mouseover);
                 this.Prueba.Controls.Add(botones);
 
 
@@ -868,12 +1275,14 @@ namespace Kosturas.View
                     botones.Image = Image.FromFile(@item.Imagen);
                 }
                 botones.Text = item.NombreTareas;
-                botones.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+                botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
                 botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
                 botones.Name = item.TareaId.ToString();
                 botones.Location = new Point(x, y);
                 botones.Size = new Size(100, 100);
                 botones.Click += new EventHandler(ClickTareaS);
+                botones.MouseLeave += new EventHandler(Mouseleave);
+                botones.MouseEnter += new EventHandler(Mouseover);
                 this.Prueba.Controls.Add(botones);
 
 
@@ -921,11 +1330,13 @@ namespace Kosturas.View
                 }
                 botones.Text = item.DetalleTareas;
                 botones.Name = item.DetalleTareaId.ToString();
-                botones.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+                botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
                 botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
                 botones.Location = new Point(x, y);
                 botones.Size = new Size(100, 100);
                 botones.Click += new EventHandler(ClickDetalletareas);
+                botones.MouseLeave += new EventHandler(Mouseleave);
+                botones.MouseEnter += new EventHandler(Mouseover);
                 this.Prueba.Controls.Add(botones);
 
 
@@ -1169,10 +1580,12 @@ namespace Kosturas.View
                     botones.Text = item.TipoRopa;
                     botones.Name = item.PrendaId.ToString();
                     botones.Location = new Point(x, y);
-                    botones.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+                    botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
                     botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
                     botones.Size = new Size(100, 100);
                     botones.Click += new EventHandler(ClickPrendas);
+                    botones.MouseLeave += new EventHandler(Mouseleave);
+                    botones.MouseEnter += new EventHandler(Mouseover);
                     this.Prueba.Controls.Add(botones);
 
 
@@ -1231,11 +1644,13 @@ namespace Kosturas.View
 
                     botones.Text = item.TipoRopa;
                     botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-                    botones.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+                    botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
                     botones.Name = item.PrendaId.ToString();
                     botones.Location = new Point(x, y);
                     botones.Size = new Size(100, 100);
                     botones.Click += new EventHandler(ClickPrendas);
+                    botones.MouseLeave += new EventHandler(Mouseleave);
+                    botones.MouseEnter += new EventHandler(Mouseover);
                     this.Prueba.Controls.Add(botones);
 
 
@@ -1265,23 +1680,24 @@ namespace Kosturas.View
 
         private void dvgOrdenes_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
-            this.dvgOrdenes.BackColor = System.Drawing.Color.OliveDrab;
-            this.dvgOrdenes.ForeColor = System.Drawing.Color.White;
+          
         }
 
         private void dvgOrdenes_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
 
-            this.dvgOrdenes.BackColor = System.Drawing.Color.OliveDrab;
-            this.dvgOrdenes.ForeColor = System.Drawing.Color.White;
+            if (e.RowIndex >= 0)
+            {
+                //dvgOrdenes.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.OliveDrab;
+
+                //dvgOrdenes.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+             
+              
+            }
         }
 
         private void dvgOrdenes_MouseEnter(object sender, EventArgs e)
         {
-
-            this.dvgOrdenes.BackColor = System.Drawing.Color.OliveDrab;
-            this.dvgOrdenes.ForeColor = System.Drawing.Color.White;
         }
 
 
@@ -1386,9 +1802,10 @@ namespace Kosturas.View
         }
         private void btn0_Click(object sender, EventArgs e)
         {
-            if (txtPrecioTotal.Text == "1" || txtPrecioTotal.Text == "2" || txtPrecioTotal.Text == "3" || txtPrecioTotal.Text == "4" || txtPrecioTotal.Text == "5" || txtPrecioTotal.Text == "6" || txtPrecioTotal.Text == "7" || txtPrecioTotal.Text == "8" || txtPrecioTotal.Text == "9")
+            
+            if (txtPrecioTotal.Text == "0")
             {
-                txtPrecioTotal.Text = "0";
+                return;
             }
             else
             {
@@ -1396,9 +1813,14 @@ namespace Kosturas.View
             }
         }
 
+
+
         private void btnpor_Click(object sender, EventArgs e)
         {
-             double a;
+
+
+          
+            double a;
         double b;
         string c;
 
@@ -1406,41 +1828,981 @@ namespace Kosturas.View
             c = "*";
             this.txtPrecioTotal.Clear();
             this.txtPrecioTotal.Focus();
-          
+
+            var total = Prueba.Controls.Count;
+            var lit = Prueba.Controls.OfType<Button>();
+            for (int i = 0; i < total; i++)
+            {
+                Prueba.Controls.Remove(Prueba.Controls[0]);
+            }
+            var laibol = new Label();
+            laibol.Name = "Multiplicacion";
+            laibol.Text = "Multiplicar";
+            laibol.Location = new Point(100, 600);
+            this.Prueba.Controls.Add(laibol);
+
+            var texbox = new TextBox();
+            texbox.Name = "Multiplicacion";
+            texbox.Text = "1";
+            texbox.Location = new Point(100, 650);
+            this.Prueba.Controls.Add(texbox);
+
+            var botones = new Button();
+            botones.Text = "Resultado";
+            botones.Name = "BtnResultado";
+            botones.Location = new Point(200, 600);
+            botones.Size = new Size(100, 100);
+            botones.Click += new EventHandler(ClickResultado);
+            this.Prueba.Controls.Add(botones);
+
+          //  txtPrecioTotal = texbox.Text;
+
+
+
         }
 
+        private void ClickResultado(object sender, EventArgs e)
+        {
+            
+          //  txtPrecioTotal.Text = txtPrecioTotal.Text* txtdato.Text;
+           // txtPrecioTotal.Visible = false;
+        }
         private void btnretroceso_Click(object sender, EventArgs e)
         {
-            if (txtPrecioTotal.Text == "")
+            x = txtPrecioTotal.Text.Length;
+         
+            if (txtPrecioTotal.Text.Substring(0, 0) != "0")
+            {
+                //en caso de que sea, lo quitamos
+                txtPrecioTotal.Text = txtPrecioTotal.Text.Substring(0, txtPrecioTotal.Text.Length - 1);
+            }
+
+
+            if (x.ToString() == "1")
             {
                 txtPrecioTotal.Text = "0";
-            }
-            else
-            {
-                txtPrecioTotal.Text = txtPrecioTotal.Text + "0";
+
             }
         }
 
         private void dvgOrdenes_ColumnHeaderCellChanged(object sender, DataGridViewColumnEventArgs e)
         {
 
-            this.dvgOrdenes.BackColor = System.Drawing.Color.OliveDrab;
-            this.dvgOrdenes.ForeColor = System.Drawing.Color.White;
+            //this.dvgOrdenes.BackColor = System.Drawing.Color.OliveDrab;
+            //this.dvgOrdenes.ForeColor = System.Drawing.Color.White;
         }
+        void ClickNuevaOrden(object sender, EventArgs e)
+        {
+            Form1 empleado = new Form1();
 
-        private void dvgOrdenes_CellClick(object sender, DataGridViewCellEventArgs e)
+            empleado.ShowDialog();
+            this.Close();
+
+        }
+        void ClickCerrarOrden(object sender, EventArgs e)
+        {
+            Form1 empleado = new Form1();
+
+            empleado.ShowDialog();
+            this.Close();
+
+        }
+        void Clickcincomas(object sender, EventArgs e)
+        {
+            
+            var a = int.Parse(label5.Text);
+            var b = a + 5;
+            label5.Text = b.ToString();
+
+        }
+        void Clickcincomenos(object sender, EventArgs e)
         {
 
-            if (e.ColumnIndex == 4)
+            var a = int.Parse(label5.Text);
+            if (a <= 5)
             {
-                frmEmpleado empleado = new frmEmpleado();
-                empleado.Show();
+                label5.Text = "1";
+
+            }
+            if (a > 5)
+            {
+                var b = a - 5;
+                label5.Text = b.ToString();
+            }
+
+        }
+        void Clickunomas(object sender, EventArgs e)
+        {
+           
+            var a = int.Parse(label5.Text);
+            var b = a + 1;
+            label5.Text = b.ToString();
+
+        }
+        void Clickunomenos(object sender, EventArgs e)
+        {
+            
+            var a = int.Parse(label5.Text);
+            if (a > 1)
+            {
+                var b = a - 1;
+                label5.Text = b.ToString();
+            }
+
+        }
+        void ClickBorrartax(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
 
 
+            object id = btr.Name;
+
+
+      
+            var total = panel3.Controls.Count;
+            var totaldos = total;
+            
+        
+            if (totaldos == 2&&m<=0) { 
+            var lit = panel3.Controls.OfType<Button>();
+            for (int i = 0; i < total; i++)
+            {
+                panel3.Controls.Remove(panel3.Controls[0]);
+            }
+            Form1 form = new Form1();
+            form.ShowDialog();
+            }
+
+          
+            if (totaldos == 3&&m==0)
+            {
+
+                for (int i = total; i <= total; i++)
+                {
+                    panel3.Controls.Remove(panel3.Controls[total-1]);
+                }
+           
+             
+                DAtoYdos = DAtoYdos - 90;
+            }
+            if (totaldos == 5 && m == 0)
+            {
+
+
+                panel3.Controls.Remove(panel3.Controls[4]);
+                panel3.Controls.Remove(panel3.Controls[3]);
+                m = m + 10;
+            }
+            if (totaldos == 5&&m<=0)
+            {
+
+                for (int i = total; i <= total; i++)
+                {
+                    panel3.Controls.Remove(panel3.Controls[total - 1]);
+                }
+              //  panel3.Controls.Remove(panel3.Controls[4]);
+                   DAtoY = DAtoY-50;
+                DAtoYdos = DAtoYdos-45;
+            }
+            if (totaldos == 7&&m<=0)
+            {
+
+                for (int i = total; i <= total; i++)
+                {
+                    panel3.Controls.Remove(panel3.Controls[total - 1]);
+                }
+              //  panel3.Controls.Remove(panel3.Controls[6]);
+                DAtoY = DAtoY - 50;
+                DAtoYdos = DAtoYdos - 45;
+            }
+            if (totaldos == 9&& m <= 0)
+            {
+
+                for (int i = total; i <= total; i++)
+                {
+                    panel3.Controls.Remove(panel3.Controls[total - 1]);
+                }
+             //   panel3.Controls.Remove(panel3.Controls[8]);
+                DAtoY = DAtoY - 50;
+                DAtoYdos = DAtoYdos - 45;
+            }
+            if (totaldos == 11&&m <= 0)
+            {
+
+                for (int i = total; i <= total; i++)
+                {
+                    panel3.Controls.Remove(panel3.Controls[total - 1]);
+                }
+             //   panel3.Controls.Remove(panel3.Controls[10]);
+                DAtoY = DAtoY - 50;
+                DAtoYdos = DAtoYdos - 45;
+            }
+         //   totaldos = totaldos - 1;
+
+            if (totaldos == 4 && m == 0)
+            {
+             
+              
+                 panel3.Controls.Remove(panel3.Controls[3]);
+                 panel3.Controls.Remove(panel3.Controls[2]);
+                DAtoY = DAtoY - 45;
+                DAtoYdos = DAtoYdos - 50;
+            }
+            //if (totaldos == 4 && m == 2)
+            //{
+
+
+            //    panel3.Controls.Remove(panel3.Controls[3]);
+            //    panel3.Controls.Remove(panel3.Controls[2]);
+            //    DAtoY = DAtoY - 45;
+            //    DAtoYdos = DAtoYdos - 50;
+            //  //  m = m - 3;
+            //}
+            if (totaldos == 6 && m<=0)
+            {
+             
+
+                panel3.Controls.Remove(panel3.Controls[5]);
+                panel3.Controls.Remove(panel3.Controls[4]);
+                DAtoY = DAtoY - 45;
+                DAtoYdos = DAtoYdos - 50;
+                
+            }
+
+            if ( totaldos == 6 && m == 2)
+            {
+
+
+                panel3.Controls.Remove(panel3.Controls[5]);
+                panel3.Controls.Remove(panel3.Controls[4]);
+                DAtoY = DAtoY - 45;
+                DAtoYdos = DAtoYdos - 50;
+                m = m - 3;
+            }
+
+            if (totaldos == 8 && m <= 0)
+            {
+
+
+                panel3.Controls.Remove(panel3.Controls[7]);
+                panel3.Controls.Remove(panel3.Controls[6]);
+                DAtoY = DAtoY - 45;
+                DAtoYdos = DAtoYdos - 50;
+            }
+            if (totaldos == 10 && m <= 0)
+            {
+
+
+                panel3.Controls.Remove(panel3.Controls[9]);
+                panel3.Controls.Remove(panel3.Controls[8]);
+                DAtoY = DAtoY - 45;
+                DAtoYdos = DAtoYdos - 50;
+            }
+            if (totaldos == 12 && m <= 0)
+            {
+
+
+                panel3.Controls.Remove(panel3.Controls[11]);
+                panel3.Controls.Remove(panel3.Controls[10]);
+                DAtoY = DAtoY - 45;
+                DAtoYdos = DAtoYdos - 50;
+            }
+        
+                if (int.Parse(m.ToString()) ==2)
+                {
+                    for (int i = total; i <= total; i++)
+                    {
+                        panel3.Controls.Remove(panel3.Controls[total - 1]);
+                    }
+
+                    //    totaldos=totaldos - 1;
+
+                    DAtoYdos = DAtoYdos - 90;
+                }
+            if (m == 10)
+            {
+                this.m = 2;
+            }
+            
+            if (int.Parse(m.ToString()) == 1)
+            {
+                for (int i = total; i <= total; i++)
+                {
+                    panel3.Controls.Remove(panel3.Controls[total - 1]);
+                }
+
+
+                // this.m = m - 1;
+                DAtoYdos = DAtoYdos - 90;
+            }
+            if (int.Parse(m.ToString()) == 3)
+            {
+                for (int i = total; i <= total; i++)
+                {
+                    panel3.Controls.Remove(panel3.Controls[total - 1]);
+                }
+
+
+                // this.m = m - 1;
+                DAtoYdos = DAtoYdos - 90;
+            }
+            if (int.Parse(m.ToString()) == 4)
+            {
+                for (int i = total; i <= total; i++)
+                {
+                    panel3.Controls.Remove(panel3.Controls[total - 1]);
+                }
+
+
+                // this.m = m - 1;
+                DAtoYdos = DAtoYdos - 90;
+            }
+            if (int.Parse(m.ToString()) == 5)
+            {
+                for (int i = total; i <= total; i++)
+                {
+                    panel3.Controls.Remove(panel3.Controls[total - 1]);
+                }
+
+
+                // this.m = m - 1;
+                DAtoYdos = DAtoYdos - 90;
+            }
+
+            if (m > 0)
+            {
+                this.m = m - 1;
+            }
+           else
+                if (m<0)
+                {
+                    this.m = 2;
+
+                }
+           
+            
+        }
+
+
+        private void Clonar(object src, object tgt)
+        {
+            PropertyInfo[] props = src.GetType().GetProperties();
+            foreach (PropertyInfo pi in props)
+            {
+                if (pi.CanWrite)
+                    pi.SetValue(tgt, pi.GetValue(src, null), null);
+            }
+        }
+        void ClickDuplicar(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object iddos = btr.Name;
+
+           
+            var total = panel3.Controls.Count;
+            if (total == 2) { 
+            this.Datox = 0;
+                this.DAtoY = 0;
+                this.DAtoYdos = 50;
+            }
+            if (total == 4)
+            {
+                this.Datox = 0;
+                this.DAtoY =95;
+                this.DAtoYdos = 145;
+            }
+            if (total == 6)
+            {
+                this.Datox = 0;
+                this.DAtoY = 190;
+                this.DAtoYdos = 240;
+            }
+            if (total == 8)
+            {
+                this.Datox = 0;
+                this.DAtoY = 218;
+                this.DAtoYdos = 268;
+            }
+            if (total == 10)
+            {
+                this.Datox = 0;
+                this.DAtoY = 218;
+                this.DAtoYdos = 268;
+            }
+
+            if (m==1) {
+
+               // var d = Datox;
+                DAtoY = DAtoY + 95+45;
+               // var f = DAtoY;
+                DAtoYdos = DAtoYdos + 95;
+              //  var o = DAtoYdos;
+            }
+            if (m == 2)
+            {
+
+                // var d = Datox;
+                DAtoY = DAtoY + 90;
+                // var f = DAtoY;
+                DAtoYdos = DAtoYdos + 90;
+                //  var o = DAtoYdos;
+            }
+            if(m==0)
+            {
+
+               // var d = Datox;
+                DAtoY = DAtoY + 95;
+              //  var f = DAtoY;
+                DAtoYdos = DAtoYdos + 95;
+             //   var o = DAtoYdos;
+            }
+
+           
+
+            this.label5.Text = "1";
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Name);
+            prenda = db.Prendas.Find(id);
+            var dato = db.Prendas.Where(u => u.PrendaId == id).ToList();
+
+            Panel Table = new Panel();
+            Table.AutoScroll = true;
+            Table.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            Table.Location = new Point(Datox, DAtoY);
+            Table.Size = new Size(897, 50);
+            Table.BackColor = Color.DarkGray;
+
+            Table.Name = "DatosPrendas";
+
+
+            foreach (var item in dato)
+            {
+
+                var botonesdos = new Label();
+                botonesdos.Size = new System.Drawing.Size(70, 45);
+                botonesdos.Location = new Point(0, 0);
+
+                botonesdos.Text = "X" + item.TipoRopa;
+                botonesdos.Name = item.TipoRopa;
+
+
+
+                var Prioridad = new Button();
+
+
+                Prioridad.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\primera.png");
+
+                Prioridad.BackColor = System.Drawing.Color.DarkGray;
+                Prioridad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                Prioridad.Location = new Point(634, 6);
+                Prioridad.FlatAppearance.BorderSize = 0;
+                Prioridad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                Prioridad.Size = new System.Drawing.Size(32, 34);
+                Prioridad.TabIndex = 142;
+                Prioridad.UseVisualStyleBackColor = false;
+
+
+                Prioridad.Name = item.PrendaId.ToString();
+                Prioridad.Click += new EventHandler(ClickNuevaOrden);
+
+                var Duplicar = new Button();
+
+                Duplicar.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\duplicar.png");
+
+                Duplicar.BackColor = System.Drawing.Color.DarkGray;
+                Duplicar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                Duplicar.FlatAppearance.BorderSize = 0;
+                Duplicar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                Duplicar.Location = new Point(666, 6);
+                Duplicar.Size = new System.Drawing.Size(32, 34);
+                Duplicar.TabIndex = 142;
+                Duplicar.UseVisualStyleBackColor = false;
+                Duplicar.Click += new EventHandler(ClickDuplicar);
+
+                Duplicar.Name = item.PrendaId.ToString();
+
+                var cantidad = new Button();
+
+
+                cantidad.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\qrd.png");
+
+                cantidad.BackColor = System.Drawing.Color.DarkGray;
+                cantidad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                cantidad.FlatAppearance.BorderSize = 0;
+                cantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                cantidad.Location = new Point(698, 6);
+                cantidad.Size = new System.Drawing.Size(32, 34);
+                cantidad.TabIndex = 142;
+                cantidad.UseVisualStyleBackColor = false;
+
+
+                cantidad.Name = item.PrendaId.ToString();
+
+                var mascinco = new Button();
+
+
+                mascinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomas.png");
+
+                mascinco.BackColor = System.Drawing.Color.DarkGray;
+                mascinco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                mascinco.FlatAppearance.BorderSize = 0;
+                mascinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                mascinco.Location = new Point(730, 6);
+                mascinco.Size = new System.Drawing.Size(32, 34);
+                mascinco.TabIndex = 142;
+                mascinco.UseVisualStyleBackColor = false;
+                mascinco.Click += new EventHandler(Clickcincomas);
+
+                mascinco.Name = item.PrendaId.ToString();
+
+                var masuno = new Button();
+
+
+                masuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomas.png");
+
+                masuno.BackColor = System.Drawing.Color.DarkGray;
+                masuno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                masuno.FlatAppearance.BorderSize = 0;
+                masuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                masuno.Location = new Point(762, 6);
+                masuno.Size = new System.Drawing.Size(32, 34);
+                masuno.TabIndex = 142;
+                masuno.UseVisualStyleBackColor = false;
+                masuno.Click += new EventHandler(Clickunomas);
+
+                masuno.Name = item.PrendaId.ToString();
+
+                var menosuno = new Button();
+
+                menosuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomenos.png");
+
+                menosuno.BackColor = System.Drawing.Color.DarkGray;
+                menosuno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                menosuno.FlatAppearance.BorderSize = 0;
+                menosuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                menosuno.Location = new Point(794, 6);
+                menosuno.Size = new System.Drawing.Size(32, 34);
+                menosuno.TabIndex = 142;
+                menosuno.UseVisualStyleBackColor = false;
+                menosuno.Click += new EventHandler(Clickunomenos);
+                menosuno.Name = item.PrendaId.ToString();
+                var menoscinco = new Button();
+
+                menoscinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomenos.png");
+
+                menoscinco.BackColor = System.Drawing.Color.DarkGray;
+                menoscinco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                menoscinco.FlatAppearance.BorderSize = 0;
+                menoscinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                menoscinco.Location = new Point(826, 6);
+                menoscinco.Size = new System.Drawing.Size(32, 34);
+                menoscinco.TabIndex = 142;
+                menoscinco.UseVisualStyleBackColor = false;
+                menoscinco.Click += new EventHandler(Clickcincomenos);
+
+                menoscinco.Name = item.PrendaId.ToString();
+                var agregartarea = new Button();
+
+                agregartarea.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\taps.png");
+
+                agregartarea.BackColor = System.Drawing.Color.DarkGray;
+                agregartarea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                agregartarea.FlatAppearance.BorderSize = 0;
+                agregartarea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                agregartarea.Location = new Point(858, 6);
+                agregartarea.Size = new System.Drawing.Size(32, 34);
+                agregartarea.TabIndex = 142;
+                agregartarea.UseVisualStyleBackColor = false;
+                agregartarea.Click += new EventHandler(ClickAddtax);
+                agregartarea.Name = item.PrendaId.ToString();
+
+
+                Table.Controls.Add(botonesdos);
+
+                Table.Controls.Add(Prioridad);
+                Table.Controls.Add(Duplicar);
+                Table.Controls.Add(cantidad);
+                Table.Controls.Add(mascinco);
+                Table.Controls.Add(masuno);
+                Table.Controls.Add(menosuno);
+                Table.Controls.Add(menoscinco);
+                Table.Controls.Add(agregartarea);
+
+
+
+            }
+
+
+            Panel TableDos = new Panel();
+
+            TableDos.Location = new Point(Datox, DAtoYdos);
+            TableDos.Size = new Size(897, 45);
+            TableDos.BackColor = Color.White;
+            TableDos.MouseLeave += new EventHandler(Mouseleavetabla);
+            TableDos.MouseEnter += new EventHandler(Mouseovertabla);
+
+            TableDos.Name = "DatosPrendasDos";
+
+
+
+            var prueba = prenda.Tareas.FirstOrDefault().NombreTareas;
+            var pruebadostres = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareas;
+            var pruebados = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
+
+            var labeltarea = new Label();
+            labeltarea.Size = new System.Drawing.Size(70, 34);
+            labeltarea.Location = new Point(0, 10);
+
+            labeltarea.Text = prueba;
+            labeltarea.Name = prueba;
+
+            var labeldetalle = new Label();
+            labeldetalle.Size = new System.Drawing.Size(50, 34);
+            labeldetalle.Location = new Point(132, 10);
+            labeldetalle.Text = pruebadostres;
+            labeldetalle.Name = pruebadostres;
+
+            var labelprecio = new Label();
+            labelprecio.Size = new System.Drawing.Size(50, 34);
+            labelprecio.Location = new Point(182, 10);
+            labelprecio.Text = pruebados;
+            labelprecio.Name = pruebados;
+
+
+
+
+            var agregartareados = new Button();
+
+            agregartareados.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
+
+            agregartareados.BackColor = System.Drawing.Color.White;
+            agregartareados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            agregartareados.FlatAppearance.BorderSize = 0;
+            agregartareados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            agregartareados.Location = new Point(860, 6);
+            agregartareados.Size = new System.Drawing.Size(32, 34);
+            agregartareados.TabIndex = 142;
+            agregartareados.UseVisualStyleBackColor = false;
+            agregartareados.Click += new EventHandler(ClickBorrartax);
+
+       
+
+
+            TableDos.Controls.Add(labeltarea);
+            TableDos.Controls.Add(labeldetalle);
+            TableDos.Controls.Add(labelprecio);
+            TableDos.Controls.Add(agregartareados);
+
+            this.panel3.Controls.Add(Table);
+            this.panel3.Controls.Add(TableDos);
+            if (m == 1)
+            {
+                var dtres = Datox;
+                DAtoY = DAtoY;
+                var ftres = DAtoY;
+                DAtoYdos = DAtoYdos  + 45;
+                var otres = DAtoYdos;
+
+                Panel Tabletres = new Panel();
+
+                Tabletres.Location = new Point(dtres, otres);
+                Tabletres.Size = new Size(897, 45);
+                Tabletres.BackColor = Color.White;
+                Tabletres.MouseLeave += new EventHandler(Mouseleavetabla);
+                Tabletres.MouseEnter += new EventHandler(Mouseovertabla);
+
+                Tabletres.Name = "DatosPrendasDos";
+
+
+
+                var pruebatres = prenda.Tareas.FirstOrDefault().NombreTareas;
+                var pruebadostres2 = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareas;
+                var pruebados2 = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
+
+                var labeltareatres = new Label();
+                labeltareatres.Size = new System.Drawing.Size(70, 34);
+                labeltareatres.Location = new Point(0, 10);
+
+                labeltareatres.Text = pruebatres;
+                labeltareatres.Name = pruebatres;
+
+                var labeldetalletres = new Label();
+                labeldetalletres.Size = new System.Drawing.Size(50, 34);
+                labeldetalletres.Location = new Point(132, 10);
+                labeldetalletres.Text = pruebadostres2;
+                labeldetalletres.Name = pruebadostres2;
+
+                var labelpreciotres = new Label();
+                labelpreciotres.Size = new System.Drawing.Size(50, 34);
+                labelpreciotres.Location = new Point(182, 10);
+                labelpreciotres.Text = pruebados2;
+                labelpreciotres.Name = pruebados2;
+
+
+
+
+                var agregartareadostres = new Button();
+
+                agregartareadostres.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
+
+                agregartareadostres.BackColor = System.Drawing.Color.White;
+                agregartareadostres.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                agregartareadostres.FlatAppearance.BorderSize = 0;
+                agregartareadostres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                agregartareadostres.Location = new Point(860, 6);
+                agregartareadostres.Size = new System.Drawing.Size(32, 34);
+                agregartareadostres.TabIndex = 142;
+                agregartareadostres.UseVisualStyleBackColor = false;
+                agregartareadostres.Click += new EventHandler(ClickBorrartax);
+
+
+
+
+                Tabletres.Controls.Add(labeltareatres);
+                Tabletres.Controls.Add(labeldetalletres);
+                Tabletres.Controls.Add(labelpreciotres);
+                Tabletres.Controls.Add(agregartareadostres);
+                
+                this.panel3.Controls.Add(Tabletres);
+             //   m = m + 1;
+            }else
+            if (m == 2)
+            {
+                var dtres = Datox;
+                DAtoY = DAtoY + 40;
+                var ftres = DAtoY;
+                DAtoYdos = DAtoYdos + 45;
+                var otres = DAtoYdos;
+
+                Panel Tabletres = new Panel();
+
+                Tabletres.Location = new Point(dtres, otres);
+                Tabletres.Size = new Size(897, 45);
+                Tabletres.BackColor = Color.White;
+                Tabletres.MouseLeave += new EventHandler(Mouseleavetabla);
+                Tabletres.MouseEnter += new EventHandler(Mouseovertabla);
+
+                Tabletres.Name = "DatosPrendasDos";
+
+
+
+                var pruebatres = prenda.Tareas.FirstOrDefault().NombreTareas;
+                var pruebadostres2 = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareas;
+                var pruebados2 = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
+
+                var labeltareatres = new Label();
+                labeltareatres.Size = new System.Drawing.Size(70, 34);
+                labeltareatres.Location = new Point(0, 10);
+
+                labeltareatres.Text = pruebatres;
+                labeltareatres.Name = pruebatres;
+
+                var labeldetalletres = new Label();
+                labeldetalletres.Size = new System.Drawing.Size(50, 34);
+                labeldetalletres.Location = new Point(132, 10);
+                labeldetalletres.Text = pruebadostres2;
+                labeldetalletres.Name = pruebadostres2;
+
+                var labelpreciotres = new Label();
+                labelpreciotres.Size = new System.Drawing.Size(50, 34);
+                labelpreciotres.Location = new Point(182, 10);
+                labelpreciotres.Text = pruebados2;
+                labelpreciotres.Name = pruebados2;
+
+
+
+
+                var agregartareadostres = new Button();
+
+                agregartareadostres.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
+
+                agregartareadostres.BackColor = System.Drawing.Color.White;
+                agregartareadostres.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                agregartareadostres.FlatAppearance.BorderSize = 0;
+                agregartareadostres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                agregartareadostres.Location = new Point(860, 6);
+                agregartareadostres.Size = new System.Drawing.Size(32, 34);
+                agregartareadostres.TabIndex = 142;
+                agregartareadostres.UseVisualStyleBackColor = false;
+                agregartareadostres.Click += new EventHandler(ClickBorrartax);
+
+
+
+
+                Tabletres.Controls.Add(labeltareatres);
+                Tabletres.Controls.Add(labeldetalletres);
+                Tabletres.Controls.Add(labelpreciotres);
+                Tabletres.Controls.Add(agregartareadostres);
+
+
+                Panel Tablecuatro = new Panel();
+
+                Tablecuatro.Location = new Point(dtres, otres+45);
+                Tablecuatro.Size = new Size(897, 45);
+                Tablecuatro.BackColor = Color.White;
+                Tablecuatro.MouseLeave += new EventHandler(Mouseleavetabla);
+                Tablecuatro.MouseEnter += new EventHandler(Mouseovertabla);
+
+                Tablecuatro.Name = "DatosPrendasDos";
+
+
+
+                var pruebacuatro = prenda.Tareas.FirstOrDefault().NombreTareas;
+                var pruebadoscuatro = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareas;
+                var pruebadoscuatros = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
+
+                var labeltareacuatro = new Label();
+                labeltareacuatro.Size = new System.Drawing.Size(70, 34);
+                labeltareacuatro.Location = new Point(0, 10);
+
+                labeltareacuatro.Text = pruebacuatro;
+                labeltareacuatro.Name = pruebacuatro;
+
+                var labeldetallecuatro = new Label();
+                labeldetallecuatro.Size = new System.Drawing.Size(50, 34);
+                labeldetallecuatro.Location = new Point(132, 10);
+                labeldetallecuatro.Text = pruebadoscuatro;
+                labeldetallecuatro.Name = pruebadoscuatro;
+
+                var labelpreciocuatro = new Label();
+                labelpreciocuatro.Size = new System.Drawing.Size(50, 34);
+                labelpreciocuatro.Location = new Point(182, 10);
+                labelpreciocuatro.Text = pruebadoscuatros;
+                labelpreciocuatro.Name = pruebadoscuatros;
+
+
+
+
+                var agregartareadoscuatro = new Button();
+
+                agregartareadoscuatro.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
+
+                agregartareadoscuatro.BackColor = System.Drawing.Color.White;
+                agregartareadoscuatro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                agregartareadoscuatro.FlatAppearance.BorderSize = 0;
+                agregartareadoscuatro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                agregartareadoscuatro.Location = new Point(860, 6);
+                agregartareadoscuatro.Size = new System.Drawing.Size(32, 34);
+                agregartareadoscuatro.TabIndex = 142;
+                agregartareadoscuatro.UseVisualStyleBackColor = false;
+                agregartareadoscuatro.Click += new EventHandler(ClickBorrartax);
+
+
+
+
+                Tablecuatro.Controls.Add(labeltareacuatro);
+                Tablecuatro.Controls.Add(labeldetallecuatro);
+                Tablecuatro.Controls.Add(labelpreciocuatro);
+                Tablecuatro.Controls.Add(agregartareadoscuatro);
+
+                this.panel3.Controls.Add(Tabletres);
+                this.panel3.Controls.Add(Tablecuatro);
+                m = m + 2;
+            }
+        }
+        void ClickAddtax(object sender, EventArgs e)
+        {
+            var total = panel3.Controls.Count;
+            if (m<=0)
+            {
+                this.m = 0;
+            }
+           
+            m = m + 1;
+            if (total == 2)
+            {
+                this.Datox = 0;
+                this.DAtoY = 0;
+                this.DAtoYdos = 50;
+            }
+
+           
+            var l = e;
+            var d = Datox;
+         
+            DAtoYdos = DAtoYdos + 45;
+            var o = DAtoYdos;
+
+            Panel TableDos = new Panel();
+
+            TableDos.Location = new Point(d, o);
+            TableDos.Size = new Size(897, 45);
+            TableDos.BackColor = Color.White;
+            TableDos.MouseLeave += new EventHandler(Mouseleavetabla);
+            TableDos.MouseEnter += new EventHandler(Mouseovertabla);
+
+            TableDos.Name = m.ToString();
+
+
+
+            var prueba = prenda.Tareas.FirstOrDefault().NombreTareas;
+            var pruebadostres = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareas;
+            var pruebados = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
+
+            var labeltarea = new Label();
+            labeltarea.Size = new System.Drawing.Size(70, 34);
+            labeltarea.Location = new Point(0, 10);
+
+            labeltarea.Text = prueba;
+            labeltarea.Name = prueba;
+
+            var labeldetalle = new Label();
+            labeldetalle.Size = new System.Drawing.Size(50, 34);
+            labeldetalle.Location = new Point(132, 10);
+            labeldetalle.Text = pruebadostres;
+            labeldetalle.Name = pruebadostres;
+
+            var labelprecio = new Label();
+            labelprecio.Size = new System.Drawing.Size(50, 34);
+            labelprecio.Location = new Point(182, 10);
+            labelprecio.Text = pruebados;
+            labelprecio.Name = pruebados;
+
+
+
+
+            var agregartareados = new Button();
+
+            agregartareados.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
+
+            agregartareados.BackColor = System.Drawing.Color.White;
+            agregartareados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            agregartareados.FlatAppearance.BorderSize = 0;
+            agregartareados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            agregartareados.Location = new Point(860, 6);
+            agregartareados.Size = new System.Drawing.Size(32, 34);
+            agregartareados.TabIndex = 142;
+            agregartareados.UseVisualStyleBackColor = false;
+            agregartareados.Click += new EventHandler(ClickBorrartax);
+
+            agregartareados.Name = "DatosPrendasDos";
+
+
+            TableDos.Controls.Add(labeltarea);
+            TableDos.Controls.Add(labeldetalle);
+            TableDos.Controls.Add(labelprecio);
+            TableDos.Controls.Add(agregartareados);
+
+           
+            this.panel3.Controls.Add(TableDos);
+
+        }
+        private void dvgOrdenes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           // MessageBox.Show(e.ColumnIndex.ToString());
+
+            if (e.ColumnIndex == 26)
+            {
+
+                Form1 empleado = new Form1();
+        
+                empleado.ShowDialog();
                 this.Close();
-                //Form form = new Form1();
-                //form.Close();
-               
+
+          
+
             }
             else if (e.ColumnIndex == 7)
 
@@ -1449,7 +2811,100 @@ namespace Kosturas.View
                 empleado.ShowDialog();
 
             }
+            else if (e.ColumnIndex == 21)
+
+            {
+                //this.label5.ForeColor = Color.White;
+                //this.label5.BackColor = Color.OliveDrab;
+                //var a = int.Parse(label5.Text);
+                //var b = a + 5;
+                //label5.Text=b.ToString();
+            }
+            else if (e.ColumnIndex == 22)
+
+            {
+                //this.label5.ForeColor = Color.White;
+                //this.label5.BackColor = Color.OliveDrab;
+                //var a = int.Parse(label5.Text);
+                //var b = a + 1;
+                //label5.Text = b.ToString();
+            }
+            else if (e.ColumnIndex == 23)
+
+            {
+                //this.label5.ForeColor = Color.White;
+                //this.label5.BackColor = Color.OliveDrab;
+                //var a = int.Parse(label5.Text);
+                //if (a > 1)
+                //{
+                //    var b = a - 1;
+                //    label5.Text = b.ToString();
+                //}
+            }
+            else if (e.ColumnIndex == 24)
+
+            {
+            //    this.label5.ForeColor = Color.White;
+            //    this.label5.BackColor = Color.OliveDrab;
+            //    var a = int.Parse(label5.Text);
+            //    if (a <= 5)
+            //    {
+            //        label5.Text ="1";
+
+            //    }
+            //    if (a > 5) {
+            //        var b = a - 5;
+            //        label5.Text = b.ToString();
+             //  }
+                
+            }
+            else if (e.ColumnIndex == 25)
+
+            {
+                //  frmEmpleado empleado = new frmEmpleado();
+                //  empleado.ShowDialog();
+                //this.label5.BackColor = Color.OliveDrab;
+                //this.label5.ForeColor = Color.White;
+     
+            }
+
         }
+
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //  int valor = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+
+            if (e.RowIndex >= 0) {
+            // dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].DataGridView.DefaultCellStyle.BackColor = Color.OliveDrab;
+          }
+        }
+
+        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                //dataGridView1.DefaultCellStyle.BackColor = Color.Gray;
+            }
+        }
+
+        private void dvgOrdenes_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                //dvgOrdenes.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
+
+                //dvgOrdenes.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+              
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+
     }
     }
 

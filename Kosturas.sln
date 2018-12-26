@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kosturas", "Kosturas\Kostur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{77ABFC81-335B-4DCD-9E0D-C49C264858E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KosturasMVC", "KosturasMVC\KosturasMVC.csproj", "{71226EDD-923A-448F-9BC9-501B25FCD088}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{77ABFC81-335B-4DCD-9E0D-C49C264858E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77ABFC81-335B-4DCD-9E0D-C49C264858E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77ABFC81-335B-4DCD-9E0D-C49C264858E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71226EDD-923A-448F-9BC9-501B25FCD088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71226EDD-923A-448F-9BC9-501B25FCD088}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71226EDD-923A-448F-9BC9-501B25FCD088}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71226EDD-923A-448F-9BC9-501B25FCD088}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

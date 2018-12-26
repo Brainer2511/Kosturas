@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Prueba = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,10 +54,14 @@
             this.txttelefonoprincipal = new System.Windows.Forms.TextBox();
             this.txtNotas = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblNuevaOrden = new System.Windows.Forms.Label();
             this.btnporsentaje = new System.Windows.Forms.Button();
             this.txtPrecioTotal = new System.Windows.Forms.TextBox();
             this.ckbasisnar = new System.Windows.Forms.CheckBox();
-            this.dvgOrdenes = new System.Windows.Forms.DataGridView();
             this.lbl1 = new System.Windows.Forms.Label();
             this.lbl2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -69,12 +69,9 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pv2 = new System.Windows.Forms.PictureBox();
             this.pv1 = new System.Windows.Forms.PictureBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgOrdenes)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pv2)).BeginInit();
@@ -334,14 +331,69 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.lblNombre);
+            this.panel1.Controls.Add(this.lblNuevaOrden);
             this.panel1.Controls.Add(this.btnporsentaje);
             this.panel1.Controls.Add(this.txtPrecioTotal);
             this.panel1.Controls.Add(this.ckbasisnar);
-            this.panel1.Location = new System.Drawing.Point(4, 821);
+            this.panel1.Location = new System.Drawing.Point(12, 821);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1125, 44);
             this.panel1.TabIndex = 75;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(913, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 13);
+            this.label7.TabIndex = 99;
+            this.label7.Text = "TOTAL:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Black;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(179, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 98;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(39, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 56;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(66, 15);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(0, 13);
+            this.lblNombre.TabIndex = 55;
+            // 
+            // lblNuevaOrden
+            // 
+            this.lblNuevaOrden.AutoSize = true;
+            this.lblNuevaOrden.BackColor = System.Drawing.Color.Black;
+            this.lblNuevaOrden.ForeColor = System.Drawing.Color.White;
+            this.lblNuevaOrden.Location = new System.Drawing.Point(25, 15);
+            this.lblNuevaOrden.Name = "lblNuevaOrden";
+            this.lblNuevaOrden.Size = new System.Drawing.Size(0, 13);
+            this.lblNuevaOrden.TabIndex = 54;
             // 
             // btnporsentaje
             // 
@@ -356,12 +408,12 @@
             // 
             // txtPrecioTotal
             // 
-            this.txtPrecioTotal.Location = new System.Drawing.Point(924, 0);
+            this.txtPrecioTotal.Location = new System.Drawing.Point(962, 0);
             this.txtPrecioTotal.Multiline = true;
             this.txtPrecioTotal.Name = "txtPrecioTotal";
-            this.txtPrecioTotal.Size = new System.Drawing.Size(120, 44);
+            this.txtPrecioTotal.Size = new System.Drawing.Size(82, 44);
             this.txtPrecioTotal.TabIndex = 52;
-            this.txtPrecioTotal.Text = "Total:";
+            this.txtPrecioTotal.Text = "0";
             // 
             // ckbasisnar
             // 
@@ -373,58 +425,6 @@
             this.ckbasisnar.TabIndex = 51;
             this.ckbasisnar.Text = "Citar/Reserva";
             this.ckbasisnar.UseVisualStyleBackColor = true;
-            // 
-            // dvgOrdenes
-            // 
-            this.dvgOrdenes.BackgroundColor = System.Drawing.Color.White;
-            this.dvgOrdenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.GreenYellow;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgOrdenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dvgOrdenes.ColumnHeadersHeight = 20;
-            this.dvgOrdenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgOrdenes.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dvgOrdenes.EnableHeadersVisualStyles = false;
-            this.dvgOrdenes.GridColor = System.Drawing.Color.Black;
-            this.dvgOrdenes.Location = new System.Drawing.Point(4, 154);
-            this.dvgOrdenes.Name = "dvgOrdenes";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.OliveDrab;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgOrdenes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dvgOrdenes.RowHeadersWidth = 5;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgOrdenes.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dvgOrdenes.RowTemplate.Height = 10;
-            this.dvgOrdenes.Size = new System.Drawing.Size(918, 278);
-            this.dvgOrdenes.TabIndex = 94;
-            this.dvgOrdenes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgOrdenes_CellClick);
-            this.dvgOrdenes.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgOrdenes_CellMouseEnter);
-            this.dvgOrdenes.ColumnHeaderCellChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dvgOrdenes_ColumnHeaderCellChanged);
-            this.dvgOrdenes.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgOrdenes_RowEnter);
-            this.dvgOrdenes.MouseEnter += new System.EventHandler(this.dvgOrdenes_MouseEnter);
             // 
             // lbl1
             // 
@@ -446,7 +446,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightGray;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Location = new System.Drawing.Point(4, 2);
@@ -504,25 +504,23 @@
             this.pv1.TabStop = false;
             this.pv1.Click += new System.EventHandler(this.pv1_Click);
             // 
-            // Column1
+            // label5
             // 
-            this.Column1.HeaderText = "Prenda";
-            this.Column1.Name = "Column1";
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.DarkGray;
+            this.label5.Location = new System.Drawing.Point(78, 480);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 98;
+            this.label5.Text = "ry6tuyj";
             // 
-            // Column2
+            // panel3
             // 
-            this.Column2.HeaderText = "Tarea";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Detalle Tarea";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Precio";
-            this.Column4.Name = "Column4";
+            this.panel3.AutoScroll = true;
+            this.panel3.Location = new System.Drawing.Point(4, 154);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(918, 313);
+            this.panel3.TabIndex = 99;
             // 
             // Form1
             // 
@@ -530,10 +528,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1336, 881);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lbl2);
             this.Controls.Add(this.lbl1);
-            this.Controls.Add(this.dvgOrdenes);
             this.Controls.Add(this.pv2);
             this.Controls.Add(this.pv1);
             this.Controls.Add(this.panel1);
@@ -568,7 +567,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgOrdenes)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -611,15 +609,17 @@
         private System.Windows.Forms.CheckBox ckbasisnar;
         private System.Windows.Forms.PictureBox pv2;
         private System.Windows.Forms.PictureBox pv1;
-        private System.Windows.Forms.DataGridView dvgOrdenes;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Label lbl2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblNuevaOrden;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel3;
     }
 }

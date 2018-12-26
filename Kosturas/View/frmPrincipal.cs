@@ -16,6 +16,8 @@ namespace Kosturas
     {
 
         DataContextLocal db = new DataContextLocal();
+        public int ClienteId { get; set; }
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -45,21 +47,11 @@ namespace Kosturas
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            DataGridViewImageColumn NuevaOrden = new DataGridViewImageColumn();
+            NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura10.png");
+
+     
           
-            //from c in dc.Organization
-            //where SqlMethods.Like(c.Hierarchy, "%/12/%")
-            //select *;
-
-            //var clientes = db.Clientes.ToList();
-
-            //foreach (var item in clientes)
-            //{
-            //    ListViewItem datos = new ListViewItem();
-
-            //    datos = listView1.Items.Add(item.ClienteId.ToString());
-            //    datos.SubItems.Add(item.Nombre);
-            //}
-
 
 
 
@@ -72,6 +64,8 @@ namespace Kosturas
             frm.Close();
             Close();
         }
+
+
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
@@ -132,40 +126,37 @@ namespace Kosturas
 
 
 
-                dataGridView1.DataSource = query;
-                DataGridViewImageColumn NuevaOrden = new DataGridViewImageColumn();
-                NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\ayudados.jpg");
+              //  dataGridView1.DataSource = query;
+                //DataGridViewImageColumn NuevaOrden = new DataGridViewImageColumn();
+                //NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura10.png");
             
-                dataGridView1.Columns.Add(NuevaOrden);
+                //dataGridView1.Columns.Add(NuevaOrden);
 
-                DataGridViewImageColumn ObtenerOrdenesClientes = new DataGridViewImageColumn();
-                ObtenerOrdenesClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\recargar.png");
-                dataGridView1.Columns.Add(ObtenerOrdenesClientes);
+                //DataGridViewImageColumn ObtenerOrdenesClientes = new DataGridViewImageColumn();
+                //ObtenerOrdenesClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura11.png");
+                //dataGridView1.Columns.Add(ObtenerOrdenesClientes);
 
-                DataGridViewImageColumn GuardarCambios = new DataGridViewImageColumn();
-                GuardarCambios.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\save.png");
-                dataGridView1.Columns.Add(GuardarCambios);
+                //DataGridViewImageColumn GuardarCambios = new DataGridViewImageColumn();
+                //GuardarCambios.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura12.png");
+                //dataGridView1.Columns.Add(GuardarCambios);
 
-                DataGridViewImageColumn dos = new DataGridViewImageColumn();
-                dos.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\archivo flcha.png");
-                dataGridView1.Columns.Add(dos);
+                //DataGridViewImageColumn dos = new DataGridViewImageColumn();
+                //dos.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura13.png");
+                //dataGridView1.Columns.Add(dos);
 
-                DataGridViewImageColumn detalleClientes = new DataGridViewImageColumn();
-                detalleClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\ayuda.png");
-                dataGridView1.Columns.Add(detalleClientes);
+                //DataGridViewImageColumn detalleClientes = new DataGridViewImageColumn();
+                //detalleClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura14.png");
+                //dataGridView1.Columns.Add(detalleClientes);
 
-                DataGridViewImageColumn EnviarCorreo = new DataGridViewImageColumn();
-                EnviarCorreo.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\abrir msj.png");
-                dataGridView1.Columns.Add(EnviarCorreo);
+                //DataGridViewImageColumn EnviarCorreo = new DataGridViewImageColumn();
+                //EnviarCorreo.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura15.png");
+                //dataGridView1.Columns.Add(EnviarCorreo);
 
-                DataGridViewImageColumn AumentoCredito = new DataGridViewImageColumn();
-                AumentoCredito.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\recargar.png");
-                dataGridView1.Columns.Add(AumentoCredito);
+                //DataGridViewImageColumn AumentoCredito = new DataGridViewImageColumn();
+                //AumentoCredito.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura16.png");
+                //dataGridView1.Columns.Add(AumentoCredito);
 
-                DataGridViewImageColumn ClienteMesu = new DataGridViewImageColumn();
-                ClienteMesu.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\tarjeta.png");
-                dataGridView1.Columns.Add(ClienteMesu);
-            }
+              }
                
 
           
@@ -173,61 +164,225 @@ namespace Kosturas
             
         }
 
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        private void CargarCliente(string texbox)
         {
 
-            
-            string x = "";
-            x = txtNombre.Text;
-            if (x!=""){ 
-          
-          
-            var query = db.Clientes.Where(j => j.Nombre.StartsWith(x.ToString())).Select(t => new { t.ClienteId,t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
- 
 
-        
-            dataGridView1.DataSource = query;
-                DataGridViewImageColumn NuevaOrden = new DataGridViewImageColumn();
-                NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\nuevo +.png");
+            TableLayoutPanel Table = new TableLayoutPanel();
+            Table.AutoScroll = true;
+            Table.Location = new Point(1, 108);
+            Table.Size = new Size(1120, 244);
 
-                dataGridView1.Columns.Add(NuevaOrden);
+            Table.Name = "Cliente";
 
-                DataGridViewImageColumn ObtenerOrdenesClientes = new DataGridViewImageColumn();
-                ObtenerOrdenesClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\recargar.png");
-                dataGridView1.Columns.Add(ObtenerOrdenesClientes);
+            Table.ColumnCount = 12;
 
-                DataGridViewImageColumn GuardarCambios = new DataGridViewImageColumn();
-                GuardarCambios.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\save.png");
-                dataGridView1.Columns.Add(GuardarCambios);
+            // Table.RowCount = 10;
 
-                DataGridViewImageColumn dos = new DataGridViewImageColumn();
-                dos.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\archivo flcha.png");
-                dataGridView1.Columns.Add(dos);
+            var d = 0;
+            var f = 0;
+            var o = 0;
+            var query = db.Clientes.Where(j => j.Nombre.StartsWith(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
 
-                DataGridViewImageColumn detalleClientes = new DataGridViewImageColumn();
-                detalleClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\ayuda.png");
-                dataGridView1.Columns.Add(detalleClientes);
+            foreach (var item in query)
+            {
 
-                DataGridViewImageColumn EnviarCorreo = new DataGridViewImageColumn();
-                EnviarCorreo.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\abrir msj.png");
-                dataGridView1.Columns.Add(EnviarCorreo);
 
-                DataGridViewImageColumn AumentoCredito = new DataGridViewImageColumn();
-                AumentoCredito.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\recargar.png");
-                dataGridView1.Columns.Add(AumentoCredito);
 
-                DataGridViewImageColumn ClienteMesu = new DataGridViewImageColumn();
-                ClienteMesu.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\tarjeta.png");
-                dataGridView1.Columns.Add(ClienteMesu);
+                var botonesdos = new TextBox();
+                botonesdos.Text = item.Abreviatura;
+                botonesdos.Name = item.Abreviatura;
+                botonesdos.Multiline = true;
+                botonesdos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonesdos.Size = new System.Drawing.Size(131, 34);
+                botonesdos.TabIndex = 143;
+
+                var botonestres = new TextBox();
+                botonestres.Text = item.TelefonoPrincipal;
+                botonestres.Name = item.TelefonoPrincipal;
+                botonestres.Multiline = true;
+                botonestres.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonestres.Size = new System.Drawing.Size(131, 34);
+                botonestres.TabIndex = 143;
+                var botonescuatro = new TextBox();
+                botonescuatro.Text = item.Nombre;
+                botonescuatro.Name = item.Nombre;
+                botonescuatro.Multiline = true;
+                botonescuatro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonescuatro.Size = new System.Drawing.Size(131, 34);
+                botonescuatro.TabIndex = 143;
+
+                var botonecinco = new TextBox();
+                botonecinco.Text = item.Email;
+                botonecinco.Name = item.Email;
+                botonecinco.Multiline = true;
+                botonecinco.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonecinco.Size = new System.Drawing.Size(131, 34);
+                botonecinco.TabIndex = 143;
+
+                var botonesseis = new TextBox();
+                botonesseis.Text = item.Notas;
+                botonesseis.Name = item.Notas;
+                botonesseis.Multiline = true;
+                botonesseis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonesseis.Size = new System.Drawing.Size(290, 34);
+                botonesseis.TabIndex = 143;
+
+
+                var NuevaOrden = new Button();
+
+
+                NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura10.png");
+
+                NuevaOrden.BackColor = System.Drawing.Color.White;
+                NuevaOrden.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                NuevaOrden.FlatAppearance.BorderSize = 0;
+                NuevaOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                NuevaOrden.Size = new System.Drawing.Size(32, 34);
+                NuevaOrden.TabIndex = 142;
+                NuevaOrden.UseVisualStyleBackColor = false;
+
+                NuevaOrden.Name = item.ClienteId.ToString();
+                NuevaOrden.Click += new EventHandler(ClickNuevaOrden);
+
+                var optenerordenes = new Button();
+
+
+                optenerordenes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura11.png");
+                optenerordenes.Name = item.ClienteId.ToString();
+                optenerordenes.BackColor = System.Drawing.Color.White;
+                optenerordenes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                optenerordenes.FlatAppearance.BorderSize = 0;
+                optenerordenes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                optenerordenes.Size = new System.Drawing.Size(32, 34);
+                optenerordenes.TabIndex = 142;
+                optenerordenes.UseVisualStyleBackColor = false;
+
+                var guardarcambios = new Button();
+
+
+
+                guardarcambios.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura12.png");
+                guardarcambios.Name = item.ClienteId.ToString();
+                guardarcambios.BackColor = System.Drawing.Color.White;
+                guardarcambios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                guardarcambios.FlatAppearance.BorderSize = 0;
+                guardarcambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                guardarcambios.Size = new System.Drawing.Size(32, 34);
+                guardarcambios.TabIndex = 142;
+                guardarcambios.UseVisualStyleBackColor = false;
+                guardarcambios.Click += new EventHandler(ClickGuardarCambios);
+
+
+                var unirseldas = new Button();
+
+
+                unirseldas.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura13.png");
+                unirseldas.Name = item.ClienteId.ToString();
+                unirseldas.BackColor = System.Drawing.Color.White;
+                unirseldas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                unirseldas.FlatAppearance.BorderSize = 0;
+                unirseldas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                unirseldas.Size = new System.Drawing.Size(32, 34);
+                unirseldas.TabIndex = 142;
+                unirseldas.UseVisualStyleBackColor = false;
+
+
+                var detalleclientes = new Button();
+
+
+
+                detalleclientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura14.png");
+                detalleclientes.Name = item.ClienteId.ToString();
+                detalleclientes.BackColor = System.Drawing.Color.White;
+                detalleclientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                detalleclientes.FlatAppearance.BorderSize = 0;
+                detalleclientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                detalleclientes.Size = new System.Drawing.Size(32, 34);
+                detalleclientes.TabIndex = 142;
+                detalleclientes.UseVisualStyleBackColor = false;
+
+
+                var Email = new Button();
+
+
+
+                Email.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura15.png");
+                Email.Name = item.ClienteId.ToString();
+                Email.BackColor = System.Drawing.Color.White;
+                Email.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                Email.FlatAppearance.BorderSize = 0;
+                Email.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                Email.Size = new System.Drawing.Size(32, 34);
+                Email.TabIndex = 142;
+                Email.UseVisualStyleBackColor = false;
+
+                var aumentocredito = new Button();
+
+
+
+                aumentocredito.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura16.png");
+                aumentocredito.Name = item.ClienteId.ToString();
+                aumentocredito.BackColor = System.Drawing.Color.White;
+                aumentocredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                aumentocredito.FlatAppearance.BorderSize = 0;
+                aumentocredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                aumentocredito.Size = new System.Drawing.Size(32, 34);
+                aumentocredito.TabIndex = 142;
+                aumentocredito.UseVisualStyleBackColor = false;
+
+                Table.Controls.Add(botonesdos);
+                Table.Controls.Add(botonestres);
+                Table.Controls.Add(botonescuatro);
+                Table.Controls.Add(botonecinco);
+                Table.Controls.Add(botonesseis);
+                Table.Controls.Add(NuevaOrden);
+                Table.Controls.Add(optenerordenes);
+                Table.Controls.Add(guardarcambios);
+                Table.Controls.Add(unirseldas);
+                Table.Controls.Add(detalleclientes);
+                Table.Controls.Add(Email);
+                Table.Controls.Add(aumentocredito);
+                //      d = +d + 100;
+                //    f += f + 50;
 
             }
+            this.Controls.Add(Table);
+
+            if (query.Count > 0)
+            {
+
+               // x = "";
+                //dataGridView1.ClearSelection();
+
+            }
+             
+         }
+            private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+       {
+            string x;
+
+            x =txtNombre.Text;
+
+
+
+            if (x != "")
+            {
+                CargarCliente(x);
+
+
+
+            }
+            else {
+             //   txtNombre_KeyPress(sender, e);
+            }
+         
         }
-        private void reportButton_Click(object sender, EventArgs e)
+        private void reportButton_Click()
         {
-        //    Form1 form = new Form1();
-        //    form.ShowDialog();
-            
-            MessageBox.Show(this, "prueba ");
+            DataGridViewImageColumn NuevaOrden = new DataGridViewImageColumn();
+            NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura10.png");
+
         }
         private void txtOrden_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -242,39 +397,8 @@ namespace Kosturas
 
 
 
-                dataGridView1.DataSource = query;
-                DataGridViewImageColumn NuevaOrden = new DataGridViewImageColumn();
-                NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\nuevo +.png");
-             
-                dataGridView1.Columns.Add(NuevaOrden);
-      
-                DataGridViewImageColumn ObtenerOrdenesClientes = new DataGridViewImageColumn();
-                ObtenerOrdenesClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\recargar.png");
-                dataGridView1.Columns.Add(ObtenerOrdenesClientes);
-
-                DataGridViewImageColumn GuardarCambios = new DataGridViewImageColumn();
-                GuardarCambios.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\save.png");
-                dataGridView1.Columns.Add(GuardarCambios);
-
-                DataGridViewImageColumn dos = new DataGridViewImageColumn();
-                dos.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\archivo flcha.png");
-                dataGridView1.Columns.Add(dos);
-
-                DataGridViewImageColumn detalleClientes = new DataGridViewImageColumn();
-                detalleClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\ayuda.png");
-                dataGridView1.Columns.Add(detalleClientes);
-
-                DataGridViewImageColumn EnviarCorreo = new DataGridViewImageColumn();
-                EnviarCorreo.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\abrir msj.png");
-                dataGridView1.Columns.Add(EnviarCorreo);
-
-                DataGridViewImageColumn AumentoCredito = new DataGridViewImageColumn();
-                AumentoCredito.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\recargar.png");
-                dataGridView1.Columns.Add(AumentoCredito);
-
-                DataGridViewImageColumn ClienteMesu = new DataGridViewImageColumn();
-                ClienteMesu.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\tarjeta.png");
-                dataGridView1.Columns.Add(ClienteMesu);
+            //    dataGridView1.DataSource = query;
+                reportButton_Click();
 
             }
           //  dataGridView1.Clear();
@@ -330,11 +454,11 @@ namespace Kosturas
   
 
             if (e.ColumnIndex == 6) {
-                int valor = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+            //    int valor = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
 
-               Form1 form = new Form1(valor);
-                form.ShowDialog();
-
+           //    Form1 form = new Form1(valor);
+             //   form.ShowDialog();
+//
             }else if(e.ColumnIndex==7)
                 
             {
@@ -347,6 +471,49 @@ namespace Kosturas
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void txtNombre_MouseEnter(object sender, EventArgs e)
+        {
+          //  this.txtNombre.Text = "";
+        }
+
+        private void txtNombre_MouseLeave(object sender, EventArgs e)
+        {
+
+          //  this.txtNombre.Text = "Dijite su nombre";
+        }
+
+        private void txtNombre_MouseClick(object sender, MouseEventArgs e)
+        {
+
+           // this.txtNombre.Text = "";
+        }
+        void ClickNuevaOrden(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Name);
+     
+            var valor = id; 
+         Form1 form = new Form1(valor);
+            form.ShowDialog();
+
+
+        }
+
+        void ClickGuardarCambios(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Name);
+
+            TableLayoutPanel table = sender as TableLayoutPanel;
+            var iddos = int.Parse(table.Name);
+
+            var valor = id;
+            Form1 form = new Form1(valor);
+            form.ShowDialog();
+
 
         }
 

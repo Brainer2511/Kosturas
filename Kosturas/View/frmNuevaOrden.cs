@@ -35,17 +35,6 @@ namespace Kosturas.View
         {
             Cliente cliente = new Cliente();
 
-            cliente.Nombre = txtNombre.Text;
-            cliente.TelefonoPrincipal = txttelefonoprincipal.Text;
-            cliente.TelefonoDos = txttelefonodos.Text;
-            cliente.Telefonotres = txttelefonotres.Text;
-            cliente.Abreviatura = cmbabreviatura.SelectedIndex.ToString();
-            cliente.Calle = txtCalle.Text;
-            cliente.Ciudad = txtCiudad.Text;
-            cliente.Codigopostal = txtCodigoPostal.Text;
-            cliente.Email = txtEmail.Text;
-            cliente.Notas = txtNotas.Text;
-            cliente.TotalOrden = txtPrecioTotal.Text;
 
 
 
@@ -57,17 +46,30 @@ namespace Kosturas.View
 
         private void frmNuevaOrden_Load(object sender, EventArgs e)
         {
-            cmbabreviatura.Items.Add("Titulo");
-            cmbabreviatura.Items.Add("Sr");
-            cmbabreviatura.Items.Add("Sra");
-            cmbabreviatura.Items.Add("Srita");
-            this.btnEnviar.Visible = true;
+            comboBox1.Items.Add("Prueba");
 
         }
 
         private void ckbasisnar_CheckedChanged(object sender, EventArgs e)
         {
             this.btnEnviar.Visible = true;
+        }
+
+        private void comboBox1_MouseEnter(object sender, EventArgs e)
+        {
+            ComboBox btr = sender as ComboBox;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = Color.OliveDrab;
+            id = btr.ForeColor = Color.White;
+        //    this.comboBox1.BackColor = System.Drawing.Color.OliveDrab;
+        //    this.comboBox1.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
