@@ -20,10 +20,14 @@ namespace Kosturas.View
         public Tarea tarea = new Tarea();
         public DetalleTarea detalle = new DetalleTarea();
         public Servicios servicio = new Servicios();
+        //   public Form1 DAto = new Form1();
+    //    public Form1 DAtos = new Form1();
+
         public int ClienteId { get; set; }
         //public int Datox { get; set; }
         //public int DAtoY { get; set; }
-
+        string leibol="1";
+        string leiboldos = "";
         int m = 0;
         int Datox = 0;
         int DAtoY = 0;
@@ -31,8 +35,10 @@ namespace Kosturas.View
         int paginas = 0;
         int pagina = 1;
         int dato = 0;
+        public int DAto;
         public object x { get; set; }
         private Cliente cliente=new Cliente();
+     //   public int Dato { get; set; }
         
         public Form1(int clienteId=0)
         {
@@ -43,12 +49,11 @@ namespace Kosturas.View
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
 
-
-          
             //Table.Controls.Add(new Label { Text = "Type:", Anchor = AnchorStyles.Left, AutoSize = true }, 0, 0);
             //Table.Controls.Add(new ComboBox { Dock = DockStyle.Fill }, 0, 1);
-            if (ClienteId>0 )
+            if (ClienteId>0)
             {
                 cargar();
             }
@@ -195,7 +200,8 @@ namespace Kosturas.View
         }
         void ClickPrendas(object sender, EventArgs e)
         {
-            this.label5.Text = "1";
+
+              //   this.label5.Text = Dato.ToString();
             Button btn = sender as Button;
             var id = int.Parse(btn.Name);
             prenda = db.Prendas.Find(id);
@@ -221,7 +227,7 @@ namespace Kosturas.View
                 botonesdos.Size = new System.Drawing.Size(70, 45);
                 botonesdos.Location = new Point(0, 0);
 
-                botonesdos.Text = "X" + item.TipoRopa;
+                botonesdos.Text = item.TipoRopa+ " "+ "X";
                 botonesdos.Name = item.TipoRopa;
 
 
@@ -273,7 +279,7 @@ namespace Kosturas.View
                 cantidad.Size = new System.Drawing.Size(32, 34);
                 cantidad.TabIndex = 142;
                 cantidad.UseVisualStyleBackColor = false;
-
+                cantidad.Click += new EventHandler(ClickCantidad);
 
                 cantidad.Name = item.PrendaId.ToString();
 
@@ -371,8 +377,7 @@ namespace Kosturas.View
 
 
             }
-
-
+         
             Panel TableDos = new Panel();
             TableDos.Name = "Ganazo";
 
@@ -809,7 +814,378 @@ namespace Kosturas.View
 
             }
 
-        
+
+
+
+
+        public void mostrarcontrolesDos()
+        {
+
+            var pruebados = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
+
+            //  dato = int.Parse(label5.Text);
+
+
+            //    var Resultado = int.Parse(pruebados) * dato;
+
+            //    this.txtPrecioTotal.Text = Resultado.ToString();
+
+            var botonlimpiar = new Button();
+            //   botonlimpiar.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Kosturas\\Resources\\search.png");
+            botonlimpiar.Text = "Limpiar Precio";
+            botonlimpiar.Name = "btnLimpiar";
+            botonlimpiar.Location = new Point(0, 72);
+            botonlimpiar.Size = new Size(100, 200);
+            botonlimpiar.Click += new EventHandler(cliclBorrarPrecio);
+            botonlimpiar.MouseLeave += new EventHandler(Mouseleave);
+            botonlimpiar.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(botonlimpiar);
+
+            var boton0 = new Button();
+            boton0.Text = "0";
+            boton0.Name = "btn0";
+            boton0.Location = new Point(202, 222);
+            boton0.Size = new Size(100, 50);
+            boton0.Click += new EventHandler(btn0_Click);
+            boton0.MouseLeave += new EventHandler(Mouseleave);
+            boton0.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(boton0);
+
+            var botonpor = new Button();
+            botonpor.Text = "*";
+            botonpor.Name = "btnPor";
+            botonpor.Location = new Point(102, 222);
+            botonpor.Size = new Size(100, 50);
+            botonpor.Click += new EventHandler(btnpor_Click);
+            botonpor.MouseLeave += new EventHandler(Mouseleave);
+            botonpor.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(botonpor);
+
+            var botonretroceso = new Button();
+           
+            botonretroceso.Name = "btnretroceso";
+            botonretroceso.Location = new Point(302, 222);
+            botonretroceso.Size = new Size(100, 50);
+            botonretroceso.Click += new EventHandler(btnretroceso_Click);
+            botonretroceso.MouseLeave += new EventHandler(Mouseleave);
+            botonretroceso.MouseEnter += new EventHandler(Mouseover);
+            botonretroceso.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\retroceso.png");
+
+          
+
+            this.Prueba.Controls.Add(botonretroceso);
+
+            var x = 102;
+            var y = 72;
+            var l = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                var a = "a";
+                var b = "b";
+                int c = 0;
+                c = i + 1;
+                a = c.ToString();
+                b = "btn" + c;
+
+
+
+                var boton1 = new Button();
+                boton1.Text = a;
+                boton1.Name = b;
+                boton1.Location = new Point(x, y);
+                boton1.Size = new Size(100, 50);
+                this.Prueba.Controls.Add(boton1);
+                if (i == 0)
+                {
+                    boton1.Click += new EventHandler(btn1_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
+
+                }
+                if (i == 1)
+                {
+                    boton1.Click += new EventHandler(btn2_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
+
+                }
+                if (i == 2)
+                {
+                    boton1.Click += new EventHandler(btn3_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
+
+                }
+                if (i == 3)
+                {
+                    boton1.Click += new EventHandler(btn4_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
+                }
+                if (i == 4)
+                {
+                    boton1.Click += new EventHandler(btn5_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
+
+                }
+                if (i == 5)
+                {
+                    boton1.Click += new EventHandler(btn6_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
+
+                }
+                if (i == 6)
+                {
+                    boton1.Click += new EventHandler(btn7_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
+                }
+                if (i == 7)
+                {
+                    boton1.Click += new EventHandler(btn8_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
+                }
+                if (i == 8)
+                {
+                    boton1.Click += new EventHandler(btn9_Click);
+                    boton1.MouseLeave += new EventHandler(Mouseleave);
+                    boton1.MouseEnter += new EventHandler(Mouseover);
+                }
+
+
+
+                if (l == 2)
+                {
+
+                    l = 0;
+                    x = 102;
+                    y += 50;
+
+                }
+                else
+                {
+                    x += 100;
+
+                    l += 1;
+                }
+
+            }
+
+            var botonmas = new Button();
+            // botonmas.Text = "+";
+            botonmas.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\mas.png");
+
+            botonmas.Name = "btnmas";
+            botonmas.Location = new Point(0, 330);
+            botonmas.Size = new Size(76, 169);
+            botonmas.Click += new EventHandler(ClickPrendas);
+            botonmas.MouseLeave += new EventHandler(Mouseleave);
+            botonmas.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(botonmas);
+
+
+            var txtboxdato = new TextBox();
+            // txtboxdato.Text = "+";
+            txtboxdato.Name = "txtdato";
+            txtboxdato.Location = new Point(79, 330);
+            txtboxdato.Multiline = true;
+            txtboxdato.Size = new Size(317, 169);
+            //  txtboxdato.BackColor = System.Drawing.Color.Black;
+            //  txtboxdato.Click += new EventHandler(ClickPrendas);
+            this.Prueba.Controls.Add(txtboxdato);
+
+            var combo = new ComboBox();
+            combo.Text = "Selecione una Oferta";
+            combo.Name = "cmbofertas";
+            combo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            combo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            combo.Location = new Point(3, 520);
+            combo.Size = new Size(274, 30);
+            combo.MouseLeave += new EventHandler(MouseleaveCombo);
+            combo.MouseEnter += new EventHandler(MouseoverCombo);
+            this.Prueba.Controls.Add(combo);
+            var ofertas =
+         from a in db.Ofertas
+
+         select new { Names = a.Descripcion };
+
+            combo.DataSource = ofertas.ToList();
+            combo.DisplayMember = "Names";
+
+            var combodos = new ComboBox();
+            combodos.Text = "Selecione Un afiliado";
+            combodos.Name = "cmbafiliados";
+            combodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            combodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            combodos.Location = new Point(3, 560);
+            combodos.Size = new Size(274, 30);
+            combodos.MouseLeave += new EventHandler(MouseleaveCombo);
+            combodos.MouseEnter += new EventHandler(MouseoverCombo);
+            this.Prueba.Controls.Add(combodos);
+
+            var afiliados =
+     from a in db.Afiliados
+
+     select new { Names = a.Nombre };
+
+            combodos.DataSource = afiliados.ToList();
+            combodos.DisplayMember = "Names";
+
+
+
+            var botox1 = new Button();
+            botox1.Text = "X";
+            botox1.Name = "btnx1";
+            botox1.Location = new Point(283, 520);
+            botox1.Size = new Size(45, 40);
+            botox1.Click += new EventHandler(ClickPrendas);
+            botox1.MouseLeave += new EventHandler(Mouseleave);
+            botox1.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(botox1);
+
+            var botonimagen = new Button();
+            // botonmas.Text = "+";
+            botonimagen.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\asterisco.png");
+
+            botonimagen.Name = "asterisco1";
+            botonimagen.Location = new Point(333, 520);
+            botonimagen.Size = new Size(45, 40);
+            botonimagen.Click += new EventHandler(ClickPrendas);
+            botonimagen.MouseLeave += new EventHandler(Mouseleave);
+            botonimagen.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(botonimagen);
+
+            var botonimagendos = new Button();
+            // botonmas.Text = "+";
+            botonimagendos.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\asterisco.png");
+
+            botonimagendos.Name = "asterisco2";
+            botonimagendos.Location = new Point(333, 560);
+            botonimagendos.Size = new Size(45, 40);
+            botonimagendos.Click += new EventHandler(ClickPrendas);
+            botonimagendos.MouseLeave += new EventHandler(Mouseleave);
+            botonimagendos.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(botonimagendos);
+
+
+            var botox2 = new Button();
+            botox2.Text = "X";
+            botox2.Name = "btnx2";
+            botox2.Location = new Point(283, 560);
+            botox2.Size = new Size(45, 40);
+            botox2.Click += new EventHandler(ClickPrendas);
+            botox2.MouseLeave += new EventHandler(Mouseleave);
+            botox2.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(botox2);
+
+            var precio = new Label();
+            precio.AutoSize = true;
+            precio.BackColor = System.Drawing.Color.White;
+            precio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            precio.Location = new System.Drawing.Point(58, 15);
+            precio.Name = "Precio";
+            precio.Size = new System.Drawing.Size(35, 13);
+            precio.TabIndex = 94;
+            precio.Text = "" + pruebados;
+            this.Prueba.Controls.Add(precio);
+
+            var lblprecio = new Label();
+            lblprecio.AutoSize = true;
+            lblprecio.BackColor = System.Drawing.Color.White;
+            lblprecio.Location = new System.Drawing.Point(12, 15);
+            lblprecio.Name = "lblprecio";
+            lblprecio.Size = new System.Drawing.Size(40, 13);
+            lblprecio.TabIndex = 95;
+            lblprecio.Text = "Precio:";
+            this.Prueba.Controls.Add(lblprecio);
+
+
+            var panelemcabezado = new Panel();
+            panelemcabezado.Name = "paneencabezado";
+            panelemcabezado.Location = new Point(3, 3);
+            panelemcabezado.Size = new Size(398, 47);
+            panelemcabezado.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+
+
+            this.Prueba.Controls.Add(panelemcabezado);
+
+
+            var btnNuevoItem = new Button();
+            btnNuevoItem.BackColor = System.Drawing.Color.WhiteSmoke;
+            btnNuevoItem.ForeColor = System.Drawing.Color.Black;
+            btnNuevoItem.Location = new System.Drawing.Point(277, 630);
+            btnNuevoItem.Name = "btnNuevoItem";
+            btnNuevoItem.Size = new System.Drawing.Size(106, 41);
+            btnNuevoItem.TabIndex = 146;
+            btnNuevoItem.Text = "Nuevo Item";
+            btnNuevoItem.UseVisualStyleBackColor = false;
+            btnNuevoItem.Click += new System.EventHandler(ClickAtrasPrendasInicio);
+            btnNuevoItem.MouseLeave += new EventHandler(Mouseleave);
+            btnNuevoItem.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(btnNuevoItem);
+
+
+            var btnAtras = new Button();
+            btnAtras.BackColor = System.Drawing.Color.WhiteSmoke;
+            btnAtras.ForeColor = System.Drawing.Color.Black;
+            btnAtras.Location = new System.Drawing.Point(49, 630);
+            btnAtras.Name = "btnAtras";
+            btnAtras.Size = new System.Drawing.Size(106, 41);
+            btnAtras.TabIndex = 145;
+            btnAtras.Text = "Atras";
+            btnAtras.UseVisualStyleBackColor = false;
+            btnAtras.Click += new System.EventHandler(ClickAtrasprueba);
+            btnAtras.MouseLeave += new EventHandler(Mouseleave);
+            btnAtras.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(btnAtras);
+
+            var label2 = new Label();
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(0, 277);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(35, 13);
+            label2.TabIndex = 147;
+            label2.Text = "Tiempo De Respuesta(Minutos):";
+            // label2.BackColor = System.Drawing.Color.Black;
+            this.Prueba.Controls.Add(label2);
+
+            var label3 = new Label();
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(0, 300);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(35, 13);
+            label3.TabIndex = 148;
+            label3.Text = "Descripcion:";
+            // label3.BackColor = System.Drawing.Color.Black;
+            this.Prueba.Controls.Add(label3);
+
+            var btnTiempo = new Button();
+            btnTiempo.Location = new System.Drawing.Point(216, 277);
+            btnTiempo.Name = "btntiempo";
+            btnTiempo.Size = new System.Drawing.Size(49, 27);
+            btnTiempo.TabIndex = 149;
+            btnTiempo.Text = "23";
+            btnTiempo.UseVisualStyleBackColor = true;
+            this.Prueba.Controls.Add(btnTiempo);
+
+            var btnEnviar = new Button();
+            btnEnviar.BackColor = System.Drawing.Color.GreenYellow;
+            btnEnviar.Location = new System.Drawing.Point(1130, 763);
+            btnEnviar.Name = "btnEnviardos";
+            btnEnviar.Size = new System.Drawing.Size(200, 44);
+            btnEnviar.TabIndex = 74;
+            btnEnviar.Text = "Enviar";
+            btnEnviar.UseVisualStyleBackColor = false;
+            btnEnviar.Click += new System.EventHandler(btnEnviar_Click);
+            this.Controls.Add(btnEnviar);
+
+
+        }
 
 
         public void mostrarcontroles(DetalleTarea detalle)
@@ -823,7 +1199,6 @@ namespace Kosturas.View
             this.txtPrecioTotal.Text =Resultado.ToString();
 
             var botonlimpiar = new Button();
-            //   botonlimpiar.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Kosturas\\Resources\\search.png");
             botonlimpiar.Text = "Limpiar Precio";
             botonlimpiar.Name = "btnLimpiar";
             botonlimpiar.Location = new Point(0, 72);
@@ -861,6 +1236,8 @@ namespace Kosturas.View
             botonretroceso.Click += new EventHandler(btnretroceso_Click);
             botonretroceso.MouseLeave += new EventHandler(Mouseleave);
             botonretroceso.MouseEnter += new EventHandler(Mouseover);
+            botonretroceso.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\retroceso.png");
+
             this.Prueba.Controls.Add(botonretroceso);
 
             var x = 102;
@@ -1818,45 +2195,9 @@ namespace Kosturas.View
         private void btnpor_Click(object sender, EventArgs e)
         {
 
-
-          
-            double a;
-        double b;
-        string c;
-
-            a = Convert.ToDouble(this.txtPrecioTotal.Text);
-            c = "*";
-            this.txtPrecioTotal.Clear();
-            this.txtPrecioTotal.Focus();
-
-            var total = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < total; i++)
-            {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
-            }
-            var laibol = new Label();
-            laibol.Name = "Multiplicacion";
-            laibol.Text = "Multiplicar";
-            laibol.Location = new Point(100, 600);
-            this.Prueba.Controls.Add(laibol);
-
-            var texbox = new TextBox();
-            texbox.Name = "Multiplicacion";
-            texbox.Text = "1";
-            texbox.Location = new Point(100, 650);
-            this.Prueba.Controls.Add(texbox);
-
-            var botones = new Button();
-            botones.Text = "Resultado";
-            botones.Name = "BtnResultado";
-            botones.Location = new Point(200, 600);
-            botones.Size = new Size(100, 100);
-            botones.Click += new EventHandler(ClickResultado);
-            this.Prueba.Controls.Add(botones);
-
-          //  txtPrecioTotal = texbox.Text;
-
+            Multiplicacion multiplicacion = new Multiplicacion();
+            multiplicacion.ShowDialog();
+     
 
 
         }
@@ -1885,7 +2226,9 @@ namespace Kosturas.View
             }
         }
 
-        private void dvgOrdenes_ColumnHeaderCellChanged(object sender, DataGridViewColumnEventArgs e)
+         
+
+private void dvgOrdenes_ColumnHeaderCellChanged(object sender, DataGridViewColumnEventArgs e)
         {
 
             //this.dvgOrdenes.BackColor = System.Drawing.Color.OliveDrab;
@@ -1907,13 +2250,24 @@ namespace Kosturas.View
             this.Close();
 
         }
+        void ClickCantidad(object sender, EventArgs e)
+        {
+            frmCantidad empleado = new frmCantidad();
+              label5.Text=empleado.txtCantidad.Text;
+            empleado.ShowDialog();
+           // this.Close();
+
+        }
+
+        //   List<string> lista = Panel.Controls.OfType<Label>().Select(x => x.Text).ToList();
         void Clickcincomas(object sender, EventArgs e)
         {
-            
+          
+
             var a = int.Parse(label5.Text);
             var b = a + 5;
             label5.Text = b.ToString();
-
+         
         }
         void Clickcincomenos(object sender, EventArgs e)
         {
@@ -1952,6 +2306,55 @@ namespace Kosturas.View
         }
         void ClickBorrartax(object sender, EventArgs e)
         {
+
+            var totalbotones = Prueba.Controls.Count;
+            var litdos = Prueba.Controls.OfType<Button>();
+            for (int i = 0; i < totalbotones; i++)
+            {
+                Prueba.Controls.Remove(Prueba.Controls[0]);
+            }
+            var prendas = db.Prendas.Take(28).ToList();
+
+            var x = 0;
+            var y = 0;
+            var l = 0;
+
+            foreach (var item in prendas)
+            {
+                var botones = new Button();
+                botones.BackgroundImageLayout = ImageLayout.Center;
+                if (!string.IsNullOrEmpty(item.Imagen))
+                {
+                    botones.Image = Image.FromFile(@item.Imagen);
+                }
+                botones.Text = item.TipoRopa;
+                botones.Name = item.PrendaId.ToString();
+                botones.Location = new Point(x, y);
+                botones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+                botones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+                botones.Size = new Size(100, 100);
+                botones.Click += new EventHandler(ClickPrendas);
+                botones.MouseLeave += new EventHandler(Mouseleave);
+                botones.MouseEnter += new EventHandler(Mouseover);
+                this.Prueba.Controls.Add(botones);
+
+
+                if (l == 3)
+                {
+
+                    l = 0;
+                    x = 0;
+                    y += 100;
+
+                }
+                else
+                {
+                    x += 100;
+
+                    l += 1;
+                }
+            }
+
             Button btr = sender as Button;
 
 
@@ -1963,7 +2366,7 @@ namespace Kosturas.View
             var totaldos = total;
             
         
-            if (totaldos == 2&&m<=0) { 
+            if (totaldos == 3&&m<=0) { 
             var lit = panel3.Controls.OfType<Button>();
             for (int i = 0; i < total; i++)
             {
@@ -1974,7 +2377,7 @@ namespace Kosturas.View
             }
 
           
-            if (totaldos == 3&&m==0)
+            if (totaldos == 4&&m==0)
             {
 
                 for (int i = total; i <= total; i++)
@@ -1985,15 +2388,15 @@ namespace Kosturas.View
              
                 DAtoYdos = DAtoYdos - 90;
             }
-            if (totaldos == 5 && m == 0)
+            if (totaldos == 6 && m == 0)
             {
 
 
+                panel3.Controls.Remove(panel3.Controls[5]);
                 panel3.Controls.Remove(panel3.Controls[4]);
-                panel3.Controls.Remove(panel3.Controls[3]);
                 m = m + 10;
             }
-            if (totaldos == 5&&m<=0)
+            if (totaldos == 6&&m<=0)
             {
 
                 for (int i = total; i <= total; i++)
@@ -2004,7 +2407,7 @@ namespace Kosturas.View
                    DAtoY = DAtoY-50;
                 DAtoYdos = DAtoYdos-45;
             }
-            if (totaldos == 7&&m<=0)
+            if (totaldos == 8&&m<=0)
             {
 
                 for (int i = total; i <= total; i++)
@@ -2015,7 +2418,7 @@ namespace Kosturas.View
                 DAtoY = DAtoY - 50;
                 DAtoYdos = DAtoYdos - 45;
             }
-            if (totaldos == 9&& m <= 0)
+            if (totaldos == 10&& m <= 0)
             {
 
                 for (int i = total; i <= total; i++)
@@ -2026,7 +2429,7 @@ namespace Kosturas.View
                 DAtoY = DAtoY - 50;
                 DAtoYdos = DAtoYdos - 45;
             }
-            if (totaldos == 11&&m <= 0)
+            if (totaldos == 12&&m <= 0)
             {
 
                 for (int i = total; i <= total; i++)
@@ -2039,12 +2442,12 @@ namespace Kosturas.View
             }
          //   totaldos = totaldos - 1;
 
-            if (totaldos == 4 && m == 0)
+            if (totaldos == 5 && m == 0)
             {
              
               
+                 panel3.Controls.Remove(panel3.Controls[4]);
                  panel3.Controls.Remove(panel3.Controls[3]);
-                 panel3.Controls.Remove(panel3.Controls[2]);
                 DAtoY = DAtoY - 45;
                 DAtoYdos = DAtoYdos - 50;
             }
@@ -2058,52 +2461,52 @@ namespace Kosturas.View
             //    DAtoYdos = DAtoYdos - 50;
             //  //  m = m - 3;
             //}
-            if (totaldos == 6 && m<=0)
+            if (totaldos == 7 && m<=0)
             {
              
 
+                panel3.Controls.Remove(panel3.Controls[6]);
                 panel3.Controls.Remove(panel3.Controls[5]);
-                panel3.Controls.Remove(panel3.Controls[4]);
                 DAtoY = DAtoY - 45;
                 DAtoYdos = DAtoYdos - 50;
                 
             }
 
-            if ( totaldos == 6 && m == 2)
+            if ( totaldos == 7 && m == 2)
             {
 
 
+                panel3.Controls.Remove(panel3.Controls[6]);
                 panel3.Controls.Remove(panel3.Controls[5]);
-                panel3.Controls.Remove(panel3.Controls[4]);
                 DAtoY = DAtoY - 45;
                 DAtoYdos = DAtoYdos - 50;
                 m = m - 3;
             }
 
-            if (totaldos == 8 && m <= 0)
+            if (totaldos == 9 && m <= 0)
             {
 
 
-                panel3.Controls.Remove(panel3.Controls[7]);
-                panel3.Controls.Remove(panel3.Controls[6]);
-                DAtoY = DAtoY - 45;
-                DAtoYdos = DAtoYdos - 50;
-            }
-            if (totaldos == 10 && m <= 0)
-            {
-
-
-                panel3.Controls.Remove(panel3.Controls[9]);
                 panel3.Controls.Remove(panel3.Controls[8]);
+                panel3.Controls.Remove(panel3.Controls[7]);
                 DAtoY = DAtoY - 45;
                 DAtoYdos = DAtoYdos - 50;
             }
-            if (totaldos == 12 && m <= 0)
+            if (totaldos == 11 && m <= 0)
             {
 
 
-                panel3.Controls.Remove(panel3.Controls[11]);
                 panel3.Controls.Remove(panel3.Controls[10]);
+                panel3.Controls.Remove(panel3.Controls[9]);
+                DAtoY = DAtoY - 45;
+                DAtoYdos = DAtoYdos - 50;
+            }
+            if (totaldos == 13 && m <= 0)
+            {
+
+
+                panel3.Controls.Remove(panel3.Controls[12]);
+                panel3.Controls.Remove(panel3.Controls[11]);
                 DAtoY = DAtoY - 45;
                 DAtoYdos = DAtoYdos - 50;
             }
@@ -2195,37 +2598,46 @@ namespace Kosturas.View
         }
         void ClickDuplicar(object sender, EventArgs e)
         {
+             var totalbotones = Prueba.Controls.Count;
+            var lit = Prueba.Controls.OfType<Button>();
+            for (int i = 0; i < totalbotones; i++)
+            {
+                Prueba.Controls.Remove(Prueba.Controls[0]);
+            }
+
+            mostrarcontrolesDos();
             Button btr = sender as Button;
 
 
             object iddos = btr.Name;
+            var asdfa = btr.Name;
 
-           
-            var total = panel3.Controls.Count;
-            if (total == 2) { 
+        
+        var total = panel3.Controls.Count;
+            if (total == 3) { 
             this.Datox = 0;
                 this.DAtoY = 0;
                 this.DAtoYdos = 50;
             }
-            if (total == 4)
+            if (total == 5)
             {
                 this.Datox = 0;
                 this.DAtoY =95;
                 this.DAtoYdos = 145;
             }
-            if (total == 6)
+            if (total == 7)
             {
                 this.Datox = 0;
                 this.DAtoY = 190;
                 this.DAtoYdos = 240;
             }
-            if (total == 8)
+            if (total == 9)
             {
                 this.Datox = 0;
                 this.DAtoY = 218;
                 this.DAtoYdos = 268;
             }
-            if (total == 10)
+            if (total == 11)
             {
                 this.Datox = 0;
                 this.DAtoY = 218;
@@ -2261,7 +2673,7 @@ namespace Kosturas.View
 
            
 
-            this.label5.Text = "1";
+         
             Button btn = sender as Button;
             var id = int.Parse(btn.Name);
             prenda = db.Prendas.Find(id);
@@ -2284,7 +2696,7 @@ namespace Kosturas.View
                 botonesdos.Size = new System.Drawing.Size(70, 45);
                 botonesdos.Location = new Point(0, 0);
 
-                botonesdos.Text = "X" + item.TipoRopa;
+                botonesdos.Text = item.TipoRopa + " " + "X"+label5.Text;
                 botonesdos.Name = item.TipoRopa;
 
 
@@ -2335,6 +2747,8 @@ namespace Kosturas.View
                 cantidad.Location = new Point(698, 6);
                 cantidad.Size = new System.Drawing.Size(32, 34);
                 cantidad.TabIndex = 142;
+                cantidad.Click += new EventHandler(ClickCantidad);
+                
                 cantidad.UseVisualStyleBackColor = false;
 
 
@@ -2711,7 +3125,7 @@ namespace Kosturas.View
             }
            
             m = m + 1;
-            if (total == 2)
+            if (total == 3)
             {
                 this.Datox = 0;
                 this.DAtoY = 0;

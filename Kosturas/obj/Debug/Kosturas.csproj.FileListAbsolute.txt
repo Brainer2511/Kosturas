@@ -164,3 +164,5 @@ C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debu
 C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.csproj.CopyComplete
 C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.exe
 C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Kosturas\obj\Debug\Kosturas.pdb
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmCantidad.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.Multiplicacion.resources
