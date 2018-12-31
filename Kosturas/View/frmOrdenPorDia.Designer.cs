@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrdenPorDia));
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -81,6 +81,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgOdenesTotales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagosPorcliente)).BeginInit();
@@ -88,13 +89,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(182, 52);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.monthCalendar1.TabIndex = 0;
             // 
             // checkBox1
             // 
@@ -265,72 +259,93 @@
             // button35
             // 
             this.button35.BackColor = System.Drawing.SystemColors.Control;
+            this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button35.Location = new System.Drawing.Point(734, 345);
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(276, 23);
             this.button35.TabIndex = 80;
             this.button35.Text = "Recoger en";
             this.button35.UseVisualStyleBackColor = false;
+            this.button35.MouseEnter += new System.EventHandler(this.button35_MouseEnter);
+            this.button35.MouseLeave += new System.EventHandler(this.button35_MouseLeave);
             // 
             // button32
             // 
             this.button32.BackColor = System.Drawing.SystemColors.Control;
+            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button32.Location = new System.Drawing.Point(376, 345);
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(232, 23);
             this.button32.TabIndex = 79;
             this.button32.Text = "Ordenado En";
             this.button32.UseVisualStyleBackColor = false;
+            this.button32.MouseEnter += new System.EventHandler(this.button32_MouseEnter);
+            this.button32.MouseLeave += new System.EventHandler(this.button32_MouseLeave);
             // 
             // button33
             // 
             this.button33.BackColor = System.Drawing.SystemColors.Control;
+            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button33.Location = new System.Drawing.Point(1174, 345);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(246, 23);
             this.button33.TabIndex = 78;
             this.button33.Text = "Cantidad Pagada";
             this.button33.UseVisualStyleBackColor = false;
+            this.button33.MouseEnter += new System.EventHandler(this.button33_MouseEnter);
+            this.button33.MouseLeave += new System.EventHandler(this.button33_MouseLeave);
             // 
             // button34
             // 
             this.button34.BackColor = System.Drawing.SystemColors.Control;
+            this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button34.Location = new System.Drawing.Point(107, 345);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(273, 23);
             this.button34.TabIndex = 77;
             this.button34.Text = "Cliente";
             this.button34.UseVisualStyleBackColor = false;
+            this.button34.MouseEnter += new System.EventHandler(this.button34_MouseEnter);
+            this.button34.MouseLeave += new System.EventHandler(this.button34_MouseLeave);
             // 
             // button31
             // 
             this.button31.BackColor = System.Drawing.SystemColors.Control;
+            this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button31.Location = new System.Drawing.Point(602, 345);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(133, 23);
             this.button31.TabIndex = 76;
             this.button31.Text = "Localizacion";
             this.button31.UseVisualStyleBackColor = false;
+            this.button31.MouseEnter += new System.EventHandler(this.button31_MouseEnter);
+            this.button31.MouseLeave += new System.EventHandler(this.button31_MouseLeave);
             // 
             // button30
             // 
             this.button30.BackColor = System.Drawing.SystemColors.Control;
+            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button30.Location = new System.Drawing.Point(1009, 345);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(168, 23);
             this.button30.TabIndex = 75;
             this.button30.Text = "Precio Total";
             this.button30.UseVisualStyleBackColor = false;
+            this.button30.MouseEnter += new System.EventHandler(this.button30_MouseEnter);
+            this.button30.MouseLeave += new System.EventHandler(this.button30_MouseLeave);
             // 
             // button29
             // 
             this.button29.BackColor = System.Drawing.SystemColors.Control;
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button29.Location = new System.Drawing.Point(1, 345);
             this.button29.Name = "button29";
             this.button29.Size = new System.Drawing.Size(109, 23);
             this.button29.TabIndex = 74;
             this.button29.Text = "#";
             this.button29.UseVisualStyleBackColor = false;
+            this.button29.MouseEnter += new System.EventHandler(this.button29_MouseEnter);
+            this.button29.MouseLeave += new System.EventHandler(this.button29_MouseLeave);
             // 
             // dbgOdenesTotales
             // 
@@ -371,72 +386,93 @@
             // button14
             // 
             this.button14.BackColor = System.Drawing.SystemColors.Control;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button14.Location = new System.Drawing.Point(1203, 578);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(135, 23);
             this.button14.TabIndex = 119;
             this.button14.Text = "Pagado Por";
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.MouseEnter += new System.EventHandler(this.button14_MouseEnter);
+            this.button14.MouseLeave += new System.EventHandler(this.button14_MouseLeave);
             // 
             // button10
             // 
             this.button10.BackColor = System.Drawing.SystemColors.Control;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Location = new System.Drawing.Point(978, 578);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(109, 23);
             this.button10.TabIndex = 118;
             this.button10.Text = "Cantidad";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.MouseEnter += new System.EventHandler(this.button10_MouseEnter);
+            this.button10.MouseLeave += new System.EventHandler(this.button10_MouseLeave);
             // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.SystemColors.Control;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Location = new System.Drawing.Point(881, 578);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(109, 23);
             this.button11.TabIndex = 117;
             this.button11.Text = "Fecha";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.MouseEnter += new System.EventHandler(this.button11_MouseEnter);
+            this.button11.MouseLeave += new System.EventHandler(this.button11_MouseLeave);
             // 
             // button12
             // 
             this.button12.BackColor = System.Drawing.SystemColors.Control;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Location = new System.Drawing.Point(1335, 578);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(85, 23);
             this.button12.TabIndex = 116;
             this.button12.Text = "Puntos";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.MouseEnter += new System.EventHandler(this.button12_MouseEnter);
+            this.button12.MouseLeave += new System.EventHandler(this.button12_MouseLeave);
             // 
             // button13
             // 
             this.button13.BackColor = System.Drawing.SystemColors.Control;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Location = new System.Drawing.Point(1084, 578);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(124, 23);
             this.button13.TabIndex = 115;
             this.button13.Text = "Pagado En";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.MouseEnter += new System.EventHandler(this.button13_MouseEnter);
+            this.button13.MouseLeave += new System.EventHandler(this.button13_MouseLeave);
             // 
             // button9
             // 
             this.button9.BackColor = System.Drawing.SystemColors.Control;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Location = new System.Drawing.Point(517, 578);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(96, 23);
             this.button9.TabIndex = 114;
             this.button9.Text = "Opciones";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.MouseEnter += new System.EventHandler(this.button9_MouseEnter);
+            this.button9.MouseLeave += new System.EventHandler(this.button9_MouseLeave);
             // 
             // button8
             // 
             this.button8.BackColor = System.Drawing.SystemColors.Control;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Location = new System.Drawing.Point(171, 578);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(95, 23);
             this.button8.TabIndex = 113;
             this.button8.Text = "Detalles Tarea";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.MouseEnter += new System.EventHandler(this.button8_MouseEnter);
+            this.button8.MouseLeave += new System.EventHandler(this.button8_MouseLeave);
             // 
             // label14
             // 
@@ -504,76 +540,97 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(427, 578);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 23);
             this.button1.TabIndex = 105;
             this.button1.Text = "Descuento";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Control;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(265, 578);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 23);
             this.button2.TabIndex = 104;
             this.button2.Text = "Precio Unitario";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
+            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.Control;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(734, 578);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(135, 23);
             this.button3.TabIndex = 103;
             this.button3.Text = "Afiliado";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
+            this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.SystemColors.Control;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Location = new System.Drawing.Point(80, 578);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(95, 23);
             this.button4.TabIndex = 102;
             this.button4.Text = "Tarea";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.MouseEnter += new System.EventHandler(this.button4_MouseEnter);
+            this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.Control;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Location = new System.Drawing.Point(349, 578);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(81, 23);
             this.button5.TabIndex = 101;
             this.button5.Text = "Total";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.MouseEnter += new System.EventHandler(this.button5_MouseEnter);
+            this.button5.MouseLeave += new System.EventHandler(this.button5_MouseLeave);
             // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.SystemColors.Control;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Location = new System.Drawing.Point(611, 578);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(124, 23);
             this.button6.TabIndex = 100;
             this.button6.Text = "Descripcion";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.MouseEnter += new System.EventHandler(this.button6_MouseEnter);
+            this.button6.MouseLeave += new System.EventHandler(this.button6_MouseLeave);
             // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.SystemColors.Control;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Location = new System.Drawing.Point(-8, 578);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(91, 23);
             this.button7.TabIndex = 99;
             this.button7.Text = "Orden";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.MouseEnter += new System.EventHandler(this.button7_MouseEnter);
+            this.button7.MouseLeave += new System.EventHandler(this.button7_MouseLeave);
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightGray;
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label21);
             this.panel2.Location = new System.Drawing.Point(1, 1);
@@ -584,7 +641,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::Kosturas.Properties.Resources.close_button_png_26;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(1357, -1);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -597,7 +654,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.LightGray;
+            this.label21.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.Black;
             this.label21.Location = new System.Drawing.Point(7, 7);
@@ -607,12 +664,22 @@
             this.label21.TabIndex = 12;
             this.label21.Text = "Recoleciones por dia";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(167, 61);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 124;
+            this.dateTimePicker1.Value = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
             // frmOrdenPorDia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1428, 794);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dgvPagosPorcliente);
@@ -653,11 +720,11 @@
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.monthCalendar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmOrdenPorDia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmOrdenPorDia";
+            this.Load += new System.EventHandler(this.frmOrdenPorDia_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgOdenesTotales)).EndInit();
@@ -672,8 +739,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
@@ -726,5 +791,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

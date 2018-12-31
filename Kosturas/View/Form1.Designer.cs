@@ -273,6 +273,9 @@
             this.txttelefonotres.Name = "txttelefonotres";
             this.txttelefonotres.Size = new System.Drawing.Size(83, 20);
             this.txttelefonotres.TabIndex = 59;
+            this.txttelefonotres.Text = "Telefono 3";
+            this.txttelefonotres.Enter += new System.EventHandler(this.txttelefonotres_Enter);
+            this.txttelefonotres.Leave += new System.EventHandler(this.txttelefonotres_Leave);
             // 
             // txttelefonodos
             // 
@@ -280,6 +283,9 @@
             this.txttelefonodos.Name = "txttelefonodos";
             this.txttelefonodos.Size = new System.Drawing.Size(87, 20);
             this.txttelefonodos.TabIndex = 58;
+            this.txttelefonodos.Text = "Teléfono 2";
+            this.txttelefonodos.Enter += new System.EventHandler(this.txttelefonodos_Enter);
+            this.txttelefonodos.Leave += new System.EventHandler(this.txttelefonodos_Leave);
             // 
             // txtEmail
             // 
@@ -287,6 +293,9 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 57;
+            this.txtEmail.Text = "Correo Cliente";
+            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // txtNombre
             // 
@@ -294,6 +303,9 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 56;
+            this.txtNombre.Text = "Nombre Cliente";
+            this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
+            this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
             // txtCalle
             // 
@@ -301,6 +313,9 @@
             this.txtCalle.Name = "txtCalle";
             this.txtCalle.Size = new System.Drawing.Size(100, 20);
             this.txtCalle.TabIndex = 55;
+            this.txtCalle.Text = "Calle";
+            this.txtCalle.Enter += new System.EventHandler(this.txtCalle_Enter);
+            this.txtCalle.Leave += new System.EventHandler(this.txtCalle_Leave);
             // 
             // txtCiudad
             // 
@@ -308,6 +323,9 @@
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.Size = new System.Drawing.Size(100, 20);
             this.txtCiudad.TabIndex = 54;
+            this.txtCiudad.Text = "Ciudad";
+            this.txtCiudad.Enter += new System.EventHandler(this.txtCiudad_Enter);
+            this.txtCiudad.Leave += new System.EventHandler(this.txtCiudad_Leave);
             // 
             // txtCodigoPostal
             // 
@@ -315,6 +333,9 @@
             this.txtCodigoPostal.Name = "txtCodigoPostal";
             this.txtCodigoPostal.Size = new System.Drawing.Size(100, 20);
             this.txtCodigoPostal.TabIndex = 53;
+            this.txtCodigoPostal.Text = "Codigo Postal";
+            this.txtCodigoPostal.Enter += new System.EventHandler(this.txtCodigoPostal_Enter);
+            this.txtCodigoPostal.Leave += new System.EventHandler(this.txtCodigoPostal_Leave);
             // 
             // txttelefonoprincipal
             // 
@@ -322,6 +343,9 @@
             this.txttelefonoprincipal.Name = "txttelefonoprincipal";
             this.txttelefonoprincipal.Size = new System.Drawing.Size(239, 20);
             this.txttelefonoprincipal.TabIndex = 52;
+            this.txttelefonoprincipal.Text = "Teléfono Cliente ";
+            this.txttelefonoprincipal.Enter += new System.EventHandler(this.txttelefonoprincipal_Enter);
+            this.txttelefonoprincipal.Leave += new System.EventHandler(this.txttelefonoprincipal_Leave);
             // 
             // txtNotas
             // 
@@ -329,6 +353,9 @@
             this.txtNotas.Name = "txtNotas";
             this.txtNotas.Size = new System.Drawing.Size(147, 20);
             this.txtNotas.TabIndex = 51;
+            this.txtNotas.Text = "Notas";
+            this.txtNotas.Enter += new System.EventHandler(this.txtNotas_Enter);
+            this.txtNotas.Leave += new System.EventHandler(this.txtNotas_Leave);
             // 
             // panel1
             // 
@@ -447,7 +474,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Location = new System.Drawing.Point(4, 2);
@@ -458,7 +485,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.LightGray;
+            this.label2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(7, 7);
@@ -471,7 +498,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.BackgroundImage = global::Kosturas.Properties.Resources.close_button_png_26;
+            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Location = new System.Drawing.Point(1263, 0);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
@@ -501,7 +528,7 @@
             // 
             // pv2
             // 
-            this.pv2.BackColor = System.Drawing.Color.Transparent;
+            this.pv2.BackColor = System.Drawing.Color.White;
             this.pv2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pv2.BackgroundImage")));
             this.pv2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pv2.ErrorImage = null;

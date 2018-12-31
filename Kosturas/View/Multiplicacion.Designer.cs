@@ -34,7 +34,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.txtCantidadDos = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -43,7 +43,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightGray;
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.pictureBox3);
@@ -68,7 +68,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.LightGray;
+            this.label10.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(3, 7);
@@ -102,13 +102,13 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // txtCantidad
+            // txtCantidadDos
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(82, 62);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(68, 20);
-            this.txtCantidad.TabIndex = 103;
-            this.txtCantidad.Text = "1";
+            this.txtCantidadDos.Location = new System.Drawing.Point(82, 62);
+            this.txtCantidadDos.Name = "txtCantidadDos";
+            this.txtCantidadDos.Size = new System.Drawing.Size(68, 20);
+            this.txtCantidadDos.TabIndex = 103;
+            this.txtCantidadDos.Text = "1";
             // 
             // label4
             // 
@@ -127,7 +127,7 @@
             this.ClientSize = new System.Drawing.Size(260, 104);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.txtCantidadDos);
             this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Multiplicacion";
@@ -149,7 +149,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnAceptar;
-        public System.Windows.Forms.TextBox txtCantidad;
+        public System.Windows.Forms.TextBox txtCantidadDos;
         private System.Windows.Forms.Label label4;
     }
 }

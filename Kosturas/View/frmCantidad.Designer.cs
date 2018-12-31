@@ -70,6 +70,7 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(269, 20);
             this.txtCantidad.TabIndex = 19;
+            this.txtCantidad.Text = "1";
             // 
             // label4
             // 
@@ -82,7 +83,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightGray;
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.pictureBox3);
@@ -107,7 +108,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.LightGray;
+            this.label10.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(3, 7);

@@ -83,6 +83,7 @@
     <Compile Include="ImpresionesAutomaticas.cs" />
     <Compile Include="MediosPago.cs" />
     <Compile Include="OpcionesOrdenes.cs" />
+    <Compile Include="Ordenes.cs" />
     <Compile Include="Tarea.cs" />
     <Compile Include="Ofertas.cs" />
     <Compile Include="Prenda.cs" />

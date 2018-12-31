@@ -1,9 +1,11 @@
-﻿using Kosturas.Model;
+﻿using Domain;
+using Kosturas.Model;
 using Kosturas.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +19,10 @@ namespace Kosturas
 
         DataContextLocal db = new DataContextLocal();
         public int ClienteId { get; set; }
+        public int Clientename { get; set; }
+        public string ClienteTex { get; set; }
+        public int ClientePosicion { get; set; }
+       
 
         public frmPrincipal()
         {
@@ -47,18 +53,16 @@ namespace Kosturas
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            DataGridViewImageColumn NuevaOrden = new DataGridViewImageColumn();
-            NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura10.png");
-
-     
-          
+           
 
 
 
 
 
+
+            
         }
-            private void pictureBox3_Click(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             frmPrincipal frm = new frmPrincipal();
             frm.Close();
@@ -77,8 +81,9 @@ namespace Kosturas
         private void pvEmpleado_Click(object sender, EventArgs e)
         {
             
-          //  this.Opacity = 0.90;
-            frmEmpleado empleado=new frmEmpleado();
+            this.Opacity = 0.85;
+            Program.abrirform = 1;
+            frmPin empleado=new frmPin();
             empleado.ShowDialog();
           
         }
@@ -104,14 +109,22 @@ namespace Kosturas
         private void btnNuevaOrden_Click(object sender, EventArgs e)
         {
             int a = 0;
+            this.Close();
             Form1 form = new Form1(a);
+            this.Opacity = 0.99;
+
             form.ShowDialog();
+            this.Close();
         }
 
         private void btnConfirguracion_Click(object sender, EventArgs e)
         {
-            frmMantenimientos mantenimientos = new frmMantenimientos();
-            mantenimientos.ShowDialog();
+          
+            this.Opacity = 0.85;
+            Program.abrirform = 2;
+            frmPin empleado = new frmPin();
+            empleado.ShowDialog();
+
         }
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
@@ -170,6 +183,8 @@ namespace Kosturas
 
             TableLayoutPanel Table = new TableLayoutPanel();
             Table.AutoScroll = true;
+            Table.CellPaint += new TableLayoutCellPaintEventHandler(tableLayoutPanel1_CellPaint);
+            Table.Paint += new PaintEventHandler(tableLayoutPanel1_CellPaintdos);
             Table.Location = new Point(1, 108);
             Table.Size = new Size(1120, 244);
 
@@ -185,13 +200,16 @@ namespace Kosturas
             var query = db.Clientes.Where(j => j.Nombre.StartsWith(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
 
             foreach (var item in query)
+            //   for(int i=0;i>=query.Count;i++)
             {
 
 
 
                 var botonesdos = new TextBox();
+              //  botonesdos.Click +=  new EventHandler(ClickMensaje);
                 botonesdos.Text = item.Abreviatura;
-                botonesdos.Name = item.Abreviatura;
+                botonesdos.Name = item.ClienteId.ToString();
+                botonesdos.KeyPress += new KeyPressEventHandler(ClickTexbox1);
                 botonesdos.Multiline = true;
                 botonesdos.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 botonesdos.Size = new System.Drawing.Size(131, 34);
@@ -199,15 +217,17 @@ namespace Kosturas
 
                 var botonestres = new TextBox();
                 botonestres.Text = item.TelefonoPrincipal;
-                botonestres.Name = item.TelefonoPrincipal;
+                botonestres.Name = item.ClienteId.ToString();
                 botonestres.Multiline = true;
                 botonestres.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 botonestres.Size = new System.Drawing.Size(131, 34);
+                botonestres.KeyPress += new KeyPressEventHandler(ClickTexbox2);
                 botonestres.TabIndex = 143;
                 var botonescuatro = new TextBox();
                 botonescuatro.Text = item.Nombre;
-                botonescuatro.Name = item.Nombre;
+                botonescuatro.Name = item.ClienteId.ToString();
                 botonescuatro.Multiline = true;
+                botonescuatro.KeyPress += new KeyPressEventHandler(ClickTexbox3);
                 botonescuatro.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 botonescuatro.Size = new System.Drawing.Size(131, 34);
                 botonescuatro.TabIndex = 143;
@@ -216,6 +236,7 @@ namespace Kosturas
                 botonecinco.Text = item.Email;
                 botonecinco.Name = item.Email;
                 botonecinco.Multiline = true;
+                botonecinco.KeyPress += new KeyPressEventHandler(ClickTexbox4);
                 botonecinco.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 botonecinco.Size = new System.Drawing.Size(131, 34);
                 botonecinco.TabIndex = 143;
@@ -224,6 +245,7 @@ namespace Kosturas
                 botonesseis.Text = item.Notas;
                 botonesseis.Name = item.Notas;
                 botonesseis.Multiline = true;
+                botonesseis.KeyPress += new KeyPressEventHandler(ClickTexbox5);
                 botonesseis.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 botonesseis.Size = new System.Drawing.Size(290, 34);
                 botonesseis.TabIndex = 143;
@@ -300,6 +322,7 @@ namespace Kosturas
                 detalleclientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                 detalleclientes.Size = new System.Drawing.Size(32, 34);
                 detalleclientes.TabIndex = 142;
+                detalleclientes.Click += new EventHandler(ClickDetalleCliente);
                 detalleclientes.UseVisualStyleBackColor = false;
 
 
@@ -331,23 +354,23 @@ namespace Kosturas
                 aumentocredito.TabIndex = 142;
                 aumentocredito.UseVisualStyleBackColor = false;
 
-                Table.Controls.Add(botonesdos);
-                Table.Controls.Add(botonestres);
-                Table.Controls.Add(botonescuatro);
-                Table.Controls.Add(botonecinco);
-                Table.Controls.Add(botonesseis);
-                Table.Controls.Add(NuevaOrden);
-                Table.Controls.Add(optenerordenes);
-                Table.Controls.Add(guardarcambios);
-                Table.Controls.Add(unirseldas);
-                Table.Controls.Add(detalleclientes);
-                Table.Controls.Add(Email);
-                Table.Controls.Add(aumentocredito);
+                tableLayoutPanel1.Controls.Add(botonesdos);
+                tableLayoutPanel1.Controls.Add(botonestres);
+                tableLayoutPanel1.Controls.Add(botonescuatro);
+                tableLayoutPanel1.Controls.Add(botonecinco);
+                tableLayoutPanel1.Controls.Add(botonesseis);
+                tableLayoutPanel1.Controls.Add(NuevaOrden);
+                tableLayoutPanel1.Controls.Add(optenerordenes);
+                tableLayoutPanel1.Controls.Add(guardarcambios);
+                tableLayoutPanel1.Controls.Add(unirseldas);
+                tableLayoutPanel1.Controls.Add(detalleclientes);
+                tableLayoutPanel1.Controls.Add(Email);
+                tableLayoutPanel1.Controls.Add(aumentocredito);
                 //      d = +d + 100;
                 //    f += f + 50;
 
             }
-            this.Controls.Add(Table);
+           // this.Controls.Add(Table);
 
             if (query.Count > 0)
             {
@@ -358,12 +381,103 @@ namespace Kosturas
             }
              
          }
-            private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        void ClickTexbox1(object sender, KeyPressEventArgs e)
        {
-            string x;
+            ClientePosicion = 1;
+            if (e.KeyChar =='\b'){
+                TextBox box = sender as TextBox;
+                ClienteTex = box.Text;
+                Clientename = int.Parse(box.Name);
+                ClienteTex = ClienteTex.Remove(ClienteTex.Length - 1);
+            }
+           else if (e.KeyChar!=null)
+            { 
+                TextBox box = sender as TextBox;
+            ClienteTex = box.Text+e.KeyChar;
+            Clientename = int.Parse(box.Name);
+     }
+        }
+        void ClickTexbox2(object sender, KeyPressEventArgs e)
+        {
+            ClientePosicion = 2;
+            if (e.KeyChar == '\b')
+            {
+                TextBox box = sender as TextBox;
+                ClienteTex = box.Text;
+                Clientename = int.Parse(box.Name);
+                ClienteTex = ClienteTex.Remove(ClienteTex.Length - 1);
+            }
+            else if (e.KeyChar != null)
+            {
+                TextBox box = sender as TextBox;
+                ClienteTex = box.Text + e.KeyChar;
+                Clientename = int.Parse(box.Name);
+            }
+        }
+        void ClickTexbox5(object sender, KeyPressEventArgs e)
+        {
+            ClientePosicion = 5;
+            if (e.KeyChar == '\b')
+            {
+                TextBox box = sender as TextBox;
+                ClienteTex = box.Text;
+                Clientename = int.Parse(box.Name);
+                ClienteTex = ClienteTex.Remove(ClienteTex.Length - 1);
+            }
+            else if (e.KeyChar != null)
+            {
+                TextBox box = sender as TextBox;
+                ClienteTex = box.Text + e.KeyChar;
+                Clientename = int.Parse(box.Name);
+            }
+        }
+        void ClickTexbox3(object sender, KeyPressEventArgs e)
+        {
+            ClientePosicion = 3;
+            if (e.KeyChar == '\b')
+            {
+                TextBox box = sender as TextBox;
+                ClienteTex = box.Text;
+                Clientename = int.Parse(box.Name);
+                ClienteTex = ClienteTex.Remove(ClienteTex.Length - 1);
+            }
+            else if (e.KeyChar != null)
+            {
+                TextBox box = sender as TextBox;
+                ClienteTex = box.Text + e.KeyChar;
+                Clientename = int.Parse(box.Name);
+            }
+        }
+        void ClickTexbox4(object sender, KeyPressEventArgs e)
+        {
+            ClientePosicion = 4;
+            if (e.KeyChar == '\b')
+            {
+                TextBox box = sender as TextBox;
+                ClienteTex = box.Text;
+                Clientename = int.Parse(box.Name);
+                ClienteTex = ClienteTex.Remove(ClienteTex.Length - 1);
+            }
+            else if (e.KeyChar != null)
+            {
+                TextBox box = sender as TextBox;
+                ClienteTex = box.Text + e.KeyChar;
+                Clientename = int.Parse(box.Name);
+            }
+        }
 
-            x =txtNombre.Text;
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+   {
+            String x="";
+         
 
+            x =this.txtNombre.Text+e.KeyChar;
+          
+            if (e.KeyChar == '\b')
+            {
+
+                x = x.Remove(x.Length - 2);
+            }
 
 
             if (x != "")
@@ -373,9 +487,7 @@ namespace Kosturas
 
 
             }
-            else {
-             //   txtNombre_KeyPress(sender, e);
-            }
+          
          
         }
         private void reportButton_Click()
@@ -497,6 +609,7 @@ namespace Kosturas
      
             var valor = id; 
          Form1 form = new Form1(valor);
+            this.Opacity = 0.75;
             form.ShowDialog();
 
 
@@ -504,16 +617,95 @@ namespace Kosturas
 
         void ClickGuardarCambios(object sender, EventArgs e)
         {
+            Cliente sucursal = db.Clientes.Find(Clientename);
+            if (ClientePosicion == 1) { 
+            sucursal.Abreviatura = ClienteTex;
+            }
+            if (ClientePosicion == 2)
+            {
+                sucursal.TelefonoPrincipal = ClienteTex;
+            }
+            if (ClientePosicion == 3)
+            {
+                sucursal.Nombre = ClienteTex;
+            }
+            if (ClientePosicion == 4)
+            {
+                sucursal.Email = ClienteTex;
+            }
+            if (ClientePosicion == 5)
+            {
+                sucursal.Notas = ClienteTex;
+            }
+           
+            db.Entry(sucursal).State = EntityState.Modified;
+            db.SaveChanges();
+
+
+        }
+        void ClickDetalleCliente(object sender, EventArgs e)
+        {
+            this.Opacity = 0.99;
             Button btn = sender as Button;
             var id = int.Parse(btn.Name);
+            frmImformacionCliente frmImformacion = new frmImformacionCliente(id);
+            frmImformacion.Location = new Point(0,50);
+            frmImformacion.ShowDialog();
+        }
 
-            TableLayoutPanel table = sender as TableLayoutPanel;
-            var iddos = int.Parse(table.Name);
+        void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
+        {
+            if (e.Row == 0 || e.Row == 8)
+            {
+                Graphics g = e.Graphics;
+                Rectangle r = e.CellBounds;
+                g.FillRectangle(Brushes.GreenYellow, r);
+            }
+        }
 
-            var valor = id;
-            Form1 form = new Form1(valor);
-            form.ShowDialog();
+        void tableLayoutPanel1_CellPaintdos(object sender, PaintEventArgs e)
+        {
+            //TableLayoutPanel panel = sender as TableLayoutPanel;
+            //var iddos = panel.Name;
+            //Graphics g = e.Graphics;
+            //RowStyle r = e.Dispose;
+            //g.FillRectangles(Brushes.Aqua,r.);
+            //  MessageBox.Show(iddos);
+            // BackColor = Color.Gray;
+        }
 
+        private void txtTelefono_Enter(object sender, EventArgs e)
+        {
+            this.txtTelefono.Text = "";
+        }
+
+        private void txtTelefono_Leave(object sender, EventArgs e)
+        {
+            this.txtTelefono.Text = "Dijite Numero Teléfono";
+        }
+
+        private void txtNombre_Enter(object sender, EventArgs e)
+        {
+            this.txtNombre.Text = "";
+        }
+
+        private void txtNombre_Leave(object sender, EventArgs e)
+        {
+            this.txtNombre.Text = "Dijite Nombre Cliente";
+        }
+
+        private void txtOrden_Enter(object sender, EventArgs e)
+        {
+            this.txtOrden.Text = "";
+        }
+
+        private void txtOrden_Leave(object sender, EventArgs e)
+        {
+            this.txtOrden.Text = "Dijite Numero Orden";
+        }
+
+        private void btnHerramientas_Click(object sender, EventArgs e)
+        {
 
         }
 

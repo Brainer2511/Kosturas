@@ -27,7 +27,7 @@ namespace Kosturas.View
 
         private void btnprueba_Click(object sender, EventArgs e)
         {
-            this.txtPrecioTotal.Text ="Total:"+ "4000";
+          
           
         }
 
@@ -46,13 +46,12 @@ namespace Kosturas.View
 
         private void frmNuevaOrden_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.Add("Prueba");
-
+          //  this.Opacity = .75;
         }
 
         private void ckbasisnar_CheckedChanged(object sender, EventArgs e)
         {
-            this.btnEnviar.Visible = true;
+           
         }
 
         private void comboBox1_MouseEnter(object sender, EventArgs e)
@@ -70,6 +69,28 @@ namespace Kosturas.View
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+
+                frmNuevaOrden frm = new frmNuevaOrden();
+                frm.BackColor = Color.FromArgb(trackBar1.Value, Color.Black);
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmNuevaOrden frm = new frmNuevaOrden();
+            this.Opacity = .75;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Opacity = 1;
+            frmNuevaOrden frm = new frmNuevaOrden();
+            frm.Opacity = 1;
         }
     }
 }

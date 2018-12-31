@@ -49,5 +49,8 @@ namespace Domain
 
 
         public DbSet<Usuario> Usuarios { get; set; }
+
+
+        public DbSet<Ordenes> Ordenes { get; set; }
     }
 }

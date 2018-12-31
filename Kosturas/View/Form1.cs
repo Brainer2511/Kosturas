@@ -45,7 +45,8 @@ namespace Kosturas.View
            ClienteId = clienteId;
             cliente = db.Clientes.Find(clienteId);
             InitializeComponent();
-        }
+            
+    }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -822,13 +823,8 @@ namespace Kosturas.View
         {
 
             var pruebados = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
-
-            //  dato = int.Parse(label5.Text);
-
-
-            //    var Resultado = int.Parse(pruebados) * dato;
-
-            //    this.txtPrecioTotal.Text = Resultado.ToString();
+            this.txtPrecioTotal.Text = pruebados;
+       
 
             var botonlimpiar = new Button();
             //   botonlimpiar.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Kosturas\\Resources\\search.png");
@@ -1091,7 +1087,9 @@ namespace Kosturas.View
             precio.Name = "Precio";
             precio.Size = new System.Drawing.Size(35, 13);
             precio.TabIndex = 94;
+         
             precio.Text = "" + pruebados;
+            
             this.Prueba.Controls.Add(precio);
 
             var lblprecio = new Label();
@@ -1175,7 +1173,7 @@ namespace Kosturas.View
 
             var btnEnviar = new Button();
             btnEnviar.BackColor = System.Drawing.Color.GreenYellow;
-            btnEnviar.Location = new System.Drawing.Point(1130, 763);
+            btnEnviar.Location = new System.Drawing.Point(1143, 821);// 1143; 821
             btnEnviar.Name = "btnEnviardos";
             btnEnviar.Size = new System.Drawing.Size(200, 44);
             btnEnviar.TabIndex = 74;
@@ -1191,12 +1189,7 @@ namespace Kosturas.View
         public void mostrarcontroles(DetalleTarea detalle)
         {
 
-          //  dato = int.Parse(label5.Text);
-            
-        
-            var Resultado = int.Parse(detalle.Precio) * dato;
 
-            this.txtPrecioTotal.Text =Resultado.ToString();
 
             var botonlimpiar = new Button();
             botonlimpiar.Text = "Limpiar Precio";
@@ -1540,7 +1533,7 @@ namespace Kosturas.View
 
             var btnEnviar = new Button();
             btnEnviar.BackColor = System.Drawing.Color.GreenYellow;
-            btnEnviar.Location = new System.Drawing.Point(1130, 763);
+            btnEnviar.Location = new System.Drawing.Point(1143, 821);
             btnEnviar.Name = "btnEnviardos";
             btnEnviar.Size = new System.Drawing.Size(200, 44);
             btnEnviar.TabIndex = 74;
@@ -1550,6 +1543,15 @@ namespace Kosturas.View
             this.Controls.Add(btnEnviar);
 
 
+            var pruebados = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
+
+
+
+
+
+            var Resultado = int.Parse(pruebados) * dato;
+
+            this.txtPrecioTotal.Text = Resultado.ToString();
         }
 
 
@@ -1565,6 +1567,10 @@ namespace Kosturas.View
         }
         private void btnEnviar_Click(object sender, EventArgs e)
         {
+            frmPin pin = new frmPin();
+            pin.ShowDialog();
+
+            if (ClienteId == 0) { 
             Cliente cliente = new Cliente();
 
             cliente.Nombre = txtNombre.Text;
@@ -1578,13 +1584,39 @@ namespace Kosturas.View
             cliente.Email = txtEmail.Text;
             cliente.Notas = txtNotas.Text;
             cliente.TotalOrden = txtPrecioTotal.Text;
-
+            cliente.Fecha = DateTime.Now.ToString("dd/MM/yyyy") + " " + DateTime.Now.ToString("HH:mm:ss");
+            cliente.EmpleadoInserta = Program.Pin;
+            
 
 
             db.Clientes.Add(cliente);
             db.SaveChanges();
+            }
+           
+            
+           
 
-            MessageBox.Show("Dato Insertado");
+            Ordenes orden = new Ordenes();
+            orden.NumeroOrden = "A";
+            orden.FechaIngreso = DateTime.Now.ToString("dd/MM/yyyy");
+            orden.HoraIngreso= DateTime.Now.ToString("HH:mm:ss");
+            orden.HoraSalida =DateTime.Now.ToString("HH:mm:ss");
+            orden.TotalOrden = this.txtPrecioTotal.Text;
+            orden.EmpleadoRealizo = Program.Pin;
+            if (ClienteId == 0) { 
+            orden.NombreCliente = txtNombre.Text;
+            }else
+            {
+                var pruebados = db.Clientes.Find(ClienteId).Nombre;
+                orden.NombreCliente = pruebados;
+            }
+            orden.CantidadPagada= this.txtPrecioTotal.Text;
+            db.Ordenes.Add(orden);
+            db.SaveChanges();
+            this.Close();
+            frmPrincipal principal = new frmPrincipal();
+            principal.Opacity = 1;
+            principal.Show();
         }
 
 
@@ -2053,6 +2085,10 @@ namespace Kosturas.View
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Close();
+            frmPrincipal frm = new frmPrincipal();
+            frm.Opacity = 1;
+            frm.Show();
+            
         }
 
         private void dvgOrdenes_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -2196,8 +2232,10 @@ namespace Kosturas.View
         {
 
             Multiplicacion multiplicacion = new Multiplicacion();
+         //   Multiplicacion multiplicacion = (Multiplicacion)Application.OpenForms["Multiplicacion"];
+           
             multiplicacion.ShowDialog();
-     
+     //       multiplicacion.txtCantidadDos.Text = txtPrecioTotal.Text;
 
 
         }
@@ -2253,6 +2291,8 @@ private void dvgOrdenes_ColumnHeaderCellChanged(object sender, DataGridViewColum
         void ClickCantidad(object sender, EventArgs e)
         {
             frmCantidad empleado = new frmCantidad();
+          
+            this.Opacity = 0.85;
               label5.Text=empleado.txtCantidad.Text;
             empleado.ShowDialog();
            // this.Close();
@@ -2607,7 +2647,6 @@ private void dvgOrdenes_ColumnHeaderCellChanged(object sender, DataGridViewColum
 
             mostrarcontrolesDos();
             Button btr = sender as Button;
-
 
             object iddos = btr.Name;
             var asdfa = btr.Name;
@@ -3317,8 +3356,95 @@ private void dvgOrdenes_ColumnHeaderCellChanged(object sender, DataGridViewColum
 
         }
 
+        private void txttelefonoprincipal_Enter(object sender, EventArgs e)
+        {
+            this.txttelefonoprincipal.Text = "";
+        }
 
+        private void txttelefonoprincipal_Leave(object sender, EventArgs e)
+        {
+        //    this.txttelefonoprincipal.Text = "Teléfono Cliente ";
+        }
 
+        private void txttelefonodos_Enter(object sender, EventArgs e)
+        {
+            this.txttelefonodos.Text = "";
+        }
+
+        private void txttelefonodos_Leave(object sender, EventArgs e)
+        {
+        //    this.txttelefonodos.Text = "Teléfono 2";
+        }
+
+        private void txttelefonotres_Enter(object sender, EventArgs e)
+        {
+            this.txttelefonotres.Text = "";
+        }
+
+        private void txttelefonotres_Leave(object sender, EventArgs e)
+        {
+         //   this.txttelefonotres.Text = "Teléfono 3";
+        }
+
+        private void txtNombre_Enter(object sender, EventArgs e)
+        {
+            this.txtNombre.Text = "";
+        }
+
+        private void txtNombre_Leave(object sender, EventArgs e)
+        {
+         //   this.txtNombre.Text = "Nombre Cliente";
+        }
+
+        private void txtCalle_Enter(object sender, EventArgs e)
+        {
+            this.txtCalle.Text = "";
+        }
+
+        private void txtCalle_Leave(object sender, EventArgs e)
+        {
+         //   this.txtCalle.Text = "Calle";
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            this.txtEmail.Text = "";
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+          //  this.txtEmail.Text = "Correo Cliente";
+        }
+
+        private void txtCiudad_Enter(object sender, EventArgs e)
+        {
+            this.txtCiudad.Text = "";
+        }
+
+        private void txtCiudad_Leave(object sender, EventArgs e)
+        {
+          //  this.txtCiudad.Text = "Ciudad";
+        }
+
+        private void txtNotas_Enter(object sender, EventArgs e)
+        {
+            this.txtNotas.Text = "";
+        }
+
+        private void txtNotas_Leave(object sender, EventArgs e)
+        {
+         //   this.txtNotas.Text = "Notas";
+        }
+
+        private void txtCodigoPostal_Enter(object sender, EventArgs e)
+        {
+            this.txtCodigoPostal.Text = "";
+        }
+
+        private void txtCodigoPostal_Leave(object sender, EventArgs e)
+        {
+          //  this.txtCodigoPostal.Text = "Codigo Postal";
+        }
     }
     }
 

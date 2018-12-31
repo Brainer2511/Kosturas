@@ -79,3 +79,30 @@ C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Domain\obj\Debug\
 C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Domain\obj\Debug\Domain.csproj.CopyComplete
 C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Domain\obj\Debug\Domain.dll
 C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Domain\obj\Debug\Domain.pdb
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\Domain.dll.config
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\Domain.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\Domain.pdb
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\EntityFramework.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.Helpers.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.Mvc.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.Razor.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.WebPages.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\EntityFramework.xml
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.Helpers.xml
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.Mvc.xml
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.Razor.xml
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.WebPages.xml
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Erickxon\Desktop\Kosturas\Domain\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Erickxon\Desktop\Kosturas\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+C:\Users\Erickxon\Desktop\Kosturas\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Erickxon\Desktop\Kosturas\Domain\obj\Debug\Domain.csproj.CopyComplete
+C:\Users\Erickxon\Desktop\Kosturas\Domain\obj\Debug\Domain.dll
+C:\Users\Erickxon\Desktop\Kosturas\Domain\obj\Debug\Domain.pdb

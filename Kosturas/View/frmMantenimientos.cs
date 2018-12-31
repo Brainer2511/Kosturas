@@ -47,6 +47,9 @@ namespace Kosturas.View
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
+            frmPrincipal frm = new frmPrincipal();
+            frm.Opacity = 1;
+            frm.Show();
         }
 
         private void ñjnkjnjnToolStripMenuItem_Click(object sender, EventArgs e)

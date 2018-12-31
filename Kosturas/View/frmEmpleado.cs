@@ -297,6 +297,9 @@ namespace Kosturas.View
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+            frmPrincipal principal = new frmPrincipal();
+            principal.Opacity = 1;
+            principal.Show();
         }
 
         private void btnGuardaarDos_Click(object sender, EventArgs e)
@@ -495,9 +498,11 @@ namespace Kosturas.View
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            frmPrincipal principal = new frmPrincipal();
-            principal.Opacity = 0.50;
             this.Close();
+            frmPrincipal principal = new frmPrincipal();
+            principal.Opacity = 1;
+            principal.Show();
+           
         }
     }
 

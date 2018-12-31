@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientos));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.busToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pruebaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ñjnkjnjnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.njkjnkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.njknjknjkkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sdgtfhyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hfgghjToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hgffggfhjhgfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +43,6 @@
             this.retreretetrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tretretertreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tretreretToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.erttreertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -58,7 +57,6 @@
             this.pruebaToolStripMenuItem,
             this.ñjnkjnjnToolStripMenuItem,
             this.njkjnkToolStripMenuItem,
-            this.njknjknjkkToolStripMenuItem,
             this.sdgtfhyToolStripMenuItem,
             this.hfgghjToolStripMenuItem,
             this.hgffggfhjhgfToolStripMenuItem,
@@ -67,12 +65,11 @@
             this.erreyytreyretToolStripMenuItem,
             this.retreretetrToolStripMenuItem,
             this.tretretertreToolStripMenuItem,
-            this.tretreretToolStripMenuItem,
-            this.erttreertToolStripMenuItem});
+            this.tretreretToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(173, 865);
+            this.menuStrip1.Size = new System.Drawing.Size(165, 888);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -107,13 +104,6 @@
             this.njkjnkToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
             this.njkjnkToolStripMenuItem.Text = "Ventas";
             this.njkjnkToolStripMenuItem.Click += new System.EventHandler(this.njkjnkToolStripMenuItem_Click);
-            // 
-            // njknjknjkkToolStripMenuItem
-            // 
-            this.njknjknjkkToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.njknjknjkkToolStripMenuItem.Name = "njknjknjkkToolStripMenuItem";
-            this.njknjknjkkToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
-            this.njknjknjkkToolStripMenuItem.Text = "impuestos";
             // 
             // sdgtfhyToolStripMenuItem
             // 
@@ -185,19 +175,12 @@
             this.tretreretToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
             this.tretreretToolStripMenuItem.Text = "Descripcion Preajustables";
             // 
-            // erttreertToolStripMenuItem
-            // 
-            this.erttreertToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.erttreertToolStripMenuItem.Name = "erttreertToolStripMenuItem";
-            this.erttreertToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
-            this.erttreertToolStripMenuItem.Text = "Campos Adicionales Cliente";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::Kosturas.Properties.Resources.close_button_png_26;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(1359, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(1380, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(58, 39);
@@ -210,15 +193,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1428, 865);
+            this.ClientSize = new System.Drawing.Size(1460, 888);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMantenimientos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "frmMantenimientos";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -234,7 +216,6 @@
         private System.Windows.Forms.ToolStripMenuItem pruebaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ñjnkjnjnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem njkjnkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem njknjknjkkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sdgtfhyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hfgghjToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hgffggfhjhgfToolStripMenuItem;
@@ -244,7 +225,6 @@
         private System.Windows.Forms.ToolStripMenuItem retreretetrToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tretretertreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tretreretToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem erttreertToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

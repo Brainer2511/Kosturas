@@ -25,8 +25,11 @@ namespace Kosturas.View
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Form1 mensaje1 = (Form1)Application.OpenForms["Form1"];
-           // mensaje1.tarea.
-            mensaje1.txtPrecioTotal.Text = this.txtCantidad.Text;
+        
+            var a = mensaje1.txtPrecioTotal.Text;
+            var b = this.txtCantidadDos.Text;
+            var c = int.Parse(a) * int.Parse(b);
+            mensaje1.txtPrecioTotal.Text =c.ToString();
             this.Close();
 
         }

@@ -21,7 +21,10 @@ namespace Domain
         public string Telefonotres { get; set; }
         public string Abreviatura { get; set; }
         public string TotalOrden{ get; set; }
-
-
+        public string Fecha { get; set; }
+        public string EmpleadoInserta { get; set; }
+        public string Visitas { get; set; }
+        public string FechaModificacion { get; set; }
+        public string Empleadoactualiza { get; set; }
     }
 }

@@ -19,12 +19,18 @@ namespace Kosturas.View
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            Form1 mensaje1 = (Form1)Application.OpenForms["Form1"];
             this.Close();
+            mensaje1.Opacity = 1;
+            mensaje1.Show();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            Form1 mensaje1 = (Form1)Application.OpenForms["Form1"];
             this.Close();
+            mensaje1.Opacity = 1;
+            mensaje1.Show();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -33,7 +39,8 @@ namespace Kosturas.View
           
             mensaje1.label5.Text = this.txtCantidad.Text;
             this.Close();
-         
+            mensaje1.Opacity = 1;
+            mensaje1.Show();
            
         }
     }

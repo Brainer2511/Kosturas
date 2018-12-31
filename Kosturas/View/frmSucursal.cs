@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿
+using Domain;
 using Kosturas.Model;
 using System;
 using System.Data.Entity;
