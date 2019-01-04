@@ -523,8 +523,9 @@
             this.panel3.Controls.Add(this.label5);
             this.panel3.Location = new System.Drawing.Point(4, 154);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(918, 313);
+            this.panel3.Size = new System.Drawing.Size(918, 661);
             this.panel3.TabIndex = 99;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // pv2
             // 

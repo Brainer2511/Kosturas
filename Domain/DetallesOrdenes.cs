@@ -23,5 +23,6 @@ namespace Domain
         public virtual Tarea Tarea { get; set; }
 
 
+
     }
 }

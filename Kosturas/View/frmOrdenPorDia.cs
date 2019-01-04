@@ -26,16 +26,28 @@ namespace Kosturas.View
 
         private void frmOrdenPorDia_Load(object sender, EventArgs e)
         {
+            var a = dtprecogida.Value.ToShortDateString();
+            var desde = a + " 00:00";
+            var hasta = a + " 23:59";
+            var fdesde = DateTime.Parse(desde);
+            var fhasta = DateTime.Parse(hasta);
+            var query = from l in db.Ordenes where l.FeEnt >= fdesde && l.FeEnt<=fhasta select l;
+            this.dbgOdenesTotales.DataSource = query.Select(x => new { x.NumeroOrden, x.NombreCliente, x.FeEnt,x.Localizacion,x.HoraSalida, x.TotalOrden, x.CantidadPagada,x.CantidadRestante }).ToList();
+
+            this.txtFecha.Text = a;
         }
 
 
 private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            var a = dateTimePicker1.Value.ToString();
-            a = a.Remove(a.Length - 8);
-            var query = from l in db.Ordenes where  l.FechaIngreso==a select l;
-      
-            this.dbgOdenesTotales.DataSource = query.Select(x=>new {x.NumeroOrden,x.NombreCliente,x.FechaIngreso,x.HoraIngreso,x.TotalOrden,x.CantidadPagada }).ToList();
+            var a = dtprecogida.Value.ToShortDateString();
+            var desde = a + " 00:00";
+            var hasta = a + " 23:59";
+            var fdesde = DateTime.Parse(desde);
+            var fhasta = DateTime.Parse(hasta);
+            var query = from l in db.Ordenes where l.FeEnt >= fdesde && l.FeEnt <= fhasta select l;
+            this.dbgOdenesTotales.DataSource = query.Select(x => new { x.NumeroOrden, x.NombreCliente, x.FeEnt, x.Localizacion, x.HoraSalida, x.TotalOrden, x.CantidadPagada, x.CantidadRestante }).ToList();
+            this.txtFecha.Text = a;
         }
 
         private void button29_MouseEnter(object sender, EventArgs e)
@@ -330,6 +342,33 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
 
             this.button12.BackColor = System.Drawing.SystemColors.Control;
             this.button12.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void dbgOdenesTotales_ColumnDataPropertyNameChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            this.dbgOdenesTotales.BackColor = System.Drawing.Color.OliveDrab;
+            this.dbgOdenesTotales.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void dbgOdenesTotales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+          
+        }
+
+        private void dbgOdenesTotales_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int a = e.RowIndex;
+            if (a != -1)
+            {
+            
+                var t = dbgOdenesTotales.SelectedRows[0].Cells[0].Value.ToString();
+
+       
+                var query = from l in db.Ordenes where l.NumeroOrden==t select l;
+                this.dgvPagosPorcliente.DataSource = query.Select(x => new { x.FeEnt, x.CantidadPagada,x.MedioPago, x.EmpleadoRealizo}).ToList();
+              
+            }
         }
     }
 }

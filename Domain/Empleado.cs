@@ -40,5 +40,7 @@ namespace Domain
         public TimeSpan? hastaviernes { get; set; }
         public TimeSpan? hastasabado { get; set; }
         public TimeSpan? hastadomingo { get; set; }
+
+        public int HorasLunes { get{ return hastalunes.Value.Hours-desdelunes.Value.Hours; } }
     }
 }

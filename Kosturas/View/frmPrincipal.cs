@@ -611,7 +611,7 @@ namespace Kosturas
          Form1 form = new Form1(valor);
             this.Opacity = 0.75;
             form.ShowDialog();
-
+       ///     this.Close();
 
         }
 

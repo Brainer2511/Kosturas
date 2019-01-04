@@ -106,6 +106,12 @@
     <Compile Include="View\CorreosSMSFacturas.Designer.cs">
       <DependentUpon>CorreosSMSFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EnvioOrden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EnvioOrden.Designer.cs">
+      <DependentUpon>EnvioOrden.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmAfiliados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +270,9 @@
     </Compile>
     <EmbeddedResource Include="View\CorreosSMSFacturas.resx">
       <DependentUpon>CorreosSMSFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EnvioOrden.resx">
+      <DependentUpon>EnvioOrden.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmAfiliados.resx">
       <DependentUpon>frmAfiliados.cs</DependentUpon>

@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrdenPorDia));
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.ckbconfeciones = new System.Windows.Forms.CheckBox();
+            this.ckbalteraciones = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -81,7 +81,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtprecogida = new System.Windows.Forms.DateTimePicker();
+            this.txtFecha = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgOdenesTotales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagosPorcliente)).BeginInit();
@@ -110,25 +111,25 @@
             this.checkBox2.Text = "Ver Solo Ordenes al 100%";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // ckbconfeciones
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(688, 52);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(79, 17);
-            this.checkBox3.TabIndex = 3;
-            this.checkBox3.Text = "confeccion";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.ckbconfeciones.AutoSize = true;
+            this.ckbconfeciones.Location = new System.Drawing.Point(688, 52);
+            this.ckbconfeciones.Name = "ckbconfeciones";
+            this.ckbconfeciones.Size = new System.Drawing.Size(79, 17);
+            this.ckbconfeciones.TabIndex = 3;
+            this.ckbconfeciones.Text = "confeccion";
+            this.ckbconfeciones.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // ckbalteraciones
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(584, 53);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(84, 17);
-            this.checkBox4.TabIndex = 4;
-            this.checkBox4.Text = "Alteraciones";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.ckbalteraciones.AutoSize = true;
+            this.ckbalteraciones.Location = new System.Drawing.Point(584, 53);
+            this.ckbalteraciones.Name = "ckbalteraciones";
+            this.ckbalteraciones.Size = new System.Drawing.Size(84, 17);
+            this.ckbalteraciones.TabIndex = 4;
+            this.ckbalteraciones.Text = "Alteraciones";
+            this.ckbalteraciones.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -353,8 +354,12 @@
             this.dbgOdenesTotales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dbgOdenesTotales.Location = new System.Drawing.Point(1, 374);
             this.dbgOdenesTotales.Name = "dbgOdenesTotales";
+            this.dbgOdenesTotales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dbgOdenesTotales.Size = new System.Drawing.Size(1419, 150);
             this.dbgOdenesTotales.TabIndex = 81;
+            this.dbgOdenesTotales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dbgOdenesTotales_CellClick);
+            this.dbgOdenesTotales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dbgOdenesTotales_CellContentClick);
+            this.dbgOdenesTotales.ColumnDataPropertyNameChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dbgOdenesTotales_ColumnDataPropertyNameChanged);
             // 
             // label13
             // 
@@ -371,6 +376,7 @@
             this.dgvPagosPorcliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPagosPorcliente.Location = new System.Drawing.Point(881, 607);
             this.dgvPagosPorcliente.Name = "dgvPagosPorcliente";
+            this.dgvPagosPorcliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPagosPorcliente.Size = new System.Drawing.Size(539, 161);
             this.dgvPagosPorcliente.TabIndex = 121;
             // 
@@ -664,14 +670,24 @@
             this.label21.TabIndex = 12;
             this.label21.Text = "Recoleciones por dia";
             // 
-            // dateTimePicker1
+            // dtprecogida
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(167, 61);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 124;
-            this.dateTimePicker1.Value = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dtprecogida.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtprecogida.Location = new System.Drawing.Point(349, 61);
+            this.dtprecogida.Name = "dtprecogida";
+            this.dtprecogida.Size = new System.Drawing.Size(18, 32);
+            this.dtprecogida.TabIndex = 124;
+            this.dtprecogida.Value = new System.DateTime(2019, 1, 2, 0, 0, 0, 0);
+            this.dtprecogida.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // txtFecha
+            // 
+            this.txtFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFecha.Location = new System.Drawing.Point(156, 61);
+            this.txtFecha.Multiline = true;
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(187, 32);
+            this.txtFecha.TabIndex = 153;
             // 
             // frmOrdenPorDia
             // 
@@ -679,7 +695,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1428, 794);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.txtFecha);
+            this.Controls.Add(this.dtprecogida);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dgvPagosPorcliente);
@@ -716,8 +733,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.ckbalteraciones);
+            this.Controls.Add(this.ckbconfeciones);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -741,8 +758,8 @@
         #endregion
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox ckbconfeciones;
+        private System.Windows.Forms.CheckBox ckbalteraciones;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -791,6 +808,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtprecogida;
+        private System.Windows.Forms.TextBox txtFecha;
     }
 }
