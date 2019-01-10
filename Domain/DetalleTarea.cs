@@ -18,7 +18,7 @@ namespace Domain
 
         public string NumeroDetalleTarea { get; set; }
 
-        public string Precio { get; set; }
+        public double Precio { get; set; } = 0;
 
         public string TiempoRespuesta { get; set; }
 

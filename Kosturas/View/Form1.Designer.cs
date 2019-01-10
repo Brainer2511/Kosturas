@@ -67,14 +67,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.pv2 = new System.Windows.Forms.PictureBox();
             this.pv1 = new System.Windows.Forms.PictureBox();
+            this.tbpDatos = new System.Windows.Forms.TableLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pv2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pv1)).BeginInit();
             this.SuspendLayout();
@@ -508,25 +506,6 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.DarkGray;
-            this.label5.Location = new System.Drawing.Point(40, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 13);
-            this.label5.TabIndex = 98;
-            // 
-            // panel3
-            // 
-            this.panel3.AutoScroll = true;
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(4, 154);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(918, 661);
-            this.panel3.TabIndex = 99;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
             // pv2
             // 
             this.pv2.BackColor = System.Drawing.Color.White;
@@ -551,13 +530,37 @@
             this.pv1.TabStop = false;
             this.pv1.Click += new System.EventHandler(this.pv1_Click);
             // 
+            // tbpDatos
+            // 
+            this.tbpDatos.AutoScroll = true;
+            this.tbpDatos.ColumnCount = 1;
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tbpDatos.Location = new System.Drawing.Point(4, 164);
+            this.tbpDatos.Name = "tbpDatos";
+            this.tbpDatos.RowCount = 1;
+            this.tbpDatos.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tbpDatos.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tbpDatos.Size = new System.Drawing.Size(918, 646);
+            this.tbpDatos.TabIndex = 98;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1336, 881);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.tbpDatos);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lbl2);
             this.Controls.Add(this.lbl1);
@@ -598,8 +601,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pv2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pv1)).EndInit();
             this.ResumeLayout(false);
@@ -648,8 +649,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel3;
-        public System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox txtPrecioTotal;
+        public System.Windows.Forms.TableLayoutPanel tbpDatos;
     }
 }

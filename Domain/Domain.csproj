@@ -76,6 +76,8 @@
     <Compile Include="Canton.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="TemDetallesOrdenPrenda.cs" />
+    <Compile Include="TemDetallesOrdenes.cs" />
     <Compile Include="DetallesOrdenes.cs" />
     <Compile Include="DetalleTarea.cs" />
     <Compile Include="Distrito.cs" />

@@ -37,7 +37,7 @@ namespace Kosturas.View
         {
             Form1 mensaje1 = (Form1)Application.OpenForms["Form1"];
           
-            mensaje1.label5.Text = this.txtCantidad.Text;
+         //   mensaje1.label5.Text = this.txtCantidad.Text;
             this.Close();
             mensaje1.Opacity = 1;
             mensaje1.Show();

@@ -21,5 +21,7 @@ namespace Domain
         public string Imagen { get; set; }
 
         public virtual ICollection<Tarea> Tareas { get; set; }
+
+        public virtual ICollection<TemDetallesOrdenPrenda> Ordenes { get; set; }
     }
 }

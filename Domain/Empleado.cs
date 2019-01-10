@@ -42,5 +42,11 @@ namespace Domain
         public TimeSpan? hastadomingo { get; set; }
 
         public int HorasLunes { get{ return hastalunes.Value.Hours-desdelunes.Value.Hours; } }
+        public int HorasMartes { get { return hastamartes.Value.Hours - desdemartes.Value.Hours; } }
+        public int HorasMiercoles { get { return hastamiercoles.Value.Hours - desdemiercoles.Value.Hours; } }
+        public int HorasJueves { get { return hastajueves.Value.Hours - desdejueves.Value.Hours; } }
+        public int HorasViernes { get { return hastaviernes.Value.Hours - desdeviernes.Value.Hours; } }
+        public int HorasSabado { get { return hastasabado.Value.Hours - desdesabado.Value.Hours; } }
+        public int HorasDomingo { get { return hastadomingo.Value.Hours - desdedomingo.Value.Hours; } }
     }
 }

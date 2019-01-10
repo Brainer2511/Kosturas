@@ -53,10 +53,7 @@
             this.button31 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
-            this.dbgOdenesTotales = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
-            this.dgvPagosPorcliente = new System.Windows.Forms.DataGridView();
-            this.dgvOrdenesPorCliente = new System.Windows.Forms.DataGridView();
             this.button14 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
@@ -83,10 +80,10 @@
             this.label21 = new System.Windows.Forms.Label();
             this.dtprecogida = new System.Windows.Forms.DateTimePicker();
             this.txtFecha = new System.Windows.Forms.TextBox();
+            this.tlpOrdenesTotales = new System.Windows.Forms.TableLayoutPanel();
+            this.tblDetalleOrdenesClientes = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpPagos = new System.Windows.Forms.TableLayoutPanel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dbgOdenesTotales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPagosPorcliente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenesPorCliente)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -235,9 +232,8 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(95, 13);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 13);
+            this.label8.Size = new System.Drawing.Size(0, 13);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Empleados";
             // 
             // label9
             // 
@@ -253,9 +249,8 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(95, 47);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.Size = new System.Drawing.Size(0, 13);
             this.label10.TabIndex = 15;
-            this.label10.Text = "Horas";
             // 
             // button35
             // 
@@ -348,19 +343,6 @@
             this.button29.MouseEnter += new System.EventHandler(this.button29_MouseEnter);
             this.button29.MouseLeave += new System.EventHandler(this.button29_MouseLeave);
             // 
-            // dbgOdenesTotales
-            // 
-            this.dbgOdenesTotales.BackgroundColor = System.Drawing.Color.White;
-            this.dbgOdenesTotales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dbgOdenesTotales.Location = new System.Drawing.Point(1, 374);
-            this.dbgOdenesTotales.Name = "dbgOdenesTotales";
-            this.dbgOdenesTotales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dbgOdenesTotales.Size = new System.Drawing.Size(1419, 150);
-            this.dbgOdenesTotales.TabIndex = 81;
-            this.dbgOdenesTotales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dbgOdenesTotales_CellClick);
-            this.dbgOdenesTotales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dbgOdenesTotales_CellContentClick);
-            this.dbgOdenesTotales.ColumnDataPropertyNameChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dbgOdenesTotales_ColumnDataPropertyNameChanged);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -369,25 +351,6 @@
             this.label13.Size = new System.Drawing.Size(40, 13);
             this.label13.TabIndex = 122;
             this.label13.Text = "Pagos:";
-            // 
-            // dgvPagosPorcliente
-            // 
-            this.dgvPagosPorcliente.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPagosPorcliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPagosPorcliente.Location = new System.Drawing.Point(881, 607);
-            this.dgvPagosPorcliente.Name = "dgvPagosPorcliente";
-            this.dgvPagosPorcliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPagosPorcliente.Size = new System.Drawing.Size(539, 161);
-            this.dgvPagosPorcliente.TabIndex = 121;
-            // 
-            // dgvOrdenesPorCliente
-            // 
-            this.dgvOrdenesPorCliente.BackgroundColor = System.Drawing.Color.White;
-            this.dgvOrdenesPorCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrdenesPorCliente.Location = new System.Drawing.Point(-8, 607);
-            this.dgvOrdenesPorCliente.Name = "dgvOrdenesPorCliente";
-            this.dgvOrdenesPorCliente.Size = new System.Drawing.Size(877, 161);
-            this.dgvOrdenesPorCliente.TabIndex = 120;
             // 
             // button14
             // 
@@ -677,7 +640,7 @@
             this.dtprecogida.Name = "dtprecogida";
             this.dtprecogida.Size = new System.Drawing.Size(18, 32);
             this.dtprecogida.TabIndex = 124;
-            this.dtprecogida.Value = new System.DateTime(2019, 1, 2, 0, 0, 0, 0);
+            this.dtprecogida.Value = new System.DateTime(2019, 1, 9, 0, 0, 0, 0);
             this.dtprecogida.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // txtFecha
@@ -689,18 +652,71 @@
             this.txtFecha.Size = new System.Drawing.Size(187, 32);
             this.txtFecha.TabIndex = 153;
             // 
+            // tlpOrdenesTotales
+            // 
+            this.tlpOrdenesTotales.AutoScroll = true;
+            this.tlpOrdenesTotales.ColumnCount = 1;
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpOrdenesTotales.Location = new System.Drawing.Point(1, 374);
+            this.tlpOrdenesTotales.Name = "tlpOrdenesTotales";
+            this.tlpOrdenesTotales.RowCount = 1;
+            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpOrdenesTotales.Size = new System.Drawing.Size(1415, 159);
+            this.tlpOrdenesTotales.TabIndex = 154;
+            // 
+            // tblDetalleOrdenesClientes
+            // 
+            this.tblDetalleOrdenesClientes.AutoScroll = true;
+            this.tblDetalleOrdenesClientes.ColumnCount = 1;
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblDetalleOrdenesClientes.Location = new System.Drawing.Point(1, 607);
+            this.tblDetalleOrdenesClientes.Name = "tblDetalleOrdenesClientes";
+            this.tblDetalleOrdenesClientes.RowCount = 1;
+            this.tblDetalleOrdenesClientes.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblDetalleOrdenesClientes.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblDetalleOrdenesClientes.Size = new System.Drawing.Size(868, 184);
+            this.tblDetalleOrdenesClientes.TabIndex = 155;
+            // 
+            // tlpPagos
+            // 
+            this.tlpPagos.AutoScroll = true;
+            this.tlpPagos.ColumnCount = 2;
+            this.tlpPagos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpPagos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpPagos.Location = new System.Drawing.Point(881, 607);
+            this.tlpPagos.Name = "tlpPagos";
+            this.tlpPagos.RowCount = 1;
+            this.tlpPagos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpPagos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpPagos.Size = new System.Drawing.Size(535, 184);
+            this.tlpPagos.TabIndex = 155;
+            // 
             // frmOrdenPorDia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1428, 794);
+            this.ClientSize = new System.Drawing.Size(1428, 831);
+            this.Controls.Add(this.tlpPagos);
+            this.Controls.Add(this.tblDetalleOrdenesClientes);
+            this.Controls.Add(this.tlpOrdenesTotales);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.dtprecogida);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.dgvPagosPorcliente);
-            this.Controls.Add(this.dgvOrdenesPorCliente);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button11);
@@ -722,7 +738,6 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.dbgOdenesTotales);
             this.Controls.Add(this.button35);
             this.Controls.Add(this.button32);
             this.Controls.Add(this.button33);
@@ -744,9 +759,6 @@
             this.Load += new System.EventHandler(this.frmOrdenPorDia_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dbgOdenesTotales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPagosPorcliente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenesPorCliente)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -780,10 +792,7 @@
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.DataGridView dbgOdenesTotales;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DataGridView dgvPagosPorcliente;
-        private System.Windows.Forms.DataGridView dgvOrdenesPorCliente;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
@@ -810,5 +819,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DateTimePicker dtprecogida;
         private System.Windows.Forms.TextBox txtFecha;
+        private System.Windows.Forms.TableLayoutPanel tlpOrdenesTotales;
+        public System.Windows.Forms.TableLayoutPanel tblDetalleOrdenesClientes;
+        private System.Windows.Forms.TableLayoutPanel tlpPagos;
     }
 }

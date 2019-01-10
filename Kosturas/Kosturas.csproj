@@ -100,6 +100,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DataContextLocal.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ViewModels\OrdenDetalleViewModel.cs" />
+    <Compile Include="ViewModels\OrdenPrendaViewModel.cs" />
     <Compile Include="View\CorreosSMSFacturas.cs">
       <SubType>Form</SubType>
     </Compile>

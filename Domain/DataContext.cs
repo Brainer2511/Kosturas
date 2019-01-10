@@ -52,5 +52,9 @@ namespace Domain
 
 
         public DbSet<Ordenes> Ordenes { get; set; }
+
+        public DbSet<TemDetallesOrdenes> OrdenDetalleTareas { get; set; }
+
+        public DbSet<TemDetallesOrdenPrenda> OrdenDetallePrendas { get; set; }
     }
 }

@@ -72,14 +72,14 @@ namespace Kosturas.View
             orden.NumeroOrden =Program.servicio;
             orden.FeEnt = DateTime.Now;
             orden.HoraSalida =this.cmbHora.SelectedItem.ToString()+":"+this.cmbMinutos.SelectedItem.ToString();
-            orden.TotalOrden = Program.TotalOrden;
-            orden.CantidadPagada = this.txtpago.Text;
+          //  orden.TotalOrden = Program.TotalOrden;
+         //   orden.CantidadPagada = this.txtpago.Text;
             var a = int.Parse(Program.TotalOrden);
             var b = int.Parse(txtpago.Text);
             var c = a - b;
-            orden.CantidadRestante = c.ToString();
+        //    orden.CantidadRestante = c.ToString();
             orden.EmpleadoRealizo = Program.Pin;
-            orden.NombreCliente = cliente.Nombre;
+          //  orden.NombreCliente = cliente.Nombre;
             if (ckbNopagar.Checked == false)
             {
                if (cmbTipoPago.SelectedIndex==0) {
@@ -112,6 +112,12 @@ namespace Kosturas.View
                 this.txtpago.Text =Program.TotalOrden;
                 this.cmbTipoPago.Visible = true;
             }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        
         }
     }
 }

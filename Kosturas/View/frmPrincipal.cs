@@ -139,35 +139,6 @@ namespace Kosturas
 
 
 
-              //  dataGridView1.DataSource = query;
-                //DataGridViewImageColumn NuevaOrden = new DataGridViewImageColumn();
-                //NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura10.png");
-            
-                //dataGridView1.Columns.Add(NuevaOrden);
-
-                //DataGridViewImageColumn ObtenerOrdenesClientes = new DataGridViewImageColumn();
-                //ObtenerOrdenesClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura11.png");
-                //dataGridView1.Columns.Add(ObtenerOrdenesClientes);
-
-                //DataGridViewImageColumn GuardarCambios = new DataGridViewImageColumn();
-                //GuardarCambios.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura12.png");
-                //dataGridView1.Columns.Add(GuardarCambios);
-
-                //DataGridViewImageColumn dos = new DataGridViewImageColumn();
-                //dos.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura13.png");
-                //dataGridView1.Columns.Add(dos);
-
-                //DataGridViewImageColumn detalleClientes = new DataGridViewImageColumn();
-                //detalleClientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura14.png");
-                //dataGridView1.Columns.Add(detalleClientes);
-
-                //DataGridViewImageColumn EnviarCorreo = new DataGridViewImageColumn();
-                //EnviarCorreo.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura15.png");
-                //dataGridView1.Columns.Add(EnviarCorreo);
-
-                //DataGridViewImageColumn AumentoCredito = new DataGridViewImageColumn();
-                //AumentoCredito.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura16.png");
-                //dataGridView1.Columns.Add(AumentoCredito);
 
               }
                
@@ -187,7 +158,7 @@ namespace Kosturas
             Table.Paint += new PaintEventHandler(tableLayoutPanel1_CellPaintdos);
             Table.Location = new Point(1, 108);
             Table.Size = new Size(1120, 244);
-
+            
             Table.Name = "Cliente";
 
             Table.ColumnCount = 12;
@@ -200,7 +171,7 @@ namespace Kosturas
             var query = db.Clientes.Where(j => j.Nombre.StartsWith(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
 
             foreach (var item in query)
-            //   for(int i=0;i>=query.Count;i++)
+      
             {
 
 
@@ -366,11 +337,10 @@ namespace Kosturas
                 tableLayoutPanel1.Controls.Add(detalleclientes);
                 tableLayoutPanel1.Controls.Add(Email);
                 tableLayoutPanel1.Controls.Add(aumentocredito);
-                //      d = +d + 100;
-                //    f += f + 50;
+         
 
             }
-           // this.Controls.Add(Table);
+        
 
             if (query.Count > 0)
             {
@@ -604,14 +574,22 @@ namespace Kosturas
         }
         void ClickNuevaOrden(object sender, EventArgs e)
         {
+
+            this.Opacity = 0.90;
             Button btn = sender as Button;
             var id = int.Parse(btn.Name);
      
             var valor = id; 
          Form1 form = new Form1(valor);
-            this.Opacity = 0.75;
+
+       
+
             form.ShowDialog();
-       ///     this.Close();
+
+            this.Opacity = 1;
+       
+          
+           
 
         }
 

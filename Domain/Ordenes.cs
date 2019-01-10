@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
- public   class Ordenes
+    public class Ordenes
     {
         [Key]
         public int OrdenId { get; set; }
@@ -17,23 +17,24 @@ namespace Domain
         public DateTime FeEnt { get; set; }
 
         [NotMapped]
-        public DateTime FechaEnt { get{ return FeEnt.Date; } }
-        public TimeSpan Horaent { get { return FeEnt.TimeOfDay; } }
+        public DateTime? FechaEnt { get { return FeEnt.Date; } }
+        public TimeSpan? Horaent { get { return FeEnt.TimeOfDay; } }
         public string sFecha { get { return FeEnt.Date.ToString(); } }
         public string sHora { get { return FeEnt.TimeOfDay.ToString(); } }
 
-        
+
         public string HoraSalida { get; set; }
 
 
         public string Localizacion { get; set; }
         public string FechaSalida { get; set; }
-        public string TotalOrden { get; set; }
-        public string CantidadPagada { get; set; }
-        public string CantidadRestante { get; set; }
+        public double TotalOrden { get; set; } = 0;
+        public double CantidadPagada { get; set; } = 0;
+        public double CantidadRestante { get; set; } = 0;
         public string EmpleadoRealizo { get; set; }
-        public string NombreCliente { get; set; }
+        public int? ClienteId { get; set; }
         public string MedioPago { get; set; }
-        //  public virtual Cliente ClienteId { get; set; }
+        public virtual ICollection<TemDetallesOrdenPrenda> Prendas { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }

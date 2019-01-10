@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -26,5 +27,7 @@ namespace Domain
         public string Visitas { get; set; }
         public string FechaModificacion { get; set; }
         public string Empleadoactualiza { get; set; }
+
+        public virtual ICollection<Ordenes> Ordenes { get; set; }
     }
 }

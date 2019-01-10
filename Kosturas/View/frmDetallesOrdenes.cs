@@ -104,7 +104,7 @@ namespace Kosturas.View
             detalleTarea.Imagen = txtRutaDetallesTareas.Text;
             detalleTarea.DetalleTareas = txtDetalleTarea.Text;
             detalleTarea.NumeroDetalleTarea = txtNumeroDetalle.Text;
-            detalleTarea.Precio = txtPrecio.Text;
+            detalleTarea.Precio = double.Parse(txtPrecio.Text);
             detalleTarea.TiempoRespuesta = txtTiempoRespuesta.Text;
             detalleTarea.TareaId = tareaid;
 
@@ -185,7 +185,7 @@ namespace Kosturas.View
 
             detalleTarea.DetalleTareas = txtDetalleTarea.Text;
             detalleTarea.NumeroDetalleTarea = txtNumeroDetalle.Text;
-            detalleTarea.Precio = txtPrecio.Text;
+            detalleTarea.Precio = double.Parse(txtPrecio.Text);
             detalleTarea.TiempoRespuesta = txtTiempoRespuesta.Text;
 
 
@@ -271,7 +271,7 @@ namespace Kosturas.View
 
                 txtDetalleTarea.Text = detalle.DetalleTareas;
                 txtNumeroDetalle.Text = detalle.NumeroDetalleTarea;
-                txtPrecio.Text = detalle.Precio;
+                txtPrecio.Text = detalle.Precio.ToString();
                 txtTiempoRespuesta.Text = detalle.TiempoRespuesta;
                 
                 dvgDetalle.DataSource = db.DetalleTareas.Select(x => new {x.DetalleTareaId, x.TareaId, x.DetalleTareas, x.NumeroDetalleTarea, x.Precio, x.TiempoRespuesta }).ToList();
