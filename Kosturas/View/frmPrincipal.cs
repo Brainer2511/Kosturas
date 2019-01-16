@@ -53,9 +53,8 @@ namespace Kosturas
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-           
 
-
+      
 
 
 
@@ -109,12 +108,12 @@ namespace Kosturas
         private void btnNuevaOrden_Click(object sender, EventArgs e)
         {
             int a = 0;
-            this.Close();
+         
             Form1 form = new Form1(a);
-            this.Opacity = 0.99;
+            this.Opacity = 0.80;
 
             form.ShowDialog();
-            this.Close();
+            this.Opacity = 1;
         }
 
         private void btnConfirguracion_Click(object sender, EventArgs e)
@@ -129,18 +128,36 @@ namespace Kosturas
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string x = "";
-            x = txtTelefono.Text;
+            String x = "";
+
+
+            x = this.txtTelefono.Text + e.KeyChar;
+
+            if (e.KeyChar == '\b')
+            {
+                if (x.Length == 1)
+                {
+                    x = x.Remove(x.Length - 1);
+                    BorrarPanel();
+                }
+                else
+                {
+                    x = x.Remove(x.Length - 2);
+                    BorrarPanel();
+                }
+            }
+
+
             if (x != "")
             {
-
-
-                var query = db.Clientes.Where(j => j.TelefonoPrincipal.StartsWith(x.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
-
+                BorrarPanel();
+                CargarClienteTelefono(x);
 
 
 
-              }
+            }
+
+           
                
 
           
@@ -151,24 +168,12 @@ namespace Kosturas
         private void CargarCliente(string texbox)
         {
 
-
-            TableLayoutPanel Table = new TableLayoutPanel();
-            Table.AutoScroll = true;
-            Table.CellPaint += new TableLayoutCellPaintEventHandler(tableLayoutPanel1_CellPaint);
-            Table.Paint += new PaintEventHandler(tableLayoutPanel1_CellPaintdos);
-            Table.Location = new Point(1, 108);
-            Table.Size = new Size(1120, 244);
             
-            Table.Name = "Cliente";
-
-            Table.ColumnCount = 12;
-
-            // Table.RowCount = 10;
 
             var d = 0;
             var f = 0;
             var o = 0;
-            var query = db.Clientes.Where(j => j.Nombre.StartsWith(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
+            var query = db.Clientes.Where(j => j.Nombre.Contains(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
 
             foreach (var item in query)
       
@@ -177,7 +182,204 @@ namespace Kosturas
 
 
                 var botonesdos = new TextBox();
-              //  botonesdos.Click +=  new EventHandler(ClickMensaje);
+                botonesdos.Size = new Size(80, 30);
+                botonesdos.Multiline = true;
+         
+                //  botonesdos.Click +=  new EventHandler(ClickMensaje);
+                botonesdos.Text = item.Abreviatura;
+          
+               
+                botonesdos.Name = item.ClienteId.ToString();
+                botonesdos.KeyPress += new KeyPressEventHandler(ClickTexbox1);
+            
+                botonesdos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+              //  botonesdos.Size = new System.Drawing.Size(131, 34);
+                botonesdos.TabIndex = 143;
+
+                var botonestres = new TextBox();
+           
+                botonestres.Text = item.TelefonoPrincipal;
+                botonestres.Name = item.ClienteId.ToString();
+                botonestres.Multiline = true;
+                botonestres.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonestres.Size = new System.Drawing.Size(110, 30);
+                botonestres.KeyPress += new KeyPressEventHandler(ClickTexbox2);
+                botonestres.TabIndex = 143;
+                var botonescuatro = new TextBox();
+                botonescuatro.Text = item.Nombre;
+                botonescuatro.Name = item.ClienteId.ToString();
+                botonescuatro.Multiline = true;
+                botonescuatro.KeyPress += new KeyPressEventHandler(ClickTexbox3);
+                botonescuatro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonescuatro.Size = new System.Drawing.Size(110, 30);
+                botonescuatro.TabIndex = 143;
+
+                var botonecinco = new TextBox();
+                botonecinco.Text = item.Email;
+                botonecinco.Name = item.Email;
+                botonecinco.Multiline = true;
+                botonecinco.KeyPress += new KeyPressEventHandler(ClickTexbox4);
+                botonecinco.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonecinco.Size = new System.Drawing.Size(150, 30);
+                botonecinco.TabIndex = 143;
+
+                var botonesseis = new TextBox();
+                botonesseis.Text = item.Notas;
+                botonesseis.Name = item.Notas;
+                botonesseis.Multiline = true;
+                botonesseis.KeyPress += new KeyPressEventHandler(ClickTexbox5);
+                botonesseis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonesseis.Size = new System.Drawing.Size(340, 30);
+                botonesseis.TabIndex = 143;
+
+
+                var NuevaOrden = new Button();
+
+
+                NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura10.png");
+
+                NuevaOrden.BackColor = System.Drawing.Color.White;
+                NuevaOrden.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                NuevaOrden.FlatAppearance.BorderSize = 0;
+                NuevaOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                NuevaOrden.Size = new System.Drawing.Size(32, 34);
+                NuevaOrden.TabIndex = 142;
+                NuevaOrden.UseVisualStyleBackColor = false;
+
+                NuevaOrden.Name = item.ClienteId.ToString();
+                NuevaOrden.Click += new EventHandler(ClickNuevaOrden);
+
+                var optenerordenes = new Button();
+
+
+                optenerordenes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura11.png");
+                optenerordenes.Name = item.ClienteId.ToString();
+                optenerordenes.BackColor = System.Drawing.Color.White;
+                optenerordenes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                optenerordenes.FlatAppearance.BorderSize = 0;
+                optenerordenes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                optenerordenes.Size = new System.Drawing.Size(32, 34);
+                optenerordenes.TabIndex = 142;
+                optenerordenes.UseVisualStyleBackColor = false;
+
+                var guardarcambios = new Button();
+
+
+
+                guardarcambios.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura12.png");
+                guardarcambios.Name = item.ClienteId.ToString();
+                guardarcambios.BackColor = System.Drawing.Color.White;
+                guardarcambios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                guardarcambios.FlatAppearance.BorderSize = 0;
+                guardarcambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                guardarcambios.Size = new System.Drawing.Size(32, 34);
+                guardarcambios.TabIndex = 142;
+                guardarcambios.UseVisualStyleBackColor = false;
+                guardarcambios.Click += new EventHandler(ClickGuardarCambios);
+
+
+                var unirseldas = new Button();
+
+
+                unirseldas.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura13.png");
+                unirseldas.Name = item.ClienteId.ToString();
+                unirseldas.BackColor = System.Drawing.Color.White;
+                unirseldas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                unirseldas.FlatAppearance.BorderSize = 0;
+                unirseldas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                unirseldas.Size = new System.Drawing.Size(32, 34);
+                unirseldas.TabIndex = 142;
+                unirseldas.UseVisualStyleBackColor = false;
+
+
+                var detalleclientes = new Button();
+
+
+
+                detalleclientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura14.png");
+                detalleclientes.Name = item.ClienteId.ToString();
+                detalleclientes.BackColor = System.Drawing.Color.White;
+                detalleclientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                detalleclientes.FlatAppearance.BorderSize = 0;
+                detalleclientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                detalleclientes.Size = new System.Drawing.Size(32, 34);
+                detalleclientes.TabIndex = 142;
+                detalleclientes.Click += new EventHandler(ClickDetalleCliente);
+                detalleclientes.UseVisualStyleBackColor = false;
+
+
+                var Email = new Button();
+
+
+
+                Email.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura15.png");
+                Email.Name = item.ClienteId.ToString();
+                Email.BackColor = System.Drawing.Color.White;
+                Email.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                Email.FlatAppearance.BorderSize = 0;
+                Email.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                Email.Size = new System.Drawing.Size(32, 34);
+                Email.TabIndex = 142;
+                Email.UseVisualStyleBackColor = false;
+
+                var aumentocredito = new Button();
+
+
+
+                aumentocredito.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura16.png");
+                aumentocredito.Name = item.ClienteId.ToString();
+                aumentocredito.BackColor = System.Drawing.Color.White;
+                aumentocredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                aumentocredito.FlatAppearance.BorderSize = 0;
+                aumentocredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                aumentocredito.Size = new System.Drawing.Size(32, 34);
+                aumentocredito.TabIndex = 142;
+                aumentocredito.UseVisualStyleBackColor = false;
+
+                tableLayoutPanel1.Controls.Add(botonesdos);
+                tableLayoutPanel1.Controls.Add(botonestres);
+                tableLayoutPanel1.Controls.Add(botonescuatro);
+                tableLayoutPanel1.Controls.Add(botonecinco);
+                tableLayoutPanel1.Controls.Add(botonesseis);
+                tableLayoutPanel1.Controls.Add(NuevaOrden);
+                tableLayoutPanel1.Controls.Add(optenerordenes);
+                tableLayoutPanel1.Controls.Add(guardarcambios);
+                tableLayoutPanel1.Controls.Add(unirseldas);
+                tableLayoutPanel1.Controls.Add(detalleclientes);
+                tableLayoutPanel1.Controls.Add(Email);
+                tableLayoutPanel1.Controls.Add(aumentocredito);
+         
+
+            }
+        
+
+            if (query.Count > 0)
+            {
+
+               // x = "";
+                //dataGridView1.ClearSelection();
+
+            }
+             
+         }
+        private void CargarClienteTelefono(string texbox)
+        {
+
+
+
+            var d = 0;
+            var f = 0;
+            var o = 0;
+            var query = db.Clientes.Where(j => j.TelefonoPrincipal.Contains(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
+
+            foreach (var item in query)
+
+            {
+
+
+
+                var botonesdos = new TextBox();
+                //  botonesdos.Click +=  new EventHandler(ClickMensaje);
                 botonesdos.Text = item.Abreviatura;
                 botonesdos.Name = item.ClienteId.ToString();
                 botonesdos.KeyPress += new KeyPressEventHandler(ClickTexbox1);
@@ -337,20 +539,20 @@ namespace Kosturas
                 tableLayoutPanel1.Controls.Add(detalleclientes);
                 tableLayoutPanel1.Controls.Add(Email);
                 tableLayoutPanel1.Controls.Add(aumentocredito);
-         
+
 
             }
-        
+
 
             if (query.Count > 0)
             {
 
-               // x = "";
+                // x = "";
                 //dataGridView1.ClearSelection();
 
             }
-             
-         }
+
+        }
         void ClickTexbox1(object sender, KeyPressEventArgs e)
        {
             ClientePosicion = 1;
@@ -437,7 +639,7 @@ namespace Kosturas
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-   {
+ {
             String x="";
          
 
@@ -445,13 +647,21 @@ namespace Kosturas
           
             if (e.KeyChar == '\b')
             {
-
+                if (x.Length == 1)
+                {
+                    x = x.Remove(x.Length - 1);
+                    BorrarPanel();
+                }else
+                { 
                 x = x.Remove(x.Length - 2);
+                    BorrarPanel();
+                }
             }
 
 
             if (x != "")
             {
+                BorrarPanel();
                 CargarCliente(x);
 
 
@@ -478,12 +688,8 @@ namespace Kosturas
                 var query = db.Clientes.Where(j => j.Nombre.StartsWith(x.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
 
 
-
-            //    dataGridView1.DataSource = query;
-                reportButton_Click();
-
             }
-          //  dataGridView1.Clear();
+         
         }
 
             private void PressClick(object sender, MouseEventArgs e)
@@ -686,7 +892,16 @@ namespace Kosturas
         {
 
         }
+        private void BorrarPanel()
+        {
+            var totaldos = tableLayoutPanel1.Controls.Count;
+            var litdos = tableLayoutPanel1.Controls.OfType<Button>();
+            for (int i = 0; i < totaldos; i++)
+            {
+                tableLayoutPanel1.Controls.Remove(tableLayoutPanel1.Controls[0]);
+            }
 
+        }
         //void PruebaClick_2(object sender, EventArgs e)
         //{
         //    Button btn = sender as Button;

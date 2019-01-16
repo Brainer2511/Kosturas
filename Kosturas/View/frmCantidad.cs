@@ -36,8 +36,8 @@ namespace Kosturas.View
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Form1 mensaje1 = (Form1)Application.OpenForms["Form1"];
-          
-         //   mensaje1.label5.Text = this.txtCantidad.Text;
+          mensaje1.lblCantidad.Text = this.txtCantidad.Text;
+            //   mensaje1.label5.Text
             this.Close();
             mensaje1.Opacity = 1;
             mensaje1.Show();

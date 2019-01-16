@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Kosturas.ViewModels
 {
     public class OrdenPrendaViewModel : TemDetallesOrdenPrenda
     {
+        [NotMapped]
         public Panel Panel { get; set; }
         public Label lblPrenda;
         public Button btnPrioridad { get; set; }
@@ -20,7 +22,6 @@ namespace Kosturas.ViewModels
         public Button btnmenosuno { get; set; }
         public Button btnmenoscinco { get; set; }
         public Button btnagregartarea { get; set; }
-
 
         public OrdenPrendaViewModel(string prenda)
         {
@@ -46,6 +47,8 @@ namespace Kosturas.ViewModels
             btnPrioridad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPrioridad.Size = new System.Drawing.Size(32, 34);
             btnPrioridad.TabIndex = 142;
+            btnPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             btnPrioridad.UseVisualStyleBackColor = false;
             #endregion
 
@@ -59,6 +62,8 @@ namespace Kosturas.ViewModels
             btnDuplicar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnDuplicar.Size = new System.Drawing.Size(32, 34);
             btnDuplicar.TabIndex = 142;
+            btnDuplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             btnDuplicar.UseVisualStyleBackColor = false;
             #endregion
               
@@ -72,6 +77,8 @@ namespace Kosturas.ViewModels
             btnCantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnCantidad.Size = new System.Drawing.Size(32, 34);
             btnCantidad.TabIndex = 142;
+            btnCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             btnCantidad.UseVisualStyleBackColor = false;
             #endregion
 
@@ -87,6 +94,8 @@ namespace Kosturas.ViewModels
             btnmascinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnmascinco.Size = new System.Drawing.Size(32, 34);
             btnmascinco.TabIndex = 142;
+            btnmascinco.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             btnmascinco.UseVisualStyleBackColor = false;
             #endregion
 
@@ -100,6 +109,8 @@ namespace Kosturas.ViewModels
             btnmasuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnmasuno.Size = new System.Drawing.Size(32, 34);
             btnmasuno.TabIndex = 142;
+            btnmasuno.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             btnmasuno.UseVisualStyleBackColor = false;
             #endregion
 
@@ -113,6 +124,8 @@ namespace Kosturas.ViewModels
             btnmenosuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnmenosuno.Size = new System.Drawing.Size(32, 34);
             btnmenosuno.TabIndex = 142;
+            btnmenosuno.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             btnmenosuno.UseVisualStyleBackColor = false;
             #endregion
 
@@ -127,6 +140,8 @@ namespace Kosturas.ViewModels
             btnmenoscinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnmenoscinco.Size = new System.Drawing.Size(32, 34);
             btnmenoscinco.TabIndex = 142;
+            btnmenoscinco.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             btnmenoscinco.UseVisualStyleBackColor = false;
             #endregion
 
@@ -145,11 +160,6 @@ namespace Kosturas.ViewModels
          
             #endregion
         }
-
-
-
-
-        
 
     }
 }

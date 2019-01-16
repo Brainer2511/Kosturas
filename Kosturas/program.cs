@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Kosturas.InfraExtructura;
 
 namespace Kosturas
 {
@@ -26,6 +27,7 @@ namespace Kosturas
         Database.SetInitializer(new MigrateDatabaseToLatestVersion<Model.DataContextLocal, Migrations.Configuration>());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            AutoMapperPerfil.Run();
             Application.Run(new frmPrincipal());
 
         }

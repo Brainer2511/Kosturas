@@ -60,9 +60,14 @@
             this.btnEnviar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lblTotalDos = new System.Windows.Forms.Label();
+            this.lblVisitas = new System.Windows.Forms.Label();
             this.txtFecha = new System.Windows.Forms.TextBox();
+            this.txtCalcularCambio = new System.Windows.Forms.TextBox();
+            this.lblCalcularCambio = new System.Windows.Forms.Label();
+            this.lblCAmbio = new System.Windows.Forms.Label();
+            this.lblresultado = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -161,6 +166,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label8);
@@ -175,11 +181,12 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(254, 359);
             this.panel1.TabIndex = 133;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 145);
+            this.label11.Location = new System.Drawing.Point(14, 246);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 13);
             this.label11.TabIndex = 14;
@@ -188,7 +195,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(14, 186);
+            this.label12.Location = new System.Drawing.Point(14, 322);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(40, 13);
             this.label12.TabIndex = 13;
@@ -197,16 +204,16 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(95, 13);
+            this.label8.Location = new System.Drawing.Point(84, 71);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 13);
+            this.label8.Size = new System.Drawing.Size(14, 13);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Empleados";
+            this.label8.Text = "E";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(109, 145);
+            this.label6.Location = new System.Drawing.Point(109, 246);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 11;
@@ -215,7 +222,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 13);
+            this.label7.Location = new System.Drawing.Point(14, 70);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 13);
             this.label7.TabIndex = 6;
@@ -224,25 +231,25 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(95, 88);
+            this.label9.Location = new System.Drawing.Point(14, 130);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 13);
+            this.label9.Size = new System.Drawing.Size(34, 13);
             this.label9.TabIndex = 14;
-            this.label9.Text = "TotalSobrando";
+            this.label9.Text = "Total:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 47);
+            this.label10.Location = new System.Drawing.Point(55, 130);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 13);
+            this.label10.Size = new System.Drawing.Size(10, 13);
             this.label10.TabIndex = 8;
-            this.label10.Text = "Total:";
+            this.label10.Text = "t";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(109, 186);
+            this.label13.Location = new System.Drawing.Point(109, 323);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(40, 13);
             this.label13.TabIndex = 10;
@@ -251,16 +258,16 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(95, 47);
+            this.label14.Location = new System.Drawing.Point(143, 188);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(35, 13);
+            this.label14.Size = new System.Drawing.Size(19, 13);
             this.label14.TabIndex = 15;
-            this.label14.Text = "Horas";
+            this.label14.Text = "tfh";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 88);
+            this.label15.Location = new System.Drawing.Point(14, 188);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(80, 13);
             this.label15.TabIndex = 7;
@@ -293,11 +300,12 @@
             this.cmbTipoPago.Name = "cmbTipoPago";
             this.cmbTipoPago.Size = new System.Drawing.Size(211, 21);
             this.cmbTipoPago.TabIndex = 136;
+            this.cmbTipoPago.SelectedIndexChanged += new System.EventHandler(this.cmbTipoPago_SelectedIndexChanged);
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(353, 200);
+            this.txtEmail.Location = new System.Drawing.Point(353, 257);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(285, 32);
@@ -306,7 +314,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(353, 238);
+            this.txtTelefono.Location = new System.Drawing.Point(353, 309);
             this.txtTelefono.Multiline = true;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(189, 32);
@@ -316,7 +324,7 @@
             // 
             this.btnNumero.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnNumero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNumero.Location = new System.Drawing.Point(548, 238);
+            this.btnNumero.Location = new System.Drawing.Point(548, 309);
             this.btnNumero.Name = "btnNumero";
             this.btnNumero.Size = new System.Drawing.Size(90, 32);
             this.btnNumero.TabIndex = 139;
@@ -328,7 +336,7 @@
             this.ckbEnviarSMS.AutoSize = true;
             this.ckbEnviarSMS.Checked = true;
             this.ckbEnviarSMS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbEnviarSMS.Location = new System.Drawing.Point(15, 253);
+            this.ckbEnviarSMS.Location = new System.Drawing.Point(15, 317);
             this.ckbEnviarSMS.Name = "ckbEnviarSMS";
             this.ckbEnviarSMS.Size = new System.Drawing.Size(220, 17);
             this.ckbEnviarSMS.TabIndex = 140;
@@ -340,7 +348,7 @@
             this.ckbEnviarEmail.AutoSize = true;
             this.ckbEnviarEmail.Checked = true;
             this.ckbEnviarEmail.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbEnviarEmail.Location = new System.Drawing.Point(15, 215);
+            this.ckbEnviarEmail.Location = new System.Drawing.Point(15, 272);
             this.ckbEnviarEmail.Name = "ckbEnviarEmail";
             this.ckbEnviarEmail.Size = new System.Drawing.Size(284, 17);
             this.ckbEnviarEmail.TabIndex = 141;
@@ -376,27 +384,29 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(640, 446);
+            this.label4.Location = new System.Drawing.Point(640, 447);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 149;
             this.label4.Text = "Total:";
             // 
-            // label5
+            // lblTotalDos
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(680, 446);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 13);
-            this.label5.TabIndex = 151;
+            this.lblTotalDos.AutoSize = true;
+            this.lblTotalDos.Location = new System.Drawing.Point(680, 446);
+            this.lblTotalDos.Name = "lblTotalDos";
+            this.lblTotalDos.Size = new System.Drawing.Size(13, 13);
+            this.lblTotalDos.TabIndex = 151;
+            this.lblTotalDos.Text = "0";
             // 
-            // label16
+            // lblVisitas
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(694, 484);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(0, 13);
-            this.label16.TabIndex = 150;
+            this.lblVisitas.AutoSize = true;
+            this.lblVisitas.Location = new System.Drawing.Point(694, 484);
+            this.lblVisitas.Name = "lblVisitas";
+            this.lblVisitas.Size = new System.Drawing.Size(13, 13);
+            this.lblVisitas.TabIndex = 150;
+            this.lblVisitas.Text = "1";
             // 
             // txtFecha
             // 
@@ -407,15 +417,64 @@
             this.txtFecha.Size = new System.Drawing.Size(184, 32);
             this.txtFecha.TabIndex = 152;
             // 
+            // txtCalcularCambio
+            // 
+            this.txtCalcularCambio.Location = new System.Drawing.Point(143, 190);
+            this.txtCalcularCambio.Multiline = true;
+            this.txtCalcularCambio.Name = "txtCalcularCambio";
+            this.txtCalcularCambio.Size = new System.Drawing.Size(137, 32);
+            this.txtCalcularCambio.TabIndex = 154;
+            this.txtCalcularCambio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCalcularCambio_KeyPress);
+            // 
+            // lblCalcularCambio
+            // 
+            this.lblCalcularCambio.AutoSize = true;
+            this.lblCalcularCambio.Location = new System.Drawing.Point(12, 208);
+            this.lblCalcularCambio.Name = "lblCalcularCambio";
+            this.lblCalcularCambio.Size = new System.Drawing.Size(83, 13);
+            this.lblCalcularCambio.TabIndex = 153;
+            this.lblCalcularCambio.Text = "Calcular Cambio";
+            // 
+            // lblCAmbio
+            // 
+            this.lblCAmbio.AutoSize = true;
+            this.lblCAmbio.Location = new System.Drawing.Point(308, 208);
+            this.lblCAmbio.Name = "lblCAmbio";
+            this.lblCAmbio.Size = new System.Drawing.Size(42, 13);
+            this.lblCAmbio.TabIndex = 155;
+            this.lblCAmbio.Text = "Cambio";
+            // 
+            // lblresultado
+            // 
+            this.lblresultado.AutoSize = true;
+            this.lblresultado.Location = new System.Drawing.Point(391, 209);
+            this.lblresultado.Name = "lblresultado";
+            this.lblresultado.Size = new System.Drawing.Size(13, 13);
+            this.lblresultado.TabIndex = 156;
+            this.lblresultado.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(49, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(158, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Informacion de Dia Selecionado";
+            // 
             // EnvioOrden
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(963, 509);
+            this.Controls.Add(this.lblresultado);
+            this.Controls.Add(this.lblCAmbio);
+            this.Controls.Add(this.txtCalcularCambio);
+            this.Controls.Add(this.lblCalcularCambio);
             this.Controls.Add(this.txtFecha);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.lblTotalDos);
+            this.Controls.Add(this.lblVisitas);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEnviar);
@@ -440,6 +499,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EnvioOrden";
             this.Load += new System.EventHandler(this.EnvioOrden_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.EnvioOrden_Paint);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -483,8 +543,13 @@
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblTotalDos;
+        private System.Windows.Forms.Label lblVisitas;
         private System.Windows.Forms.TextBox txtFecha;
+        private System.Windows.Forms.TextBox txtCalcularCambio;
+        private System.Windows.Forms.Label lblCalcularCambio;
+        private System.Windows.Forms.Label lblCAmbio;
+        private System.Windows.Forms.Label lblresultado;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 using Domain;
 using System.Windows.Forms;
 using System.Drawing;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kosturas.ViewModels
 {
     public class OrdenDetalleViewModel : TemDetallesOrdenes
     {
+        [NotMapped]
         public Panel Panel { get; set; }
         public Label lblTarea;
         public Label lblDetalleTarea;
         public TextBox txtPrecio;
-
         public Button btnBorrarTarea { get; set; }
-
 
         public OrdenDetalleViewModel(string tarea, string detalle, double precio)
         {
@@ -58,8 +58,6 @@ namespace Kosturas.ViewModels
             #endregion
 
 
-
-
             #region btnBorrarTarea
             btnBorrarTarea = new Button();
             btnBorrarTarea.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
@@ -72,8 +70,6 @@ namespace Kosturas.ViewModels
             btnBorrarTarea.TabIndex = 142;
             btnBorrarTarea.UseVisualStyleBackColor = false;
             #endregion
-
-
 
         }
     }

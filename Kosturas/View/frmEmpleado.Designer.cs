@@ -122,6 +122,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmbSucursal = new System.Windows.Forms.ComboBox();
+            this.cmbRol = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -132,6 +136,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbRol);
+            this.groupBox1.Controls.Add(this.cmbSucursal);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btnAnterior);
             this.groupBox1.Controls.Add(this.btnSiguiente);
             this.groupBox1.Controls.Add(this.btnNuevoEmpledo);
@@ -215,7 +223,7 @@
             // ckbAbrirCajon
             // 
             this.ckbAbrirCajon.AutoSize = true;
-            this.ckbAbrirCajon.Location = new System.Drawing.Point(94, 508);
+            this.ckbAbrirCajon.Location = new System.Drawing.Point(94, 568);
             this.ckbAbrirCajon.Margin = new System.Windows.Forms.Padding(2);
             this.ckbAbrirCajon.Name = "ckbAbrirCajon";
             this.ckbAbrirCajon.Size = new System.Drawing.Size(15, 14);
@@ -226,7 +234,7 @@
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(113, 504);
+            this.label41.Location = new System.Drawing.Point(113, 564);
             this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(198, 18);
@@ -258,7 +266,7 @@
             // ckbEditPuntos
             // 
             this.ckbEditPuntos.AutoSize = true;
-            this.ckbEditPuntos.Location = new System.Drawing.Point(94, 558);
+            this.ckbEditPuntos.Location = new System.Drawing.Point(94, 618);
             this.ckbEditPuntos.Margin = new System.Windows.Forms.Padding(2);
             this.ckbEditPuntos.Name = "ckbEditPuntos";
             this.ckbEditPuntos.Size = new System.Drawing.Size(15, 14);
@@ -269,7 +277,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(114, 558);
+            this.label18.Location = new System.Drawing.Point(114, 618);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(205, 18);
@@ -279,7 +287,7 @@
             // ckbEditCredito
             // 
             this.ckbEditCredito.AutoSize = true;
-            this.ckbEditCredito.Location = new System.Drawing.Point(94, 530);
+            this.ckbEditCredito.Location = new System.Drawing.Point(94, 590);
             this.ckbEditCredito.Margin = new System.Windows.Forms.Padding(2);
             this.ckbEditCredito.Name = "ckbEditCredito";
             this.ckbEditCredito.Size = new System.Drawing.Size(15, 14);
@@ -290,7 +298,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(114, 530);
+            this.label17.Location = new System.Drawing.Point(114, 590);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(301, 18);
@@ -300,7 +308,7 @@
             // ckbapcedeTarjeta
             // 
             this.ckbapcedeTarjeta.AutoSize = true;
-            this.ckbapcedeTarjeta.Location = new System.Drawing.Point(94, 479);
+            this.ckbapcedeTarjeta.Location = new System.Drawing.Point(94, 539);
             this.ckbapcedeTarjeta.Margin = new System.Windows.Forms.Padding(2);
             this.ckbapcedeTarjeta.Name = "ckbapcedeTarjeta";
             this.ckbapcedeTarjeta.Size = new System.Drawing.Size(15, 14);
@@ -311,7 +319,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(114, 479);
+            this.label16.Location = new System.Drawing.Point(114, 539);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(316, 18);
@@ -321,7 +329,7 @@
             // ckbEditSegunda
             // 
             this.ckbEditSegunda.AutoSize = true;
-            this.ckbEditSegunda.Location = new System.Drawing.Point(94, 449);
+            this.ckbEditSegunda.Location = new System.Drawing.Point(94, 509);
             this.ckbEditSegunda.Margin = new System.Windows.Forms.Padding(2);
             this.ckbEditSegunda.Name = "ckbEditSegunda";
             this.ckbEditSegunda.Size = new System.Drawing.Size(15, 14);
@@ -332,7 +340,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(114, 449);
+            this.label15.Location = new System.Drawing.Point(114, 509);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(370, 18);
@@ -342,7 +350,7 @@
             // ckbEditPagina
             // 
             this.ckbEditPagina.AutoSize = true;
-            this.ckbEditPagina.Location = new System.Drawing.Point(94, 420);
+            this.ckbEditPagina.Location = new System.Drawing.Point(94, 480);
             this.ckbEditPagina.Margin = new System.Windows.Forms.Padding(2);
             this.ckbEditPagina.Name = "ckbEditPagina";
             this.ckbEditPagina.Size = new System.Drawing.Size(15, 14);
@@ -353,7 +361,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(114, 420);
+            this.label14.Location = new System.Drawing.Point(114, 480);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(330, 18);
@@ -363,7 +371,7 @@
             // ckbrecibeNotifi
             // 
             this.ckbrecibeNotifi.AutoSize = true;
-            this.ckbrecibeNotifi.Location = new System.Drawing.Point(94, 392);
+            this.ckbrecibeNotifi.Location = new System.Drawing.Point(94, 452);
             this.ckbrecibeNotifi.Margin = new System.Windows.Forms.Padding(2);
             this.ckbrecibeNotifi.Name = "ckbrecibeNotifi";
             this.ckbrecibeNotifi.Size = new System.Drawing.Size(15, 14);
@@ -374,7 +382,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(114, 392);
+            this.label13.Location = new System.Drawing.Point(114, 452);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(296, 18);
@@ -384,7 +392,7 @@
             // ckbRecibeinfo
             // 
             this.ckbRecibeinfo.AutoSize = true;
-            this.ckbRecibeinfo.Location = new System.Drawing.Point(94, 364);
+            this.ckbRecibeinfo.Location = new System.Drawing.Point(94, 424);
             this.ckbRecibeinfo.Margin = new System.Windows.Forms.Padding(2);
             this.ckbRecibeinfo.Name = "ckbRecibeinfo";
             this.ckbRecibeinfo.Size = new System.Drawing.Size(15, 14);
@@ -395,7 +403,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(114, 364);
+            this.label12.Location = new System.Drawing.Point(114, 424);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(251, 18);
@@ -1174,6 +1182,44 @@
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(99, 352);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 17);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "Sucursal";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(99, 390);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 17);
+            this.label11.TabIndex = 57;
+            this.label11.Text = "Rol";
+            // 
+            // cmbSucursal
+            // 
+            this.cmbSucursal.FormattingEnabled = true;
+            this.cmbSucursal.Location = new System.Drawing.Point(184, 348);
+            this.cmbSucursal.Name = "cmbSucursal";
+            this.cmbSucursal.Size = new System.Drawing.Size(289, 21);
+            this.cmbSucursal.TabIndex = 58;
+            // 
+            // cmbRol
+            // 
+            this.cmbRol.FormattingEnabled = true;
+            this.cmbRol.Location = new System.Drawing.Point(183, 386);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.Size = new System.Drawing.Size(289, 21);
+            this.cmbRol.TabIndex = 59;
+            // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1295,5 +1341,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox cmbRol;
+        private System.Windows.Forms.ComboBox cmbSucursal;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

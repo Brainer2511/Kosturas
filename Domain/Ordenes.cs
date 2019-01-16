@@ -26,14 +26,14 @@ namespace Domain
         public string HoraSalida { get; set; }
 
 
-        public string Localizacion { get; set; }
-        public string FechaSalida { get; set; }
+        public string Localizacion { get; set; } = "";
+        public string FechaSalida { get; set; } = "";
         public double TotalOrden { get; set; } = 0;
         public double CantidadPagada { get; set; } = 0;
         public double CantidadRestante { get; set; } = 0;
-        public string EmpleadoRealizo { get; set; }
+        public string EmpleadoRealizo { get; set; } = "";
         public int? ClienteId { get; set; }
-        public string MedioPago { get; set; }
+        public string MedioPago { get; set; } = "";
         public virtual ICollection<TemDetallesOrdenPrenda> Prendas { get; set; }
         public virtual Cliente Cliente { get; set; }
     }

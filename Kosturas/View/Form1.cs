@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kosturas.ViewModels;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+
 namespace Kosturas.View
 {
     public partial class Form1 : Form
@@ -20,11 +23,13 @@ namespace Kosturas.View
         public Tarea tarea = new Tarea();
         public DetalleTarea detalle = new DetalleTarea();
         public Servicios servicio = new Servicios();
+
         public System.Windows.Forms.Panel TableDos;
         public System.Windows.Forms.TextBox labelprecio;
         public System.Windows.Forms.Label labeldetalle;
         public System.Windows.Forms.Label labeltarea;
-        public Ordenes Orden;
+      
+        public int ordenId;
         bool istarea;
         public Label lblprecioTarea = new Label();
         public Label lblCantidad = new Label();
@@ -70,27 +75,37 @@ namespace Kosturas.View
         private void Form1_Load(object sender, EventArgs e)
         {
 
+          
+           
+
+
+        
+            var ultimo = db.Ordenes.ToList();
+           var otras=ultimo.Last().OrdenId;
             istarea = false;
             if (ClienteId == 0) {
-                Orden = new Ordenes
+                var Orden = new Ordenes
                 {
                     FeEnt = DateTime.Today,
-                    ClienteId = 1
-
+                 
+                    
                   };
             db.Ordenes.Add(Orden);
             db.SaveChanges();
+                ordenId = Orden.OrdenId;
 
         }else{
-            Orden = new Ordenes
-            {
-                FeEnt = DateTime.Today,
-                ClienteId = ClienteId
+             var   Orden = new Ordenes
+                {
+                    FeEnt = DateTime.Today,
+                    ClienteId = ClienteId
+                   
 
                  };
                  db.Ordenes.Add(Orden);
                   db.SaveChanges();
-                       }
+                ordenId = Orden.OrdenId;
+            }
             if (ClienteId > 0)
             {
                 cargar();
@@ -223,8 +238,8 @@ namespace Kosturas.View
             txtEmail.Text = cliente.Email;
             txtCalle.Text = cliente.Calle;
             txtCiudad.Text = cliente.Ciudad;
-            txtNotas.Text = cliente.Notas;
             txttelefonoprincipal.Text = cliente.TelefonoPrincipal;
+            txtNotas.Text = cliente.Notas;
             txttelefonodos.Text = cliente.TelefonoDos;
             txttelefonotres.Text = cliente.Telefonotres;
             txtCodigoPostal.Text = cliente.Codigopostal;
@@ -967,10 +982,54 @@ namespace Kosturas.View
 
 
         }
+        void SumatoriaPrecios()
+        {
+            var Orden = db.Ordenes.Find(ordenId);
+             Orden.TotalOrden = db.OrdenDetallePrendas.Where(m => m.OrdenId == Orden.OrdenId).SelectMany(w => w.DetalleTareas).Sum(q => q.Precio);
+            txtPrecioTotal.Text = Orden.TotalOrden.ToString();
+        }
+
+        void ActualizacionPrecios()
+        {
+            var Orden = db.Ordenes.Find(ordenId);
+            Orden.TotalOrden = double.Parse(txtPrecioTotal.Text);
+            db.Entry(Orden).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        void GuardarCambiosTarea()
+        {
+         
+            using (var Tem=new DataContextLocal())
+            {
+                var ordenDetalleTarea = new TemDetallesOrdenes();
+                var ultimaTarea = listatareas.Last();
+                ultimaTarea.Precio = double.Parse(ultimaTarea.txtPrecio.Text);
+                AutoMapper.Mapper.Map(listatareas.Last(), ordenDetalleTarea);
+
+                try
+                {
+                    //ordenDetalleTarea.Detalle = null;
+                    //ordenDetalleTarea.Prenda = null;
+                    Tem.Entry(ordenDetalleTarea).State = EntityState.Modified;
+                    Tem.SaveChanges();
+                }
+                catch(Exception ex) 
+                {
+                    
+                }
+
+               
+                SumatoriaPrecios();
+               
+            }
+
+
+        }
 
         void ClickAtrasPrendasInicio(object sender, EventArgs e)
         {
-            this.ClickPrendaatras = 0;
+            GuardarCambiosTarea();
+            
             DAtoY = DAtoY + 95;
             DAtoYdos = DAtoYdos + 95;
 
@@ -1571,20 +1630,78 @@ namespace Kosturas.View
         public void cliclBorrarPrecio(object sender, EventArgs e)
         {
             BorrarPrecio();
-            var precio = new Label();
-            precio.Text = detalle.Precio.ToString();
-            this.txtPrecioTotal.Text = "0";
+            GuardarCambiosTarea();
+            //var precio = new Label();
+            //precio.Text = detalle.Precio.ToString();
+            //this.txtPrecioTotal.Text = "0";
             
 
         }
         private void btnEnviar_Click(object sender, EventArgs e)
-        {
-           
-            EnvioOrden envio = new EnvioOrden(ClienteId);
-            this.Hide();
-            envio.ShowDialog();
-            this.Show();
 
+        {
+            ActualizacionPrecios();
+            this.Close();
+            if (ClienteId==0) { 
+            if (string.IsNullOrEmpty(txttelefonoprincipal.Text) || txttelefonoprincipal.Text == "Teléfono Cliente ")
+            {
+                MessageBox.Show("El telefono Es un dato Obligatorio");
+                txttelefonoprincipal.Text = "";
+            }else
+            if (string.IsNullOrEmpty(txtNombre.Text) || txtNombre.Text=="Nombre Cliente")
+            {
+                MessageBox.Show("El Nombre Es un dato Obligatorio");
+                txtNombre.Text = "";
+            }
+            else { 
+            Cliente cliente = new Cliente();
+            cliente.Nombre = txtNombre.Text;
+            cliente.Email = txtEmail.Text;
+            cliente.TelefonoPrincipal = txttelefonoprincipal.Text;
+            db.Clientes.Add(cliente);
+            db.SaveChanges();
+                var query = db.Clientes.ToList();
+                var ultimoIdCliente = query.LastOrDefault().ClienteId;
+
+                    var querydos = db.Ordenes.ToList();
+                    var ultimaIdOrden = querydos.LastOrDefault().OrdenId;
+
+                    Ordenes orden = db.Ordenes.Find(ultimaIdOrden);
+
+                    orden.ClienteId = ultimoIdCliente;
+                    
+
+                    db.Entry(orden).State = EntityState.Modified;
+                    db.SaveChanges();
+
+
+
+                    EnvioOrden envio = new EnvioOrden(ultimoIdCliente,ultimaIdOrden);
+                this.Hide();
+                envio.ShowDialog();
+                this.Show();
+            }
+
+
+            }
+            else
+            {
+                var querydos = db.Ordenes.ToList();
+                var ultimaIdOrden = querydos.LastOrDefault().OrdenId;
+
+
+
+
+
+
+
+                //GuardarCambiosTarea();
+
+                EnvioOrden envio = new EnvioOrden(ClienteId, ultimaIdOrden);
+                //this.Hide();
+                envio.ShowDialog();
+                this.Show();
+            }
 
         }
 
@@ -2086,13 +2203,24 @@ namespace Kosturas.View
         {
             var ultimatarea = listatareas.Last();
             ultimatarea.txtPrecio.Text = "0";
-            lblprecioTarea.Text = ultimatarea.txtPrecio.Text;
+            ultimatarea.Precio = 0;
+
+            GuardarCambiosTarea();
         }
         private void EditarPrecio(string numero)
         {
            var ultimatarea= listatareas.Last();
             ultimatarea.txtPrecio.Text += numero;
+            if (!string.IsNullOrEmpty(ultimatarea.txtPrecio.Text))
+            {
+                ultimatarea.Precio = double.Parse(ultimatarea.txtPrecio.Text); 
+            }
+            else
+            {
+                ultimatarea.Precio = 0;
+            }
             lblprecioTarea.Text = ultimatarea.txtPrecio.Text;
+            GuardarCambiosTarea();
         }
    
         private void btn1_Click(object sender, EventArgs e)
@@ -2229,7 +2357,7 @@ namespace Kosturas.View
             //   Multiplicacion multiplicacion = (Multiplicacion)Application.OpenForms["Multiplicacion"];
 
             multiplicacion.ShowDialog();
-            //       multiplicacion.txtCantidadDos.Text = txtPrecioTotal.Text;
+                   multiplicacion.txtCantidadDos.Text = txtPrecioTotal.Text;
 
 
         }
@@ -2242,21 +2370,25 @@ namespace Kosturas.View
         }
         private void btnretroceso_Click(object sender, EventArgs e)
         {
+            var ultimaTarea = listatareas.Last();
 
-            x = txtPrecioTotal.Text.Length;
+           int x =ultimaTarea.txtPrecio.Text.Length;
 
-            if (txtPrecioTotal.Text.Substring(0, 0) != "0")
+            if (x>0)
             {
-                //en caso de que sea, lo quitamos
-                txtPrecioTotal.Text = txtPrecioTotal.Text.Substring(0, txtPrecioTotal.Text.Length - 1);
+                if (ultimaTarea.txtPrecio.Text != "0")
+                {                 
+                   ultimaTarea.txtPrecio.Text = ultimaTarea.txtPrecio.Text.Substring(0,x-1);
+                }
+
+
+                if (x.ToString() == "1")
+                {
+                   ultimaTarea.txtPrecio.Text = "0";
+
+                } 
             }
-
-
-            if (x.ToString() == "1")
-            {
-                txtPrecioTotal.Text = "0";
-
-            }
+            GuardarCambiosTarea();
         }
 
 
@@ -2291,59 +2423,106 @@ namespace Kosturas.View
             frmCantidad empleado = new frmCantidad();
 
             this.Opacity = 0.85;
-            //   label5.Text=empleado.txtCantidad.Text;
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Text);
+            var prendaView = listaprendas.Where(m => m.DetalleOrdenPrendaId == id).FirstOrDefault();
+          
             empleado.ShowDialog();
-            // this.Close();
+            prendaView.Cantidad = int.Parse(empleado.txtCantidad.Text);
+            var prenda = db.Prendas.Find(prendaView.PrendaId);
+            prendaView.lblPrenda.Text = prenda.TipoRopa + "X" + prendaView.Cantidad;
+            
+            
 
         }
 
        
         void Clickcincomas(object sender, EventArgs e)
         {
+
+          
+
             Button btn = sender as Button;
             var id = int.Parse(btn.Text);
             var prendaView = listaprendas.Where(m => m.DetalleOrdenPrendaId == id).FirstOrDefault();
             prendaView.Cantidad += 5;
             var prenda = db.Prendas.Find(prendaView.PrendaId);
             prendaView.lblPrenda.Text = prenda.TipoRopa + "X" + prendaView.Cantidad;
-           
-            
+
+            var Orden = db.Ordenes.Find(ordenId);
+            Orden.TotalOrden = db.OrdenDetallePrendas.Where(m => m.OrdenId == Orden.OrdenId).SelectMany(w => w.DetalleTareas).Sum(q => q.Precio);
+            var Total = double.Parse(Orden.TotalOrden.ToString());
+            var DatoPrenda = prendaView.Cantidad;
+            var Resultado = Total * DatoPrenda;
+            txtPrecioTotal.Text = Resultado.ToString();
 
         }
         void Clickcincomenos(object sender, EventArgs e)
         {
 
-            //  var a = int.Parse(label5.Text);
-            //   if (a <= 5)
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Text);
+            var prendaView = listaprendas.Where(m => m.DetalleOrdenPrendaId == id).FirstOrDefault();
+           
+          
+          
+               if (prendaView.Cantidad <= 5)
             {
-                //    label5.Text = "1";
+                prendaView.Cantidad = 1;
 
             }
-            //    if (a > 5)
+               if (prendaView.Cantidad > 5)
             {
-                //   var b = a - 5;
-                //  label5.Text = b.ToString();
+                prendaView.Cantidad -= 5;
             }
+            var prenda = db.Prendas.Find(prendaView.PrendaId);
+            prendaView.lblPrenda.Text = prenda.TipoRopa + "X" + prendaView.Cantidad;
+
+            var Orden = db.Ordenes.Find(ordenId);
+            Orden.TotalOrden = db.OrdenDetallePrendas.Where(m => m.OrdenId == Orden.OrdenId).SelectMany(w => w.DetalleTareas).Sum(q => q.Precio);
+            var Total = double.Parse(Orden.TotalOrden.ToString());
+            var DatoPrenda = prendaView.Cantidad;
+            var Resultado = Total * DatoPrenda;
+            txtPrecioTotal.Text = Resultado.ToString();
 
         }
         void Clickunomas(object sender, EventArgs e)
         {
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Text);
+            var prendaView = listaprendas.Where(m => m.DetalleOrdenPrendaId == id).FirstOrDefault();
+            prendaView.Cantidad += 1;
+            var prenda = db.Prendas.Find(prendaView.PrendaId);
+            prendaView.lblPrenda.Text = prenda.TipoRopa + "X" + prendaView.Cantidad;
 
-            //var a = int.Parse(label5.Text);
-            //var b = a + 1;
-            //label5.Text = b.ToString();
-
+            var Orden = db.Ordenes.Find(ordenId);
+            Orden.TotalOrden = db.OrdenDetallePrendas.Where(m => m.OrdenId == Orden.OrdenId).SelectMany(w => w.DetalleTareas).Sum(q => q.Precio);
+            var Total = double.Parse(Orden.TotalOrden.ToString());
+            var DatoPrenda = prendaView.Cantidad;
+            var Resultado = Total * DatoPrenda;
+            txtPrecioTotal.Text = Resultado.ToString();
         }
         void Clickunomenos(object sender, EventArgs e)
         {
-
-            //    var a = int.Parse(label5.Text);
-            //   if (a > 1)
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Text);
+            var prendaView = listaprendas.Where(m => m.DetalleOrdenPrendaId == id).FirstOrDefault();
+          
+         
+         
+              if (prendaView.Cantidad > 1)
             {
-                //        var b = a - 1;
-                //   label5.Text = b.ToString();
+                prendaView.Cantidad -= 1;
             }
+            var prenda = db.Prendas.Find(prendaView.PrendaId);
+            prendaView.lblPrenda.Text = prenda.TipoRopa + "X" + prendaView.Cantidad;
 
+            var Orden = db.Ordenes.Find(ordenId);
+            Orden.TotalOrden = db.OrdenDetallePrendas.Where(m => m.OrdenId == Orden.OrdenId).SelectMany(w => w.DetalleTareas).Sum(q => q.Precio);
+            var Total = double.Parse(Orden.TotalOrden.ToString());
+            var DatoPrenda = prendaView.Cantidad;
+            var Resultado = Total * DatoPrenda;
+            txtPrecioTotal.Text = Resultado.ToString();
         }
         void ClickBorrartax(object sender, EventArgs e)
         {
@@ -2446,27 +2625,24 @@ namespace Kosturas.View
 
         void ClickAddtax(object sender, EventArgs e)
         {
-         
+            GuardarCambiosTarea();
             var btn = (Button)sender;
             var id = int.Parse(btn.Text);
             var detalleprenda =db.OrdenDetallePrendas.Find(id);
 
-            var detalletareatenporal = new TemDetallesOrdenes { DetalleOrdenPrendaId = detalleprenda.DetalleOrdenPrendaId, DetalleTareaId = detalleprenda.Prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareaId };
-            db.OrdenDetalleTareas.Add(detalletareatenporal);
-            db.SaveChanges();
             var tarea = detalleprenda.Prenda.Tareas.FirstOrDefault();
             var tareaView = new OrdenDetalleViewModel(tarea.NombreTareas, tarea.DetalleTareas.FirstOrDefault().DetalleTareas, tarea.DetalleTareas.FirstOrDefault().Precio);
             tareaView.DetalleOrdenPrendaId = detalleprenda.DetalleOrdenPrendaId;
             tareaView.Panel.MouseLeave += new EventHandler(Mouseleavetabla);
             tareaView.Panel.MouseEnter += new EventHandler(Mouseovertabla);
             tareaView.DetalleTareaId = tarea.DetalleTareas.FirstOrDefault().DetalleTareaId;
-            tareaView.btnBorrarTarea.Name = detalletareatenporal.DetalleOrdenesId.ToString();
+            tareaView.btnBorrarTarea.Name = "0";
             tareaView.btnBorrarTarea.Click += new EventHandler(ClickBorrartax);
             tareaView.Panel.Controls.Add(tareaView.lblTarea);
             tareaView.Panel.Controls.Add(tareaView.lblDetalleTarea);
             tareaView.Panel.Controls.Add(tareaView.txtPrecio);
             tareaView.Panel.Controls.Add(tareaView.btnBorrarTarea);
-            tareaView.DetalleOrdenesId = detalletareatenporal.DetalleOrdenesId;
+            tareaView.DetalleOrdenesId =0;
             var ultimatarea = listatareas.Where(t => t.DetalleOrdenPrendaId == tareaView.DetalleOrdenPrendaId).Last();
             listatareas.Add(tareaView);
 
@@ -2494,13 +2670,9 @@ namespace Kosturas.View
 
             istarea = true;
             this.servicios(detalleprenda.PrendaId);
-
-            
-
         }
         private void dvgOrdenes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // MessageBox.Show(e.ColumnIndex.ToString());
 
             if (e.ColumnIndex == 26)
             {
@@ -2614,7 +2786,7 @@ namespace Kosturas.View
 
         private void txttelefonoprincipal_Enter(object sender, EventArgs e)
         {
-            this.txttelefonoprincipal.Text = "";
+            //this.txtNotas.Text = "";
         }
 
         private void txttelefonoprincipal_Leave(object sender, EventArgs e)
@@ -2624,7 +2796,7 @@ namespace Kosturas.View
 
         private void txttelefonodos_Enter(object sender, EventArgs e)
         {
-            this.txttelefonodos.Text = "";
+            //this.txttelefonodos.Text = "";
         }
 
         private void txttelefonodos_Leave(object sender, EventArgs e)
@@ -2634,7 +2806,7 @@ namespace Kosturas.View
 
         private void txttelefonotres_Enter(object sender, EventArgs e)
         {
-            this.txttelefonotres.Text = "";
+          //  this.txttelefonotres.Text = "";
         }
 
         private void txttelefonotres_Leave(object sender, EventArgs e)
@@ -2644,7 +2816,7 @@ namespace Kosturas.View
 
         private void txtNombre_Enter(object sender, EventArgs e)
         {
-            this.txtNombre.Text = "";
+           // this.txtNombre.Text = "";
         }
 
         private void txtNombre_Leave(object sender, EventArgs e)
@@ -2654,7 +2826,7 @@ namespace Kosturas.View
 
         private void txtCalle_Enter(object sender, EventArgs e)
         {
-            this.txtCalle.Text = "";
+          //  this.txtCalle.Text = "";
         }
 
         private void txtCalle_Leave(object sender, EventArgs e)
@@ -2664,7 +2836,7 @@ namespace Kosturas.View
 
         private void txtEmail_Enter(object sender, EventArgs e)
         {
-            this.txtEmail.Text = "";
+           // this.txtEmail.Text = "";
         }
 
         private void txtEmail_Leave(object sender, EventArgs e)
@@ -2674,7 +2846,7 @@ namespace Kosturas.View
 
         private void txtCiudad_Enter(object sender, EventArgs e)
         {
-            this.txtCiudad.Text = "";
+           // this.txtCiudad.Text = "";
         }
 
         private void txtCiudad_Leave(object sender, EventArgs e)
@@ -2684,7 +2856,7 @@ namespace Kosturas.View
 
         private void txtNotas_Enter(object sender, EventArgs e)
         {
-            this.txtNotas.Text = "";
+           // this.txttelefonoprincipal.Text = "";
         }
 
         private void txtNotas_Leave(object sender, EventArgs e)
@@ -2694,7 +2866,7 @@ namespace Kosturas.View
 
         private void txtCodigoPostal_Enter(object sender, EventArgs e)
         {
-            this.txtCodigoPostal.Text = "";
+        //   this.txtCodigoPostal.Text = "";
         }
 
         private void txtCodigoPostal_Leave(object sender, EventArgs e)
@@ -2725,99 +2897,83 @@ namespace Kosturas.View
             else {
                 CargarPanelTarea(aidControl, Tarea, detalle, precio);
             }
-          
 
+            GuardarCambiosTarea();
             this.mostrarcontrolesDos(precio.ToString());
         }
 
         void ClickDuplicar(object sender, EventArgs e)
         {
-            ClickDuplicarPrenda = ClickDuplicarPrenda + 1;
-            var totalbotones = Prueba.Controls.Count;
-            var lit = Prueba.Controls.OfType<Button>();
-            for (int i = 0; i < totalbotones; i++)
-            {
-                Prueba.Controls.Remove(Prueba.Controls[0]);
-            }
+            BorrarControles();
 
-
+            GuardarCambiosTarea();
             Button btr = sender as Button;
 
-            var iddos = int.Parse(btr.Name);
+            var ordenDetallePrendaId = int.Parse(btr.Text);
 
-      //      var p=this.TableDos.Controls.OfType<Label>().Select(lbl => lbl.Text);
+            var ordenDetallePrenda = db.OrdenDetallePrendas.Find(ordenDetallePrendaId);
+
+            var Orden = db.Ordenes.Find(ordenId);
+            var ordenPrenda = new TemDetallesOrdenPrenda { OrdenId = Orden.OrdenId, Cantidad = ordenDetallePrenda.Cantidad, PrendaId = ordenDetallePrenda.PrendaId };
+            db.OrdenDetallePrendas.Add(ordenPrenda);
+            db.SaveChanges();
 
 
-            var j = tbpDatos.Controls.OfType<Panel>().Where(m=>m.Name== iddos.ToString()).Select(x => x.Name).ToList();
-            foreach (var item in j)
-            {
-                var f = item;
-                //var q = TableDos.GetType();
-                //var h =TableDos.Controls.OfType<TextBox>().Where(l=>l.Name==f).Select(x => x.Text).ToList();
+            var prendaView = new OrdenPrendaViewModel(ordenDetallePrenda.Prenda.TipoRopa + " X" + ordenPrenda.Cantidad);
+            prendaView.DetalleOrdenPrendaId = ordenPrenda.DetalleOrdenPrendaId;
+            prendaView.PrendaId = ordenPrenda.PrendaId;
+            prendaView.Cantidad = ordenPrenda.Cantidad;
+
+            prendaView.Panel.Controls.Add(prendaView.lblPrenda);
+            prendaView.Panel.Controls.Add(prendaView.btnPrioridad);
+
+
+            prendaView.Panel.Controls.Add(prendaView.btnDuplicar);
+            prendaView.Panel.Controls.Add(prendaView.btnCantidad);
+            prendaView.Panel.Controls.Add(prendaView.btnmascinco);
+            prendaView.btnmascinco.Click += new EventHandler(Clickcincomas);
+            prendaView.btnDuplicar.Click += new EventHandler(ClickDuplicar);
+            prendaView.btnDuplicar.Text = prendaView.DetalleOrdenPrendaId.ToString();
+            prendaView.btnmascinco.Text = prendaView.DetalleOrdenPrendaId.ToString();
+            prendaView.Panel.Controls.Add(prendaView.btnmasuno);
+            prendaView.Panel.Controls.Add(prendaView.btnmenosuno);
+            prendaView.Panel.Controls.Add(prendaView.btnmenoscinco);
+            prendaView.Panel.Controls.Add(prendaView.btnagregartarea);
+            prendaView.btnagregartarea.Click += new EventHandler(ClickAddtax);
+            prendaView.btnagregartarea.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            listaprendas.Add(prendaView);
+
+            rowCount += 1;
+            tbpDatos.RowCount = rowCount;      
+            this.tbpDatos.Controls.Add(prendaView.Panel, 0, rowCount);
+
+            foreach (var tarea in ordenDetallePrenda.DetalleTareas)
+                {
+                var detalletareatenporal = new TemDetallesOrdenes { DetalleOrdenPrendaId = ordenPrenda.DetalleOrdenPrendaId, DetalleTareaId = tarea.DetalleTareaId, Precio= tarea.Precio };
+                db.OrdenDetalleTareas.Add(detalletareatenporal);
+                db.SaveChanges();
+                var tareaView = new OrdenDetalleViewModel(tarea.Detalle.Tarea.NombreTareas,tarea.Detalle.DetalleTareas, tarea.Precio);
+                AutoMapper.Mapper.Map(detalletareatenporal,tareaView);
+                tareaView.DetalleOrdenPrendaId = prendaView.DetalleOrdenPrendaId;
+                tareaView.Panel.MouseLeave += new EventHandler(Mouseleavetabla);
+                tareaView.Panel.MouseEnter += new EventHandler(Mouseovertabla);
+                tareaView.DetalleTareaId = tarea.DetalleTareaId;
+                tareaView.btnBorrarTarea.Name = detalletareatenporal.DetalleOrdenesId.ToString();
+                tareaView.btnBorrarTarea.Click += new EventHandler(ClickBorrartax);
+                tareaView.Panel.Controls.Add(tareaView.lblTarea);
+                tareaView.Panel.Controls.Add(tareaView.lblDetalleTarea);
+                tareaView.Panel.Controls.Add(tareaView.txtPrecio);
+                tareaView.Panel.Controls.Add(tareaView.btnBorrarTarea);
+                tareaView.DetalleOrdenesId = detalletareatenporal.DetalleOrdenesId;
+
+                rowCount += 1;
+                tbpDatos.RowCount = rowCount;
+                listatareas.Add(tareaView);
+                this.tbpDatos.Controls.Add(tareaView.Panel, 0, rowCount);
             }
 
-                var total = tbpDatos.Controls.Count;
-            if (total == 3)
-            {
-                this.Datox = 0;
-                this.DAtoY = 0;
-                this.DAtoYdos = 50;
-            }
-            if (total == 5)
-            {
-                this.Datox = 0;
-                this.DAtoY = 95;
-                this.DAtoYdos = 145;
-            }
-            if (total == 7)
-            {
-                this.Datox = 0;
-                this.DAtoY = 190;
-                this.DAtoYdos = 240;
-            }
-            if (total == 9)
-            {
-                this.Datox = 0;
-                this.DAtoY = 218;
-                this.DAtoYdos = 268;
-            }
-            if (total == 11)
-            {
-                this.Datox = 0;
-                this.DAtoY = 218;
-                this.DAtoYdos = 268;
-            }
-
-            if (m == 1)
-            {
-
-                // var d = Datox;
-                DAtoY = DAtoY + 95 + 45;
-                // var f = DAtoY;
-                DAtoYdos = DAtoYdos + 95;
-                //  var o = DAtoYdos;
-            }
-            if (m == 2)
-            {
-
-                // var d = Datox;
-                DAtoY = DAtoY + 90;
-                // var f = DAtoY;
-                DAtoYdos = DAtoYdos + 90;
-                //  var o = DAtoYdos;
-            }
-            if (m == 0)
-            {
-
-                // var d = Datox;
-                DAtoY = DAtoY + 95;
-                //  var f = DAtoY;
-                DAtoYdos = DAtoYdos + 95;
-                //   var o = DAtoYdos;
-            }
-
-         //   this.ClickCargarPAnel(prenda.PrendaId, nombreTAreas, Detalletareas, Detalletareas);
-          //  mostrarcontrolesDos(precios);
+            mostrarcontrolesDos(listatareas.Last().Precio.ToString());
 
 
         }
@@ -3245,15 +3401,16 @@ namespace Kosturas.View
 
             var btnEnviar = new Button();
             btnEnviar.BackColor = System.Drawing.Color.GreenYellow;
-            btnEnviar.Location = new System.Drawing.Point(1143, 821);// 1143; 821
+            btnEnviar.Location = new System.Drawing.Point(1130, 14);// 1134; 14
             btnEnviar.Name = "btnEnviardos";
-            btnEnviar.Size = new System.Drawing.Size(200, 44);
+            btnEnviar.Size = new System.Drawing.Size(180, 44);
             btnEnviar.TabIndex = 74;
             btnEnviar.Text = "Enviar";
             btnEnviar.UseVisualStyleBackColor = false;
             btnEnviar.Click += new System.EventHandler(btnEnviar_Click);
-            this.Controls.Add(btnEnviar);
-            this.txtPrecioTotal.Text = pre;
+            this.groupBox1.Controls.Add(btnEnviar);
+            
+       
 
         }
 
@@ -3265,39 +3422,60 @@ namespace Kosturas.View
             prenda = db.Prendas.Find(id);
 
             var detalletarea = db.DetalleTareas.Find(detalle);
-
-        var ordenPrenda = new TemDetallesOrdenPrenda { OrdenId = Orden.OrdenId, Cantidad = 1, PrendaId = prenda.PrendaId };
+            var Orden = db.Ordenes.Find(ordenId);
+            var ordenPrenda = new TemDetallesOrdenPrenda { OrdenId = Orden.OrdenId, Cantidad =1, PrendaId = prenda.PrendaId };
         db.OrdenDetallePrendas.Add(ordenPrenda);
             db.SaveChanges();
-            
+          
             var prendaView = new OrdenPrendaViewModel(prenda.TipoRopa + " X"+cantidad);
         prendaView.DetalleOrdenPrendaId = ordenPrenda.DetalleOrdenPrendaId;
             prendaView.PrendaId = prenda.PrendaId;
             prendaView.Cantidad = 1;
           
-            prendaView.Panel.Controls.Add(prendaView.lblPrenda);
-            prendaView.Panel.Controls.Add(prendaView.btnPrioridad);
+       
+
+            prendaView.btnagregartarea.Click += new EventHandler(ClickAddtax);
+            prendaView.btnagregartarea.Text = prendaView.DetalleOrdenPrendaId.ToString();
 
            
-            prendaView.Panel.Controls.Add(prendaView.btnDuplicar);
-            prendaView.Panel.Controls.Add(prendaView.btnCantidad);
-            prendaView.Panel.Controls.Add(prendaView.btnmascinco);
+            prendaView.btnDuplicar.Click += new EventHandler(ClickDuplicar);
+            prendaView.btnDuplicar.Text = prendaView.DetalleOrdenPrendaId.ToString();
+          
             prendaView.btnmascinco.Click += new EventHandler(Clickcincomas);
             prendaView.btnmascinco.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            prendaView.btnmasuno.Click += new EventHandler(Clickunomas);
+            prendaView.btnmasuno.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            prendaView.btnmenosuno.Click += new EventHandler(Clickunomenos);
+            prendaView.btnmenosuno.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+
+            prendaView.btnmenoscinco.Click += new EventHandler(Clickcincomenos);
+            prendaView.btnmenoscinco.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            prendaView.btnCantidad.Click += new EventHandler(ClickCantidad);
+            prendaView.btnCantidad.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            prendaView.Panel.Controls.Add(prendaView.btnCantidad);
+            prendaView.Panel.Controls.Add(prendaView.btnmascinco);
+            prendaView.Panel.Controls.Add(prendaView.btnDuplicar);
             prendaView.Panel.Controls.Add(prendaView.btnmasuno);
             prendaView.Panel.Controls.Add(prendaView.btnmenosuno);
             prendaView.Panel.Controls.Add(prendaView.btnmenoscinco);
             prendaView.Panel.Controls.Add(prendaView.btnagregartarea);
-            prendaView.btnagregartarea.Click += new EventHandler(ClickAddtax);
-            prendaView.btnagregartarea.Text = prendaView.DetalleOrdenPrendaId.ToString();
+            prendaView.Panel.Controls.Add(prendaView.lblPrenda);
+            prendaView.Panel.Controls.Add(prendaView.btnPrioridad);
+
             listaprendas.Add(prendaView);
             rowCount += 1;
             tbpDatos.RowCount = rowCount;
             this.tbpDatos.Controls.Add(listaprendas.Last().Panel,0, rowCount);
-            var detalletareatenporal = new TemDetallesOrdenes { DetalleOrdenPrendaId = ordenPrenda.DetalleOrdenPrendaId, DetalleTareaId = detalletarea.DetalleTareaId };
+            var detalletareatenporal = new TemDetallesOrdenes { DetalleOrdenPrendaId = ordenPrenda.DetalleOrdenPrendaId, DetalleTareaId = detalletarea.DetalleTareaId,Precio=detalletarea.Precio };
         db.OrdenDetalleTareas.Add(detalletareatenporal);
             db.SaveChanges();
             var tareaView = new OrdenDetalleViewModel(tarea.NombreTareas, detalletarea.DetalleTareas, detalletarea.Precio);
+            AutoMapper.Mapper.Map(detalletareatenporal,tareaView);
         tareaView.DetalleOrdenPrendaId = prendaView.DetalleOrdenPrendaId;
             tareaView.Panel.MouseLeave += new EventHandler(Mouseleavetabla);
         tareaView.Panel.MouseEnter += new EventHandler(Mouseovertabla);
@@ -3317,35 +3495,30 @@ namespace Kosturas.View
 
         public void CargarPanelTarea(int aidControl, string Tarea, int detalle, double precio)
         {
-            rowCount += 1;
-            tbpDatos.RowCount = rowCount;
+            
+          
             var id = aidControl;
             prenda = db.Prendas.Find(id);
         
+            var detalletarea = db.DetalleTareas.Find(detalle);
 
             var lastTarea = listatareas.Last();
+            lastTarea.DetalleTareaId = detalle;
+            lastTarea.txtPrecio.Text = precio.ToString();
+            lastTarea.Precio = precio;
 
-            var detalletarea = db.DetalleTareas.Find(detalle);
-            var detalletareatenporal = new TemDetallesOrdenes { DetalleOrdenPrendaId = lastTarea.DetalleOrdenPrendaId, DetalleTareaId = lastTarea.DetalleTareaId };
-            db.OrdenDetalleTareas.Add(detalletareatenporal);
+            var ordenDetalleTarea = new TemDetallesOrdenes();
+            AutoMapper.Mapper.Map(lastTarea, ordenDetalleTarea);
+            db.OrdenDetalleTareas.Add(ordenDetalleTarea);
             db.SaveChanges();
-
+            
             var tareaView = lastTarea;
             tareaView.lblTarea.Text = Tarea;
+            tareaView.DetalleOrdenesId = ordenDetalleTarea.DetalleOrdenesId;
             tareaView.lblDetalleTarea.Text = detalletarea.DetalleTareas;
-            tareaView.txtPrecio.Text= detalletarea.Precio.ToString();
-            tareaView.DetalleOrdenPrendaId = lastTarea.DetalleOrdenPrendaId;
-            tareaView.Panel.MouseLeave += new EventHandler(Mouseleavetabla);
-            tareaView.Panel.MouseEnter += new EventHandler(Mouseovertabla);
-            tareaView.DetalleTareaId = detalletarea.DetalleTareaId;
-            tareaView.btnBorrarTarea.Name = detalletareatenporal.DetalleOrdenesId.ToString();
-            tareaView.btnBorrarTarea.Click += new EventHandler(ClickBorrartax);
-            tareaView.Panel.Controls.Add(tareaView.lblTarea);
-            tareaView.Panel.Controls.Add(tareaView.lblDetalleTarea);
-            tareaView.Panel.Controls.Add(tareaView.txtPrecio);
-           tareaView.Panel.Controls.Add(tareaView.btnBorrarTarea);
-            tareaView.DetalleOrdenesId = detalletareatenporal.DetalleOrdenesId;
-      
+            tareaView.txtPrecio.Text= detalletarea.Precio.ToString();            
+            tareaView.btnBorrarTarea.Name = lastTarea.DetalleOrdenesId.ToString();
+            tareaView.btnBorrarTarea.Click += new EventHandler(ClickBorrartax);            
         }
     }
     

@@ -18,6 +18,8 @@ namespace Domain
         public bool Activo { get; set; }
         public string Usuario { get; set; }
         public string Clave { get; set; }
+        public string SucursalId { get; set; }
+        public string Rol { get; set; }
         public bool RecibirInforme { get; set; } = true;
         public bool ResivirNotifica { get; set; } = true;
         public bool EditPagina { get; set; } = true;
@@ -48,5 +50,8 @@ namespace Domain
         public int HorasViernes { get { return hastaviernes.Value.Hours - desdeviernes.Value.Hours; } }
         public int HorasSabado { get { return hastasabado.Value.Hours - desdesabado.Value.Hours; } }
         public int HorasDomingo { get { return hastadomingo.Value.Hours - desdedomingo.Value.Hours; } }
+
+
+        public virtual ICollection<Sucursal> Sucursals { get; set; }
     }
 }

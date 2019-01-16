@@ -34,6 +34,19 @@ namespace Kosturas.View
             }
         public void cargar()
         {
+
+
+            cmbRol.Items.Add("Administrador");
+            cmbRol.Items.Add("Cajero");
+            cmbRol.Items.Add("Empleado");
+
+
+            cmbSucursal.DataSource = db.Sucursales.ToList();
+            cmbSucursal.DisplayMember = "NombreSucursal";
+            cmbSucursal.ValueMember = "SucursalId";
+
+
+
             using (var en = new DataContext())
             {
 
@@ -48,6 +61,34 @@ namespace Kosturas.View
                 this.txtEmal.Text = primerempleado.Email;
                 this.ckbActivo.Checked = primerempleado.Activo;
                 this.txtUsuario.Text = primerempleado.Usuario;
+                if (primerempleado.SucursalId.ToString() == "1")
+                {
+                    this.cmbSucursal.SelectedIndex = 0;
+                }
+
+                if (primerempleado.SucursalId.ToString() == "2")
+                {
+                    this.cmbSucursal.SelectedIndex = 1;
+                }
+                if (primerempleado.SucursalId.ToString() == "3")
+                {
+                    this.cmbSucursal.SelectedIndex = 2;
+                }
+
+
+                if (primerempleado.Rol.ToString() == "A")
+                {
+                    this.cmbRol.SelectedIndex = 0;
+                }
+
+                if (primerempleado.Rol.ToString() == "C")
+                {
+                    this.cmbRol.SelectedIndex = 1;
+                }
+                if (primerempleado.Rol.ToString() == "E")
+                {
+                    this.cmbRol.SelectedIndex = 2;
+                }
                 this.ckbrecibeNotifi.Checked = primerempleado.ResivirNotifica;
                 this.ckbRecibeinfo.Checked = primerempleado.RecibirInforme;
                 this.ckbEditPagina.Checked = primerempleado.EditPagina;
@@ -91,6 +132,19 @@ namespace Kosturas.View
             empleado.Activo = ckbActivo.Checked;
             empleado.Usuario = txtUsuario.Text;
             empleado.Clave = txtClave.Text;
+            empleado.SucursalId = cmbSucursal.SelectedValue.ToString();
+            if (cmbRol.SelectedIndex == 0)
+            {
+                empleado.Rol = "A";
+            }
+            if (cmbRol.SelectedIndex == 1)
+            {
+                empleado.Rol = "C";
+            }
+            if (cmbRol.SelectedIndex == 2)
+            {
+                empleado.Rol = "E";
+            }
             empleado.RecibirInforme = ckbRecibeinfo.Checked;
             empleado.ResivirNotifica = ckbrecibeNotifi.Checked;
             empleado.EditPagina = ckbEditPagina.Checked;
@@ -118,7 +172,7 @@ namespace Kosturas.View
             db.Empleados.Add(empleado);
             db.SaveChanges();
 
-            MessageBox.Show("Dato Insertado");
+            MessageBox.Show("Empleado Guardado");
         }
 
         private void label21_Click(object sender, EventArgs e)
@@ -261,7 +315,38 @@ namespace Kosturas.View
                 this.txtEmal.Text = busquedaempleado.Email;
                 this.ckbActivo.Checked = busquedaempleado.Activo;
                 this.txtUsuario.Text = busquedaempleado.Usuario;
-                this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
+          
+
+            if (busquedaempleado.SucursalId.ToString() == "1")
+            {
+                this.cmbSucursal.SelectedIndex = 0;
+            }
+
+            if (busquedaempleado.SucursalId.ToString() == "2")
+            {
+                this.cmbSucursal.SelectedIndex = 1;
+            }
+            if (busquedaempleado.SucursalId.ToString() == "3")
+            {
+                this.cmbSucursal.SelectedIndex = 2;
+            }
+
+
+            if (busquedaempleado.Rol.ToString()=="A")
+            {
+                this.cmbRol.SelectedIndex = 0;
+            }
+
+            if (busquedaempleado.Rol.ToString() == "C")
+            {
+                this.cmbRol.SelectedIndex = 1;
+            }
+            if (busquedaempleado.Rol.ToString() == "E")
+            {
+                this.cmbRol.SelectedIndex = 2;
+            }
+
+            this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
                 this.ckbRecibeinfo.Checked = busquedaempleado.RecibirInforme;
                 this.ckbEditPagina.Checked = busquedaempleado.EditPagina;
                 this.ckbEditPuntos.Checked = busquedaempleado.EditPuntosClinte;
@@ -315,6 +400,20 @@ namespace Kosturas.View
             empleado.Activo = ckbActivo.Checked;
             empleado.Usuario = txtUsuario.Text;
             empleado.Clave = txtClave.Text;
+            empleado.SucursalId = cmbSucursal.SelectedValue.ToString();
+            if (cmbRol.SelectedIndex==0)
+            {
+                empleado.Rol = "A";
+            }
+            if (cmbRol.SelectedIndex == 1)
+            {
+                empleado.Rol = "C";
+            }
+            if (cmbRol.SelectedIndex == 2)
+            {
+                empleado.Rol = "E";
+            }
+
             empleado.RecibirInforme = ckbRecibeinfo.Checked;
             empleado.ResivirNotifica = ckbrecibeNotifi.Checked;
             empleado.EditPagina = ckbEditPagina.Checked;
@@ -414,6 +513,35 @@ namespace Kosturas.View
             this.txtEmal.Text = busquedaempleado.Email;
             this.ckbActivo.Checked = busquedaempleado.Activo;
             this.txtUsuario.Text = busquedaempleado.Usuario;
+            if (busquedaempleado.SucursalId.ToString() == "1")
+            {
+                this.cmbSucursal.SelectedIndex = 0;
+            }
+
+            if (busquedaempleado.SucursalId.ToString() == "2")
+            {
+                this.cmbSucursal.SelectedIndex = 1;
+            }
+            if (busquedaempleado.SucursalId.ToString() == "3")
+            {
+                this.cmbSucursal.SelectedIndex = 2;
+            }
+
+
+            if (busquedaempleado.Rol.ToString() == "A")
+            {
+                this.cmbRol.SelectedIndex = 0;
+            }
+
+            if (busquedaempleado.Rol.ToString() == "C")
+            {
+                this.cmbRol.SelectedIndex = 1;
+            }
+            if (busquedaempleado.Rol.ToString() == "E")
+            {
+                this.cmbRol.SelectedIndex = 2;
+            }
+
             this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
             this.ckbRecibeinfo.Checked = busquedaempleado.RecibirInforme;
             this.ckbEditPagina.Checked = busquedaempleado.EditPagina;
@@ -471,6 +599,34 @@ namespace Kosturas.View
             this.txtEmal.Text = busquedaempleado.Email;
             this.ckbActivo.Checked = busquedaempleado.Activo;
             this.txtUsuario.Text = busquedaempleado.Usuario;
+            if (busquedaempleado.SucursalId.ToString() == "1")
+            {
+                this.cmbSucursal.SelectedIndex = 0;
+            }
+
+            if (busquedaempleado.SucursalId.ToString() == "2")
+            {
+                this.cmbSucursal.SelectedIndex = 1;
+            }
+            if (busquedaempleado.SucursalId.ToString() == "3")
+            {
+                this.cmbSucursal.SelectedIndex = 2;
+            }
+
+
+            if (busquedaempleado.Rol.ToString() == "A")
+            {
+                this.cmbRol.SelectedIndex = 0;
+            }
+
+            if (busquedaempleado.Rol.ToString() == "C")
+            {
+                this.cmbRol.SelectedIndex = 1;
+            }
+            if (busquedaempleado.Rol.ToString() == "E")
+            {
+                this.cmbRol.SelectedIndex = 2;
+            }
             this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
             this.ckbRecibeinfo.Checked = busquedaempleado.RecibirInforme;
             this.ckbEditPagina.Checked = busquedaempleado.EditPagina;

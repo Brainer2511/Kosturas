@@ -254,3 +254,8 @@ C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\es\Microsoft.VisualStudio.
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmPin.resources
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmImformacionCliente.resources
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.EnvioOrden.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\AutoMapper.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.ValueTuple.dll
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\AutoMapper.pdb
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\AutoMapper.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.ValueTuple.xml
