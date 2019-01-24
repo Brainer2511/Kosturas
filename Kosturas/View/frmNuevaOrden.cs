@@ -92,5 +92,10 @@ namespace Kosturas.View
             frmNuevaOrden frm = new frmNuevaOrden();
             frm.Opacity = 1;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        
+        }
     }
 }

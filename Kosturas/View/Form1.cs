@@ -21,6 +21,7 @@ namespace Kosturas.View
         DataContextLocal db = new DataContextLocal();
         public Prenda prenda = new Prenda();
         public Tarea tarea = new Tarea();
+        public Ofertas oferta = new Ofertas();
         public DetalleTarea detalle = new DetalleTarea();
         public Servicios servicio = new Servicios();
 
@@ -40,8 +41,8 @@ namespace Kosturas.View
         List<string> lista;
         public int ClienteId { get; set; }
 
-        string leibol = "1";
-        string leiboldos = "";
+        string Combo1 = "";
+        string Combo2 = "";
 
         string nombreTAreas = "";
         string Detalletareas = "";
@@ -65,13 +66,12 @@ namespace Kosturas.View
 
         public Form1(int clienteId = 0)
         {
-            var list = db.Clientes.ToList();
             ClienteId = clienteId;
             cliente = db.Clientes.Find(clienteId);
             InitializeComponent();
 
         }
-
+      
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -80,8 +80,6 @@ namespace Kosturas.View
 
 
         
-            var ultimo = db.Ordenes.ToList();
-           var otras=ultimo.Last().OrdenId;
             istarea = false;
             if (ClienteId == 0) {
                 var Orden = new Ordenes
@@ -221,6 +219,7 @@ namespace Kosturas.View
 
 
         }
+      
         void MouseleaveCombo(object sender, EventArgs e)
         {
             ComboBox btr = sender as ComboBox;
@@ -984,10 +983,13 @@ namespace Kosturas.View
         }
         void SumatoriaPrecios()
         {
-            var Orden = db.Ordenes.Find(ordenId);
-             Orden.TotalOrden = db.OrdenDetallePrendas.Where(m => m.OrdenId == Orden.OrdenId).SelectMany(w => w.DetalleTareas).Sum(q => q.Precio);
-            txtPrecioTotal.Text = Orden.TotalOrden.ToString();
-        }
+            using (var db = new DataContextLocal())
+            {
+                var Orden = db.Ordenes.Find(ordenId);
+
+                txtPrecioTotal.Text = Orden.Prendas.SelectMany(q => q.DetalleTareas).Sum(q => q.Subtotal).ToString();
+
+            }        }
 
         void ActualizacionPrecios()
         {
@@ -999,7 +1001,7 @@ namespace Kosturas.View
         void GuardarCambiosTarea()
         {
          
-            using (var Tem=new DataContextLocal())
+            using (var db=new DataContextLocal())
             {
                 var ordenDetalleTarea = new TemDetallesOrdenes();
                 var ultimaTarea = listatareas.Last();
@@ -1008,10 +1010,8 @@ namespace Kosturas.View
 
                 try
                 {
-                    //ordenDetalleTarea.Detalle = null;
-                    //ordenDetalleTarea.Prenda = null;
-                    Tem.Entry(ordenDetalleTarea).State = EntityState.Modified;
-                    Tem.SaveChanges();
+                    db.Entry(ordenDetalleTarea).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
                 catch(Exception ex) 
                 {
@@ -1021,6 +1021,33 @@ namespace Kosturas.View
                
                 SumatoriaPrecios();
                
+            }
+
+
+        }
+        void GuardarCambiosDescuentoTarea()
+        {
+
+            using (var Tem = new DataContextLocal())
+            {
+                var ordenDetalleTarea = new TemDetallesOrdenes();
+                var ultimaTarea = listatareas.Last();
+                ultimaTarea.Precio = double.Parse(ultimaTarea.txtPrecio.Text);
+                AutoMapper.Mapper.Map(listatareas.Last(), ordenDetalleTarea);
+
+                try
+                {
+                    Tem.Entry(ordenDetalleTarea).State = EntityState.Modified;
+                    Tem.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
+     
+
             }
 
 
@@ -1695,11 +1722,12 @@ namespace Kosturas.View
 
 
 
-                //GuardarCambiosTarea();
 
+                this.Opacity = 0.80;
                 EnvioOrden envio = new EnvioOrden(ClienteId, ultimaIdOrden);
-                //this.Hide();
+               
                 envio.ShowDialog();
+                this.Opacity = 1;
                 this.Show();
             }
 
@@ -2449,12 +2477,11 @@ namespace Kosturas.View
             var prenda = db.Prendas.Find(prendaView.PrendaId);
             prendaView.lblPrenda.Text = prenda.TipoRopa + "X" + prendaView.Cantidad;
 
-            var Orden = db.Ordenes.Find(ordenId);
-            Orden.TotalOrden = db.OrdenDetallePrendas.Where(m => m.OrdenId == Orden.OrdenId).SelectMany(w => w.DetalleTareas).Sum(q => q.Precio);
-            var Total = double.Parse(Orden.TotalOrden.ToString());
-            var DatoPrenda = prendaView.Cantidad;
-            var Resultado = Total * DatoPrenda;
-            txtPrecioTotal.Text = Resultado.ToString();
+            var ordenDetallePrenda = db.OrdenDetallePrendas.Find(prendaView.DetalleOrdenPrendaId);
+            ordenDetallePrenda.Cantidad += 5;
+            db.Entry(ordenDetallePrenda).State=EntityState.Modified;
+            db.SaveChanges();
+            SumatoriaPrecios();
 
         }
         void Clickcincomenos(object sender, EventArgs e)
@@ -2641,6 +2668,8 @@ namespace Kosturas.View
             tareaView.Panel.Controls.Add(tareaView.lblTarea);
             tareaView.Panel.Controls.Add(tareaView.lblDetalleTarea);
             tareaView.Panel.Controls.Add(tareaView.txtPrecio);
+            tareaView.Panel.Controls.Add(tareaView.lblDescuento);
+            tareaView.Panel.Controls.Add(tareaView.lblAfiliado);
             tareaView.Panel.Controls.Add(tareaView.btnBorrarTarea);
             tareaView.DetalleOrdenesId =0;
             var ultimatarea = listatareas.Where(t => t.DetalleOrdenPrendaId == tareaView.DetalleOrdenPrendaId).Last();
@@ -3205,7 +3234,7 @@ namespace Kosturas.View
             botonmas.Name = "btnmas";
             botonmas.Location = new Point(0, 330);
             botonmas.Size = new Size(76, 169);
-            botonmas.Click += new EventHandler(ClickPrendas);
+           // botonmas.Click += new EventHandler(ClickPrendas);
             botonmas.MouseLeave += new EventHandler(Mouseleave);
             botonmas.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botonmas);
@@ -3231,14 +3260,13 @@ namespace Kosturas.View
             combo.Size = new Size(274, 30);
             combo.MouseLeave += new EventHandler(MouseleaveCombo);
             combo.MouseEnter += new EventHandler(MouseoverCombo);
+            combo.SelectedIndexChanged += new EventHandler(ClickaplicarDescuento);
             this.Prueba.Controls.Add(combo);
-            var ofertas =
-         from a in db.Ofertas
+    
 
-         select new { Names = a.Descripcion };
-
-            combo.DataSource = ofertas.ToList();
-            combo.DisplayMember = "Names";
+            combo.DataSource = db.Ofertas.ToList();
+            combo.DisplayMember = "Descripcion";
+            combo.ValueMember = "OfertaId";
 
             var combodos = new ComboBox();
             combodos.Text = "Selecione Un afiliado";
@@ -3248,26 +3276,22 @@ namespace Kosturas.View
 
             combodos.Location = new Point(3, 560);
             combodos.Size = new Size(274, 30);
+            combodos.SelectedIndexChanged += new EventHandler(ClickAfiliado);
             combodos.MouseLeave += new EventHandler(MouseleaveCombo);
             combodos.MouseEnter += new EventHandler(MouseoverCombo);
             this.Prueba.Controls.Add(combodos);
 
-            var afiliados =
-     from a in db.Afiliados
 
-     select new { Names = a.Nombre };
-
-            combodos.DataSource = afiliados.ToList();
-            combodos.DisplayMember = "Names";
-
-
+            combodos.DataSource = db.Afiliados.ToList();
+            combodos.DisplayMember = "Nombre";
+            combodos.ValueMember = "AfiliadoId";
 
             var botox1 = new Button();
             botox1.Text = "X";
             botox1.Name = "btnx1";
             botox1.Location = new Point(283, 520);
             botox1.Size = new Size(45, 40);
-            botox1.Click += new EventHandler(ClickPrendas);
+            botox1.Click += new EventHandler(ClickRestaurarCombo1);
             botox1.MouseLeave += new EventHandler(Mouseleave);
             botox1.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botox1);
@@ -3279,7 +3303,7 @@ namespace Kosturas.View
             botonimagen.Name = "asterisco1";
             botonimagen.Location = new Point(333, 520);
             botonimagen.Size = new Size(45, 40);
-            botonimagen.Click += new EventHandler(ClickPrendas);
+           // botonimagen.Click += new EventHandler(ClickPrendas);
             botonimagen.MouseLeave += new EventHandler(Mouseleave);
             botonimagen.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botonimagen);
@@ -3291,7 +3315,7 @@ namespace Kosturas.View
             botonimagendos.Name = "asterisco2";
             botonimagendos.Location = new Point(333, 560);
             botonimagendos.Size = new Size(45, 40);
-            botonimagendos.Click += new EventHandler(ClickPrendas);
+           // botonimagendos.Click += new EventHandler(ClickPrendas);
             botonimagendos.MouseLeave += new EventHandler(Mouseleave);
             botonimagendos.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botonimagendos);
@@ -3302,7 +3326,7 @@ namespace Kosturas.View
             botox2.Name = "btnx2";
             botox2.Location = new Point(283, 560);
             botox2.Size = new Size(45, 40);
-            botox2.Click += new EventHandler(ClickPrendas);
+            botox2.Click += new EventHandler(ClickRestaurarCombo2);
             botox2.MouseLeave += new EventHandler(Mouseleave);
             botox2.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botox2);
@@ -3483,7 +3507,9 @@ namespace Kosturas.View
             tareaView.btnBorrarTarea.Name= detalletareatenporal.DetalleOrdenesId.ToString();
             tareaView.btnBorrarTarea.Click += new EventHandler(ClickBorrartax);
         tareaView.Panel.Controls.Add(tareaView.lblTarea);
+            tareaView.Panel.Controls.Add(tareaView.lblDescuento);
             tareaView.Panel.Controls.Add(tareaView.lblDetalleTarea);
+            tareaView.Panel.Controls.Add(tareaView.lblAfiliado);
             tareaView.Panel.Controls.Add(tareaView.txtPrecio);
             tareaView.Panel.Controls.Add(tareaView.btnBorrarTarea);
             tareaView.DetalleOrdenesId = detalletareatenporal.DetalleOrdenesId;
@@ -3519,6 +3545,146 @@ namespace Kosturas.View
             tareaView.txtPrecio.Text= detalletarea.Precio.ToString();            
             tareaView.btnBorrarTarea.Name = lastTarea.DetalleOrdenesId.ToString();
             tareaView.btnBorrarTarea.Click += new EventHandler(ClickBorrartax);            
+        }
+
+        void GuardarCambiosAfiliado(int id)
+        {
+            using (var db = new DataContextLocal())
+            {
+                var ordenDetalleTarea = new TemDetallesOrdenes();
+                var ultimaTarea = listatareas.Last();
+                ultimaTarea.AfiliadoId = id;
+                AutoMapper.Mapper.Map(listatareas.Last(), ordenDetalleTarea);
+
+                try
+                {
+                    db.Entry(ordenDetalleTarea).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
+
+            }
+
+        }
+        void ClickAfiliado(object sender, EventArgs e)
+        {
+            ComboBox btn = sender as ComboBox;
+            Combo2 = btn.Name;
+         
+
+            if (btn.SelectedIndex > 0)
+            {
+                var posicion = btn.SelectedValue;
+                var query = db.Afiliados.Find(posicion);
+                var ultimatarea = listatareas.Last();
+                ultimatarea.lblAfiliado.Text = query.Nombre;
+
+                GuardarCambiosAfiliado(query.AfiliadoId);
+            }
+            else
+            {
+                var ultimatarea = listatareas.Last();
+                ultimatarea.lblAfiliado.Text = "";
+            }
+
+        }
+        void ClickaplicarDescuento(object sender, EventArgs e)
+        {
+
+
+            ComboBox btn = sender as ComboBox;
+            Combo1 = btn.Name;
+            var ultimatarea = listatareas.Last();
+            if (btn.SelectedIndex > 0)
+            {
+                var posicion = btn.SelectedValue;
+                var query = db.Ofertas.Find(posicion);
+                var Descuento = query.DescuentoPorsentaje;
+
+              
+                if (!string.IsNullOrEmpty(ultimatarea.txtPrecio.Text))
+                {
+                    ultimatarea.Descuento = Descuento;
+                    ultimatarea.lblDescuento.Text = Descuento.ToString() + "%";
+                    GuardarCambiosTarea();
+                }
+
+
+            }
+            else
+            {
+                ultimatarea.lblDescuento.Text = "";
+            }
+
+
+
+
+        }
+        void ClickRestaurarCombo2(object sender, EventArgs e)
+        {
+            foreach (Control item in Prueba.Controls.OfType<Control>())
+            {
+                if (item.Name == Combo2)
+                {
+                    Prueba.Controls.Remove(item);
+                }
+
+
+            }
+            var combodos = new ComboBox();
+            combodos.Text = "Selecione Un afiliado";
+            combodos.Name = "cmbafiliados";
+            combodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            combodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            combodos.Location = new Point(3, 560);
+            combodos.Size = new Size(274, 30);
+            combodos.SelectedIndexChanged += new EventHandler(ClickAfiliado);
+            combodos.MouseLeave += new EventHandler(MouseleaveCombo);
+            combodos.MouseEnter += new EventHandler(MouseoverCombo);
+            this.Prueba.Controls.Add(combodos);
+
+            combodos.DataSource = db.Afiliados.ToList();
+            combodos.DisplayMember = "Nombre";
+            combodos.ValueMember = "AfiliadoId";
+
+        }
+        void ClickRestaurarCombo1(object sender, EventArgs e)
+        {
+
+
+
+            foreach (Control item in Prueba.Controls.OfType<Control>())
+            {
+                if (item.Name == Combo1)
+                {
+                    Prueba.Controls.Remove(item);
+                }
+
+
+            }
+            var combo = new ComboBox();
+            combo.Text = "Selecione una Oferta";
+            combo.Name = "cmbofertas";
+            combo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            combo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            combo.Location = new Point(3, 520);
+            combo.Size = new Size(274, 30);
+            combo.MouseLeave += new EventHandler(MouseleaveCombo);
+            combo.MouseEnter += new EventHandler(MouseoverCombo);
+            combo.SelectedIndexChanged += new EventHandler(ClickaplicarDescuento);
+            this.Prueba.Controls.Add(combo);
+
+            combo.DataSource = db.Ofertas.ToList();
+            combo.DisplayMember = "Descripcion";
+            combo.ValueMember = "OfertaId";
+
         }
     }
     

@@ -109,6 +109,19 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="ViewModels\OrdenDetalleViewModel.cs" />
     <Compile Include="ViewModels\OrdenPrendaViewModel.cs" />
+    <Compile Include="ViewModels\OrdenViewModel.cs" />
+    <Compile Include="View\frmCierreCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCierreCaja.Designer.cs">
+      <DependentUpon>frmCierreCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompletarAgregarPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CompletarAgregarPago.Designer.cs">
+      <DependentUpon>CompletarAgregarPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CorreosSMSFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +194,12 @@
     <Compile Include="View\frmMedioPagos.Designer.cs">
       <DependentUpon>frmMedioPagos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmMonedasBilletes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmMonedasBilletes.Designer.cs">
+      <DependentUpon>frmMonedasBilletes.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmNuevaOrden.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +244,12 @@
     </Compile>
     <Compile Include="program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\frmReportesOrdenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmReportesOrdenes.Designer.cs">
+      <DependentUpon>frmReportesOrdenes.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmReportesSMS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +286,30 @@
     <Compile Include="View\frmLogin .Designer.cs">
       <DependentUpon>frmLogin .cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmVerCierreCajas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmVerCierreCajas.Designer.cs">
+      <DependentUpon>frmVerCierreCajas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmVerDetalles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmVerDetalles.Designer.cs">
+      <DependentUpon>frmVerDetalles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmVerDiferencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmVerDiferencias.Designer.cs">
+      <DependentUpon>frmVerDiferencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmVerOrdenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmVerOrdenes.Designer.cs">
+      <DependentUpon>frmVerOrdenes.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Multiplicacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +326,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\frmCierreCaja.resx">
+      <DependentUpon>frmCierreCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CompletarAgregarPago.resx">
+      <DependentUpon>CompletarAgregarPago.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\CorreosSMSFacturas.resx">
       <DependentUpon>CorreosSMSFacturas.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +368,9 @@
     <EmbeddedResource Include="View\frmMedioPagos.resx">
       <DependentUpon>frmMedioPagos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmMonedasBilletes.resx">
+      <DependentUpon>frmMonedasBilletes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmNuevaOrden.resx">
       <DependentUpon>frmNuevaOrden.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,6 +392,9 @@
     <EmbeddedResource Include="View\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmReportesOrdenes.resx">
+      <DependentUpon>frmReportesOrdenes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmReportesSMS.resx">
       <DependentUpon>frmReportesSMS.cs</DependentUpon>
     </EmbeddedResource>
@@ -351,6 +412,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmLogin .resx">
       <DependentUpon>frmLogin .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmVerCierreCajas.resx">
+      <DependentUpon>frmVerCierreCajas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmVerDetalles.resx">
+      <DependentUpon>frmVerDetalles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmVerDiferencias.resx">
+      <DependentUpon>frmVerDiferencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmVerOrdenes.resx">
+      <DependentUpon>frmVerOrdenes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Multiplicacion.resx">
       <DependentUpon>Multiplicacion.cs</DependentUpon>

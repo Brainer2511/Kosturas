@@ -28,7 +28,7 @@ namespace Kosturas
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AutoMapperPerfil.Run();
-            Application.Run(new frmPrincipal());
+            Application.Run(new frmReportesOrdenes());
 
         }
     }

@@ -14,7 +14,7 @@ namespace Domain
 
         public string NumeroOferta { get; set; }
         public string Descripcion { get; set; }
-        public string DescuentoPorsentaje { get; set; }
+        public int DescuentoPorsentaje { get; set; } = 0;
         public string ImporteDescuento { get; set; }
         public bool Habilitar { get; set; } = true;
        

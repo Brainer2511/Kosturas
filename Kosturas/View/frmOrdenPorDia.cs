@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Kosturas.ViewModels;
+using System.Data.Entity;
 
 namespace Kosturas.View
 {
@@ -22,6 +24,9 @@ namespace Kosturas.View
         Color ColorEntrada;
         public Panel Panel { get; set; }
         public List<Panel> listapaneles = new List<Panel>();
+        public List<OrdenDetalleViewModel> listaTareas = new List<OrdenDetalleViewModel>();
+        public List<OrdenPrendaViewModel> listaPrendas = new List<OrdenPrendaViewModel>();
+        public List<OrdenViewModel> listaOrdenes = new List<OrdenViewModel>();
         public frmOrdenPorDia()
         {
             InitializeComponent();
@@ -34,7 +39,9 @@ namespace Kosturas.View
 
         private void frmOrdenPorDia_Load(object sender, EventArgs e)
         {
-           
+            
+         
+
 
             var Dia = dtprecogida.Value.DayOfWeek;
 
@@ -47,7 +54,7 @@ namespace Kosturas.View
                 if (itemdos.Rol == "E") { 
                 var horas= int.Parse(itemdos.HorasLunes.ToString());
                  resultado=resultado+horas;
-                label10.Text = resultado.ToString();
+                label10.Text = resultado.ToString() + ":" + "00";
                 var nombre = itemdos.Nombre;
                 label8.Text +=nombre + " , ";
                 }
@@ -58,7 +65,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasMartes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -69,7 +76,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasMiercoles.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -80,7 +87,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasJueves.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -91,7 +98,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasViernes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -102,7 +109,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasSabado.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -113,7 +120,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasDomingo.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -129,224 +136,288 @@ namespace Kosturas.View
          //  this.dbgOdenesTotales.DataSource = query.Select(x => new { x.NumeroOrden, x.NombreCliente, x.FeEnt,x.Localizacion,x.HoraSalida, x.TotalOrden, x.CantidadPagada,x.CantidadRestante }).ToList();
 
             this.txtFecha.Text = a;
-         
-          
+       
         }
 
 
 private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            rowCount = 0;
+
             ActualizarPanelTrabajadores();
             BorrarPanelDetalleOrdenes();
             BorrarPanelOrdenes();
-            BorrarPanelDetallePagos();
+           
             var a = dtprecogida.Value.ToShortDateString();
             var desde = a + " 00:00";
             var hasta = a + " 23:59";
             var fdesde = DateTime.Parse(desde);
             var fhasta = DateTime.Parse(hasta);
             this.txtFecha.Text = a;
-          
+
+
+            var ordenes = db.OrdenDetalleTareas.Where(q => q.Prenda.Orden.FeEnt >= fdesde && q.Prenda.Orden.FeEnt <= fhasta).ToList().Select(q => q.Duracion).Sum();
+           
+           var otra = ordenes / 60;
+
+            var prueba = resultado * 60;
+
+            var sfdg = prueba - ordenes;
+
+            var sdh = sfdg / 60;
+            label9.Text = sdh.ToString() + ":" + "00";
+            var fddg = resultado - sdh;
+
+            label6.Text = fddg.ToString() + ":" + "00";
+
             var query = (from l in db.Ordenes where l.FeEnt >= fdesde && l.FeEnt <= fhasta select l).ToList();
+
           
-                
-            Panel = new Panel();
-
-            Panel.Size = new Size(1384, 37);
-
-       //     Panel.BackColor = Color.Silver;
-            var datos =query.Count();
-            var prendaView = new Panel();
-            int d = 0;
-            int f = 0;
             var Colores = true;
             foreach (var itemdos in query)
              
             {
-                label19.Text = itemdos.EmpleadoRealizo;
-                label14.Text = itemdos.EmpleadoRealizo;
-                var aumentocredito = new Panel();
-                aumentocredito.Size = new Size(1384, 37);
-                aumentocredito.Click += new EventHandler(ClickCargarOrden);
-                aumentocredito.MouseEnter += new EventHandler(Mouseover);
-                aumentocredito.MouseLeave += new EventHandler(Mouseleave);
+
+                var OrdenView = new OrdenViewModel();
+                OrdenView.Panel.Click += new EventHandler(ClickCargarOrden);
+                OrdenView.Panel.MouseEnter += new EventHandler(Mouseover);
+                OrdenView.Panel.MouseLeave += new EventHandler(Mouseleave);
                 if (Colores == true)
                 {
-                    aumentocredito.BackColor = Color.White;
+                    OrdenView.Panel.BackColor = Color.White;
                     Colores = false;
                 }
                 else
                 {
-                    aumentocredito.BackColor = Color.WhiteSmoke;
+                    OrdenView.Panel.BackColor = Color.WhiteSmoke;
                     Colores = true;
                 }
                
-                aumentocredito.Name = itemdos.OrdenId.ToString();
+                OrdenView.Panel.Name = itemdos.OrdenId.ToString();
+
+                OrdenView.lblId.Text = itemdos.OrdenId.ToString();
+
+                OrdenView.lblNombre.Text = itemdos.Cliente.Nombre.ToString();
+
+                OrdenView.lblFechaEntrada.Text = itemdos.FechaEnt.ToString();
+
+                OrdenView.lblLocalizacion.Text = itemdos.Localizacion.ToString();
+
+                OrdenView.lblHoraEntrada.Text = itemdos.HoraSalida.ToString();
+
+                OrdenView.lblTotal.Text = itemdos.TotalOrden.ToString();
+
+                OrdenView.lblMontoPagado.Text = itemdos.CantidadPagada.ToString();
+
+                OrdenView.lblMontoRestante.Text = itemdos.CantidadRestante.ToString();
 
 
-                var lblId = new Label();
-       
-                lblId.Location = new Point(0,8);
-                lblId.Size = new Size(100, 25);
-        if (!string.IsNullOrEmpty(itemdos.OrdenId.ToString())) { lblId.Text = itemdos.OrdenId.ToString(); } else { lblId.Text = ""; }
+                if (itemdos.Prendas.SelectMany(q=>q.DetalleTareas).Where(w=>!w.Estado).Count()==0)
+                {
+                    OrdenView.btnEstado.BackColor = Color.OliveDrab;
+                }
+
+                OrdenView.btnEstado.Text = itemdos.OrdenId.ToString();
+                OrdenView.btnEstado.Click += new EventHandler(ClickCambiarEstado);
+
+
+
+
+
+
+                OrdenView.Panel.Controls.Add(OrdenView.lblId);
+                OrdenView.Panel.Controls.Add(OrdenView.lblNombre);
+                OrdenView.Panel.Controls.Add(OrdenView.lblLocalizacion);
+                OrdenView.Panel.Controls.Add(OrdenView.lblFechaEntrada);
+
+                OrdenView.Panel.Controls.Add(OrdenView.lblHoraEntrada);
+                OrdenView.Panel.Controls.Add(OrdenView.lblTotal);
+                OrdenView.Panel.Controls.Add(OrdenView.lblMontoPagado);
+                OrdenView.Panel.Controls.Add(OrdenView.lblMontoRestante);
+                OrdenView.Panel.Controls.Add(OrdenView.btnEstado);
+              
+                AutoMapper.Mapper.Map(itemdos, OrdenView);
+                listaOrdenes.Add(OrdenView);
+                rowCount += 1;
+                tlpOrdenesTotales.RowCount = rowCount;
+                this.tlpOrdenesTotales.Controls.Add(listaOrdenes.Last().Panel,0,rowCount);
+
+
                 
-            
-                var lblNombre = new Label();
-           
-                lblNombre.Size = new Size(200,25);
-                lblNombre.Location = new Point(110, 8);
-    if (!string.IsNullOrEmpty(itemdos.Cliente.Nombre.ToString())) { lblNombre.Text = itemdos.Cliente.Nombre.ToString(); } else { lblNombre.Text = ""; }
-              
-
-                var lblFechaEntrada = new Label();
-                
-                lblFechaEntrada.Size = new Size(150, 25);
-                lblFechaEntrada.Location = new Point(315, 8);
-                if (!string.IsNullOrEmpty(itemdos.FechaEnt.ToString())) { lblFechaEntrada.Text = itemdos.FechaEnt.ToString(); } else { lblFechaEntrada.Text = ""; }
-
-               
-
-                var lblLocalizacion = new Label();
-                
-                lblLocalizacion.Location = new Point(545, 8);
-                lblLocalizacion.Size = new Size(50, 25);
-    if (!string.IsNullOrEmpty(itemdos.Localizacion.ToString())) { lblLocalizacion.Text = itemdos.Localizacion.ToString(); } else { lblLocalizacion.Text =""; }
-
-
-             
-                var lblHoraEntrada = new Label();
-              
-                lblHoraEntrada.Location = new Point(680, 8);
-                lblHoraEntrada.Size = new Size(110, 25);
-                if (!string.IsNullOrEmpty(itemdos.HoraSalida.ToString())) { lblHoraEntrada.Text = itemdos.HoraSalida.ToString(); } else { lblHoraEntrada.Text = ""; }
-
-
-              
-
-                var lblTotal = new Label();
-              
-                lblTotal.Location = new Point(810, 8);
-                lblTotal.Size = new Size(150, 25);
-                if (!string.IsNullOrEmpty(itemdos.TotalOrden.ToString())) { lblTotal.Text = itemdos.TotalOrden.ToString(); } else { lblTotal.Text = ""; }
-
-
-
-           
-
-                var lblMontoPagado = new Label();
-              
-                lblMontoPagado.Location = new Point(980, 8);
-                lblMontoPagado.Size = new Size(150, 25);
-                if (!string.IsNullOrEmpty(itemdos.CantidadPagada.ToString())) { lblMontoPagado.Text = itemdos.CantidadPagada.ToString(); } else { lblMontoPagado.Text = ""; }
-
-
-              
-
-                var lblMontoRestante = new Label();
-                
-                lblMontoRestante.Location = new Point(1150, 8);
-                lblMontoRestante.Size = new Size(150, 25);
-
-                if (!string.IsNullOrEmpty(itemdos.CantidadRestante.ToString())) { lblMontoRestante.Text = itemdos.CantidadRestante.ToString(); } else { lblMontoRestante.Text = ""; }
-
-               
-
-                aumentocredito.Controls.Add(lblId);
-                aumentocredito.Controls.Add(lblNombre);
-                aumentocredito.Controls.Add(lblLocalizacion);
-                aumentocredito.Controls.Add(lblFechaEntrada);
-
-                aumentocredito.Controls.Add(lblHoraEntrada);
-                aumentocredito.Controls.Add(lblTotal);
-                aumentocredito.Controls.Add(lblMontoPagado);
-                aumentocredito.Controls.Add(lblMontoRestante);
-
-                this.tlpOrdenesTotales.Controls.Add(aumentocredito);
             }
+           
+        }
 
+        void ClickCambiarEstado(object sender, EventArgs e)
+        {
+
+            frmPin pin = new frmPin();
+            this.Opacity = 0.80;
+            pin.ShowDialog();
+
+            this.Opacity = 1;
+            
+
+            if (Program.Pin != null) { 
+            var Mensaje= MessageBox.Show("Esta Seguro desea Completar Orden","Mensaje",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                if (Mensaje == DialogResult.Yes)
+                {
+                    Button btn = sender as Button;
+                    var id = int.Parse(btn.Text);
+
+                    var Orden = db.Ordenes.Find(id);
+
+                    Orden.Prendas.SelectMany(m => m.DetalleTareas).ToList().ForEach(w => { w.Estado = true; w.EmpleadoActualizo = Program.Pin; } );
+                    foreach (var item in listaTareas)
+                    {
+                        item.btnEstado.BackColor = Color.OliveDrab;
+                    }
+
+                    Orden.EmpleadoActualizo = Program.Pin;
+                    db.SaveChanges();
+                    var ordenView = listaOrdenes.Where(w => w.OrdenId == Orden.OrdenId).FirstOrDefault();
+                    ordenView.btnEstado.BackColor = Color.OliveDrab;
+
+                }
+            
+               
+
+
+            }
+          
+
+
+
+        }
+        void ClickCambiarEstadoTarea(object sender, EventArgs e)
+        {
+            frmPin pin = new frmPin();
+            this.Opacity = 0.80;
+            pin.ShowDialog();
+            this.Opacity = 1;
+            if (Program.Pin != null)
+            {
+                var Mensaje = MessageBox.Show("Esta Seguro desea Completar Tarea", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (Mensaje == DialogResult.Yes) { 
+                Button btn = sender as Button;
+                var id = int.Parse(btn.Text);
+
+                var detallesOrden = db.OrdenDetalleTareas.Find(id);
+                var orden = db.Ordenes.Find(detallesOrden.Prenda.OrdenId);
+                detallesOrden.Estado = true;
+                detallesOrden.EmpleadoActualizo = Program.Pin;
+                orden.EmpleadoActualizo = Program.Pin;
+                    db.SaveChanges();
+                var panelTarea = listaTareas.Where(m => m.DetalleOrdenesId == detallesOrden.DetalleOrdenesId).FirstOrDefault();
+                panelTarea.btnEstado.BackColor = Color.OliveDrab;
+             
+                }
+            }
         }
         void ClickCargarOrden(object sender, EventArgs e)
         {
+            listaTareas = new List<OrdenDetalleViewModel>();
+            listaPrendas = new List<OrdenPrendaViewModel>();
+
             BorrarPanelDetalleOrdenes();
-            BorrarPanelDetallePagos();
+      
             Panel btn = sender as Panel;
             var id = int.Parse(btn.Name);
+            var Colores = true;
 
+            rowCount = 0;
 
-
-      
 
             var orden = db.Ordenes.Find(id);
+            
+            label19.Text = orden.EmpleadoRealizo;
+            label15.Text = orden.EmpleadoActualizo;
+            label14.Text = orden.EmpleadoCompleto;
+        
 
+     
 
-
+        
+            
             foreach (var prenda in orden.Prendas)
 
             {
-                
-                var panelPrenda = new Panel();
-                
-                panelPrenda.Size = new Size(1020, 30);
-                panelPrenda.Click += new EventHandler(ClickCargarOrden);
-                panelPrenda.BackColor = Color.DarkGray;
-                panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
+                var panelViewPrenda = new OrdenPrendaViewModel(string.Empty);
 
-                var lblNombrePrenda = new Label();
-                lblNombrePrenda.Location = new Point(0, 6);
-                lblNombrePrenda.Text = prenda.Prenda.TipoRopa.ToString()+"X"+prenda.Cantidad;
+
+
+             
+                panelViewPrenda.panelPrenda.Click += new EventHandler(ClickCargarOrden);
+                panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
+                
+                panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
+
+
            
-
-
-                panelPrenda.Controls.Add(lblNombrePrenda);
-                this.tblDetalleOrdenesClientes.Controls.Add(panelPrenda);
+              
+                panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
+                listaPrendas.Add(panelViewPrenda);
+                rowCount += 1;
+                tblDetalleOrdenesClientes.RowCount = rowCount;
+                this.tblDetalleOrdenesClientes.Controls.Add(listaPrendas.Last().panelPrenda, 0, rowCount);
+           
                 foreach (var tarea in prenda.DetalleTareas)
                 {
-                    var panelTarea = new Panel();
+                   
+                    var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty,0);
+                 
                   
-                    panelTarea.Size = new Size(1020, 40);
-                    panelTarea.Click += new EventHandler(ClickCargarOrden);
-                    panelTarea.MouseEnter += new EventHandler(MouseoverDos);
-                    panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
-                    panelTarea.BackColor = Color.White;
-                    panelTarea.Name = tarea.DetalleOrdenPrendaId.ToString();
-
-                    var lblIdOrden = new Label();
-                    lblIdOrden.BackColor = Color.Red;
-                    lblIdOrden.Location = new Point(0, 8);
-                    lblIdOrden.Size = new Size(90, 15);
-                    lblIdOrden.Text =prenda.OrdenId.ToString();
-                    panelTarea.Controls.Add(lblIdOrden);
-
-                    var lblNombreTarea = new Label();
-                    lblNombreTarea.BackColor = Color.Red;
-                    lblNombreTarea.Location = new Point(110, 8);
-                    lblNombreTarea.Size = new Size(120, 15);
-                    lblNombreTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
-                    panelTarea.Controls.Add(lblNombreTarea);
-
-                    var lblDetalleTarea = new Label();
-                    lblDetalleTarea.BackColor = Color.Red;
-                    lblDetalleTarea.Location = new Point(245, 8);
-                    lblDetalleTarea.Size = new Size(150, 15);
-                    lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
-                    panelTarea.Controls.Add(lblDetalleTarea);
-
-                    var lblPrecio = new Label();
-                    lblPrecio.BackColor = Color.Red;
-                    lblPrecio.Location = new Point(400, 8);
-                    lblPrecio.Size = new Size(97, 15);
-                    lblPrecio.Text = tarea.Detalle.Precio.ToString();
-                    panelTarea.Controls.Add(lblPrecio);
+           
+                    panelViewTarea.panelTarea.Click += new EventHandler(ClickCargarOrden);
+                    panelViewTarea.panelTarea.MouseEnter += new EventHandler(MouseoverDos);
+                    panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
+                    panelViewTarea.panelTarea.Name = tarea.DetalleOrdenesId.ToString();
+                    panelViewTarea.DetalleOrdenesId = tarea.DetalleOrdenesId;
+                    if (Colores == true)
+                    {
+                        panelViewTarea.panelTarea.BackColor = Color.White;
+                        Colores = false;
+                    }
+                    else
+                    {
+                        panelViewTarea.panelTarea.BackColor = Color.WhiteSmoke;
+                        Colores = true;
+                    }
 
 
-                    var lblTotalPrecio = new Label();
-                    lblTotalPrecio.BackColor = Color.Red;
-                    lblTotalPrecio.Location = new Point(517, 8);
-                    lblTotalPrecio.Size = new Size(97, 15);
-                    lblTotalPrecio.Text = tarea.Detalle.Precio.ToString();
-                    panelTarea.Controls.Add(lblTotalPrecio);
 
-                    this.tblDetalleOrdenesClientes.Controls.Add(panelTarea);
+                    panelViewTarea.lblTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
+              panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
+
+              panelViewTarea.lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
+              panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
+
+           panelViewTarea.txtPrecio.Text = tarea.Detalle.Precio.ToString();
+           panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtPrecio);
+
+           panelViewTarea.txtTotalPrecio.Text =(prenda.Cantidad*tarea.Detalle.Precio).ToString();
+           panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtTotalPrecio);
+
+                    if (tarea.Estado == true)
+                    {
+                        panelViewTarea.btnEstado.BackColor = Color.OliveDrab;
+                        panelViewTarea.btnEstado.ForeColor = Color.OliveDrab;
+                        panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
+                        panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
+                    } else
+                    {
+                       
+                        panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
+                        panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
+                    }
+
+
+                    listaTareas.Add(panelViewTarea);
+                    rowCount += 1;
+                    tblDetalleOrdenesClientes.RowCount = rowCount;
+                    this.tblDetalleOrdenesClientes.Controls.Add(listaTareas.Last().panelTarea,0,rowCount);
                 }
                   
 
@@ -355,7 +426,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
 
             }
 
-
+            dgvPagos.DataSource = db.Pagos.Where(q=>q.OrdenId==orden.OrdenId).ToList();
             //foreach (var item in query.Prenda.Orden.Prendas)
 
             //{
@@ -415,7 +486,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasLunes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString()+":"+"00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -426,7 +497,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasMartes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -437,7 +508,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasMiercoles.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -448,7 +519,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasJueves.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -459,7 +530,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasViernes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -470,7 +541,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasSabado.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -481,7 +552,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasDomingo.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -609,7 +680,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
             this.button4.BackColor = System.Drawing.Color.OliveDrab;
             this.button4.ForeColor = System.Drawing.Color.White;
         }
-
+        
         private void button4_MouseLeave(object sender, EventArgs e)
         {
 
@@ -823,16 +894,16 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
             }
 
         }
-        private void BorrarPanelDetallePagos()
-        {
-            var totaldos = tlpPagos.Controls.Count;
-            var litdos = tlpPagos.Controls.OfType<Button>();
-            for (int i = 0; i < totaldos; i++)
-            {
-                tlpPagos.Controls.Remove(tlpPagos.Controls[0]);
-            }
+        //private void BorrarPanelDetallePagos()
+        //{
+        //    var totaldos = tlpPagos.Controls.Count;
+        //    var litdos = tlpPagos.Controls.OfType<Button>();
+        //    for (int i = 0; i < totaldos; i++)
+        //    {
+        //        tlpPagos.Controls.Remove(tlpPagos.Controls[0]);
+        //    }
 
-        }
+        //}
         private void BorrarPanelOrdenes()
         {
             var totaldos = tlpOrdenesTotales.Controls.Count;
@@ -874,7 +945,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
             ColorEntrada = btr.BackColor;
 
             object id = btr.Name;
-            id = btr.BackColor = Color.OliveDrab;
+            id = btr.BackColor = Color.GreenYellow;
 
 
 

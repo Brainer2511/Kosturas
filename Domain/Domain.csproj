@@ -74,8 +74,10 @@
   <ItemGroup>
     <Compile Include="Afiliado.cs" />
     <Compile Include="Canton.cs" />
+    <Compile Include="CierreCaja.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="Pagos.cs" />
     <Compile Include="TemDetallesOrdenPrenda.cs" />
     <Compile Include="TemDetallesOrdenes.cs" />
     <Compile Include="DetallesOrdenes.cs" />

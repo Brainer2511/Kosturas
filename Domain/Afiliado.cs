@@ -21,7 +21,7 @@ namespace Domain
         public bool Activo { get; set; } = true;
         public string NumeroOrden { get; set; } 
         public string Correo { get; set; }
-     
 
+       
     }
 }

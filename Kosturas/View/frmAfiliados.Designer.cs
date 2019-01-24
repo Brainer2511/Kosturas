@@ -214,8 +214,10 @@
             this.dgvAfiliado.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvAfiliado.Location = new System.Drawing.Point(12, 439);
             this.dgvAfiliado.Name = "dgvAfiliado";
+            this.dgvAfiliado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAfiliado.Size = new System.Drawing.Size(679, 150);
             this.dgvAfiliado.TabIndex = 21;
+            this.dgvAfiliado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAfiliado_CellContentClick);
             // 
             // btnGuardar
             // 
@@ -237,6 +239,7 @@
             this.btnActualizar.TabIndex = 23;
             this.btnActualizar.Text = "Actualizar Afiliado";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnCancelar
             // 

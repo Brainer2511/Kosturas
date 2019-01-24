@@ -76,23 +76,25 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.dtprecogida = new System.Windows.Forms.DateTimePicker();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.tlpOrdenesTotales = new System.Windows.Forms.TableLayoutPanel();
             this.tblDetalleOrdenesClientes = new System.Windows.Forms.TableLayoutPanel();
-            this.tlpPagos = new System.Windows.Forms.TableLayoutPanel();
             this.grbNewOrder = new System.Windows.Forms.GroupBox();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button15 = new System.Windows.Forms.Button();
+            this.dgvPagos = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbNewOrder.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // checkBox1
@@ -456,16 +458,18 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(843, 536);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(0, 13);
+            this.label14.Size = new System.Drawing.Size(21, 13);
             this.label14.TabIndex = 112;
+            this.label14.Text = "hgj";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(640, 536);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(0, 13);
+            this.label15.Size = new System.Drawing.Size(24, 13);
             this.label15.TabIndex = 111;
+            this.label15.Text = "fghj";
             // 
             // label16
             // 
@@ -499,8 +503,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(373, 536);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(0, 13);
+            this.label19.Size = new System.Drawing.Size(13, 13);
             this.label19.TabIndex = 107;
+            this.label19.Text = "tt";
             // 
             // label20
             // 
@@ -612,19 +617,6 @@
             this.panel2.Size = new System.Drawing.Size(1419, 39);
             this.panel2.TabIndex = 123;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(1357, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(59, 39);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -668,7 +660,7 @@
             this.tlpOrdenesTotales.RowCount = 1;
             this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.Size = new System.Drawing.Size(1333, 232);
+            this.tlpOrdenesTotales.Size = new System.Drawing.Size(1407, 232);
             this.tlpOrdenesTotales.TabIndex = 154;
             // 
             // tblDetalleOrdenesClientes
@@ -695,22 +687,9 @@
             this.tblDetalleOrdenesClientes.Size = new System.Drawing.Size(1048, 196);
             this.tblDetalleOrdenesClientes.TabIndex = 155;
             // 
-            // tlpPagos
-            // 
-            this.tlpPagos.AutoScroll = true;
-            this.tlpPagos.ColumnCount = 1;
-            this.tlpPagos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpPagos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpPagos.Location = new System.Drawing.Point(5, 39);
-            this.tlpPagos.Name = "tlpPagos";
-            this.tlpPagos.RowCount = 1;
-            this.tlpPagos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpPagos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpPagos.Size = new System.Drawing.Size(353, 196);
-            this.tlpPagos.TabIndex = 155;
-            // 
             // grbNewOrder
             // 
+            this.grbNewOrder.Controls.Add(this.button16);
             this.grbNewOrder.Controls.Add(this.button15);
             this.grbNewOrder.Controls.Add(this.button32);
             this.grbNewOrder.Controls.Add(this.button29);
@@ -724,9 +703,30 @@
             this.grbNewOrder.Margin = new System.Windows.Forms.Padding(2);
             this.grbNewOrder.Name = "grbNewOrder";
             this.grbNewOrder.Padding = new System.Windows.Forms.Padding(2);
-            this.grbNewOrder.Size = new System.Drawing.Size(1343, 276);
+            this.grbNewOrder.Size = new System.Drawing.Size(1416, 276);
             this.grbNewOrder.TabIndex = 156;
             this.grbNewOrder.TabStop = false;
+            // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.SystemColors.Control;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Location = new System.Drawing.Point(1331, 10);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(80, 23);
+            this.button16.TabIndex = 156;
+            this.button16.UseVisualStyleBackColor = false;
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.SystemColors.Control;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Location = new System.Drawing.Point(1155, 10);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(179, 23);
+            this.button15.TabIndex = 155;
+            this.button15.Text = "Cantidad Restante";
+            this.button15.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -750,10 +750,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dgvPagos);
             this.groupBox2.Controls.Add(this.button11);
             this.groupBox2.Controls.Add(this.button13);
             this.groupBox2.Controls.Add(this.button12);
-            this.groupBox2.Controls.Add(this.tlpPagos);
             this.groupBox2.Controls.Add(this.button10);
             this.groupBox2.Controls.Add(this.button14);
             this.groupBox2.Location = new System.Drawing.Point(1062, 551);
@@ -764,16 +764,28 @@
             this.groupBox2.TabIndex = 158;
             this.groupBox2.TabStop = false;
             // 
-            // button15
+            // dgvPagos
             // 
-            this.button15.BackColor = System.Drawing.SystemColors.Control;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Location = new System.Drawing.Point(1155, 10);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(179, 23);
-            this.button15.TabIndex = 155;
-            this.button15.Text = "Cantidad Restante";
-            this.button15.UseVisualStyleBackColor = false;
+            this.dgvPagos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPagos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPagos.Location = new System.Drawing.Point(2, 38);
+            this.dgvPagos.Name = "dgvPagos";
+            this.dgvPagos.Size = new System.Drawing.Size(353, 196);
+            this.dgvPagos.TabIndex = 159;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1357, -1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(59, 39);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // frmOrdenPorDia
             // 
@@ -812,10 +824,11 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grbNewOrder.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -875,10 +888,11 @@
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.TableLayoutPanel tlpOrdenesTotales;
         public System.Windows.Forms.TableLayoutPanel tblDetalleOrdenesClientes;
-        private System.Windows.Forms.TableLayoutPanel tlpPagos;
         private System.Windows.Forms.GroupBox grbNewOrder;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.DataGridView dgvPagos;
     }
 }

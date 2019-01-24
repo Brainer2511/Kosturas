@@ -13,6 +13,7 @@ namespace Kosturas.ViewModels
     {
         [NotMapped]
         public Panel Panel { get; set; }
+        public Panel panelPrenda { get; set; }
         public Label lblPrenda;
         public Button btnPrioridad { get; set; }
         public Button btnDuplicar { get; set; }
@@ -22,20 +23,35 @@ namespace Kosturas.ViewModels
         public Button btnmenosuno { get; set; }
         public Button btnmenoscinco { get; set; }
         public Button btnagregartarea { get; set; }
+        public Button btncompletarOrden { get; set; }
 
         public OrdenPrendaViewModel(string prenda)
         {
+
+            #region lblPrenda
             lblPrenda = new Label();
             lblPrenda.Size = new System.Drawing.Size(70, 45);
             lblPrenda.Location = new Point(0, 10);
+            lblPrenda.Text = prenda;
+            #endregion
 
-           
-            Panel = new Panel(); 
+
+            #region Panel
+            Panel = new Panel();
             Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             Panel.Size = new Size(897, 50);
             Panel.BackColor = Color.DarkGray;
-          
-            lblPrenda.Text = prenda;
+            #endregion
+            #region panelPrenda
+            panelPrenda = new Panel();
+            panelPrenda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panelPrenda.Size = new Size(1020, 30);
+            panelPrenda.BackColor = Color.DarkGray;
+           
+
+
+            #endregion
+      
          
             #region btnPrioridad
             btnPrioridad = new Button();
@@ -157,7 +173,22 @@ namespace Kosturas.ViewModels
             btnagregartarea.Size = new System.Drawing.Size(32, 34);
             btnagregartarea.TabIndex = 142;
             btnagregartarea.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         
+
+            #endregion
+
+
+            #region btnCompletarOrden
+            btncompletarOrden = new Button();
+            btncompletarOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\taps.png");
+            btncompletarOrden.BackColor = System.Drawing.Color.DarkGray;
+            btncompletarOrden.Location = new Point(1345, 0);
+            btncompletarOrden.FlatAppearance.BorderSize = 0;
+            btncompletarOrden.FlatStyle = FlatStyle.Flat;
+            btncompletarOrden.ForeColor = Color.DarkGray;
+            btncompletarOrden.Size = new System.Drawing.Size(32, 34);
+            btncompletarOrden.TabIndex = 142;
+            btncompletarOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             #endregion
         }
 

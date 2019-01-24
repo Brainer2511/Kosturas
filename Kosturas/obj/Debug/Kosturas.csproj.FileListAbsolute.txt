@@ -259,3 +259,11 @@ C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.ValueTuple.dll
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\AutoMapper.pdb
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\AutoMapper.xml
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\System.ValueTuple.xml
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.CompletarAgregarPago.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmVerOrdenes.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmVerDetalles.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmCierreCaja.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmVerCierreCajas.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmMonedasBilletes.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmVerDiferencias.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmReportesOrdenes.resources

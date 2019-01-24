@@ -39,6 +39,7 @@
             this.cmbHora = new System.Windows.Forms.ComboBox();
             this.cmbMinutos = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -67,7 +68,6 @@
             this.lblCalcularCambio = new System.Windows.Forms.Label();
             this.lblCAmbio = new System.Windows.Forms.Label();
             this.lblresultado = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -143,11 +143,10 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(19, 30);
             this.dtpFecha.TabIndex = 130;
+            this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
             // cmbHora
             // 
-            this.cmbHora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbHora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbHora.FormattingEnabled = true;
             this.cmbHora.Location = new System.Drawing.Point(439, 73);
             this.cmbHora.Name = "cmbHora";
@@ -156,7 +155,6 @@
             // 
             // cmbMinutos
             // 
-            this.cmbMinutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMinutos.FormattingEnabled = true;
             this.cmbMinutos.Location = new System.Drawing.Point(518, 72);
             this.cmbMinutos.Name = "cmbMinutos";
@@ -182,6 +180,15 @@
             this.panel1.Size = new System.Drawing.Size(254, 359);
             this.panel1.TabIndex = 133;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(49, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(158, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Informacion de Dia Selecionado";
             // 
             // label11
             // 
@@ -215,9 +222,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(109, 246);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.Size = new System.Drawing.Size(14, 13);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Tiemporeservado";
+            this.label6.Text = "T";
             // 
             // label7
             // 
@@ -258,7 +265,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(143, 188);
+            this.label14.Location = new System.Drawing.Point(99, 188);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(19, 13);
             this.label14.TabIndex = 15;
@@ -294,7 +301,6 @@
             // 
             // cmbTipoPago
             // 
-            this.cmbTipoPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbTipoPago.FormattingEnabled = true;
             this.cmbTipoPago.Location = new System.Drawing.Point(427, 148);
             this.cmbTipoPago.Name = "cmbTipoPago";
@@ -452,15 +458,6 @@
             this.lblresultado.Size = new System.Drawing.Size(13, 13);
             this.lblresultado.TabIndex = 156;
             this.lblresultado.Text = "0";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(49, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(158, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Informacion de Dia Selecionado";
             // 
             // EnvioOrden
             // 

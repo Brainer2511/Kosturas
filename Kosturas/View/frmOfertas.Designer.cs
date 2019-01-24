@@ -155,6 +155,7 @@
             this.btnActualizar.TabIndex = 15;
             this.btnActualizar.Text = "Actualizar Oferta";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnCancelar
             // 
@@ -173,8 +174,10 @@
             this.dvgOfertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgOfertas.Location = new System.Drawing.Point(38, 369);
             this.dvgOfertas.Name = "dvgOfertas";
+            this.dvgOfertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvgOfertas.Size = new System.Drawing.Size(678, 150);
             this.dvgOfertas.TabIndex = 17;
+            this.dvgOfertas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgOfertas_CellContentClick);
             // 
             // panel2
             // 

@@ -33,7 +33,7 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ckbOrdenesCompletadas = new System.Windows.Forms.CheckBox();
             this.txtOrden = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
@@ -87,12 +87,12 @@
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tlpOrdenesClientes = new System.Windows.Forms.TableLayoutPanel();
             this.grbNewOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -115,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbNewOrder
@@ -122,7 +123,7 @@
             this.grbNewOrder.Controls.Add(this.pictureBox7);
             this.grbNewOrder.Controls.Add(this.pictureBox5);
             this.grbNewOrder.Controls.Add(this.pictureBox6);
-            this.grbNewOrder.Controls.Add(this.checkBox1);
+            this.grbNewOrder.Controls.Add(this.ckbOrdenesCompletadas);
             this.grbNewOrder.Controls.Add(this.txtOrden);
             this.grbNewOrder.Controls.Add(this.txtNombre);
             this.grbNewOrder.Controls.Add(this.txtTelefono);
@@ -172,16 +173,17 @@
             this.pictureBox6.TabIndex = 11;
             this.pictureBox6.TabStop = false;
             // 
-            // checkBox1
+            // ckbOrdenesCompletadas
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(16, 201);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(148, 17);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Incluir Ordenes completas";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ckbOrdenesCompletadas.AutoSize = true;
+            this.ckbOrdenesCompletadas.Location = new System.Drawing.Point(16, 201);
+            this.ckbOrdenesCompletadas.Margin = new System.Windows.Forms.Padding(2);
+            this.ckbOrdenesCompletadas.Name = "ckbOrdenesCompletadas";
+            this.ckbOrdenesCompletadas.Size = new System.Drawing.Size(148, 17);
+            this.ckbOrdenesCompletadas.TabIndex = 13;
+            this.ckbOrdenesCompletadas.Text = "Incluir Ordenes completas";
+            this.ckbOrdenesCompletadas.UseVisualStyleBackColor = true;
+            this.ckbOrdenesCompletadas.CheckedChanged += new System.EventHandler(this.ckbOrdenesCompletadas_CheckedChanged);
             // 
             // txtOrden
             // 
@@ -343,7 +345,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::Kosturas.Properties.Resources.AMARU_ICON_WHITE;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(42, 5);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -770,9 +772,9 @@
             // 
             this.button12.BackColor = System.Drawing.SystemColors.Control;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Location = new System.Drawing.Point(838, 482);
+            this.button12.Location = new System.Drawing.Point(767, 482);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(85, 28);
+            this.button12.Size = new System.Drawing.Size(156, 28);
             this.button12.TabIndex = 86;
             this.button12.Text = "SubTotal";
             this.button12.UseVisualStyleBackColor = false;
@@ -781,7 +783,7 @@
             // 
             this.button13.BackColor = System.Drawing.SystemColors.Control;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(510, 482);
+            this.button13.Location = new System.Drawing.Point(589, 482);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(178, 28);
             this.button13.TabIndex = 85;
@@ -792,9 +794,9 @@
             // 
             this.button14.BackColor = System.Drawing.SystemColors.Control;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(212, 482);
+            this.button14.Location = new System.Drawing.Point(219, 482);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(113, 28);
+            this.button14.Size = new System.Drawing.Size(173, 28);
             this.button14.TabIndex = 84;
             this.button14.Text = "Detalle Tarea";
             this.button14.UseVisualStyleBackColor = false;
@@ -814,23 +816,12 @@
             // 
             this.button16.BackColor = System.Drawing.SystemColors.Control;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Location = new System.Drawing.Point(322, 482);
+            this.button16.Location = new System.Drawing.Point(391, 482);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(198, 28);
             this.button16.TabIndex = 82;
             this.button16.Text = "Precio";
             this.button16.UseVisualStyleBackColor = false;
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.SystemColors.Control;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Location = new System.Drawing.Point(688, 482);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(156, 28);
-            this.button17.TabIndex = 81;
-            this.button17.Text = "Impuesto";
-            this.button17.UseVisualStyleBackColor = false;
             // 
             // button18
             // 
@@ -875,6 +866,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.tlpOrdenesClientes);
             this.groupBox2.Location = new System.Drawing.Point(12, 511);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
@@ -882,6 +874,30 @@
             this.groupBox2.Size = new System.Drawing.Size(1426, 351);
             this.groupBox2.TabIndex = 95;
             this.groupBox2.TabStop = false;
+            // 
+            // tlpOrdenesClientes
+            // 
+            this.tlpOrdenesClientes.AutoScroll = true;
+            this.tlpOrdenesClientes.ColumnCount = 12;
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesClientes.Location = new System.Drawing.Point(5, 18);
+            this.tlpOrdenesClientes.Name = "tlpOrdenesClientes";
+            this.tlpOrdenesClientes.RowCount = 1;
+            this.tlpOrdenesClientes.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpOrdenesClientes.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpOrdenesClientes.Size = new System.Drawing.Size(1410, 328);
+            this.tlpOrdenesClientes.TabIndex = 9;
             // 
             // frmPrincipal
             // 
@@ -903,7 +919,6 @@
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button16);
-            this.Controls.Add(this.button17);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button4);
@@ -952,6 +967,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -963,7 +979,7 @@
         private System.Windows.Forms.Button btnConfirguracion;
         private System.Windows.Forms.Button btnHerramientas;
         private System.Windows.Forms.GroupBox grbNewOrder;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ckbOrdenesCompletadas;
         private System.Windows.Forms.TextBox txtOrden;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtTelefono;
@@ -1016,12 +1032,12 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.TableLayoutPanel tlpOrdenesClientes;
     }
 }
 

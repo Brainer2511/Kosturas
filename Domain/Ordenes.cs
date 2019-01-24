@@ -13,7 +13,7 @@ namespace Domain
         [Key]
         public int OrdenId { get; set; }
 
-        public string NumeroOrden { get; set; }
+        public string NumeroOrden { get; set; } = "";
         public DateTime FeEnt { get; set; }
 
         [NotMapped]
@@ -23,7 +23,7 @@ namespace Domain
         public string sHora { get { return FeEnt.TimeOfDay.ToString(); } }
 
 
-        public string HoraSalida { get; set; }
+        public string HoraSalida { get; set; } = "";
 
 
         public string Localizacion { get; set; } = "";
@@ -33,8 +33,15 @@ namespace Domain
         public double CantidadRestante { get; set; } = 0;
         public string EmpleadoRealizo { get; set; } = "";
         public int? ClienteId { get; set; }
-        public string MedioPago { get; set; } = "";
+       
+        public string EmpleadoActualizo { get; set; } = "";
+        public string EmpleadoCompleto { get; set; } = "";
         public virtual ICollection<TemDetallesOrdenPrenda> Prendas { get; set; }
         public virtual Cliente Cliente { get; set; }
+
+        public virtual ICollection<Pagos> Pagos { get; set; }
+        // public int MedioPagoId { get; set; }
+
+        // public virtual MediosPago MediosPago { get; set; }
     }
 }

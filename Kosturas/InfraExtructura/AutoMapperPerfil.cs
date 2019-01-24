@@ -23,6 +23,8 @@ namespace Kosturas.InfraExtructura
             CreateMap<TemDetallesOrdenes, OrdenDetalleViewModel>();
 
             CreateMap<TemDetallesOrdenPrenda, OrdenPrendaViewModel>();
+
+            CreateMap<Ordenes, OrdenViewModel>();
         }
 
         public static void Run()

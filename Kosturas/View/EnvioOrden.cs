@@ -18,6 +18,7 @@ namespace Kosturas.View
 
         DataContextLocal db = new DataContextLocal();
         private Cliente cliente = new Cliente();
+       // private  cliente = new Cliente();
         private Ordenes orden = new Ordenes();
         Empleado Empleado = new Empleado();
         int resultado = 0;
@@ -40,6 +41,9 @@ namespace Kosturas.View
 
         private void EnvioOrden_Load(object sender, EventArgs e)
         {
+            
+       
+
             this.lblCalcularCambio.Visible = false;
             this.lblCAmbio.Visible = false;
             this.lblresultado.Visible = false;
@@ -48,7 +52,7 @@ namespace Kosturas.View
            
             this.dtpFecha.Value = dtpFecha.Value.AddDays(2);
             txtpago.Text = orden.TotalOrden.ToString();
-            lblVisitas.Text = cliente.Visitas;
+            lblVisitas.Text = orden.Prendas.Sum(w=>w.Cantidad).ToString();
            lblTotalDos.Text= orden.TotalOrden.ToString();
             txtEmail.Text = cliente.Email;
             txtTelefono.Text = cliente.TelefonoPrincipal;
@@ -64,14 +68,12 @@ namespace Kosturas.View
             cmbMinutos.Items.Add("45");
             cmbMinutos.SelectedIndex = 0;
            
-            var medios =
-    from medio in db.MediosPago
+           
 
-    select new {medio.FormaPago };
+            cmbTipoPago.DataSource =db.MediosPago.ToList();
+            cmbTipoPago.DisplayMember = "FormaPago";
+            cmbTipoPago.ValueMember = "MedioPagoId";
 
-            cmbTipoPago.DataSource = medios.Select(t=>t.FormaPago).ToList();
-
-            
             cmbTipoPago.SelectedIndex = 1;
             var a = dtpFecha.Value.ToString();
             a = a.Remove(a.Length - 8);
@@ -82,8 +84,9 @@ namespace Kosturas.View
         {
             this.Close();
             frmPin pin = new frmPin();
+            this.Opacity = 0.80;
             pin.ShowDialog();
-         
+            this.Opacity = 1;
 
 
             Ordenes orden = db.Ordenes.Find(OrdenId);
@@ -100,20 +103,32 @@ namespace Kosturas.View
             if (ckbNopagar.Checked == false)
             {
               
-                orden.MedioPago = cmbTipoPago.SelectedValue.ToString();
+                //orden.MedioPagoId = int.Parse(cmbTipoPago.SelectedValue.ToString());
                 
             }
             else {
-                orden.MedioPago = "";
+              //  orden.MediosPago.MedioPagoId =0;
             }
            
             db.Entry(orden).State = EntityState.Modified;
             db.SaveChanges();
-
+            Pagos pago = new Pagos();
+            pago.Fecha = DateTime.Today;
+            pago.EmpleadoRealizo = Program.Pin;
+            pago.Monto = double.Parse(c.ToString());
+            pago.MedioPagoId = int.Parse(cmbTipoPago.SelectedValue.ToString());
+            pago.OrdenId = orden.OrdenId;
+        
+            db.Pagos.Add(pago);
+            db.SaveChanges();
             Cliente cliente = db.Clientes.Find(ClienteId);
-            var Visita = int.Parse(cliente.Visitas);
-            Visita += 1;
-            cliente.Visitas = Visita.ToString();
+            if (cliente.Visitas == null) {cliente.Visitas = "1"; cliente.Visitas = cliente.Visitas; } else
+            {
+                var Visita = int.Parse(cliente.Visitas); Visita += 1;
+                cliente.Visitas = Visita.ToString();
+            }
+           
+        
             db.Entry(cliente).State = EntityState.Modified;
             db.SaveChanges();
             this.Close();
@@ -131,7 +146,7 @@ namespace Kosturas.View
             }
             else
             {
-                this.txtpago.Text =Program.TotalOrden;
+                this.txtpago.Text =orden.TotalOrden.ToString();
                 this.cmbTipoPago.Visible = true;
             }
         }
@@ -145,6 +160,8 @@ namespace Kosturas.View
         {
             label10.Text = "";
             label8.Text = "";
+            label14.Text = "";
+            label6.Text = "";
             resultado = 0;
            var FechaHoy = DateTime.Today;
             var Dia = FechaHoy.DayOfWeek;
@@ -160,7 +177,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasLunes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -171,7 +188,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasMartes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -182,7 +199,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasMiercoles.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -193,7 +210,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasJueves.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -204,7 +221,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasViernes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -215,7 +232,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasSabado.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -226,19 +243,30 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasDomingo.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
+                        label10.Text = resultado.ToString() + ":" + "00";
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
                 }
             }
 
+            //var ordenes = db.OrdenDetalleTareas.Where(q => q.Prenda.Orden.FeEnt == DateTime.Today).ToList().Select(q => q.Duracion).Sum();
+            //var otra = ordenes / 60;
 
+            //var prueba = resultado * 60;
+
+            //var sfdg = prueba - ordenes;
+
+            //var sdh = sfdg / 60;
+            //label14.Text = sdh.ToString() + ":" + "00";
+            //var fddg = resultado - sdh;
+
+            //label6.Text = fddg.ToString() + ":" + "00";
         }
 
         private void cmbTipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            this.txtpago.Text = "0";
             if (cmbTipoPago.SelectedIndex==0)
             {
 
@@ -319,6 +347,31 @@ namespace Kosturas.View
                 y1 = y1 + 50;
             }
 
+        }
+
+        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+            ActualizarPanelTrabajadores();
+            var a = dtpFecha.Value.ToShortDateString();
+            var desde = a + " 00:00";
+            var hasta = a + " 23:59";
+            var fdesde = DateTime.Parse(desde);
+            var fhasta = DateTime.Parse(hasta);
+            this.txtFecha.Text = a;
+
+
+            var ordenes = db.OrdenDetalleTareas.Where(q => q.Prenda.Orden.FeEnt >= fdesde && q.Prenda.Orden.FeEnt <= fhasta).ToList().Select(q => q.Duracion).Sum();
+            var otra = ordenes / 60;
+
+            var prueba = resultado * 60;
+
+            var sfdg = prueba - ordenes;
+
+            var sdh = sfdg / 60;
+            label14.Text = sdh.ToString() + ":" + "00";
+            var fddg = resultado - sdh;
+
+            label6.Text = fddg.ToString() + ":" + "00";
         }
     }
 }
