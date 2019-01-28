@@ -130,6 +130,8 @@ namespace Kosturas
             frmPin empleado = new frmPin();
             empleado.ShowDialog();
 
+            this.Opacity = 1;
+
         }
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
@@ -898,6 +900,9 @@ namespace Kosturas
         private void btnHerramientas_Click(object sender, EventArgs e)
         {
 
+            frmReportesCajasTotales registros = new frmReportesCajasTotales();
+            registros.Location = new Point(0, 110);
+            registros.ShowDialog();
         }
         private void BorrarPanel()
         {
@@ -1252,9 +1257,14 @@ namespace Kosturas
         {
             Panel btr = sender as Panel;
             ColorEntrada = btr.BackColor;
+        
+
+
 
             object id = btr.Name;
-            id = btr.BackColor = Color.GreenYellow;
+         
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
 
 
 
@@ -1269,6 +1279,10 @@ namespace Kosturas
 
 
 
+
+        
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
 
         void ClickCambiarEstadoTarea(object sender, EventArgs e)
@@ -1308,6 +1322,653 @@ namespace Kosturas
             ClickCargarOrdenTotal(id);
             }
             else { BorrarPanelOrdenes(); }
+        }
+
+        private void button29_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button29_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button34_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button34_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button32_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button32_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button31_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void button31_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button31_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button35_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button35_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button35_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button30_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button30_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button3_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button2_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button5_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button5_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button4_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button4_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button7_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button7_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button21_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button21_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button18_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button18_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button15_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button15_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button14_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button14_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button16_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button16_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button13_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button13_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button12_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button12_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button11_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button11_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button10_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button10_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button9_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button9_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button8_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button8_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button6_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button6_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button20_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button20_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void button19_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void button19_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
         //void PruebaClick_2(object sender, EventArgs e)
         //{

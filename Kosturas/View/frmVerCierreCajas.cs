@@ -16,6 +16,7 @@ namespace Kosturas.View
     {
         DataContextLocal db = new DataContextLocal();
         int rowCount = 0;
+        Color ColorEntrada;
         public List<OrdenViewModel> listaCierres = new List<OrdenViewModel>();
         public frmVerCierreCajas()
         {
@@ -83,8 +84,8 @@ namespace Kosturas.View
 
         void ClickCargarCierres(string a,string b)
         {
-           
 
+            BorrarPanelCierres();
             listaCierres = new List<OrdenViewModel>();
            
 
@@ -110,12 +111,14 @@ namespace Kosturas.View
 
             {
 
-                    var panelViewCierre = new OrdenViewModel();
+                var panelViewCierre = new OrdenViewModel();
 
 
 
 
                 panelViewCierre.Panel.Name = itemdos.CierreId.ToString();
+                panelViewCierre.Panel.Size = new Size(1270, 30);
+              
 
 
                 if (Colores == true)
@@ -130,19 +133,39 @@ namespace Kosturas.View
                 }
 
                 panelViewCierre.lblId.Text = itemdos.MontoInicial.ToString();
+                
+
                 panelViewCierre.lblFechaEntrada.Text = itemdos.FechaApertura.ToString();
+              
+
                 panelViewCierre.lblHoraEntrada.Text = itemdos.FechaCierre.ToString();
+
+                panelViewCierre.lblHoraEntrada.Location = new Point(600, 8);
+               
+
                 panelViewCierre.lblLocalizacion.Text = itemdos.TotalDiferencia.ToString();
+                panelViewCierre.lblLocalizacion.Location = new Point(500, 8);
+                
+
                 panelViewCierre.lblNombre.Text = itemdos.EmpleadoCerro.ToString();
+               
+               
+
                 panelViewCierre.lblTotal.Text = itemdos.Notas.ToString();
+                panelViewCierre.lblTotal.Location = new Point(765, 8);
+                
 
 
 
                 panelViewCierre.lblMontoPagado.Text = "Ver Monedas Y Billetes";
                 panelViewCierre.lblMontoPagado.Name = itemdos.CierreId.ToString();
+                panelViewCierre.lblMontoPagado.Location = new Point(935, 8);
+             
                 panelViewCierre.lblMontoPagado.Click += new EventHandler(ClickCargarMonedas);
 
                 panelViewCierre.lblMontoRestante.Text = "Ver Actual/Ingresos/ Diferencias";
+               
+                panelViewCierre.lblMontoRestante.Location = new Point(1105, 8);
                 panelViewCierre.lblMontoRestante.Name = itemdos.CierreId.ToString();
                 panelViewCierre.lblMontoRestante.Click += new EventHandler(ClickCargarDiferencias);
 
@@ -178,7 +201,7 @@ namespace Kosturas.View
             var id = int.Parse(btn.Name);
 
             frmMonedasBilletes monedasBilletes = new frmMonedasBilletes(id);
-            monedasBilletes.Location = new Point(122,140);
+            monedasBilletes.Location = new Point(435,280);
             monedasBilletes.ShowDialog();
         }
         void ClickCargarDiferencias(object sender, EventArgs e)
@@ -187,8 +210,18 @@ namespace Kosturas.View
             var id = int.Parse(btn.Name);
 
             frmVerDiferencias diferencias = new frmVerDiferencias(id);
-            diferencias.Location = new Point(122, 140);
+            diferencias.Location = new Point(435, 280);
             diferencias.ShowDialog();
+        }
+        private void BorrarPanelCierres()
+        {
+            var totaldos = tlpCierresCajas.Controls.Count;
+            var litdos = tlpCierresCajas.Controls.OfType<Button>();
+            for (int i = 0; i < totaldos; i++)
+            {
+                tlpCierresCajas.Controls.Remove(tlpCierresCajas.Controls[0]);
+            }
+
         }
         private void dgvCierresCajas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -203,6 +236,29 @@ namespace Kosturas.View
 
 
             }
+        }
+
+        private void btnActualizaRegistros_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnActualizaRegistros_MouseLeave(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

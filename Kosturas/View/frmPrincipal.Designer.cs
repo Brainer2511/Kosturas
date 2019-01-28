@@ -232,8 +232,7 @@
             // 
             // btnNuevaVenta
             // 
-            this.btnNuevaVenta.BackColor = System.Drawing.Color.Black;
-            this.btnNuevaVenta.BackgroundImage = global::Kosturas.Properties.Resources.fondo_banner_verde;
+            this.btnNuevaVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.btnNuevaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevaVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevaVenta.ForeColor = System.Drawing.Color.White;
@@ -247,8 +246,7 @@
             // 
             // btnNuevaOrden
             // 
-            this.btnNuevaOrden.BackColor = System.Drawing.Color.Black;
-            this.btnNuevaOrden.BackgroundImage = global::Kosturas.Properties.Resources.fondo_banner_verde;
+            this.btnNuevaOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.btnNuevaOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevaOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevaOrden.ForeColor = System.Drawing.Color.White;
@@ -263,8 +261,7 @@
             // 
             // pnPrincipal
             // 
-            this.pnPrincipal.BackColor = System.Drawing.Color.Transparent;
-            this.pnPrincipal.BackgroundImage = global::Kosturas.Properties.Resources.Verde02;
+            this.pnPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.pnPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnPrincipal.Controls.Add(this.label1);
             this.pnPrincipal.Controls.Add(this.pictureBox11);
@@ -600,6 +597,9 @@
             this.button35.TabIndex = 73;
             this.button35.Text = "Notas";
             this.button35.UseVisualStyleBackColor = false;
+            this.button35.MouseEnter += new System.EventHandler(this.button35_MouseEnter);
+            this.button35.MouseLeave += new System.EventHandler(this.button35_MouseLeave);
+            this.button35.MouseHover += new System.EventHandler(this.button35_MouseHover);
             // 
             // button32
             // 
@@ -611,6 +611,8 @@
             this.button32.TabIndex = 72;
             this.button32.Text = "Nombre Cliente";
             this.button32.UseVisualStyleBackColor = false;
+            this.button32.MouseEnter += new System.EventHandler(this.button32_MouseEnter);
+            this.button32.MouseLeave += new System.EventHandler(this.button32_MouseLeave);
             // 
             // button34
             // 
@@ -622,6 +624,8 @@
             this.button34.TabIndex = 70;
             this.button34.Text = "Telefono Principal";
             this.button34.UseVisualStyleBackColor = false;
+            this.button34.MouseEnter += new System.EventHandler(this.button34_MouseEnter);
+            this.button34.MouseLeave += new System.EventHandler(this.button34_MouseLeave);
             // 
             // button31
             // 
@@ -633,6 +637,9 @@
             this.button31.TabIndex = 69;
             this.button31.Text = "Correo";
             this.button31.UseVisualStyleBackColor = false;
+            this.button31.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button31_MouseDown);
+            this.button31.MouseEnter += new System.EventHandler(this.button31_MouseEnter);
+            this.button31.MouseLeave += new System.EventHandler(this.button31_MouseLeave);
             // 
             // button30
             // 
@@ -643,6 +650,8 @@
             this.button30.Size = new System.Drawing.Size(35, 28);
             this.button30.TabIndex = 68;
             this.button30.UseVisualStyleBackColor = false;
+            this.button30.MouseEnter += new System.EventHandler(this.button30_MouseEnter);
+            this.button30.MouseLeave += new System.EventHandler(this.button30_MouseLeave);
             // 
             // button29
             // 
@@ -654,6 +663,8 @@
             this.button29.TabIndex = 67;
             this.button29.Text = "Abreviatura";
             this.button29.UseVisualStyleBackColor = false;
+            this.button29.MouseEnter += new System.EventHandler(this.button29_MouseEnter);
+            this.button29.MouseLeave += new System.EventHandler(this.button29_MouseLeave);
             // 
             // button1
             // 
@@ -664,6 +675,8 @@
             this.button1.Size = new System.Drawing.Size(35, 28);
             this.button1.TabIndex = 74;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             // 
             // button2
             // 
@@ -674,6 +687,8 @@
             this.button2.Size = new System.Drawing.Size(35, 28);
             this.button2.TabIndex = 76;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
+            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             // 
             // button3
             // 
@@ -684,6 +699,8 @@
             this.button3.Size = new System.Drawing.Size(35, 28);
             this.button3.TabIndex = 75;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
+            this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
             // 
             // button4
             // 
@@ -694,6 +711,8 @@
             this.button4.Size = new System.Drawing.Size(35, 28);
             this.button4.TabIndex = 78;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.MouseEnter += new System.EventHandler(this.button4_MouseEnter);
+            this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
             // 
             // button5
             // 
@@ -704,6 +723,8 @@
             this.button5.Size = new System.Drawing.Size(35, 28);
             this.button5.TabIndex = 77;
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.MouseEnter += new System.EventHandler(this.button5_MouseEnter);
+            this.button5.MouseLeave += new System.EventHandler(this.button5_MouseLeave);
             // 
             // button7
             // 
@@ -714,6 +735,8 @@
             this.button7.Size = new System.Drawing.Size(37, 28);
             this.button7.TabIndex = 79;
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.MouseEnter += new System.EventHandler(this.button7_MouseEnter);
+            this.button7.MouseLeave += new System.EventHandler(this.button7_MouseLeave);
             // 
             // button6
             // 
@@ -724,6 +747,8 @@
             this.button6.Size = new System.Drawing.Size(59, 28);
             this.button6.TabIndex = 91;
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.MouseEnter += new System.EventHandler(this.button6_MouseEnter);
+            this.button6.MouseLeave += new System.EventHandler(this.button6_MouseLeave);
             // 
             // button8
             // 
@@ -734,6 +759,8 @@
             this.button8.Size = new System.Drawing.Size(57, 28);
             this.button8.TabIndex = 90;
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.MouseEnter += new System.EventHandler(this.button8_MouseEnter);
+            this.button8.MouseLeave += new System.EventHandler(this.button8_MouseLeave);
             // 
             // button9
             // 
@@ -745,6 +772,8 @@
             this.button9.TabIndex = 89;
             this.button9.Text = "Afiliado";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.MouseEnter += new System.EventHandler(this.button9_MouseEnter);
+            this.button9.MouseLeave += new System.EventHandler(this.button9_MouseLeave);
             // 
             // button10
             // 
@@ -756,6 +785,8 @@
             this.button10.TabIndex = 88;
             this.button10.Text = "Descripcion";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.MouseEnter += new System.EventHandler(this.button10_MouseEnter);
+            this.button10.MouseLeave += new System.EventHandler(this.button10_MouseLeave);
             // 
             // button11
             // 
@@ -767,6 +798,8 @@
             this.button11.TabIndex = 87;
             this.button11.Text = "Opciones";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.MouseEnter += new System.EventHandler(this.button11_MouseEnter);
+            this.button11.MouseLeave += new System.EventHandler(this.button11_MouseLeave);
             // 
             // button12
             // 
@@ -778,6 +811,8 @@
             this.button12.TabIndex = 86;
             this.button12.Text = "SubTotal";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.MouseEnter += new System.EventHandler(this.button12_MouseEnter);
+            this.button12.MouseLeave += new System.EventHandler(this.button12_MouseLeave);
             // 
             // button13
             // 
@@ -789,6 +824,8 @@
             this.button13.TabIndex = 85;
             this.button13.Text = "Descuento";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.MouseEnter += new System.EventHandler(this.button13_MouseEnter);
+            this.button13.MouseLeave += new System.EventHandler(this.button13_MouseLeave);
             // 
             // button14
             // 
@@ -800,6 +837,8 @@
             this.button14.TabIndex = 84;
             this.button14.Text = "Detalle Tarea";
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.MouseEnter += new System.EventHandler(this.button14_MouseEnter);
+            this.button14.MouseLeave += new System.EventHandler(this.button14_MouseLeave);
             // 
             // button15
             // 
@@ -811,6 +850,8 @@
             this.button15.TabIndex = 83;
             this.button15.Text = "Tarea";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.MouseEnter += new System.EventHandler(this.button15_MouseEnter);
+            this.button15.MouseLeave += new System.EventHandler(this.button15_MouseLeave);
             // 
             // button16
             // 
@@ -822,6 +863,8 @@
             this.button16.TabIndex = 82;
             this.button16.Text = "Precio";
             this.button16.UseVisualStyleBackColor = false;
+            this.button16.MouseEnter += new System.EventHandler(this.button16_MouseEnter);
+            this.button16.MouseLeave += new System.EventHandler(this.button16_MouseLeave);
             // 
             // button18
             // 
@@ -833,6 +876,8 @@
             this.button18.TabIndex = 80;
             this.button18.Text = "Orden";
             this.button18.UseVisualStyleBackColor = false;
+            this.button18.MouseEnter += new System.EventHandler(this.button18_MouseEnter);
+            this.button18.MouseLeave += new System.EventHandler(this.button18_MouseLeave);
             // 
             // button19
             // 
@@ -843,6 +888,8 @@
             this.button19.Size = new System.Drawing.Size(62, 28);
             this.button19.TabIndex = 93;
             this.button19.UseVisualStyleBackColor = false;
+            this.button19.MouseEnter += new System.EventHandler(this.button19_MouseEnter);
+            this.button19.MouseLeave += new System.EventHandler(this.button19_MouseLeave);
             // 
             // button20
             // 
@@ -853,6 +900,8 @@
             this.button20.Size = new System.Drawing.Size(66, 28);
             this.button20.TabIndex = 92;
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.MouseEnter += new System.EventHandler(this.button20_MouseEnter);
+            this.button20.MouseLeave += new System.EventHandler(this.button20_MouseLeave);
             // 
             // button21
             // 
@@ -863,6 +912,8 @@
             this.button21.Size = new System.Drawing.Size(26, 28);
             this.button21.TabIndex = 94;
             this.button21.UseVisualStyleBackColor = false;
+            this.button21.MouseEnter += new System.EventHandler(this.button21_MouseEnter);
+            this.button21.MouseLeave += new System.EventHandler(this.button21_MouseLeave);
             // 
             // groupBox2
             // 

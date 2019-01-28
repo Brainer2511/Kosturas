@@ -50,7 +50,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.YellowGreen;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.busToolStripMenuItem,
@@ -78,14 +78,14 @@
             // 
             this.busToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.busToolStripMenuItem.Name = "busToolStripMenuItem";
-            this.busToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.busToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.busToolStripMenuItem.Text = "Configuracion de Negocio";
             // 
             // pruebaToolStripMenuItem
             // 
             this.pruebaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.pruebaToolStripMenuItem.Name = "pruebaToolStripMenuItem";
-            this.pruebaToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.pruebaToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.pruebaToolStripMenuItem.Text = "Servicios";
             this.pruebaToolStripMenuItem.Click += new System.EventHandler(this.pruebaToolStripMenuItem_Click);
             // 
@@ -93,7 +93,7 @@
             // 
             this.ñjnkjnjnToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.ñjnkjnjnToolStripMenuItem.Name = "ñjnkjnjnToolStripMenuItem";
-            this.ñjnkjnjnToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.ñjnkjnjnToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.ñjnkjnjnToolStripMenuItem.Text = "Detalles Ordesnes";
             this.ñjnkjnjnToolStripMenuItem.Click += new System.EventHandler(this.ñjnkjnjnToolStripMenuItem_Click);
             // 
@@ -101,7 +101,7 @@
             // 
             this.njkjnkToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.njkjnkToolStripMenuItem.Name = "njkjnkToolStripMenuItem";
-            this.njkjnkToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.njkjnkToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.njkjnkToolStripMenuItem.Text = "Ventas";
             this.njkjnkToolStripMenuItem.Click += new System.EventHandler(this.njkjnkToolStripMenuItem_Click);
             // 
@@ -109,7 +109,7 @@
             // 
             this.sdgtfhyToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.sdgtfhyToolStripMenuItem.Name = "sdgtfhyToolStripMenuItem";
-            this.sdgtfhyToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.sdgtfhyToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.sdgtfhyToolStripMenuItem.Text = "Metodos Pago";
             this.sdgtfhyToolStripMenuItem.Click += new System.EventHandler(this.sdgtfhyToolStripMenuItem_Click);
             // 
@@ -117,7 +117,7 @@
             // 
             this.hfgghjToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.hfgghjToolStripMenuItem.Name = "hfgghjToolStripMenuItem";
-            this.hfgghjToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.hfgghjToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.hfgghjToolStripMenuItem.Text = "Ofertas";
             this.hfgghjToolStripMenuItem.Click += new System.EventHandler(this.hfgghjToolStripMenuItem_Click);
             // 
@@ -125,7 +125,7 @@
             // 
             this.hgffggfhjhgfToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.hgffggfhjhgfToolStripMenuItem.Name = "hgffggfhjhgfToolStripMenuItem";
-            this.hgffggfhjhgfToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.hgffggfhjhgfToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.hgffggfhjhgfToolStripMenuItem.Text = "Impresiones Automaticas";
             this.hgffggfhjhgfToolStripMenuItem.Click += new System.EventHandler(this.hgffggfhjhgfToolStripMenuItem_Click);
             // 
@@ -133,14 +133,14 @@
             // 
             this.ertetyToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.ertetyToolStripMenuItem.Name = "ertetyToolStripMenuItem";
-            this.ertetyToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.ertetyToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.ertetyToolStripMenuItem.Text = "Imprimir Plantillas";
             // 
             // treretyytToolStripMenuItem
             // 
             this.treretyytToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.treretyytToolStripMenuItem.Name = "treretyytToolStripMenuItem";
-            this.treretyytToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.treretyytToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.treretyytToolStripMenuItem.Text = "Opciones Ordenes";
             this.treretyytToolStripMenuItem.Click += new System.EventHandler(this.treretyytToolStripMenuItem_Click);
             // 
@@ -148,7 +148,7 @@
             // 
             this.erreyytreyretToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.erreyytreyretToolStripMenuItem.Name = "erreyytreyretToolStripMenuItem";
-            this.erreyytreyretToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.erreyytreyretToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.erreyytreyretToolStripMenuItem.Text = "Afiliados";
             this.erreyytreyretToolStripMenuItem.Click += new System.EventHandler(this.erreyytreyretToolStripMenuItem_Click);
             // 
@@ -156,7 +156,7 @@
             // 
             this.retreretetrToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.retreretetrToolStripMenuItem.Name = "retreretetrToolStripMenuItem";
-            this.retreretetrToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.retreretetrToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.retreretetrToolStripMenuItem.Text = "Coreos,SMS y Facturas";
             this.retreretetrToolStripMenuItem.Click += new System.EventHandler(this.retreretetrToolStripMenuItem_Click);
             // 
@@ -164,7 +164,7 @@
             // 
             this.tretretertreToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.tretretertreToolStripMenuItem.Name = "tretretertreToolStripMenuItem";
-            this.tretretertreToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.tretretertreToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.tretretertreToolStripMenuItem.Text = "Seguimientos";
             this.tretretertreToolStripMenuItem.Click += new System.EventHandler(this.tretretertreToolStripMenuItem_Click);
             // 
@@ -172,7 +172,7 @@
             // 
             this.tretreretToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.tretreretToolStripMenuItem.Name = "tretreretToolStripMenuItem";
-            this.tretreretToolStripMenuItem.Size = new System.Drawing.Size(160, 19);
+            this.tretreretToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.tretreretToolStripMenuItem.Text = "Descripcion Preajustables";
             // 
             // pictureBox1

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportesOrdenes));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnVerOrdenes = new System.Windows.Forms.Button();
             this.txtHasta = new System.Windows.Forms.TextBox();
@@ -78,11 +77,12 @@
             this.tlpPagos = new System.Windows.Forms.TableLayoutPanel();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.grbNewOrder.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -94,19 +94,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1457, 39);
             this.panel2.TabIndex = 118;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(1409, -2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label10
             // 
@@ -134,6 +121,8 @@
             this.btnVerOrdenes.Text = "Ver Ordenes";
             this.btnVerOrdenes.UseVisualStyleBackColor = false;
             this.btnVerOrdenes.Click += new System.EventHandler(this.btnVerOrdenes_Click);
+            this.btnVerOrdenes.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.btnVerOrdenes.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave);
             // 
             // txtHasta
             // 
@@ -319,6 +308,8 @@
             this.button9.TabIndex = 156;
             this.button9.Text = "Empleado";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.MouseEnter += new System.EventHandler(this.button9_MouseEnter);
+            this.button9.MouseLeave += new System.EventHandler(this.button9_MouseLeave);
             // 
             // button2
             // 
@@ -330,6 +321,8 @@
             this.button2.TabIndex = 104;
             this.button2.Text = "Precio Unitario";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
+            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             // 
             // button7
             // 
@@ -341,6 +334,8 @@
             this.button7.TabIndex = 99;
             this.button7.Text = "Orden";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.MouseEnter += new System.EventHandler(this.button7_MouseEnter);
+            this.button7.MouseLeave += new System.EventHandler(this.button7_MouseLeave);
             // 
             // button6
             // 
@@ -352,6 +347,8 @@
             this.button6.TabIndex = 100;
             this.button6.Text = "Descripcion";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.MouseEnter += new System.EventHandler(this.button6_MouseEnter);
+            this.button6.MouseLeave += new System.EventHandler(this.button6_MouseLeave);
             // 
             // button5
             // 
@@ -363,6 +360,8 @@
             this.button5.TabIndex = 101;
             this.button5.Text = "Total";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.MouseEnter += new System.EventHandler(this.button5_MouseEnter);
+            this.button5.MouseLeave += new System.EventHandler(this.button5_MouseLeave);
             // 
             // button4
             // 
@@ -374,6 +373,8 @@
             this.button4.TabIndex = 102;
             this.button4.Text = "Tarea";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.MouseEnter += new System.EventHandler(this.button4_MouseEnter);
+            this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
             // 
             // tblDetalleOrdenesClientes
             // 
@@ -409,6 +410,8 @@
             this.button3.TabIndex = 103;
             this.button3.Text = "Afiliado";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
+            this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
             // 
             // button1
             // 
@@ -420,6 +423,8 @@
             this.button1.TabIndex = 105;
             this.button1.Text = "Descuento";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             // 
             // button8
             // 
@@ -431,6 +436,8 @@
             this.button8.TabIndex = 113;
             this.button8.Text = "Detalles Tarea";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.MouseEnter += new System.EventHandler(this.button8_MouseEnter);
+            this.button8.MouseLeave += new System.EventHandler(this.button8_MouseLeave);
             // 
             // grbNewOrder
             // 
@@ -448,7 +455,7 @@
             this.grbNewOrder.Margin = new System.Windows.Forms.Padding(2);
             this.grbNewOrder.Name = "grbNewOrder";
             this.grbNewOrder.Padding = new System.Windows.Forms.Padding(2);
-            this.grbNewOrder.Size = new System.Drawing.Size(1262, 276);
+            this.grbNewOrder.Size = new System.Drawing.Size(1262, 319);
             this.grbNewOrder.TabIndex = 182;
             this.grbNewOrder.TabStop = false;
             // 
@@ -462,6 +469,8 @@
             this.button10.TabIndex = 157;
             this.button10.Text = "Precio Total";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.MouseEnter += new System.EventHandler(this.button10_MouseEnter);
+            this.button10.MouseLeave += new System.EventHandler(this.button10_MouseLeave);
             // 
             // button15
             // 
@@ -473,6 +482,8 @@
             this.button15.TabIndex = 155;
             this.button15.Text = "Completada";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.MouseEnter += new System.EventHandler(this.button15_MouseEnter);
+            this.button15.MouseLeave += new System.EventHandler(this.button15_MouseLeave);
             // 
             // button32
             // 
@@ -484,6 +495,8 @@
             this.button32.TabIndex = 79;
             this.button32.Text = "Ordenado En";
             this.button32.UseVisualStyleBackColor = false;
+            this.button32.MouseEnter += new System.EventHandler(this.button32_MouseEnter);
+            this.button32.MouseLeave += new System.EventHandler(this.button32_MouseLeave);
             // 
             // button29
             // 
@@ -495,6 +508,8 @@
             this.button29.TabIndex = 74;
             this.button29.Text = "#";
             this.button29.UseVisualStyleBackColor = false;
+            this.button29.MouseEnter += new System.EventHandler(this.button29_MouseEnter);
+            this.button29.MouseLeave += new System.EventHandler(this.button29_MouseLeave);
             // 
             // button30
             // 
@@ -506,6 +521,8 @@
             this.button30.TabIndex = 75;
             this.button30.Text = "SubTotal";
             this.button30.UseVisualStyleBackColor = false;
+            this.button30.MouseEnter += new System.EventHandler(this.button30_MouseEnter);
+            this.button30.MouseLeave += new System.EventHandler(this.button30_MouseLeave);
             // 
             // tlpOrdenesTotales
             // 
@@ -518,7 +535,7 @@
             this.tlpOrdenesTotales.RowCount = 1;
             this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.Size = new System.Drawing.Size(1248, 232);
+            this.tlpOrdenesTotales.Size = new System.Drawing.Size(1248, 275);
             this.tlpOrdenesTotales.TabIndex = 154;
             // 
             // button31
@@ -531,6 +548,8 @@
             this.button31.TabIndex = 76;
             this.button31.Text = "Localizacion";
             this.button31.UseVisualStyleBackColor = false;
+            this.button31.MouseEnter += new System.EventHandler(this.button31_MouseEnter);
+            this.button31.MouseLeave += new System.EventHandler(this.button31_MouseLeave);
             // 
             // button34
             // 
@@ -542,6 +561,8 @@
             this.button34.TabIndex = 77;
             this.button34.Text = "Cliente";
             this.button34.UseVisualStyleBackColor = false;
+            this.button34.MouseEnter += new System.EventHandler(this.button34_MouseEnter);
+            this.button34.MouseLeave += new System.EventHandler(this.button34_MouseLeave);
             // 
             // button33
             // 
@@ -553,6 +574,8 @@
             this.button33.TabIndex = 78;
             this.button33.Text = "Cantidad Pagada";
             this.button33.UseVisualStyleBackColor = false;
+            this.button33.MouseEnter += new System.EventHandler(this.button33_MouseEnter);
+            this.button33.MouseLeave += new System.EventHandler(this.button33_MouseLeave);
             // 
             // button35
             // 
@@ -564,6 +587,8 @@
             this.button35.TabIndex = 80;
             this.button35.Text = "Recoger en";
             this.button35.UseVisualStyleBackColor = false;
+            this.button35.MouseEnter += new System.EventHandler(this.button35_MouseEnter);
+            this.button35.MouseLeave += new System.EventHandler(this.button35_MouseLeave);
             // 
             // groupBox2
             // 
@@ -589,8 +614,10 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(75, 23);
             this.button12.TabIndex = 104;
-            this.button12.Text = "Precio Unitario";
+            this.button12.Text = "Empleado";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.MouseEnter += new System.EventHandler(this.button12_MouseEnter);
+            this.button12.MouseLeave += new System.EventHandler(this.button12_MouseLeave);
             // 
             // button13
             // 
@@ -600,8 +627,10 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(75, 23);
             this.button13.TabIndex = 99;
-            this.button13.Text = "Orden";
+            this.button13.Text = "Fecha";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.MouseEnter += new System.EventHandler(this.button13_MouseEnter);
+            this.button13.MouseLeave += new System.EventHandler(this.button13_MouseLeave);
             // 
             // button17
             // 
@@ -611,8 +640,10 @@
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(75, 23);
             this.button17.TabIndex = 102;
-            this.button17.Text = "Tarea";
+            this.button17.Text = "Monto";
             this.button17.UseVisualStyleBackColor = false;
+            this.button17.MouseEnter += new System.EventHandler(this.button17_MouseEnter);
+            this.button17.MouseLeave += new System.EventHandler(this.button17_MouseLeave);
             // 
             // tlpPagos
             // 
@@ -646,8 +677,10 @@
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(75, 23);
             this.button19.TabIndex = 105;
-            this.button19.Text = "Descuento";
+            this.button19.Text = "Puntos";
             this.button19.UseVisualStyleBackColor = false;
+            this.button19.MouseEnter += new System.EventHandler(this.button19_MouseEnter);
+            this.button19.MouseLeave += new System.EventHandler(this.button19_MouseLeave);
             // 
             // button20
             // 
@@ -657,8 +690,23 @@
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(75, 23);
             this.button20.TabIndex = 113;
-            this.button20.Text = "Detalles Tarea";
+            this.button20.Text = "Medio Pago";
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.MouseEnter += new System.EventHandler(this.button20_MouseEnter);
+            this.button20.MouseLeave += new System.EventHandler(this.button20_MouseLeave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1409, -2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // frmReportesOrdenes
             // 
@@ -689,14 +737,14 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmReportesOrdenes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "frmReportesOrdenes";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.grbNewOrder.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,7 +18,7 @@ namespace Domain
 
         public string EmpleadoRealizo { get; set; } = "";
 
-        public string Puntos { get; set; } = "";
+        public string Puntos { get; set; } = "0";
 
         public int MedioPagoId { get; set; }
 

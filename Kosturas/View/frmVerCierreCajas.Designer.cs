@@ -38,12 +38,12 @@
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.btnActualizaRegistros = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tlpCierresCajas = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -53,7 +53,7 @@
             this.panel2.Controls.Add(this.label10);
             this.panel2.Location = new System.Drawing.Point(1, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1112, 39);
+            this.panel2.Size = new System.Drawing.Size(1302, 39);
             this.panel2.TabIndex = 117;
             // 
             // label10
@@ -131,6 +131,7 @@
             // btnActualizaRegistros
             // 
             this.btnActualizaRegistros.BackColor = System.Drawing.Color.White;
+            this.btnActualizaRegistros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizaRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizaRegistros.Location = new System.Drawing.Point(356, 47);
             this.btnActualizaRegistros.Name = "btnActualizaRegistros";
@@ -139,19 +140,8 @@
             this.btnActualizaRegistros.Text = "Ver Cierres";
             this.btnActualizaRegistros.UseVisualStyleBackColor = false;
             this.btnActualizaRegistros.Click += new System.EventHandler(this.btnActualizaRegistros_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(1065, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.btnActualizaRegistros.MouseEnter += new System.EventHandler(this.btnActualizaRegistros_MouseEnter);
+            this.btnActualizaRegistros.MouseLeave += new System.EventHandler(this.btnActualizaRegistros_MouseLeave);
             // 
             // groupBox2
             // 
@@ -160,7 +150,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(1072, 351);
+            this.groupBox2.Size = new System.Drawing.Size(1300, 552);
             this.groupBox2.TabIndex = 161;
             this.groupBox2.TabStop = false;
             // 
@@ -185,15 +175,28 @@
             this.tlpCierresCajas.RowCount = 1;
             this.tlpCierresCajas.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpCierresCajas.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpCierresCajas.Size = new System.Drawing.Size(1059, 328);
+            this.tlpCierresCajas.Size = new System.Drawing.Size(1286, 507);
             this.tlpCierresCajas.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1254, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // frmVerCierreCajas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1118, 534);
+            this.ClientSize = new System.Drawing.Size(1304, 721);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnActualizaRegistros);
             this.Controls.Add(this.txtHasta);
@@ -210,8 +213,8 @@
             this.Load += new System.EventHandler(this.frmVerCierreCajas_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

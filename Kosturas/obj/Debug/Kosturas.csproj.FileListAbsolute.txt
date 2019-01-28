@@ -267,3 +267,8 @@ C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmVerCierre
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmMonedasBilletes.resources
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmVerDiferencias.resources
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmReportesOrdenes.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmIngresos.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmVerPagos.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmReporteSMS.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmRegistros.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmReportesCajasTotales.resources

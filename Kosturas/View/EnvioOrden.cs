@@ -51,7 +51,7 @@ namespace Kosturas.View
             ActualizarPanelTrabajadores();
            
             this.dtpFecha.Value = dtpFecha.Value.AddDays(2);
-            txtpago.Text = orden.TotalOrden.ToString();
+         
             lblVisitas.Text = orden.Prendas.Sum(w=>w.Cantidad).ToString();
            lblTotalDos.Text= orden.TotalOrden.ToString();
             txtEmail.Text = cliente.Email;
@@ -74,10 +74,11 @@ namespace Kosturas.View
             cmbTipoPago.DisplayMember = "FormaPago";
             cmbTipoPago.ValueMember = "MedioPagoId";
 
-            cmbTipoPago.SelectedIndex = 1;
+            cmbTipoPago.SelectedIndex = 0;
             var a = dtpFecha.Value.ToString();
             a = a.Remove(a.Length - 8);
             this.txtFecha.Text =a;
+            txtpago.Text = orden.TotalOrden.ToString();
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
@@ -94,28 +95,19 @@ namespace Kosturas.View
             orden.HoraSalida =this.cmbHora.SelectedItem.ToString()+":"+this.cmbMinutos.SelectedItem.ToString();
          
             var a = int.Parse(orden.TotalOrden.ToString());
-            var b = int.Parse(txtpago.Text);
+            var b = int.Parse(txtCalcularCambio.Text);
             var c = a - b;
             orden.CantidadRestante = c;
             orden.EmpleadoRealizo = Program.Pin;
             orden.CantidadPagada = double.Parse(txtpago.Text);
             orden.FechaSalida = txtFecha.Text;
-            if (ckbNopagar.Checked == false)
-            {
-              
-                //orden.MedioPagoId = int.Parse(cmbTipoPago.SelectedValue.ToString());
-                
-            }
-            else {
-              //  orden.MediosPago.MedioPagoId =0;
-            }
-           
+            
             db.Entry(orden).State = EntityState.Modified;
             db.SaveChanges();
             Pagos pago = new Pagos();
             pago.Fecha = DateTime.Today;
             pago.EmpleadoRealizo = Program.Pin;
-            pago.Monto = double.Parse(c.ToString());
+            pago.Monto = double.Parse(txtpago.Text);
             pago.MedioPagoId = int.Parse(cmbTipoPago.SelectedValue.ToString());
             pago.OrdenId = orden.OrdenId;
         
@@ -141,6 +133,7 @@ namespace Kosturas.View
             if (this.ckbNopagar.Checked == true)
             {
                 this.txtpago.Text = "0";
+                this.txtCalcularCambio.Text = "0";
                 this.cmbTipoPago.Visible = false;
 
             }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,7 +43,6 @@
             this.lblIngresosOtros = new System.Windows.Forms.Label();
             this.lblIngresosEfectivo = new System.Windows.Forms.Label();
             this.lblTotalEfectivo = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblTarjeta = new System.Windows.Forms.Label();
             this.lblCheque = new System.Windows.Forms.Label();
             this.lblTransActual = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(48)))), ((int)(((byte)(16)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label10);
@@ -96,6 +96,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(764, 39);
             this.panel2.TabIndex = 121;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(387, 7);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 24);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Ingresos";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label1
             // 
@@ -228,20 +242,6 @@
             this.lblTotalEfectivo.TabIndex = 212;
             this.lblTotalEfectivo.Text = " 0,00 ";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(387, 7);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 24);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Ingresos";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // lblTarjeta
             // 
             this.lblTarjeta.AutoSize = true;
@@ -289,7 +289,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(48)))), ((int)(((byte)(16)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(2, 43);
             this.panel1.Name = "panel1";
@@ -312,7 +312,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(48)))), ((int)(((byte)(16)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(2, 83);
             this.panel3.Name = "panel3";
@@ -335,7 +335,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(48)))), ((int)(((byte)(16)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(2, 123);
             this.panel4.Name = "panel4";
@@ -358,7 +358,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(48)))), ((int)(((byte)(16)))));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.panel5.Controls.Add(this.label6);
             this.panel5.Location = new System.Drawing.Point(1, 203);
             this.panel5.Name = "panel5";
@@ -381,7 +381,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(48)))), ((int)(((byte)(16)))));
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.panel6.Controls.Add(this.label7);
             this.panel6.Location = new System.Drawing.Point(2, 163);
             this.panel6.Name = "panel6";
@@ -404,7 +404,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(48)))), ((int)(((byte)(16)))));
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
             this.panel7.Controls.Add(this.label8);
             this.panel7.Location = new System.Drawing.Point(1, 243);
             this.panel7.Name = "panel7";

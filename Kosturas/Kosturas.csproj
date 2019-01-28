@@ -182,6 +182,12 @@
     <Compile Include="View\frmImpresionesAutomaticas.Designer.cs">
       <DependentUpon>frmImpresionesAutomaticas.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmIngresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmIngresos.Designer.cs">
+      <DependentUpon>frmIngresos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmMantenimientos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,24 @@
     </Compile>
     <Compile Include="program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\frmRegistros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmRegistros.Designer.cs">
+      <DependentUpon>frmRegistros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmReportesCajasTotales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmReportesCajasTotales.Designer.cs">
+      <DependentUpon>frmReportesCajasTotales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmReporteSMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmReporteSMS.Designer.cs">
+      <DependentUpon>frmReporteSMS.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmReportesOrdenes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +334,12 @@
     <Compile Include="View\frmVerOrdenes.Designer.cs">
       <DependentUpon>frmVerOrdenes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmVerPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmVerPagos.Designer.cs">
+      <DependentUpon>frmVerPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Multiplicacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -362,6 +392,9 @@
     <EmbeddedResource Include="View\frmImpresionesAutomaticas.resx">
       <DependentUpon>frmImpresionesAutomaticas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmIngresos.resx">
+      <DependentUpon>frmIngresos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmMantenimientos.resx">
       <DependentUpon>frmMantenimientos.cs</DependentUpon>
     </EmbeddedResource>
@@ -391,6 +424,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmRegistros.resx">
+      <DependentUpon>frmRegistros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmReportesCajasTotales.resx">
+      <DependentUpon>frmReportesCajasTotales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmReporteSMS.resx">
+      <DependentUpon>frmReporteSMS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmReportesOrdenes.resx">
       <DependentUpon>frmReportesOrdenes.cs</DependentUpon>
@@ -424,6 +466,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmVerOrdenes.resx">
       <DependentUpon>frmVerOrdenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmVerPagos.resx">
+      <DependentUpon>frmVerPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Multiplicacion.resx">
       <DependentUpon>Multiplicacion.cs</DependentUpon>
