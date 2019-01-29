@@ -26,12 +26,15 @@ namespace Kosturas.View
 
         private void frmVerOrdenes_Load(object sender, EventArgs e)
         {
-            var a = ("2019-01-22");
+
+            var a = DateTime.Today.ToShortDateString();
             var desde = a + " 00:00";
             var hasta = a + " 23:59";
             var fdesde = DateTime.Parse(desde);
             var fhasta = DateTime.Parse(hasta);
+         
             dgvOrdenes.DataSource = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta).Select(t => new { t.OrdenId, t.FeEnt,t.TotalOrden,t.CantidadPagada }).ToList();
+           
         }
     }
 }

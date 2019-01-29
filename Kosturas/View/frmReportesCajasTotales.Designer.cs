@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportesCajasTotales));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.busToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -44,7 +44,7 @@
             // menuStrip1
             // 
             this.menuStrip1.AutoSize = false;
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(77)))), ((int)(((byte)(4)))));
+            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.busToolStripMenuItem,
@@ -59,6 +59,9 @@
             this.menuStrip1.Size = new System.Drawing.Size(1441, 32);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            this.menuStrip1.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.menuStrip1.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // busToolStripMenuItem
             // 
@@ -68,6 +71,52 @@
             this.busToolStripMenuItem.Size = new System.Drawing.Size(118, 28);
             this.busToolStripMenuItem.Text = "Cierres Cajas";
             this.busToolStripMenuItem.Click += new System.EventHandler(this.busToolStripMenuItem_Click);
+            this.busToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.busToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(144, 28);
+            this.toolStripMenuItem5.Text = "Detalle Ordenes";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            this.toolStripMenuItem5.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.toolStripMenuItem5.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem4.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(137, 28);
+            this.toolStripMenuItem4.Text = "Reporte Ventas";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            this.toolStripMenuItem4.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.toolStripMenuItem4.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem3.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(150, 28);
+            this.toolStripMenuItem3.Text = "Reporte Ingresos";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            this.toolStripMenuItem3.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.toolStripMenuItem3.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem2.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(119, 28);
+            this.toolStripMenuItem2.Text = "Reporte SMS";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.toolStripMenuItem2.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.toolStripMenuItem2.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // toolStripMenuItem1
             // 
@@ -78,42 +127,6 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(195, 364);
             this.toolStripMenuItem1.Text = "Reporte Datos Clientes";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItem2.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(119, 28);
-            this.toolStripMenuItem2.Text = "Reporte SMS";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItem3.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(150, 28);
-            this.toolStripMenuItem3.Text = "Reporte Ingresos";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItem4.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(137, 28);
-            this.toolStripMenuItem4.Text = "Reporte Ventas";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(144, 28);
-            this.toolStripMenuItem5.Text = "Detalle Ordenes";
-            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // pictureBox1
             // 

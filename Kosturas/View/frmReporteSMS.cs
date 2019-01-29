@@ -26,13 +26,13 @@ namespace Kosturas.View
 
         private void frmReporteSMS_Load(object sender, EventArgs e)
         {
-                  var a = dtDesde.Value.ToShortDateString();
+            var a = DateTime.Today;// dtDesde.Value.ToShortDateString();
 
-            var b = dtpHasta.Value.ToShortDateString();
+            var b = DateTime.Today;// dtpHasta.Value.ToShortDateString();
 
 
-            this.txtDesde.Text = a;
-            this.txtHasta.Text = b;
+            this.txtDesde.Text = a.ToShortDateString();
+            this.txtHasta.Text = b.ToShortDateString();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -42,9 +42,10 @@ namespace Kosturas.View
 
         private void btnVerOrdenes_Click(object sender, EventArgs e)
         {
-            var a = dtDesde.Value.ToShortDateString();
+            var a =this.txtDesde.Text;
+           
 
-            var b = dtpHasta.Value.ToShortDateString();
+            var b = this.txtHasta.Text;
 
             var desde = a + " 00:00";
             var hasta = b + " 23:59";
@@ -135,9 +136,9 @@ namespace Kosturas.View
 
 
                 panelViewSMS.lblFechaEntrada.Text = itemdos.Cliente.Email.ToString();
-         
+               
                 panelViewSMS.lblFechaEntrada.Location = new Point(570, 8);
-                panelViewSMS.lblFechaEntrada.Size = new Size(100, 25);
+                panelViewSMS.lblFechaEntrada.Size = new Size(130, 25);
 
 
                 panelViewSMS.lblMontoPagado.Text = itemdos.TotalOrden.ToString();
@@ -153,12 +154,20 @@ namespace Kosturas.View
                 panelViewSMS.lblTotal.Location = new Point(855, 8);
                 panelViewSMS.lblTotal.Size = new Size(100, 25);
 
+                if (itemdos.Pagos.Count > 0)
+                {
+                    panelViewSMS.lblMontoRestante.Text = itemdos.Pagos.FirstOrDefault().Puntos.ToString();
 
-                panelViewSMS.lblMontoRestante.Text = itemdos.Pagos.FirstOrDefault().Puntos.ToString();
-               
-                panelViewSMS.lblMontoRestante.Location = new Point(990, 8);
-                panelViewSMS.lblMontoRestante.Size = new Size(100, 25);
+                    panelViewSMS.lblMontoRestante.Location = new Point(990, 8);
+                    panelViewSMS.lblMontoRestante.Size = new Size(100, 25);
+                }
+                else
+                {
+                    panelViewSMS.lblMontoRestante.Text = "0";
 
+                    panelViewSMS.lblMontoRestante.Location = new Point(990, 8);
+                    panelViewSMS.lblMontoRestante.Size = new Size(100, 25);
+                }
                 panelViewSMS.lblEstado.Text = itemdos.Cliente.Notas.ToString();
               
                 panelViewSMS.lblEstado.Location = new Point(1130, 8);

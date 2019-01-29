@@ -336,6 +336,8 @@
             this.btnNumero.TabIndex = 139;
             this.btnNumero.Text = "Telefono";
             this.btnNumero.UseVisualStyleBackColor = false;
+            this.btnNumero.MouseEnter += new System.EventHandler(this.btnNumero_MouseEnter);
+            this.btnNumero.MouseLeave += new System.EventHandler(this.btnNumero_MouseLeave);
             // 
             // ckbEnviarSMS
             // 
@@ -373,6 +375,8 @@
             this.btnEnviar.Text = "Enviar";
             this.btnEnviar.UseVisualStyleBackColor = false;
             this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            this.btnEnviar.MouseEnter += new System.EventHandler(this.btnNumero_MouseEnter);
+            this.btnEnviar.MouseLeave += new System.EventHandler(this.btnNumero_MouseLeave);
             // 
             // btnModificar
             // 
@@ -386,6 +390,8 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnModificar.MouseEnter += new System.EventHandler(this.btnNumero_MouseEnter);
+            this.btnModificar.MouseLeave += new System.EventHandler(this.btnNumero_MouseLeave);
             // 
             // label4
             // 

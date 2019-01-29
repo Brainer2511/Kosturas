@@ -164,6 +164,8 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.MouseEnter += new System.EventHandler(this.btnImagen_MouseEnter);
+            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnImagen_MouseLeave);
             // 
             // btnActualizar
             // 
@@ -175,6 +177,8 @@
             this.btnActualizar.Text = "Actualizar Servicio";
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            this.btnActualizar.MouseEnter += new System.EventHandler(this.btnImagen_MouseEnter);
+            this.btnActualizar.MouseLeave += new System.EventHandler(this.btnImagen_MouseLeave);
             // 
             // btnGuardar
             // 
@@ -186,6 +190,8 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnGuardar.MouseEnter += new System.EventHandler(this.btnImagen_MouseEnter);
+            this.btnGuardar.MouseLeave += new System.EventHandler(this.btnImagen_MouseLeave);
             // 
             // txtVisualizarServicio
             // 
@@ -269,6 +275,8 @@
             this.btnImagen.Text = "Agregar Imagen";
             this.btnImagen.UseVisualStyleBackColor = false;
             this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
+            this.btnImagen.MouseEnter += new System.EventHandler(this.btnImagen_MouseEnter);
+            this.btnImagen.MouseLeave += new System.EventHandler(this.btnImagen_MouseLeave);
             // 
             // dvgServicios
             // 

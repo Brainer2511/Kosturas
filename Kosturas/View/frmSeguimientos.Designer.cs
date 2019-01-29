@@ -316,6 +316,8 @@
             this.btnGuardar.TabIndex = 102;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            this.btnGuardar.MouseLeave += new System.EventHandler(this.btnGuardar_MouseLeave);
             // 
             // button1
             // 
@@ -327,6 +329,8 @@
             this.button1.TabIndex = 103;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.btnGuardar_MouseLeave);
             // 
             // btnGuardarCambios
             // 
@@ -338,8 +342,8 @@
             this.btnGuardarCambios.TabIndex = 104;
             this.btnGuardarCambios.Text = "Guardar Cambios";
             this.btnGuardarCambios.UseVisualStyleBackColor = false;
-            this.btnGuardarCambios.MouseEnter += new System.EventHandler(this.btnGuardarCambios_MouseEnter);
-            this.btnGuardarCambios.MouseLeave += new System.EventHandler(this.btnGuardarCambios_MouseLeave);
+            this.btnGuardarCambios.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            this.btnGuardarCambios.MouseLeave += new System.EventHandler(this.btnGuardar_MouseLeave);
             // 
             // textBox9
             // 

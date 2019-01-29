@@ -18,7 +18,7 @@ namespace Kosturas.View
 
         DataContextLocal db = new DataContextLocal();
         private Cliente cliente = new Cliente();
-       // private  cliente = new Cliente();
+        Color ColorEntrada;
         private Ordenes orden = new Ordenes();
         Empleado Empleado = new Empleado();
         int resultado = 0;
@@ -95,7 +95,7 @@ namespace Kosturas.View
             orden.HoraSalida =this.cmbHora.SelectedItem.ToString()+":"+this.cmbMinutos.SelectedItem.ToString();
          
             var a = int.Parse(orden.TotalOrden.ToString());
-            var b = int.Parse(txtCalcularCambio.Text);
+            var b = int.Parse(txtpago.Text);
             var c = a - b;
             orden.CantidadRestante = c;
             orden.EmpleadoRealizo = Program.Pin;
@@ -104,6 +104,7 @@ namespace Kosturas.View
             
             db.Entry(orden).State = EntityState.Modified;
             db.SaveChanges();
+            if (ckbNopagar.Checked == false) { 
             Pagos pago = new Pagos();
             pago.Fecha = DateTime.Today;
             pago.EmpleadoRealizo = Program.Pin;
@@ -113,6 +114,7 @@ namespace Kosturas.View
         
             db.Pagos.Add(pago);
             db.SaveChanges();
+            }
             Cliente cliente = db.Clientes.Find(ClienteId);
             if (cliente.Visitas == null) {cliente.Visitas = "1"; cliente.Visitas = cliente.Visitas; } else
             {
@@ -135,6 +137,10 @@ namespace Kosturas.View
                 this.txtpago.Text = "0";
                 this.txtCalcularCambio.Text = "0";
                 this.cmbTipoPago.Visible = false;
+                this.lblCalcularCambio.Visible = false;
+                this.lblCAmbio.Visible = false;
+                this.lblresultado.Visible = false;
+                this.txtCalcularCambio.Visible = false;
 
             }
             else
@@ -259,7 +265,7 @@ namespace Kosturas.View
 
         private void cmbTipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.txtpago.Text = "0";
+           
             if (cmbTipoPago.SelectedIndex==0)
             {
 
@@ -365,6 +371,33 @@ namespace Kosturas.View
             var fddg = resultado - sdh;
 
             label6.Text = fddg.ToString() + ":" + "00";
+        }
+
+        private void btnNumero_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnNumero_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

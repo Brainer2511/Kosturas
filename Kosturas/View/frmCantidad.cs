@@ -12,6 +12,7 @@ namespace Kosturas.View
 {
     public partial class frmCantidad : Form
     {
+        Color ColorEntrada;
         public frmCantidad()
         {
             InitializeComponent();
@@ -42,6 +43,33 @@ namespace Kosturas.View
             mensaje1.Opacity = 1;
             mensaje1.Show();
            
+        }
+
+        private void btnAceptar_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnAceptar_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

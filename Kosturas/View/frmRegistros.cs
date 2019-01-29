@@ -12,6 +12,7 @@ namespace Kosturas.View
 {
     public partial class frmRegistros : Form
     {
+        Color ColorEntrada;
         public frmRegistros()
         {
             InitializeComponent();
@@ -34,6 +35,33 @@ namespace Kosturas.View
             frmVerCierreCajas cierreCaja = new frmVerCierreCajas();
             cierreCaja.Location = new Point(145, 140);
             cierreCaja.ShowDialog();
+        }
+
+        private void busToolStripMenuItem_MouseEnter(object sender, EventArgs e)
+        {
+            //MenuStrip btr = sender as MenuStrip;
+
+
+
+
+
+
+            //object id = btr.Name;
+            //ColorEntrada = btr.BackColor;
+            //id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            //id = btr.ForeColor = Color.White;
+        }
+
+        private void busToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            //MenuStrip btr = sender as MenuStrip;
+
+
+
+            //object id = btr.Name;
+            //id = btr.BackColor = ColorEntrada;
+
+            //id = btr.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

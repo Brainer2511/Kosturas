@@ -16,10 +16,12 @@ namespace Kosturas.View
     public partial class frmCierreCaja : Form
     {
         DataContextLocal db = new DataContextLocal();
+        Color ColorEntrada;
         public List<OrdenViewModel> listaCierres = new List<OrdenViewModel>();
         double Total = 0;
         double TotalSAldo = 0;
         double MontoCaja = 0;
+        public int MedioPagoId { get; set; }
         public frmCierreCaja()
         {
             InitializeComponent();
@@ -538,7 +540,7 @@ namespace Kosturas.View
                 lblTotalEfectivo.Text = x.ToString() + ",00";
 
             }
-            var a = ("2019-01-22");
+            var a = DateTime.Today.ToShortDateString();
             var desde = a + " 00:00";
             var hasta = a + " 23:59";
             var fdesde = DateTime.Parse(desde);
@@ -599,7 +601,7 @@ namespace Kosturas.View
         {
 
          
-             var a =("2019-01-22");
+             var a =DateTime.Today.ToShortDateString();
             var desde = a + " 00:00";
             var hasta = a + " 23:59";
             var fdesde = DateTime.Parse(desde);
@@ -607,36 +609,66 @@ namespace Kosturas.View
 
 
 
-            dgvPagos.DataSource = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Select(t => new { t.MediosPago.TipoMedio, t.Monto }).ToList();
-            var Pagos= db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).ToList();
+            //dgvPagos.DataSource = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Select(t => new { t.MediosPago.FormaPago, t.Monto }).ToList();
+          //  var Pagos= db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).ToList();
 
-            foreach (var item in Pagos)
+            var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta)
+             .GroupBy(q => new { q.MedioPagoId, q.MediosPago.FormaPago, q.Fecha, })
+             .Select(x => new { MedioPagoId = x.Key.MedioPagoId, Fecha = x.Key.Fecha, MedioPago = x.Key.FormaPago, Total = x.Sum(q => q.Monto) })
+             .ToList();
+            dgvPagos.DataSource = query.Select(t => new { t.MedioPago, t.Total }).ToList();
+
+            //foreach (var item in Pagos)
+            //{
+            //    if (item.MedioPagoId==1)
+            //    {
+
+            //        lblIngresosEfectivo.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta&&q.MedioPagoId==1).Sum(w=>w.Monto).ToString() + ",00";
+            //        lblTotalVentas.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(w => w.Monto).ToString() + ",00";
+            //    }
+            //    if (item.MedioPagoId == 3)
+            //    {
+            //        lblIngresosTarjeta.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta && q.MedioPagoId == 3).Sum(w => w.Monto).ToString() + ",00";
+            //        lblTotalVentas.Text= db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(w => w.Monto).ToString() + ",00";
+            //    }
+            //}
+            foreach (var itemdos in query.ToList())
+
             {
-                if (item.MedioPagoId==1)
-                {
-                    
-                    lblIngresosEfectivo.Text = db.Pagos.Sum(w=>w.Monto).ToString() + ",00";
-                    lblTotalVentas.Text = db.Pagos.Sum(w => w.Monto).ToString() + ",00";
-                }
-                if (item.MedioPagoId == 3)
-                {
-                    lblIngresosTarjeta.Text = db.Pagos.Sum(w => w.Monto).ToString() + ",00";
-                    lblTotalVentas.Text= db.Pagos.Sum(w => w.Monto).ToString() + ",00";
-                }
+                if (itemdos.MedioPagoId == 1) { lblIngresosEfectivo.Text = itemdos.Total.ToString(); lblVerDetalleEfectivo.Name = itemdos.MedioPagoId.ToString(); }
+                if (itemdos.MedioPagoId == 3) { lblIngresosTarjeta.Text = itemdos.Total.ToString(); lblVerDetalleTarjeta.Name = itemdos.MedioPagoId.ToString(); }
+              
             }
+            lblTotalVentas.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(w => w.Monto).ToString() + ",00";
+            txtMontoEfectivo.Text = "-" + txtMontoCaja.Text + ",00";
+            lblTotalCaja.Text = "-" + txtMontoCaja.Text + ",00";
+            lblTotalEfectivo.Text = txtMontoCaja.Text + ",00";
+
+            lblTotalEfectivo.Text = (double.Parse(lblIngresosEfectivo.Text) + double.Parse(txtMontoCaja.Text)).ToString() + ",00";
+            lblTotalTarjetas.Text = (double.Parse(lblIngresosTarjeta.Text)).ToString() + ",00";
+            lblTotalCajaVentas.Text = (double.Parse(lblTotalVentas.Text) + double.Parse(txtMontoCaja.Text)).ToString() + ",00";
         }
 
         private void label53_Click(object sender, EventArgs e)
         {
+          
             frmVerOrdenes ordenes = new frmVerOrdenes();
-            ordenes.Location = new Point(560,600);
+            ordenes.Location = new Point(560,550);
             ordenes.ShowDialog();
         }
 
         private void lblVerDetalleTarjeta_Click(object sender, EventArgs e)
         {
-            frmVerDetalles  detalles = new frmVerDetalles();
-            detalles.Location = new Point(560, 600);
+            Label btr = sender as Label;
+
+
+
+
+
+
+            var id = int.Parse(btr.Name);
+            frmVerDetalles  detalles = new frmVerDetalles(id);
+            detalles.Location = new Point(560, 550);
             detalles.ShowDialog();
         }
 
@@ -696,6 +728,46 @@ namespace Kosturas.View
 
 
             this.Close();
+        }
+
+        private void btnActualizaRegistros_MouseEnter(object sender, EventArgs e)
+        {
+
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnActualizaRegistros_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void lblVerDetalleEfectivo_Click(object sender, EventArgs e)
+        {
+            Label btr = sender as Label;
+
+
+
+
+
+
+            var id = int.Parse(btr.Name);
+            frmVerDetalles detalles = new frmVerDetalles(id);
+            detalles.Location = new Point(560, 550);
+            detalles.ShowDialog();
         }
     }
 }

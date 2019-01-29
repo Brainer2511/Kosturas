@@ -272,3 +272,5 @@ C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmVerPagos.
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmReporteSMS.resources
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmRegistros.resources
 C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmReportesCajasTotales.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmReporteVentas.resources
+C:\Users\Erickxon\Desktop\Kosturas\Kosturas\obj\Debug\Kosturas.View.frmDatosCliente.resources

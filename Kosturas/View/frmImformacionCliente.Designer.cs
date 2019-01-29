@@ -33,10 +33,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnHacerEfecto = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.btnVerOrdenes = new System.Windows.Forms.Button();
             this.cmbMediosPago = new System.Windows.Forms.ComboBox();
@@ -59,6 +55,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -87,10 +87,12 @@
             this.label16 = new System.Windows.Forms.Label();
             this.btnActualizarCliente = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
+            this.txtHasta = new System.Windows.Forms.TextBox();
+            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtDesde = new System.Windows.Forms.TextBox();
+            this.dtDesde = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -144,40 +146,8 @@
             this.btnHacerEfecto.TabIndex = 114;
             this.btnHacerEfecto.Text = "Hacer Por Defecto";
             this.btnHacerEfecto.UseVisualStyleBackColor = false;
-            this.btnHacerEfecto.MouseEnter += new System.EventHandler(this.btnHacerEfecto_MouseEnter);
-            this.btnHacerEfecto.MouseLeave += new System.EventHandler(this.btnHacerEfecto_MouseLeave);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 144);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 112;
-            this.label4.Text = "Hasta:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 117;
-            this.label1.Text = "Desde:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(69, 85);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 118;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(69, 137);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 119;
+            this.btnHacerEfecto.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.btnHacerEfecto.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // checkBox4
             // 
@@ -200,13 +170,12 @@
             this.btnVerOrdenes.TabIndex = 121;
             this.btnVerOrdenes.Text = "Ver Ordenes";
             this.btnVerOrdenes.UseVisualStyleBackColor = false;
-            this.btnVerOrdenes.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.btnVerOrdenes.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave);
+            this.btnVerOrdenes.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.btnVerOrdenes.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // cmbMediosPago
             // 
             this.cmbMediosPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMediosPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMediosPago.FormattingEnabled = true;
             this.cmbMediosPago.Location = new System.Drawing.Point(275, 163);
             this.cmbMediosPago.Name = "cmbMediosPago";
@@ -219,14 +188,14 @@
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(69, 163);
+            this.button2.Location = new System.Drawing.Point(61, 168);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(200, 31);
             this.button2.TabIndex = 123;
             this.button2.Text = "Completar Selecion";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
-            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
+            this.button2.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button2.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // panel1
             // 
@@ -317,8 +286,8 @@
             this.button35.TabIndex = 131;
             this.button35.Text = "Recoger en";
             this.button35.UseVisualStyleBackColor = false;
-            this.button35.MouseEnter += new System.EventHandler(this.button35_MouseEnter);
-            this.button35.MouseLeave += new System.EventHandler(this.button35_MouseLeave);
+            this.button35.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button35.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // button32
             // 
@@ -330,8 +299,8 @@
             this.button32.TabIndex = 130;
             this.button32.Text = "Ordenado En";
             this.button32.UseVisualStyleBackColor = false;
-            this.button32.MouseEnter += new System.EventHandler(this.button32_MouseEnter);
-            this.button32.MouseLeave += new System.EventHandler(this.button32_MouseLeave);
+            this.button32.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button32.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // button33
             // 
@@ -343,8 +312,8 @@
             this.button33.TabIndex = 129;
             this.button33.Text = "Cantidad Pagada";
             this.button33.UseVisualStyleBackColor = false;
-            this.button33.MouseEnter += new System.EventHandler(this.button33_MouseEnter);
-            this.button33.MouseLeave += new System.EventHandler(this.button33_MouseLeave);
+            this.button33.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button33.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // button31
             // 
@@ -356,8 +325,8 @@
             this.button31.TabIndex = 127;
             this.button31.Text = "Localizacion";
             this.button31.UseVisualStyleBackColor = false;
-            this.button31.MouseEnter += new System.EventHandler(this.button31_MouseEnter);
-            this.button31.MouseLeave += new System.EventHandler(this.button31_MouseLeave);
+            this.button31.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button31.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // button30
             // 
@@ -369,8 +338,8 @@
             this.button30.TabIndex = 126;
             this.button30.Text = "Precio Total";
             this.button30.UseVisualStyleBackColor = false;
-            this.button30.MouseEnter += new System.EventHandler(this.button30_MouseEnter);
-            this.button30.MouseLeave += new System.EventHandler(this.button30_MouseLeave);
+            this.button30.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button30.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // button29
             // 
@@ -382,8 +351,8 @@
             this.button29.TabIndex = 125;
             this.button29.Text = "#";
             this.button29.UseVisualStyleBackColor = false;
-            this.button29.MouseEnter += new System.EventHandler(this.button29_MouseEnter);
-            this.button29.MouseLeave += new System.EventHandler(this.button29_MouseLeave);
+            this.button29.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button29.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // button3
             // 
@@ -395,8 +364,8 @@
             this.button3.TabIndex = 133;
             this.button3.Text = "Completado En";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
-            this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
+            this.button3.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button3.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // button4
             // 
@@ -408,8 +377,8 @@
             this.button4.TabIndex = 132;
             this.button4.Text = "Completada";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.MouseEnter += new System.EventHandler(this.button4_MouseEnter);
-            this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
+            this.button4.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button4.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // button5
             // 
@@ -420,8 +389,8 @@
             this.button5.Size = new System.Drawing.Size(60, 30);
             this.button5.TabIndex = 134;
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.MouseEnter += new System.EventHandler(this.button5_MouseEnter);
-            this.button5.MouseLeave += new System.EventHandler(this.button5_MouseLeave);
+            this.button5.MouseEnter += new System.EventHandler(this.btnVerOrdenes_MouseEnter);
+            this.button5.MouseLeave += new System.EventHandler(this.btnVerOrdenes_MouseLeave_1);
             // 
             // panel3
             // 
@@ -460,6 +429,40 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(386, 280);
             this.panel3.TabIndex = 135;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(142, 532);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(0, 13);
+            this.label27.TabIndex = 169;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(142, 497);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(0, 13);
+            this.label28.TabIndex = 168;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(16, 532);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(103, 13);
+            this.label29.TabIndex = 167;
+            this.label29.Text = "Fecha Actualizacion";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(16, 497);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(81, 13);
+            this.label30.TabIndex = 166;
+            this.label30.Text = "Actualizado Por";
             // 
             // dateTimePicker3
             // 
@@ -694,39 +697,61 @@
             this.label26.TabIndex = 137;
             this.label26.Text = "label26";
             // 
-            // label27
+            // txtHasta
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(142, 532);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(0, 13);
-            this.label27.TabIndex = 169;
+            this.txtHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHasta.Location = new System.Drawing.Point(58, 132);
+            this.txtHasta.Multiline = true;
+            this.txtHasta.Name = "txtHasta";
+            this.txtHasta.Size = new System.Drawing.Size(187, 32);
+            this.txtHasta.TabIndex = 172;
             // 
-            // label28
+            // dtpHasta
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(142, 497);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(0, 13);
-            this.label28.TabIndex = 168;
+            this.dtpHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHasta.Location = new System.Drawing.Point(251, 132);
+            this.dtpHasta.Name = "dtpHasta";
+            this.dtpHasta.Size = new System.Drawing.Size(18, 32);
+            this.dtpHasta.TabIndex = 171;
+            this.dtpHasta.Value = new System.DateTime(2019, 1, 9, 0, 0, 0, 0);
             // 
-            // label29
+            // label1
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(16, 532);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(103, 13);
-            this.label29.TabIndex = 167;
-            this.label29.Text = "Fecha Actualizacion";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 132);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.TabIndex = 170;
+            this.label1.Text = "Hasta:";
             // 
-            // label30
+            // txtDesde
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(16, 497);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(81, 13);
-            this.label30.TabIndex = 166;
-            this.label30.Text = "Actualizado Por";
+            this.txtDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDesde.Location = new System.Drawing.Point(58, 85);
+            this.txtDesde.Multiline = true;
+            this.txtDesde.Name = "txtDesde";
+            this.txtDesde.Size = new System.Drawing.Size(187, 32);
+            this.txtDesde.TabIndex = 169;
+            // 
+            // dtDesde
+            // 
+            this.dtDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtDesde.Location = new System.Drawing.Point(251, 85);
+            this.dtDesde.Name = "dtDesde";
+            this.dtDesde.Size = new System.Drawing.Size(18, 32);
+            this.dtDesde.TabIndex = 168;
+            this.dtDesde.Value = new System.DateTime(2019, 1, 9, 0, 0, 0, 0);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(0, 85);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.TabIndex = 167;
+            this.label4.Text = "Desde:";
             // 
             // frmImformacionCliente
             // 
@@ -734,6 +759,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1444, 800);
+            this.Controls.Add(this.txtHasta);
+            this.Controls.Add(this.dtpHasta);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtDesde);
+            this.Controls.Add(this.dtDesde);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.btnActualizarCliente);
             this.Controls.Add(this.panel3);
@@ -751,12 +782,8 @@
             this.Controls.Add(this.cmbMediosPago);
             this.Controls.Add(this.btnVerOrdenes);
             this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnHacerEfecto);
-            this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmImformacionCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -779,10 +806,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnHacerEfecto;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.Button btnVerOrdenes;
         private System.Windows.Forms.ComboBox cmbMediosPago;
@@ -837,5 +860,11 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox txtHasta;
+        private System.Windows.Forms.DateTimePicker dtpHasta;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtDesde;
+        private System.Windows.Forms.DateTimePicker dtDesde;
+        private System.Windows.Forms.Label label4;
     }
 }

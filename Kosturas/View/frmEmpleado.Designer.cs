@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbRol = new System.Windows.Forms.ComboBox();
+            this.cmbSucursal = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.btnNuevoEmpledo = new System.Windows.Forms.Button();
@@ -122,10 +126,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cmbSucursal = new System.Windows.Forms.ComboBox();
-            this.cmbRol = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -187,6 +187,44 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // cmbRol
+            // 
+            this.cmbRol.FormattingEnabled = true;
+            this.cmbRol.Location = new System.Drawing.Point(183, 386);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.Size = new System.Drawing.Size(289, 21);
+            this.cmbRol.TabIndex = 59;
+            // 
+            // cmbSucursal
+            // 
+            this.cmbSucursal.FormattingEnabled = true;
+            this.cmbSucursal.Location = new System.Drawing.Point(184, 348);
+            this.cmbSucursal.Name = "cmbSucursal";
+            this.cmbSucursal.Size = new System.Drawing.Size(289, 21);
+            this.cmbSucursal.TabIndex = 58;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(99, 390);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 17);
+            this.label11.TabIndex = 57;
+            this.label11.Text = "Rol";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(99, 352);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 17);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "Sucursal";
+            // 
             // btnAnterior
             // 
             this.btnAnterior.BackColor = System.Drawing.Color.White;
@@ -197,6 +235,8 @@
             this.btnAnterior.Text = "<";
             this.btnAnterior.UseVisualStyleBackColor = false;
             this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            this.btnAnterior.MouseEnter += new System.EventHandler(this.btnAnterior_MouseEnter);
+            this.btnAnterior.MouseLeave += new System.EventHandler(this.btnAnterior_MouseLeave);
             // 
             // btnSiguiente
             // 
@@ -208,6 +248,8 @@
             this.btnSiguiente.Text = ">";
             this.btnSiguiente.UseVisualStyleBackColor = false;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.btnSiguiente.MouseEnter += new System.EventHandler(this.btnAnterior_MouseEnter);
+            this.btnSiguiente.MouseLeave += new System.EventHandler(this.btnAnterior_MouseLeave);
             // 
             // btnNuevoEmpledo
             // 
@@ -219,6 +261,8 @@
             this.btnNuevoEmpledo.Text = "+";
             this.btnNuevoEmpledo.UseVisualStyleBackColor = false;
             this.btnNuevoEmpledo.Click += new System.EventHandler(this.btnNuevoEmpledo_Click);
+            this.btnNuevoEmpledo.MouseEnter += new System.EventHandler(this.btnAnterior_MouseEnter);
+            this.btnNuevoEmpledo.MouseLeave += new System.EventHandler(this.btnAnterior_MouseLeave);
             // 
             // ckbAbrirCajon
             // 
@@ -251,6 +295,8 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.MouseEnter += new System.EventHandler(this.btnAnterior_MouseEnter);
+            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnAnterior_MouseLeave);
             // 
             // btnGuardar
             // 
@@ -262,6 +308,8 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.button1_Click);
+            this.btnGuardar.MouseEnter += new System.EventHandler(this.btnAnterior_MouseEnter);
+            this.btnGuardar.MouseLeave += new System.EventHandler(this.btnAnterior_MouseLeave);
             // 
             // ckbEditPuntos
             // 
@@ -791,6 +839,8 @@
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseEnter += new System.EventHandler(this.btnAnterior_MouseEnter);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnAnterior_MouseLeave);
             // 
             // btnGuardaarDos
             // 
@@ -802,6 +852,8 @@
             this.btnGuardaarDos.Text = "Guardar";
             this.btnGuardaarDos.UseVisualStyleBackColor = true;
             this.btnGuardaarDos.Click += new System.EventHandler(this.btnGuardaarDos_Click);
+            this.btnGuardaarDos.MouseEnter += new System.EventHandler(this.btnAnterior_MouseEnter);
+            this.btnGuardaarDos.MouseLeave += new System.EventHandler(this.btnAnterior_MouseLeave);
             // 
             // btnIgualPrimero
             // 
@@ -812,6 +864,8 @@
             this.btnIgualPrimero.TabIndex = 77;
             this.btnIgualPrimero.Text = "Igual al primero";
             this.btnIgualPrimero.UseVisualStyleBackColor = true;
+            this.btnIgualPrimero.MouseEnter += new System.EventHandler(this.btnAnterior_MouseEnter);
+            this.btnIgualPrimero.MouseLeave += new System.EventHandler(this.btnAnterior_MouseLeave);
             // 
             // ckbEditdomingo
             // 
@@ -1181,44 +1235,6 @@
             this.pictureBox3.Size = new System.Drawing.Size(58, 39);
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(99, 352);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 17);
-            this.label10.TabIndex = 56;
-            this.label10.Text = "Sucursal";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(99, 390);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 17);
-            this.label11.TabIndex = 57;
-            this.label11.Text = "Rol";
-            // 
-            // cmbSucursal
-            // 
-            this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(184, 348);
-            this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(289, 21);
-            this.cmbSucursal.TabIndex = 58;
-            // 
-            // cmbRol
-            // 
-            this.cmbRol.FormattingEnabled = true;
-            this.cmbRol.Location = new System.Drawing.Point(183, 386);
-            this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Size = new System.Drawing.Size(289, 21);
-            this.cmbRol.TabIndex = 59;
             // 
             // frmEmpleado
             // 

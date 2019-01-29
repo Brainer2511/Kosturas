@@ -16,6 +16,7 @@ namespace Kosturas.View
     public partial class frmEmpleado : Form
     {
         public DataContextLocal db = new DataContextLocal();
+        Color ColorEntrada;
         public  frmEmpleado()
         {
             InitializeComponent();
@@ -659,6 +660,33 @@ namespace Kosturas.View
             principal.Opacity = 1;
             principal.Show();
            
+        }
+
+        private void btnAnterior_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnAnterior_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
     }
 

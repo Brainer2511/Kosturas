@@ -100,6 +100,8 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnGuardar.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            this.btnGuardar.MouseLeave += new System.EventHandler(this.btnGuardar_MouseLeave);
             // 
             // btnModificar
             // 
@@ -111,6 +113,8 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnModificar.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            this.btnModificar.MouseLeave += new System.EventHandler(this.btnGuardar_MouseLeave);
             // 
             // btnBorrar
             // 
@@ -122,6 +126,8 @@
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = false;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            this.btnBorrar.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            this.btnBorrar.MouseLeave += new System.EventHandler(this.btnGuardar_MouseLeave);
             // 
             // ckbActivo
             // 

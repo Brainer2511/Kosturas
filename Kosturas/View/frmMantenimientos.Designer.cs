@@ -80,6 +80,8 @@
             this.busToolStripMenuItem.Name = "busToolStripMenuItem";
             this.busToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.busToolStripMenuItem.Text = "Configuracion de Negocio";
+            this.busToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.busToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // pruebaToolStripMenuItem
             // 
@@ -88,6 +90,8 @@
             this.pruebaToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.pruebaToolStripMenuItem.Text = "Servicios";
             this.pruebaToolStripMenuItem.Click += new System.EventHandler(this.pruebaToolStripMenuItem_Click);
+            this.pruebaToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.pruebaToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // ñjnkjnjnToolStripMenuItem
             // 
@@ -96,6 +100,8 @@
             this.ñjnkjnjnToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.ñjnkjnjnToolStripMenuItem.Text = "Detalles Ordesnes";
             this.ñjnkjnjnToolStripMenuItem.Click += new System.EventHandler(this.ñjnkjnjnToolStripMenuItem_Click);
+            this.ñjnkjnjnToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.ñjnkjnjnToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // njkjnkToolStripMenuItem
             // 
@@ -104,6 +110,8 @@
             this.njkjnkToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.njkjnkToolStripMenuItem.Text = "Ventas";
             this.njkjnkToolStripMenuItem.Click += new System.EventHandler(this.njkjnkToolStripMenuItem_Click);
+            this.njkjnkToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.njkjnkToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // sdgtfhyToolStripMenuItem
             // 
@@ -112,6 +120,8 @@
             this.sdgtfhyToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.sdgtfhyToolStripMenuItem.Text = "Metodos Pago";
             this.sdgtfhyToolStripMenuItem.Click += new System.EventHandler(this.sdgtfhyToolStripMenuItem_Click);
+            this.sdgtfhyToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.sdgtfhyToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // hfgghjToolStripMenuItem
             // 
@@ -120,6 +130,8 @@
             this.hfgghjToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.hfgghjToolStripMenuItem.Text = "Ofertas";
             this.hfgghjToolStripMenuItem.Click += new System.EventHandler(this.hfgghjToolStripMenuItem_Click);
+            this.hfgghjToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.hfgghjToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // hgffggfhjhgfToolStripMenuItem
             // 
@@ -128,6 +140,8 @@
             this.hgffggfhjhgfToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.hgffggfhjhgfToolStripMenuItem.Text = "Impresiones Automaticas";
             this.hgffggfhjhgfToolStripMenuItem.Click += new System.EventHandler(this.hgffggfhjhgfToolStripMenuItem_Click);
+            this.hgffggfhjhgfToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.hgffggfhjhgfToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // ertetyToolStripMenuItem
             // 
@@ -135,6 +149,8 @@
             this.ertetyToolStripMenuItem.Name = "ertetyToolStripMenuItem";
             this.ertetyToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.ertetyToolStripMenuItem.Text = "Imprimir Plantillas";
+            this.ertetyToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.ertetyToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // treretyytToolStripMenuItem
             // 
@@ -143,6 +159,8 @@
             this.treretyytToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.treretyytToolStripMenuItem.Text = "Opciones Ordenes";
             this.treretyytToolStripMenuItem.Click += new System.EventHandler(this.treretyytToolStripMenuItem_Click);
+            this.treretyytToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.treretyytToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // erreyytreyretToolStripMenuItem
             // 
@@ -151,6 +169,8 @@
             this.erreyytreyretToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.erreyytreyretToolStripMenuItem.Text = "Afiliados";
             this.erreyytreyretToolStripMenuItem.Click += new System.EventHandler(this.erreyytreyretToolStripMenuItem_Click);
+            this.erreyytreyretToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.erreyytreyretToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // retreretetrToolStripMenuItem
             // 
@@ -159,6 +179,8 @@
             this.retreretetrToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.retreretetrToolStripMenuItem.Text = "Coreos,SMS y Facturas";
             this.retreretetrToolStripMenuItem.Click += new System.EventHandler(this.retreretetrToolStripMenuItem_Click);
+            this.retreretetrToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.retreretetrToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // tretretertreToolStripMenuItem
             // 
@@ -167,6 +189,8 @@
             this.tretretertreToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.tretretertreToolStripMenuItem.Text = "Seguimientos";
             this.tretretertreToolStripMenuItem.Click += new System.EventHandler(this.tretretertreToolStripMenuItem_Click);
+            this.tretretertreToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.tretretertreToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // tretreretToolStripMenuItem
             // 
@@ -174,6 +198,8 @@
             this.tretreretToolStripMenuItem.Name = "tretreretToolStripMenuItem";
             this.tretreretToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.tretreretToolStripMenuItem.Text = "Descripcion Preajustables";
+            this.tretreretToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.tretreretToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // pictureBox1
             // 

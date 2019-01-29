@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCierreCaja));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -123,10 +124,9 @@
             this.label68 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
             this.btnCerrarCaja = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -136,8 +136,21 @@
             this.panel2.Controls.Add(this.label10);
             this.panel2.Location = new System.Drawing.Point(0, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1306, 39);
+            this.panel2.Size = new System.Drawing.Size(1228, 39);
             this.panel2.TabIndex = 116;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1181, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label10
             // 
@@ -201,6 +214,8 @@
             this.btnRestablecerBilletes.Text = "Restablecer Billetes y Monedas";
             this.btnRestablecerBilletes.UseVisualStyleBackColor = false;
             this.btnRestablecerBilletes.Click += new System.EventHandler(this.btnRestablecerBilletes_Click);
+            this.btnRestablecerBilletes.MouseEnter += new System.EventHandler(this.btnActualizaRegistros_MouseEnter);
+            this.btnRestablecerBilletes.MouseLeave += new System.EventHandler(this.btnActualizaRegistros_MouseLeave);
             // 
             // btnActualizaRegistros
             // 
@@ -211,6 +226,8 @@
             this.btnActualizaRegistros.TabIndex = 121;
             this.btnActualizaRegistros.Text = "Actualizar  Todos Los Registros";
             this.btnActualizaRegistros.UseVisualStyleBackColor = false;
+            this.btnActualizaRegistros.MouseEnter += new System.EventHandler(this.btnActualizaRegistros_MouseEnter);
+            this.btnActualizaRegistros.MouseLeave += new System.EventHandler(this.btnActualizaRegistros_MouseLeave);
             // 
             // label5
             // 
@@ -580,7 +597,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(979, 371);
+            this.label36.Location = new System.Drawing.Point(914, 371);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(177, 17);
             this.label36.TabIndex = 166;
@@ -590,7 +607,7 @@
             // 
             this.lblSaldoCaja.AutoSize = true;
             this.lblSaldoCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldoCaja.Location = new System.Drawing.Point(1177, 371);
+            this.lblSaldoCaja.Location = new System.Drawing.Point(1112, 371);
             this.lblSaldoCaja.Name = "lblSaldoCaja";
             this.lblSaldoCaja.Size = new System.Drawing.Size(59, 17);
             this.lblSaldoCaja.TabIndex = 165;
@@ -598,17 +615,18 @@
             // 
             // txtMontoCaja
             // 
-            this.txtMontoCaja.Location = new System.Drawing.Point(1180, 338);
+            this.txtMontoCaja.Location = new System.Drawing.Point(1115, 338);
             this.txtMontoCaja.Name = "txtMontoCaja";
             this.txtMontoCaja.Size = new System.Drawing.Size(125, 20);
             this.txtMontoCaja.TabIndex = 167;
+            this.txtMontoCaja.Text = "50000";
             this.txtMontoCaja.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoCaja_KeyPress);
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(1015, 338);
+            this.label38.Location = new System.Drawing.Point(950, 338);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(141, 17);
             this.label38.TabIndex = 168;
@@ -772,7 +790,7 @@
             // lblVerVentas
             // 
             this.lblVerVentas.AutoSize = true;
-            this.lblVerVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVerVentas.Location = new System.Drawing.Point(384, 407);
             this.lblVerVentas.Name = "lblVerVentas";
             this.lblVerVentas.Size = new System.Drawing.Size(78, 17);
@@ -782,7 +800,7 @@
             // lblVerOrdenes
             // 
             this.lblVerOrdenes.AutoSize = true;
-            this.lblVerOrdenes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerOrdenes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVerOrdenes.Location = new System.Drawing.Point(278, 407);
             this.lblVerOrdenes.Name = "lblVerOrdenes";
             this.lblVerOrdenes.Size = new System.Drawing.Size(89, 17);
@@ -848,6 +866,7 @@
             // lblVerDetalleTarjeta
             // 
             this.lblVerDetalleTarjeta.AutoSize = true;
+            this.lblVerDetalleTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVerDetalleTarjeta.Location = new System.Drawing.Point(578, 496);
             this.lblVerDetalleTarjeta.Name = "lblVerDetalleTarjeta";
             this.lblVerDetalleTarjeta.Size = new System.Drawing.Size(64, 13);
@@ -858,6 +877,7 @@
             // lblVerDetalleCheque
             // 
             this.lblVerDetalleCheque.AutoSize = true;
+            this.lblVerDetalleCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVerDetalleCheque.Location = new System.Drawing.Point(578, 524);
             this.lblVerDetalleCheque.Name = "lblVerDetalleCheque";
             this.lblVerDetalleCheque.Size = new System.Drawing.Size(64, 13);
@@ -867,6 +887,7 @@
             // lblVerDetalleTrasns
             // 
             this.lblVerDetalleTrasns.AutoSize = true;
+            this.lblVerDetalleTrasns.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVerDetalleTrasns.Location = new System.Drawing.Point(578, 550);
             this.lblVerDetalleTrasns.Name = "lblVerDetalleTrasns";
             this.lblVerDetalleTrasns.Size = new System.Drawing.Size(64, 13);
@@ -876,6 +897,7 @@
             // lblVerDetalleOtro
             // 
             this.lblVerDetalleOtro.AutoSize = true;
+            this.lblVerDetalleOtro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVerDetalleOtro.Location = new System.Drawing.Point(578, 576);
             this.lblVerDetalleOtro.Name = "lblVerDetalleOtro";
             this.lblVerDetalleOtro.Size = new System.Drawing.Size(64, 13);
@@ -895,11 +917,13 @@
             // lblVerDetalleEfectivo
             // 
             this.lblVerDetalleEfectivo.AutoSize = true;
+            this.lblVerDetalleEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVerDetalleEfectivo.Location = new System.Drawing.Point(578, 465);
             this.lblVerDetalleEfectivo.Name = "lblVerDetalleEfectivo";
             this.lblVerDetalleEfectivo.Size = new System.Drawing.Size(64, 13);
             this.lblVerDetalleEfectivo.TabIndex = 196;
             this.lblVerDetalleEfectivo.Text = "Ver Detalles";
+            this.lblVerDetalleEfectivo.Click += new System.EventHandler(this.lblVerDetalleEfectivo_Click);
             // 
             // label66
             // 
@@ -925,7 +949,7 @@
             this.dgvPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPagos.Location = new System.Drawing.Point(948, 481);
             this.dgvPagos.Name = "dgvPagos";
-            this.dgvPagos.Size = new System.Drawing.Size(357, 141);
+            this.dgvPagos.Size = new System.Drawing.Size(245, 141);
             this.dgvPagos.TabIndex = 204;
             // 
             // label12
@@ -1004,31 +1028,20 @@
             this.btnCerrarCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarCaja.Location = new System.Drawing.Point(0, 685);
             this.btnCerrarCaja.Name = "btnCerrarCaja";
-            this.btnCerrarCaja.Size = new System.Drawing.Size(1305, 53);
+            this.btnCerrarCaja.Size = new System.Drawing.Size(1193, 53);
             this.btnCerrarCaja.TabIndex = 212;
             this.btnCerrarCaja.Text = "CERRAR CAJA";
             this.btnCerrarCaja.UseVisualStyleBackColor = false;
             this.btnCerrarCaja.Click += new System.EventHandler(this.btnCerrarCaja_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(1259, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.btnCerrarCaja.MouseEnter += new System.EventHandler(this.btnActualizaRegistros_MouseEnter);
+            this.btnCerrarCaja.MouseLeave += new System.EventHandler(this.btnActualizaRegistros_MouseLeave);
             // 
             // frmCierreCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1308, 750);
+            this.ClientSize = new System.Drawing.Size(1241, 750);
             this.Controls.Add(this.btnCerrarCaja);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.label52);
@@ -1129,8 +1142,8 @@
             this.Load += new System.EventHandler(this.CierreCaja_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

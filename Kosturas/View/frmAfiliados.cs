@@ -17,6 +17,7 @@ namespace Kosturas.View
     public partial class frmAfiliados : Form
     {
         public DataContextLocal db = new DataContextLocal();
+        Color ColorEntrada;
         public frmAfiliados()
         {
             InitializeComponent();
@@ -111,6 +112,33 @@ namespace Kosturas.View
 
 
             }
+        }
+
+        private void btnGuardar_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnGuardar_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

@@ -60,6 +60,7 @@
             // 
             // dgvOrdenes
             // 
+            this.dgvOrdenes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvOrdenes.BackgroundColor = System.Drawing.Color.White;
             this.dgvOrdenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrdenes.Location = new System.Drawing.Point(0, 39);

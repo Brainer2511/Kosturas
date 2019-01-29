@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportesOrdenes));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnVerOrdenes = new System.Windows.Forms.Button();
             this.txtHasta = new System.Windows.Forms.TextBox();
@@ -77,12 +78,11 @@
             this.tlpPagos = new System.Windows.Forms.TableLayoutPanel();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.grbNewOrder.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -94,6 +94,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1457, 39);
             this.panel2.TabIndex = 118;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1409, -2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label10
             // 
@@ -108,6 +122,7 @@
             this.label10.TabIndex = 12;
             this.label10.Text = "Reporte Ordenes";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // btnVerOrdenes
             // 
@@ -132,6 +147,7 @@
             this.txtHasta.Name = "txtHasta";
             this.txtHasta.Size = new System.Drawing.Size(187, 32);
             this.txtHasta.TabIndex = 166;
+         
             // 
             // dtpHasta
             // 
@@ -140,7 +156,7 @@
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(18, 32);
             this.dtpHasta.TabIndex = 165;
-            this.dtpHasta.Value = new System.DateTime(2019, 1, 9, 0, 0, 0, 0);
+            this.dtpHasta.Value = new System.DateTime(2019, 1, 29, 0, 0, 0, 0);
             this.dtpHasta.ValueChanged += new System.EventHandler(this.dtpHasta_ValueChanged);
             // 
             // label2
@@ -152,6 +168,7 @@
             this.label2.Size = new System.Drawing.Size(55, 17);
             this.label2.TabIndex = 164;
             this.label2.Text = "Hasta:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtDesde
             // 
@@ -161,6 +178,7 @@
             this.txtDesde.Name = "txtDesde";
             this.txtDesde.Size = new System.Drawing.Size(187, 32);
             this.txtDesde.TabIndex = 163;
+           
             // 
             // dtDesde
             // 
@@ -169,7 +187,7 @@
             this.dtDesde.Name = "dtDesde";
             this.dtDesde.Size = new System.Drawing.Size(18, 32);
             this.dtDesde.TabIndex = 162;
-            this.dtDesde.Value = new System.DateTime(2019, 1, 9, 0, 0, 0, 0);
+            this.dtDesde.Value = new System.DateTime(2019, 1, 29, 0, 0, 0, 0);
             this.dtDesde.ValueChanged += new System.EventHandler(this.dtDesde_ValueChanged);
             // 
             // label1
@@ -181,6 +199,7 @@
             this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 161;
             this.label1.Text = "Desde:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cmbBusqueda
             // 
@@ -189,6 +208,7 @@
             this.cmbBusqueda.Name = "cmbBusqueda";
             this.cmbBusqueda.Size = new System.Drawing.Size(211, 21);
             this.cmbBusqueda.TabIndex = 168;
+            this.cmbBusqueda.SelectedIndexChanged += new System.EventHandler(this.cmbBusqueda_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -199,6 +219,7 @@
             this.label3.Size = new System.Drawing.Size(93, 17);
             this.label3.TabIndex = 169;
             this.label3.Text = "Buscar Por:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -209,6 +230,7 @@
             this.label4.Size = new System.Drawing.Size(175, 25);
             this.label4.TabIndex = 173;
             this.label4.Text = "Detalle Ordenes:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -230,6 +252,7 @@
             this.label6.Size = new System.Drawing.Size(98, 17);
             this.label6.TabIndex = 175;
             this.label6.Text = "Editada Por:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -240,33 +263,34 @@
             this.label7.Size = new System.Drawing.Size(128, 17);
             this.label7.TabIndex = 176;
             this.label7.Text = "Completada Por:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(339, 521);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.Size = new System.Drawing.Size(0, 13);
             this.label8.TabIndex = 177;
-            this.label8.Text = "label8";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(502, 522);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.Size = new System.Drawing.Size(0, 13);
             this.label9.TabIndex = 178;
-            this.label9.Text = "label9";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(705, 519);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.Size = new System.Drawing.Size(0, 13);
             this.label11.TabIndex = 179;
-            this.label11.Text = "label11";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
@@ -277,6 +301,7 @@
             this.label12.Size = new System.Drawing.Size(80, 25);
             this.label12.TabIndex = 180;
             this.label12.Text = "Pagos:";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // groupBox1
             // 
@@ -297,6 +322,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1057, 240);
             this.groupBox1.TabIndex = 181;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // button9
             // 
@@ -308,6 +334,7 @@
             this.button9.TabIndex = 156;
             this.button9.Text = "Empleado";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             this.button9.MouseEnter += new System.EventHandler(this.button9_MouseEnter);
             this.button9.MouseLeave += new System.EventHandler(this.button9_MouseLeave);
             // 
@@ -321,6 +348,7 @@
             this.button2.TabIndex = 104;
             this.button2.Text = "Precio Unitario";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
             this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             // 
@@ -334,6 +362,7 @@
             this.button7.TabIndex = 99;
             this.button7.Text = "Orden";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             this.button7.MouseEnter += new System.EventHandler(this.button7_MouseEnter);
             this.button7.MouseLeave += new System.EventHandler(this.button7_MouseLeave);
             // 
@@ -347,6 +376,7 @@
             this.button6.TabIndex = 100;
             this.button6.Text = "Descripcion";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             this.button6.MouseEnter += new System.EventHandler(this.button6_MouseEnter);
             this.button6.MouseLeave += new System.EventHandler(this.button6_MouseLeave);
             // 
@@ -360,6 +390,7 @@
             this.button5.TabIndex = 101;
             this.button5.Text = "Total";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             this.button5.MouseEnter += new System.EventHandler(this.button5_MouseEnter);
             this.button5.MouseLeave += new System.EventHandler(this.button5_MouseLeave);
             // 
@@ -373,6 +404,7 @@
             this.button4.TabIndex = 102;
             this.button4.Text = "Tarea";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             this.button4.MouseEnter += new System.EventHandler(this.button4_MouseEnter);
             this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
             // 
@@ -399,6 +431,7 @@
             this.tblDetalleOrdenesClientes.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblDetalleOrdenesClientes.Size = new System.Drawing.Size(1048, 196);
             this.tblDetalleOrdenesClientes.TabIndex = 155;
+            this.tblDetalleOrdenesClientes.Paint += new System.Windows.Forms.PaintEventHandler(this.tblDetalleOrdenesClientes_Paint);
             // 
             // button3
             // 
@@ -410,6 +443,7 @@
             this.button3.TabIndex = 103;
             this.button3.Text = "Afiliado";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             this.button3.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
             this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
             // 
@@ -423,6 +457,7 @@
             this.button1.TabIndex = 105;
             this.button1.Text = "Descuento";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
             this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             // 
@@ -436,6 +471,7 @@
             this.button8.TabIndex = 113;
             this.button8.Text = "Detalles Tarea";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             this.button8.MouseEnter += new System.EventHandler(this.button8_MouseEnter);
             this.button8.MouseLeave += new System.EventHandler(this.button8_MouseLeave);
             // 
@@ -458,6 +494,7 @@
             this.grbNewOrder.Size = new System.Drawing.Size(1262, 319);
             this.grbNewOrder.TabIndex = 182;
             this.grbNewOrder.TabStop = false;
+            this.grbNewOrder.Enter += new System.EventHandler(this.grbNewOrder_Enter);
             // 
             // button10
             // 
@@ -469,6 +506,7 @@
             this.button10.TabIndex = 157;
             this.button10.Text = "Precio Total";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             this.button10.MouseEnter += new System.EventHandler(this.button10_MouseEnter);
             this.button10.MouseLeave += new System.EventHandler(this.button10_MouseLeave);
             // 
@@ -482,6 +520,7 @@
             this.button15.TabIndex = 155;
             this.button15.Text = "Completada";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             this.button15.MouseEnter += new System.EventHandler(this.button15_MouseEnter);
             this.button15.MouseLeave += new System.EventHandler(this.button15_MouseLeave);
             // 
@@ -495,6 +534,7 @@
             this.button32.TabIndex = 79;
             this.button32.Text = "Ordenado En";
             this.button32.UseVisualStyleBackColor = false;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
             this.button32.MouseEnter += new System.EventHandler(this.button32_MouseEnter);
             this.button32.MouseLeave += new System.EventHandler(this.button32_MouseLeave);
             // 
@@ -508,6 +548,7 @@
             this.button29.TabIndex = 74;
             this.button29.Text = "#";
             this.button29.UseVisualStyleBackColor = false;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
             this.button29.MouseEnter += new System.EventHandler(this.button29_MouseEnter);
             this.button29.MouseLeave += new System.EventHandler(this.button29_MouseLeave);
             // 
@@ -521,6 +562,7 @@
             this.button30.TabIndex = 75;
             this.button30.Text = "SubTotal";
             this.button30.UseVisualStyleBackColor = false;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
             this.button30.MouseEnter += new System.EventHandler(this.button30_MouseEnter);
             this.button30.MouseLeave += new System.EventHandler(this.button30_MouseLeave);
             // 
@@ -537,6 +579,7 @@
             this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpOrdenesTotales.Size = new System.Drawing.Size(1248, 275);
             this.tlpOrdenesTotales.TabIndex = 154;
+            this.tlpOrdenesTotales.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpOrdenesTotales_Paint);
             // 
             // button31
             // 
@@ -548,6 +591,7 @@
             this.button31.TabIndex = 76;
             this.button31.Text = "Localizacion";
             this.button31.UseVisualStyleBackColor = false;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
             this.button31.MouseEnter += new System.EventHandler(this.button31_MouseEnter);
             this.button31.MouseLeave += new System.EventHandler(this.button31_MouseLeave);
             // 
@@ -561,6 +605,7 @@
             this.button34.TabIndex = 77;
             this.button34.Text = "Cliente";
             this.button34.UseVisualStyleBackColor = false;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
             this.button34.MouseEnter += new System.EventHandler(this.button34_MouseEnter);
             this.button34.MouseLeave += new System.EventHandler(this.button34_MouseLeave);
             // 
@@ -574,6 +619,7 @@
             this.button33.TabIndex = 78;
             this.button33.Text = "Cantidad Pagada";
             this.button33.UseVisualStyleBackColor = false;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
             this.button33.MouseEnter += new System.EventHandler(this.button33_MouseEnter);
             this.button33.MouseLeave += new System.EventHandler(this.button33_MouseLeave);
             // 
@@ -587,6 +633,7 @@
             this.button35.TabIndex = 80;
             this.button35.Text = "Recoger en";
             this.button35.UseVisualStyleBackColor = false;
+            this.button35.Click += new System.EventHandler(this.button35_Click);
             this.button35.MouseEnter += new System.EventHandler(this.button35_MouseEnter);
             this.button35.MouseLeave += new System.EventHandler(this.button35_MouseLeave);
             // 
@@ -605,6 +652,7 @@
             this.groupBox2.Size = new System.Drawing.Size(385, 240);
             this.groupBox2.TabIndex = 183;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button12
             // 
@@ -616,6 +664,7 @@
             this.button12.TabIndex = 104;
             this.button12.Text = "Empleado";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             this.button12.MouseEnter += new System.EventHandler(this.button12_MouseEnter);
             this.button12.MouseLeave += new System.EventHandler(this.button12_MouseLeave);
             // 
@@ -629,6 +678,7 @@
             this.button13.TabIndex = 99;
             this.button13.Text = "Fecha";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             this.button13.MouseEnter += new System.EventHandler(this.button13_MouseEnter);
             this.button13.MouseLeave += new System.EventHandler(this.button13_MouseLeave);
             // 
@@ -642,6 +692,7 @@
             this.button17.TabIndex = 102;
             this.button17.Text = "Monto";
             this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             this.button17.MouseEnter += new System.EventHandler(this.button17_MouseEnter);
             this.button17.MouseLeave += new System.EventHandler(this.button17_MouseLeave);
             // 
@@ -668,6 +719,7 @@
             this.tlpPagos.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpPagos.Size = new System.Drawing.Size(373, 196);
             this.tlpPagos.TabIndex = 155;
+            this.tlpPagos.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpPagos_Paint);
             // 
             // button19
             // 
@@ -679,6 +731,7 @@
             this.button19.TabIndex = 105;
             this.button19.Text = "Puntos";
             this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             this.button19.MouseEnter += new System.EventHandler(this.button19_MouseEnter);
             this.button19.MouseLeave += new System.EventHandler(this.button19_MouseLeave);
             // 
@@ -692,21 +745,9 @@
             this.button20.TabIndex = 113;
             this.button20.Text = "Medio Pago";
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             this.button20.MouseEnter += new System.EventHandler(this.button20_MouseEnter);
             this.button20.MouseLeave += new System.EventHandler(this.button20_MouseLeave);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(1409, -2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // frmReportesOrdenes
             // 
@@ -739,12 +780,13 @@
             this.Name = "frmReportesOrdenes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "frmReportesOrdenes";
+            this.Load += new System.EventHandler(this.frmReportesOrdenes_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.grbNewOrder.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

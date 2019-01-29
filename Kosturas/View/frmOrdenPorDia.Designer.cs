@@ -76,6 +76,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.dtprecogida = new System.Windows.Forms.DateTimePicker();
             this.txtFecha = new System.Windows.Forms.TextBox();
@@ -87,22 +88,22 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvPagos = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbNewOrder.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(479, 236);
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(349, 133);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(201, 17);
+            this.checkBox1.Size = new System.Drawing.Size(391, 29);
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "Ver Solamente  Ordenes Incompletas";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -110,9 +111,10 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(191, 236);
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(19, 133);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(149, 17);
+            this.checkBox2.Size = new System.Drawing.Size(288, 29);
             this.checkBox2.TabIndex = 2;
             this.checkBox2.Text = "Ver Solo Ordenes al 100%";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -120,9 +122,10 @@
             // ckbconfeciones
             // 
             this.ckbconfeciones.AutoSize = true;
+            this.ckbconfeciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ckbconfeciones.Location = new System.Drawing.Point(688, 52);
             this.ckbconfeciones.Name = "ckbconfeciones";
-            this.ckbconfeciones.Size = new System.Drawing.Size(79, 17);
+            this.ckbconfeciones.Size = new System.Drawing.Size(135, 29);
             this.ckbconfeciones.TabIndex = 3;
             this.ckbconfeciones.Text = "confeccion";
             this.ckbconfeciones.UseVisualStyleBackColor = true;
@@ -130,9 +133,10 @@
             // ckbalteraciones
             // 
             this.ckbalteraciones.AutoSize = true;
-            this.ckbalteraciones.Location = new System.Drawing.Point(584, 53);
+            this.ckbalteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbalteraciones.Location = new System.Drawing.Point(531, 53);
             this.ckbalteraciones.Name = "ckbalteraciones";
-            this.ckbalteraciones.Size = new System.Drawing.Size(84, 17);
+            this.ckbalteraciones.Size = new System.Drawing.Size(151, 29);
             this.ckbalteraciones.TabIndex = 4;
             this.ckbalteraciones.Text = "Alteraciones";
             this.ckbalteraciones.UseVisualStyleBackColor = true;
@@ -176,9 +180,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(514, 53);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(425, 53);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.Size = new System.Drawing.Size(97, 25);
             this.label5.TabIndex = 9;
             this.label5.Text = "Servicio:";
             // 
@@ -356,9 +361,10 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(935, 536);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(1074, 484);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.Size = new System.Drawing.Size(64, 20);
             this.label13.TabIndex = 122;
             this.label13.Text = "Pagos:";
             // 
@@ -456,63 +462,67 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(843, 536);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(818, 484);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(21, 13);
+            this.label14.Size = new System.Drawing.Size(0, 17);
             this.label14.TabIndex = 112;
-            this.label14.Text = "hgj";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(640, 536);
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(614, 484);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(24, 13);
+            this.label15.Size = new System.Drawing.Size(0, 17);
             this.label15.TabIndex = 111;
-            this.label15.Text = "fghj";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(541, 536);
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(462, 484);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(96, 13);
+            this.label16.Size = new System.Drawing.Size(146, 17);
             this.label16.TabIndex = 110;
             this.label16.Text = "Ultima Edicion Por:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(752, 536);
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(684, 484);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(85, 13);
+            this.label17.Size = new System.Drawing.Size(128, 17);
             this.label17.TabIndex = 109;
             this.label17.Text = "Completado Por:";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(284, 536);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(262, 484);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(83, 13);
+            this.label18.Size = new System.Drawing.Size(126, 17);
             this.label18.TabIndex = 108;
             this.label18.Text = "Presentado Por:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(373, 536);
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(386, 484);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(13, 13);
+            this.label19.Size = new System.Drawing.Size(0, 17);
             this.label19.TabIndex = 107;
-            this.label19.Text = "tt";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(-2, 536);
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(-2, 484);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(171, 13);
+            this.label20.Size = new System.Drawing.Size(258, 17);
             this.label20.TabIndex = 106;
             this.label20.Text = "Detalles Del Pedido Seleccionado:";
             // 
@@ -617,6 +627,19 @@
             this.panel2.Size = new System.Drawing.Size(1419, 39);
             this.panel2.TabIndex = 123;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1357, -1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(59, 39);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -699,7 +722,7 @@
             this.grbNewOrder.Controls.Add(this.button34);
             this.grbNewOrder.Controls.Add(this.button33);
             this.grbNewOrder.Controls.Add(this.button35);
-            this.grbNewOrder.Location = new System.Drawing.Point(1, 258);
+            this.grbNewOrder.Location = new System.Drawing.Point(1, 195);
             this.grbNewOrder.Margin = new System.Windows.Forms.Padding(2);
             this.grbNewOrder.Name = "grbNewOrder";
             this.grbNewOrder.Padding = new System.Windows.Forms.Padding(2);
@@ -716,6 +739,8 @@
             this.button16.Size = new System.Drawing.Size(80, 23);
             this.button16.TabIndex = 156;
             this.button16.UseVisualStyleBackColor = false;
+            this.button16.MouseEnter += new System.EventHandler(this.button15_MouseEnter);
+            this.button16.MouseLeave += new System.EventHandler(this.button15_MouseLeave);
             // 
             // button15
             // 
@@ -727,6 +752,8 @@
             this.button15.TabIndex = 155;
             this.button15.Text = "Cantidad Restante";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.MouseEnter += new System.EventHandler(this.button15_MouseEnter);
+            this.button15.MouseLeave += new System.EventHandler(this.button15_MouseLeave);
             // 
             // groupBox1
             // 
@@ -740,7 +767,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Location = new System.Drawing.Point(1, 551);
+            this.groupBox1.Location = new System.Drawing.Point(1, 513);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -756,7 +783,7 @@
             this.groupBox2.Controls.Add(this.button12);
             this.groupBox2.Controls.Add(this.button10);
             this.groupBox2.Controls.Add(this.button14);
-            this.groupBox2.Location = new System.Drawing.Point(1062, 551);
+            this.groupBox2.Location = new System.Drawing.Point(1062, 514);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -773,19 +800,6 @@
             this.dgvPagos.Name = "dgvPagos";
             this.dgvPagos.Size = new System.Drawing.Size(353, 196);
             this.dgvPagos.TabIndex = 159;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(1357, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(59, 39);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // frmOrdenPorDia
             // 
@@ -824,11 +838,11 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grbNewOrder.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

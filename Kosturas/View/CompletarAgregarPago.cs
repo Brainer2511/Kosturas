@@ -17,7 +17,7 @@ namespace Kosturas.View
     {
         DataContextLocal db = new DataContextLocal();
         public int OrdenId { get; set; }
-       // private Ordenes abono = new Ordenes();
+        Color ColorEntrada;
         private Pagos abono = new Pagos();
         public CompletarAgregarPago(int ordenId=0)
         {
@@ -116,6 +116,33 @@ namespace Kosturas.View
             pago.OrdenId = OrdenId;
             db.Pagos.Add(pago);
             db.SaveChanges();
+        }
+
+        private void btnCompletar_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnCompletar_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

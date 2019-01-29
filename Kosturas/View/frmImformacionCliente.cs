@@ -17,6 +17,7 @@ namespace Kosturas.View
     {
 
         DataContextLocal db = new DataContextLocal();
+        Color ColorEntrada;
         public int ClienteId { get; set; }
         private Cliente cliente = new Cliente();
         public frmImformacionCliente(int clienteId = 0)
@@ -105,171 +106,173 @@ namespace Kosturas.View
 
         private void button2_MouseEnter(object sender, EventArgs e)
         {
-            this.button2.BackColor = System.Drawing.Color.OliveDrab;
-            this.button2.ForeColor = System.Drawing.Color.Black;
+           
         }
 
         private void button2_MouseLeave(object sender, EventArgs e)
         {
 
-            this.button2.BackColor = Color.White;
-            this.button2.ForeColor = System.Drawing.Color.Black;
         }
 
         private void button1_MouseEnter(object sender, EventArgs e)
         {
-            this.btnVerOrdenes.BackColor = System.Drawing.Color.OliveDrab;
-            this.btnVerOrdenes.ForeColor = System.Drawing.Color.Black;
+           
         }
 
         private void btnVerOrdenes_MouseLeave(object sender, EventArgs e)
         {
 
-            this.btnVerOrdenes.BackColor = Color.White;
-            this.btnVerOrdenes.ForeColor = System.Drawing.Color.Black;
+           
         }
 
         private void btnHacerEfecto_MouseEnter(object sender, EventArgs e)
         {
-            this.btnHacerEfecto.BackColor = System.Drawing.Color.OliveDrab;
-            this.btnHacerEfecto.ForeColor = System.Drawing.Color.White;
         }
 
         private void btnHacerEfecto_MouseLeave(object sender, EventArgs e)
         {
 
-            this.btnHacerEfecto.BackColor = Color.White;
-            this.btnHacerEfecto.ForeColor = System.Drawing.Color.Black;
+         
         }
 
         private void button29_MouseEnter(object sender, EventArgs e)
         {
-            this.button29.BackColor = System.Drawing.Color.OliveDrab;
-            this.button29.ForeColor = System.Drawing.Color.White;
+         
         }
 
         private void button29_MouseLeave(object sender, EventArgs e)
         {
 
-            this.button29.BackColor = Color.White;
-            this.button29.ForeColor = System.Drawing.Color.Black;
+           
         }
 
         private void button32_MouseEnter(object sender, EventArgs e)
         {
-            this.button32.BackColor = System.Drawing.Color.OliveDrab;
-            this.button32.ForeColor = System.Drawing.Color.White;
+           
         }
 
         private void button32_MouseLeave(object sender, EventArgs e)
         {
-
-            this.button32.BackColor = Color.White;
-            this.button32.ForeColor = System.Drawing.Color.Black;
+            
         }
 
         private void button31_MouseEnter(object sender, EventArgs e)
         {
-            this.button31.BackColor = System.Drawing.Color.OliveDrab;
-            this.button31.ForeColor = System.Drawing.Color.White;
+          
         }
 
         private void button31_MouseLeave(object sender, EventArgs e)
         {
-
-            this.button31.BackColor = Color.White;
-            this.button31.ForeColor = System.Drawing.Color.Black;
+            
         }
 
         private void button35_MouseEnter(object sender, EventArgs e)
         {
-            this.button35.BackColor = System.Drawing.Color.OliveDrab;
-            this.button35.ForeColor = System.Drawing.Color.White;
         }
 
         private void button35_MouseLeave(object sender, EventArgs e)
         {
 
-            this.button35.BackColor = Color.White;
-            this.button35.ForeColor = System.Drawing.Color.Black;
+          
         }
 
         private void button30_MouseEnter(object sender, EventArgs e)
         {
-            this.button30.BackColor = System.Drawing.Color.OliveDrab;
-            this.button30.ForeColor = System.Drawing.Color.White;
         }
 
         private void button30_MouseLeave(object sender, EventArgs e)
         {
-
-            this.button30.BackColor = Color.White;
-            this.button30.ForeColor = System.Drawing.Color.Black;
+            
         }
 
         private void button33_MouseEnter(object sender, EventArgs e)
         {
-            this.button33.BackColor = System.Drawing.Color.OliveDrab;
-            this.button33.ForeColor = System.Drawing.Color.White;
         }
 
         private void button33_MouseLeave(object sender, EventArgs e)
         {
-
-            this.button33.BackColor = Color.White;
-            this.button33.ForeColor = System.Drawing.Color.Black;
+            
         }
 
         private void button4_MouseEnter(object sender, EventArgs e)
         {
-            this.button4.BackColor = System.Drawing.Color.OliveDrab;
-            this.button4.ForeColor = System.Drawing.Color.White;
+            
         }
 
         private void button4_MouseLeave(object sender, EventArgs e)
         {
-
-            this.button4.BackColor = Color.White;
-            this.button4.ForeColor = System.Drawing.Color.Black;
         }
 
         private void button3_MouseEnter(object sender, EventArgs e)
         {
-            this.button3.BackColor = System.Drawing.Color.OliveDrab;
-            this.button3.ForeColor = System.Drawing.Color.White;
         }
 
         private void button3_MouseLeave(object sender, EventArgs e)
         {
-
-            this.button3.BackColor = Color.White;
-            this.button3.ForeColor = System.Drawing.Color.Black;
+            
         }
 
         private void button5_MouseEnter(object sender, EventArgs e)
         {
-            this.button5.BackColor = System.Drawing.Color.OliveDrab;
-            this.button5.ForeColor = System.Drawing.Color.White;
         }
 
         private void button5_MouseLeave(object sender, EventArgs e)
         {
 
-            this.button5.BackColor = Color.White;
-            this.button5.ForeColor = System.Drawing.Color.Black;
         }
 
         private void cmbMediosPago_MouseEnter(object sender, EventArgs e)
         {
+            ComboBox btr = sender as ComboBox;
 
-            this.cmbMediosPago.BackColor = System.Drawing.Color.OliveDrab;
-            this.cmbMediosPago.ForeColor = System.Drawing.Color.White;
+
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
         }
 
         private void cmbMediosPago_MouseLeave(object sender, EventArgs e)
         {
-            this.cmbMediosPago.BackColor = Color.White;
-            this.cmbMediosPago.ForeColor = System.Drawing.Color.Black;
+            ComboBox btr = sender as ComboBox;
+
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void btnVerOrdenes_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnVerOrdenes_MouseLeave_1(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

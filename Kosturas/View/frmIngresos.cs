@@ -31,9 +31,9 @@ namespace Kosturas.View
 
         private void btnVerOrdenes_Click(object sender, EventArgs e)
         {
-            var a = dtDesde.Value.ToShortDateString();
+            var a = this.txtDesde.Text;
 
-            var b = dtpHasta.Value.ToShortDateString();
+            var b = this.txtHasta.Text;
 
             var desde = a + " 00:00";
             var hasta = b + " 23:59";
@@ -49,9 +49,9 @@ namespace Kosturas.View
 
         private void frmIngresos_Load(object sender, EventArgs e)
         {
-            var a = dtDesde.Value.ToShortDateString();
+            var a = DateTime.Today.ToShortDateString();// dtDesde.Value.ToShortDateString();
 
-            var b = dtpHasta.Value.ToShortDateString();
+            var b = DateTime.Today.ToShortDateString();// dtpHasta.Value.ToShortDateString();
 
 
             this.txtDesde.Text = a;
@@ -80,6 +80,7 @@ namespace Kosturas.View
             var hasta = b + " 23:59";
             var fdesde = DateTime.Parse(desde);
             var fhasta = DateTime.Parse(hasta);
+
             this.lblTotalIngresos.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(q => q.Monto).ToString();
 
         }

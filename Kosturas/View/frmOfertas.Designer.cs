@@ -145,6 +145,8 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnGuardar.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            this.btnGuardar.MouseLeave += new System.EventHandler(this.btnGuardar_MouseLeave);
             // 
             // btnActualizar
             // 
@@ -156,6 +158,8 @@
             this.btnActualizar.Text = "Actualizar Oferta";
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            this.btnActualizar.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            this.btnActualizar.MouseLeave += new System.EventHandler(this.btnGuardar_MouseLeave);
             // 
             // btnCancelar
             // 
@@ -167,6 +171,8 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnGuardar_MouseLeave);
             // 
             // dvgOfertas
             // 

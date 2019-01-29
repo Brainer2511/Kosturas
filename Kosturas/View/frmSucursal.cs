@@ -3,6 +3,7 @@ using Domain;
 using Kosturas.Model;
 using System;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -10,8 +11,9 @@ namespace Kosturas.View
 {
     public partial class frmSucursal : Form
     {
-
+        Color ColorEntrada;
         public DataContextLocal db = new DataContextLocal();
+        
         public frmSucursal()
         {
             InitializeComponent();
@@ -71,6 +73,33 @@ namespace Kosturas.View
             {
                 ckbActivo.Checked = false;
             }
+        }
+
+        private void btnGuardar_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnGuardar_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

@@ -31,13 +31,13 @@ namespace Kosturas.View
         private void frmVerCierreCajas_Load(object sender, EventArgs e)
         {
 
-            var a = dtDesde.Value.ToShortDateString();
+            var a = DateTime.Today;// dtDesde.Value.ToShortDateString();
 
-            var b = dtpHasta.Value.ToShortDateString();
+            var b = DateTime.Today;// dtpHasta.Value.ToShortDateString();
 
-       
-            this.txtDesde.Text = a;
-            this.txtHasta.Text = b;
+
+            this.txtDesde.Text = a.ToShortDateString();
+            this.txtHasta.Text = b.ToShortDateString();
         }
 
         private void btnActualizaRegistros_Click(object sender, EventArgs e)
@@ -118,7 +118,8 @@ namespace Kosturas.View
 
                 panelViewCierre.Panel.Name = itemdos.CierreId.ToString();
                 panelViewCierre.Panel.Size = new Size(1270, 30);
-              
+                panelViewCierre.Panel.MouseEnter += new EventHandler(MouseoverDos);
+                panelViewCierre.Panel.MouseLeave += new EventHandler(MouseleaveDos);
 
 
                 if (Colores == true)
@@ -259,6 +260,33 @@ namespace Kosturas.View
             id = btr.BackColor = ColorEntrada;
 
             id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+        void MouseoverDos(object sender, EventArgs e)
+        {
+            Panel btr = sender as Panel;
+
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+
+
+
+        }
+        void MouseleaveDos(object sender, EventArgs e)
+        {
+            Panel btr = sender as Panel;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+            id = btr.ForeColor = System.Drawing.Color.Black;
+
+
         }
     }
 }

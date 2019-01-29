@@ -33,10 +33,10 @@ namespace Kosturas.View
 
         private void btnVerOrdenes_Click(object sender, EventArgs e)
         {
+          
+            var a = this.txtDesde.Text;
 
-            var a = dtDesde.Value.ToShortDateString();
-
-            var b = dtpHasta.Value.ToShortDateString();
+            var b = this.txtHasta.Text;
 
             var desde = a + " 00:00";
             var hasta = b + " 23:59";
@@ -501,24 +501,7 @@ namespace Kosturas.View
             }
 
         }
-        private void dtDesde_ValueChanged(object sender, EventArgs e)
-        {
-
-            var a = dtDesde.Value.ToShortDateString();
-
-
-
-            this.txtDesde.Text = a;
-        }
-
-        private void dtpHasta_ValueChanged(object sender, EventArgs e)
-        {
-
-            var b = dtpHasta.Value.ToShortDateString();
-
-
-            this.txtHasta.Text = b;
-        }
+    
 
         void Mouseover(object sender, EventArgs e)
         {
@@ -1127,6 +1110,246 @@ namespace Kosturas.View
             id = btr.BackColor = ColorEntrada;
 
             id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void frmReportesOrdenes_Load(object sender, EventArgs e)
+        {
+            var a = DateTime.Today.ToShortDateString();// dtDesde.Value.ToShortDateString();
+
+            var b = DateTime.Today.ToShortDateString();// dtpHasta.Value.ToShortDateString();
+
+
+            this.txtDesde.Text = a;
+            this.txtHasta.Text = b;
+        }
+        private void dtDesde_ValueChanged(object sender, EventArgs e)
+        {
+
+            var a = dtDesde.Value.ToShortDateString();
+
+
+
+            this.txtDesde.Text = a;
+        }
+
+        private void dtpHasta_ValueChanged(object sender, EventArgs e)
+        {
+
+            var b = dtpHasta.Value.ToShortDateString();
+
+
+            this.txtHasta.Text = b;
+        }
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+     
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbNewOrder_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tlpOrdenesTotales_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tblDetalleOrdenesClientes_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tlpPagos_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

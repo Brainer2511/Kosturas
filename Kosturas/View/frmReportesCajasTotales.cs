@@ -12,6 +12,7 @@ namespace Kosturas.View
 {
     public partial class frmReportesCajasTotales : Form
     {
+        Color ColorEntrada;
         public frmReportesCajasTotales()
         {
             InitializeComponent();
@@ -38,7 +39,9 @@ namespace Kosturas.View
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-
+            frmReporteVentas registros = new frmReporteVentas();
+            registros.Location = new Point(0, 135);
+            registros.ShowDialog();
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -59,6 +62,51 @@ namespace Kosturas.View
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void menuStrip1_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void busToolStripMenuItem_MouseEnter(object sender, EventArgs e)
+        {
+            //ToolStripMenuItem btr = sender as ToolStripMenuItem;
+
+
+
+
+
+
+            //object id = btr.Name;
+            //ColorEntrada = btr.BackColor;
+            //id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            //id = btr.ForeColor = Color.White;
+        }
+
+        private void busToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+        //    ToolStripMenuItem btr = sender as ToolStripMenuItem;
+
+
+
+        //    object id = btr.ToolTipText;
+        //    id = btr.BackColor = ColorEntrada;
+
+        //    id = btr.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+            frmDatosCliente registros = new frmDatosCliente();
+            registros.Location = new Point(10, 145);
+            registros.ShowDialog();
         }
     }
 }

@@ -58,6 +58,8 @@
             this.btnAgregarPago.Text = "Agregar Pago";
             this.btnAgregarPago.UseVisualStyleBackColor = false;
             this.btnAgregarPago.Click += new System.EventHandler(this.btnAgregarPago_Click);
+            this.btnAgregarPago.MouseEnter += new System.EventHandler(this.btnCompletar_MouseEnter);
+            this.btnAgregarPago.MouseLeave += new System.EventHandler(this.btnCompletar_MouseLeave);
             // 
             // panel2
             // 
@@ -119,6 +121,8 @@
             this.btnCompletar.Text = "Completar";
             this.btnCompletar.UseVisualStyleBackColor = false;
             this.btnCompletar.Click += new System.EventHandler(this.btnCompletar_Click);
+            this.btnCompletar.MouseEnter += new System.EventHandler(this.btnCompletar_MouseEnter);
+            this.btnCompletar.MouseLeave += new System.EventHandler(this.btnCompletar_MouseLeave);
             // 
             // txtMonto
             // 
@@ -155,6 +159,8 @@
             this.btnCancelar.TabIndex = 118;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.MouseEnter += new System.EventHandler(this.btnCompletar_MouseEnter);
+            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnCompletar_MouseLeave);
             // 
             // lblresultado
             // 

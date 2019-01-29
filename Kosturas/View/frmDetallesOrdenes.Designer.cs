@@ -140,6 +140,8 @@
             this.btnImagenTipoRopa.Text = "Agregar Imagen";
             this.btnImagenTipoRopa.UseVisualStyleBackColor = false;
             this.btnImagenTipoRopa.Click += new System.EventHandler(this.btnImagenTipoRopa_Click);
+            this.btnImagenTipoRopa.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnImagenTipoRopa.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnGuardar
             // 
@@ -151,6 +153,8 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnGuardar.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnGuardar.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnActualizarPrenda
             // 
@@ -162,6 +166,8 @@
             this.btnActualizarPrenda.Text = "Actualizar Prenda";
             this.btnActualizarPrenda.UseVisualStyleBackColor = false;
             this.btnActualizarPrenda.Click += new System.EventHandler(this.btnActualizarPrenda_Click);
+            this.btnActualizarPrenda.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnActualizarPrenda.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnCancelar
             // 
@@ -172,6 +178,8 @@
             this.btnCancelar.TabIndex = 24;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // txtNumeroTarea
             // 
@@ -232,6 +240,8 @@
             this.btnImagenTarea.Text = "Agregar Imagen";
             this.btnImagenTarea.UseVisualStyleBackColor = false;
             this.btnImagenTarea.Click += new System.EventHandler(this.btnImagenTarea_Click);
+            this.btnImagenTarea.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnImagenTarea.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnGuardarTarea
             // 
@@ -243,6 +253,8 @@
             this.btnGuardarTarea.Text = "Guardar";
             this.btnGuardarTarea.UseVisualStyleBackColor = false;
             this.btnGuardarTarea.Click += new System.EventHandler(this.btnGuardarTarea_Click);
+            this.btnGuardarTarea.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnGuardarTarea.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnActualizarTarea
             // 
@@ -254,6 +266,8 @@
             this.btnActualizarTarea.Text = "Actualizar Tarea";
             this.btnActualizarTarea.UseVisualStyleBackColor = false;
             this.btnActualizarTarea.Click += new System.EventHandler(this.btnActualizarTarea_Click);
+            this.btnActualizarTarea.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnActualizarTarea.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // BtnCancelarTarea
             // 
@@ -264,6 +278,8 @@
             this.BtnCancelarTarea.TabIndex = 37;
             this.BtnCancelarTarea.Text = "Cancelar";
             this.BtnCancelarTarea.UseVisualStyleBackColor = false;
+            this.BtnCancelarTarea.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.BtnCancelarTarea.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // label9
             // 
@@ -339,6 +355,8 @@
             this.btnImagenDetalleTarea.Text = "Agregar Imagen";
             this.btnImagenDetalleTarea.UseVisualStyleBackColor = false;
             this.btnImagenDetalleTarea.Click += new System.EventHandler(this.btnImagenDetalleTarea_Click);
+            this.btnImagenDetalleTarea.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnImagenDetalleTarea.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnGuardarDetalleTarea
             // 
@@ -350,6 +368,8 @@
             this.btnGuardarDetalleTarea.Text = "Guardar";
             this.btnGuardarDetalleTarea.UseVisualStyleBackColor = false;
             this.btnGuardarDetalleTarea.Click += new System.EventHandler(this.btnGuardarDetalleTarea_Click);
+            this.btnGuardarDetalleTarea.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnGuardarDetalleTarea.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnActualizarDetalleTarea
             // 
@@ -361,6 +381,8 @@
             this.btnActualizarDetalleTarea.Text = "Actualizar Detalle Tarea";
             this.btnActualizarDetalleTarea.UseVisualStyleBackColor = false;
             this.btnActualizarDetalleTarea.Click += new System.EventHandler(this.btnActualizarDetalleTarea_Click);
+            this.btnActualizarDetalleTarea.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnActualizarDetalleTarea.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnCancelarDetalleTarea
             // 
@@ -371,6 +393,8 @@
             this.btnCancelarDetalleTarea.TabIndex = 49;
             this.btnCancelarDetalleTarea.Text = "Cancelar";
             this.btnCancelarDetalleTarea.UseVisualStyleBackColor = false;
+            this.btnCancelarDetalleTarea.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnCancelarDetalleTarea.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // dvgRopa
             // 
@@ -419,6 +443,8 @@
             this.btnBorrarDetalle.Text = "Borrar";
             this.btnBorrarDetalle.UseVisualStyleBackColor = false;
             this.btnBorrarDetalle.Click += new System.EventHandler(this.btnBorrarDetalle_Click);
+            this.btnBorrarDetalle.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnBorrarDetalle.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnBorrarTarea
             // 
@@ -430,6 +456,8 @@
             this.btnBorrarTarea.Text = "Borrar";
             this.btnBorrarTarea.UseVisualStyleBackColor = false;
             this.btnBorrarTarea.Click += new System.EventHandler(this.btnBorrarTarea_Click);
+            this.btnBorrarTarea.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnBorrarTarea.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // btnBorrarPrenda
             // 
@@ -441,6 +469,8 @@
             this.btnBorrarPrenda.Text = "Borrar";
             this.btnBorrarPrenda.UseVisualStyleBackColor = false;
             this.btnBorrarPrenda.Click += new System.EventHandler(this.btnBorrarPrenda_Click);
+            this.btnBorrarPrenda.MouseEnter += new System.EventHandler(this.btnImagenTipoRopa_MouseEnter);
+            this.btnBorrarPrenda.MouseLeave += new System.EventHandler(this.btnImagenTipoRopa_MouseLeave);
             // 
             // txtRuta
             // 

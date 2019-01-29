@@ -60,6 +60,8 @@
             this.busToolStripMenuItem.Size = new System.Drawing.Size(134, 25);
             this.busToolStripMenuItem.Text = "Cierre Registros";
             this.busToolStripMenuItem.Click += new System.EventHandler(this.busToolStripMenuItem_Click);
+            this.busToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.busToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // pruebaToolStripMenuItem
             // 
@@ -69,6 +71,8 @@
             this.pruebaToolStripMenuItem.Size = new System.Drawing.Size(134, 25);
             this.pruebaToolStripMenuItem.Text = "Informe Cierres";
             this.pruebaToolStripMenuItem.Click += new System.EventHandler(this.pruebaToolStripMenuItem_Click);
+            this.pruebaToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
+            this.pruebaToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 
             // pictureBox1
             // 

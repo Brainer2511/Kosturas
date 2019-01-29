@@ -52,6 +52,8 @@
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnAceptar.MouseEnter += new System.EventHandler(this.btnAceptar_MouseEnter);
+            this.btnAceptar.MouseLeave += new System.EventHandler(this.btnAceptar_MouseLeave);
             // 
             // btnCancelar
             // 
@@ -63,6 +65,8 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.MouseEnter += new System.EventHandler(this.btnAceptar_MouseEnter);
+            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnAceptar_MouseLeave);
             // 
             // txtCantidad
             // 

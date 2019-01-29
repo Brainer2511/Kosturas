@@ -65,6 +65,8 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSalir.MouseEnter += new System.EventHandler(this.btnIngresar_MouseEnter);
+            this.btnSalir.MouseLeave += new System.EventHandler(this.btnIngresar_MouseLeave);
             // 
             // btnIngresar
             // 
@@ -77,6 +79,8 @@
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            this.btnIngresar.MouseEnter += new System.EventHandler(this.btnIngresar_MouseEnter);
+            this.btnIngresar.MouseLeave += new System.EventHandler(this.btnIngresar_MouseLeave);
             // 
             // txtClave
             // 
