@@ -635,11 +635,25 @@ namespace Kosturas.View
             foreach (var itemdos in query.ToList())
 
             {
-                if (itemdos.MedioPagoId == 1) { lblIngresosEfectivo.Text = itemdos.Total.ToString(); lblVerDetalleEfectivo.Name = itemdos.MedioPagoId.ToString(); }
-                if (itemdos.MedioPagoId == 3) { lblIngresosTarjeta.Text = itemdos.Total.ToString(); lblVerDetalleTarjeta.Name = itemdos.MedioPagoId.ToString(); }
+                if (itemdos.MedioPagoId == 1)
+                {
+                    lblIngresosEfectivo.Text = itemdos.Total.ToString();
+                    lblVerDetalleEfectivo.Name = itemdos.MedioPagoId.ToString();
+                }
+                else { lblVerDetalleEfectivo.Name = "0"; }
+
+                if (itemdos.MedioPagoId == 3)
+                {
+                    lblIngresosTarjeta.Text = itemdos.Total.ToString();
+                    lblVerDetalleTarjeta.Name = itemdos.MedioPagoId.ToString();
+                }
+                else { lblVerDetalleTarjeta.Name = "0"; }
               
             }
-            lblTotalVentas.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(w => w.Monto).ToString() + ",00";
+            if (query.Count>0)
+            {
+                lblTotalVentas.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(w => w.Monto).ToString() + ",00";
+            }
             txtMontoEfectivo.Text = "-" + txtMontoCaja.Text + ",00";
             lblTotalCaja.Text = "-" + txtMontoCaja.Text + ",00";
             lblTotalEfectivo.Text = txtMontoCaja.Text + ",00";

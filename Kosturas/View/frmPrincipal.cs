@@ -12,6 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kosturas.ViewModels;
+using Microsoft.Reporting.WinForms;
+using System.Diagnostics;
+using System.IO;
+
 
 namespace Kosturas
 {
@@ -113,9 +117,9 @@ namespace Kosturas
 
         private void btnNuevaOrden_Click(object sender, EventArgs e)
         {
-            int a = 0;
+
          
-            Form1 form = new Form1(a);
+            Form1 form = new Form1(null,null);
             this.Opacity = 0.80;
 
             form.ShowDialog();
@@ -795,7 +799,7 @@ namespace Kosturas
             var id = int.Parse(btn.Name);
      
             var valor = id; 
-         Form1 form = new Form1(valor);
+         Form1 form = new Form1(valor,null);
 
        
 
@@ -914,7 +918,60 @@ namespace Kosturas
             }
 
         }
+        void ClickRemoverPagos(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Text);
 
+            var query = db.Pagos.Where(q => q.OrdenId == id).ToList();
+            //Pagos pago = new Pagos();
+            Pagos pago = query.FirstOrDefault();
+            db.Entry(pago).State = EntityState.Deleted;
+            //db.Pagos.Where(q => q.OrdenId == id).ToList();
+           // db.Pagos.Remove(pago);
+           db.SaveChanges();
+           
+
+        }
+        void ClickImprimirOrden(object sender, EventArgs e)
+
+        {
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Text);
+
+
+            ReporteImagen reporte = new ReporteImagen(id);
+            reporte.ShowDialog();
+            //FrmFactura frm = new FrmFactura(id);
+            //frm.ShowDialog();
+            // frmReporteFactura form = new frmReporteFactura(id);
+            //form.ShowDialog();
+            
+
+
+            try
+            {
+            
+
+
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        void ClickEditarOrden(object sender, EventArgs e)
+         {
+            Button btn = sender as Button;
+            var id = int.Parse(btn.Text);
+            Program.Editar = 1;
+            Form1 form = new Form1(null,id);
+            form.ShowDialog();
+        }
         void ClickCompletarOrden(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -982,6 +1039,11 @@ namespace Kosturas
 
                         panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
 
+                    panelViewPrenda.btnagregartarea.Text = prenda.OrdenId.ToString();
+                    panelViewPrenda.btnagregartarea.Location = new Point(1308, 0);
+                    panelViewPrenda.btnagregartarea.Click += new EventHandler(ClickImprimirOrden);
+                    panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnagregartarea);
+
                     panelViewPrenda.btncompletarOrden.Text = prenda.OrdenId.ToString();
                     panelViewPrenda.btncompletarOrden.Click += new EventHandler(ClickCompletarOrden);
                     panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btncompletarOrden);
@@ -996,9 +1058,9 @@ namespace Kosturas
 
                             var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty, 0);
 
+              
 
-
-                            panelViewTarea.panelTarea.Click += new EventHandler(ClickCargarOrdenSinCompletar);
+                        panelViewTarea.panelTarea.Click += new EventHandler(ClickCargarOrdenSinCompletar);
                             panelViewTarea.panelTarea.MouseEnter += new EventHandler(MouseoverDos);
                             panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
                             panelViewTarea.panelTarea.Size = new Size(1380, 30);
@@ -1055,26 +1117,15 @@ namespace Kosturas
                         }
                         panelViewTarea.lblAfiliado.Location = new Point(1100, 10);
                         panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblAfiliado);
-                        if (tarea.Estado == true)
-                            {
-                                panelViewTarea.btnEstado.BackColor = Color.OliveDrab;
-                                panelViewTarea.btnEstado.ForeColor = Color.OliveDrab;
-                                panelViewTarea.btnEstado.Location =new Point(1315, 2);
-                                panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
-                                panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
-                            }
-                            else
-                            {
 
-                                panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
-                               panelViewTarea.btnEstado.Location = new Point(1315, 2);
-                               panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
-                            }
+                        panelViewTarea.lblDescripcion.Text = (tarea.Descripcion).ToString();
+                        panelViewTarea.lblDescripcion.Location = new Point(915, 10);
+                        panelViewTarea.lblDescripcion.Size = new Size(150, 34);
+                       
 
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescripcion);
 
-                            listaTareas.Add(panelViewTarea);
+                        listaTareas.Add(panelViewTarea);
                             rowCount += 1;
                             tlpOrdenesClientes.RowCount = rowCount;
                             this.tlpOrdenesClientes.Controls.Add(listaTareas.Last().panelTarea, 0, rowCount);
@@ -1107,8 +1158,15 @@ namespace Kosturas
             rowCount = 0;
             
             var query = db.Ordenes.Where(q => q.ClienteId == id).ToList();
+            if (query.Count > 0&&query.FirstOrDefault().Pagos.Count>0)
+            {
+                var resultado = query.FirstOrDefault().Pagos.FirstOrDefault().Monto;
+                lblTotalOrdenes.Text = resultado.ToString();
+                var idDetale = query.FirstOrDefault().Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleOrdenesId;
+                var detallesO = db.OrdenDetalleTareas.Find(idDetale).Subtotal;
+            }
 
-          
+            
 
             foreach (var itemdos in query)
 
@@ -1118,7 +1176,7 @@ namespace Kosturas
                 var orden = db.Ordenes.Find(itemdos.OrdenId);
                 var  idDetaleOrden = orden.Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleOrdenesId;
                 var detallesOrden = db.OrdenDetalleTareas.Find(idDetaleOrden);
-
+                
                 if (detallesOrden.Estado==false)
                 {
                     foreach (var prenda in orden.Prendas)
@@ -1136,9 +1194,24 @@ namespace Kosturas
 
 
 
-                        panelViewPrenda.btncompletarOrden.Text = prenda.OrdenId.ToString();
+                        panelViewPrenda.btncompletarOrden.Text = prenda.OrdenId.ToString();//1345, 0
                         panelViewPrenda.btncompletarOrden.Click += new EventHandler(ClickCompletarOrden);
                         panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btncompletarOrden);
+
+                        panelViewPrenda.btnPrioridad.Text = prenda.OrdenId.ToString();
+                        panelViewPrenda.btnPrioridad.Location = new Point(1234, 0);
+                        panelViewPrenda.btnPrioridad.Click += new EventHandler(ClickEditarOrden);
+                        panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnPrioridad);
+
+                        panelViewPrenda.btnCantidad.Text = prenda.OrdenId.ToString();
+                        panelViewPrenda.btnCantidad.Location = new Point(1271, 0);
+                        panelViewPrenda.btnCantidad.Click += new EventHandler(ClickRemoverPagos);
+                        panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnCantidad);
+
+                        panelViewPrenda.btnagregartarea.Text = prenda.OrdenId.ToString();
+                        panelViewPrenda.btnagregartarea.Location = new Point(1308, 0);
+                        panelViewPrenda.btnagregartarea.Click += new EventHandler(ClickImprimirOrden);
+                        panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnagregartarea);
 
 
                         panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
@@ -1216,25 +1289,12 @@ namespace Kosturas
                             panelViewTarea.lblAfiliado.Location = new Point(1100, 10);
                             panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblAfiliado);
 
-                            if (tarea.Estado == true)
-                            {
-                                panelViewTarea.btnEstado.BackColor = Color.OliveDrab;
-                                panelViewTarea.btnEstado.ForeColor = Color.OliveDrab;
-                                panelViewTarea.btnEstado.Location = new Point(1315, 2);
-                                panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
-                                panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
-                            }
-                            else
-                            {
+                            panelViewTarea.lblDescripcion.Text = (tarea.Descripcion).ToString();
+                            panelViewTarea.lblDescripcion.Location = new Point(915, 10);
+                            panelViewTarea.lblDescripcion.Size = new Size(150, 34);
+                          
 
-                                panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
-                                panelViewTarea.btnEstado.Location = new Point(1315, 2);
-                                panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
-                            }
-
-
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescripcion);
                             listaTareas.Add(panelViewTarea);
                             rowCount += 1;
                             tlpOrdenesClientes.RowCount = rowCount;
@@ -1293,7 +1353,7 @@ namespace Kosturas
             this.Opacity = 1;
             if (Program.Pin != null)
             {
-                var Mensaje = MessageBox.Show("Esta Seguro desea Completar Tarea", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var Mensaje = MessageBox.Show("Esta Seguro desea Completar Orden", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (Mensaje == DialogResult.Yes)
                 {
                     Button btn = sender as Button;
@@ -1304,6 +1364,7 @@ namespace Kosturas
                     detallesOrden.Estado = true;
                     detallesOrden.EmpleadoActualizo = Program.Pin;
                     orden.EmpleadoActualizo = Program.Pin;
+                    orden.EmpleadoCompleto = Program.Pin;
                     db.SaveChanges();
                     var panelTarea = listaTareas.Where(m => m.DetalleOrdenesId == detallesOrden.DetalleOrdenesId).FirstOrDefault();
                     panelTarea.btnEstado.BackColor = Color.OliveDrab;
@@ -1969,6 +2030,21 @@ namespace Kosturas
             id = btr.BackColor = ColorEntrada;
 
             id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pvBuscarOrden_Click(object sender, EventArgs e)
+        {
+            
+
+         var NombreCliente=  db.Ordenes.Find(int.Parse(txtOrden.Text)).Cliente.Nombre;
+            var IdCliente= db.Ordenes.Find(int.Parse(txtOrden.Text)).Cliente.ClienteId;
+            ClickCargarOrdenTotal(IdCliente);
+            CargarCliente(NombreCliente);
         }
         //void PruebaClick_2(object sender, EventArgs e)
         //{

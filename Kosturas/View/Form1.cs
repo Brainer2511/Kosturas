@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using Kosturas.ViewModels;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
+using BarcodeLib;
 
 namespace Kosturas.View
 {
@@ -24,7 +26,10 @@ namespace Kosturas.View
         public Ofertas oferta = new Ofertas();
         public DetalleTarea detalle = new DetalleTarea();
         public Servicios servicio = new Servicios();
+        public List<OrdenDetalleViewModel> listaTareas = new List<OrdenDetalleViewModel>();
+        public List<OrdenPrendaViewModel> listaPrendas = new List<OrdenPrendaViewModel>();
         Color ColorEntrada;
+        int IdOrden = 0;
         public System.Windows.Forms.Panel TableDos;
         public System.Windows.Forms.TextBox labelprecio;
         public System.Windows.Forms.Label labeldetalle;
@@ -38,15 +43,13 @@ namespace Kosturas.View
         public List<OrdenDetalleViewModel> listatareas = new List<OrdenDetalleViewModel>();
         public List<OrdenPrendaViewModel> listaprendas = new List<OrdenPrendaViewModel>();
         int rowCount = 0;
-        List<string> lista;
-        public int ClienteId { get; set; }
-
+     
+        public int? ClienteId { get; set; }
+        public int OrdenId { get; set; }
         string Combo1 = "";
         string Combo2 = "";
 
-        string nombreTAreas = "";
-        string Detalletareas = "";
-        string precios = "";
+      
 
 
         int m = 0;
@@ -55,19 +58,35 @@ namespace Kosturas.View
         int DAtoYdos = 50;
         int paginas = 0;
         int ClickPrendaatras = 0;
-        int ClickDuplicarPrenda = 0;
+     
         int pagina = 1;
-        int dato = 0;
+       
         public int DAto;
         public object x { get; set; }
         private Cliente cliente = new Cliente();
+        private Ordenes orden = new Ordenes();
 
 
-
-        public Form1(int clienteId = 0)
+        public Form1(int? clienteId, int? ordenId)
         {
             ClienteId = clienteId;
-            cliente = db.Clientes.Find(clienteId);
+            if (ordenId != null) { OrdenId = ordenId.Value; }
+           
+                if (clienteId!=null){
+                
+                cliente = db.Clientes.Find(clienteId);
+                }
+            if (Program.Editar == 1)
+            {
+                ordenId= OrdenId;
+                OrdenId = ordenId.Value;
+                orden = db.Ordenes.Find(OrdenId);
+                
+                cliente = db.Clientes.Find(orden.ClienteId);
+                ClienteId = cliente.ClienteId;
+                
+            }
+        
             InitializeComponent();
 
         }
@@ -81,7 +100,7 @@ namespace Kosturas.View
 
         
             istarea = false;
-            if (ClienteId == 0) {
+            if (ClienteId == null) {
                 var Orden = new Ordenes
                 {
                     FeEnt = DateTime.Today,
@@ -92,17 +111,71 @@ namespace Kosturas.View
             db.SaveChanges();
                 ordenId = Orden.OrdenId;
 
-        }else{
-             var   Orden = new Ordenes
+
+                CodigoBarras sucursal = new CodigoBarras();
+
+
+
+
+
+                var Codigo = CodigoBarras(ordenId);
+             
+
+                sucursal.Imagen = (Codigo);
+                sucursal.OrdenId = Orden.OrdenId;
+                db.CodigoBarras.Add(sucursal);
+                db.SaveChanges();
+
+            }
+            if (Program.Editar == 1)
+            {
+                if (ClienteId > 0)
+                {
+                    cargar();
+                }
+                cmbabreviatura.Enabled = false;
+                txtNombre.Enabled =false;
+                txtEmail.Enabled = false;
+                txtCalle.Enabled = false;
+                txtCiudad.Enabled = false;
+                txttelefonoprincipal.Enabled = false;
+                txtNotas.Enabled = false;
+                txttelefonodos.Enabled = false;
+                txttelefonotres.Enabled = false;
+                txtCodigoPostal.Enabled = false;
+
+                ClickCargarOrdenEditadas();
+                ordenId = orden.OrdenId;
+
+             
+            }
+            else
+            if(ClienteId>0)
+            {
+                var Orden = new Ordenes
                 {
                     FeEnt = DateTime.Today,
                     ClienteId = ClienteId
-                   
 
-                 };
-                 db.Ordenes.Add(Orden);
-                  db.SaveChanges();
+
+                };
+                db.Ordenes.Add(Orden);
+                db.SaveChanges();
                 ordenId = Orden.OrdenId;
+
+                CodigoBarras sucursal = new CodigoBarras();
+
+
+
+
+
+                var Codigo = CodigoBarras(ordenId);
+
+
+                sucursal.Imagen = (Codigo);
+                sucursal.OrdenId = ordenId;
+                db.CodigoBarras.Add(sucursal);
+                db.SaveChanges();
             }
             if (ClienteId > 0)
             {
@@ -181,9 +254,26 @@ namespace Kosturas.View
                     l += 1;
                 }
             }
+            
 
+        }
 
+        public string CodigoBarras(int idOrden)
+        {
+            BarcodeLib.Barcode barcode = new BarcodeLib.Barcode();
+            barcode.IncludeLabel = true;
+            barcode.Encode(BarcodeLib.TYPE.CODE128, idOrden.ToString(), Color.Black, Color.White, 300, 50);
 
+            string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\CodigosBarras\"; // <---
+            if (Directory.Exists(appPath) == false)                                              // <---
+            {                                                                                    // <---
+                Directory.CreateDirectory(appPath);                                              // <---
+            }                                                                                    // <---
+
+            appPath += idOrden.ToString()+".png";
+            barcode.SaveImage(appPath, SaveTypes.PNG);
+           
+            return appPath;
 
         }
         void Mouseover(object sender, EventArgs e)
@@ -1674,26 +1764,49 @@ namespace Kosturas.View
         private void btnEnviar_Click(object sender, EventArgs e)
 
         {
+            GuardarCambiosTarea();
             ActualizacionPrecios();
             this.Close();
-            if (ClienteId==0) { 
+            if (Program.Editar == 1)
+            {
+
+                this.Opacity = 0.80;
+                EnvioOrden envio = new EnvioOrden(ClienteId.Value, OrdenId);
+
+                envio.ShowDialog();
+                this.Opacity = 1;
+                this.Show();
+            }else
+            if (ClienteId==null) { 
             if (string.IsNullOrEmpty(txttelefonoprincipal.Text) || txttelefonoprincipal.Text == "Teléfono Cliente ")
             {
                 MessageBox.Show("El telefono Es un dato Obligatorio");
                 txttelefonoprincipal.Text = "";
-            }else
+                    return;
+                }
+                else
             if (string.IsNullOrEmpty(txtNombre.Text) || txtNombre.Text=="Nombre Cliente")
             {
                 MessageBox.Show("El Nombre Es un dato Obligatorio");
                 txtNombre.Text = "";
+                    return;
             }
             else { 
             Cliente cliente = new Cliente();
             cliente.Nombre = txtNombre.Text;
             cliente.Email = txtEmail.Text;
             cliente.TelefonoPrincipal = txttelefonoprincipal.Text;
-            db.Clientes.Add(cliente);
-            db.SaveChanges();
+                    cliente.TelefonoDos = txttelefonodos.Text;
+                    cliente.Telefonotres = txttelefonotres.Text;
+                    cliente.Notas = txtNotas.Text;
+                    cliente.Calle = txtCalle.Text;
+                    cliente.Ciudad = txtCiudad.Text;
+                    cliente.Codigopostal = txtCodigoPostal.Text;
+                    if (cmbabreviatura.SelectedValue != null) { 
+                    cliente.Abreviatura = cmbabreviatura.SelectedValue.ToString();
+                       }
+                    db.Clientes.Add(cliente);
+                    db.SaveChanges();
                 var query = db.Clientes.ToList();
                 var ultimoIdCliente = query.LastOrDefault().ClienteId;
 
@@ -1714,11 +1827,12 @@ namespace Kosturas.View
                 this.Hide();
                 envio.ShowDialog();
                 this.Show();
-            }
+                 }
 
 
-            }
-            else
+            }else
+     
+            if(ClienteId>0)
             {
                 var querydos = db.Ordenes.ToList();
                 var ultimaIdOrden = querydos.LastOrDefault().OrdenId;
@@ -1731,8 +1845,8 @@ namespace Kosturas.View
 
 
                 this.Opacity = 0.80;
-                EnvioOrden envio = new EnvioOrden(ClienteId, ultimaIdOrden);
-               
+                EnvioOrden envio = new EnvioOrden(ClienteId.Value, ultimaIdOrden);
+
                 envio.ShowDialog();
                 this.Opacity = 1;
                 this.Show();
@@ -2614,18 +2728,18 @@ namespace Kosturas.View
         }
         void ClickNuevaOrden(object sender, EventArgs e)
         {
-            Form1 empleado = new Form1();
+            Form1 empleado = new Form1(null,null);
             this.Opacity = 0.99;
             empleado.ShowDialog();
             this.Show();
-            EnvioOrden envio = new EnvioOrden(ClienteId);
+            EnvioOrden envio = new EnvioOrden(ClienteId.Value);
             this.Hide();
             envio.ShowDialog();
             this.Show();
         }
         void ClickCerrarOrden(object sender, EventArgs e)
         {
-            Form1 empleado = new Form1();
+            Form1 empleado = new Form1(null,null);
 
             empleado.ShowDialog();
             this.Close();
@@ -2854,6 +2968,7 @@ namespace Kosturas.View
             tareaView.Panel.Controls.Add(tareaView.lblDetalleTarea);
             tareaView.Panel.Controls.Add(tareaView.txtPrecio);
             tareaView.Panel.Controls.Add(tareaView.lblDescuento);
+            tareaView.Panel.Controls.Add(tareaView.txtDescripcion);
             tareaView.Panel.Controls.Add(tareaView.lblAfiliado);
             tareaView.Panel.Controls.Add(tareaView.btnBorrarTarea);
             tareaView.DetalleOrdenesId =0;
@@ -2891,7 +3006,7 @@ namespace Kosturas.View
             if (e.ColumnIndex == 26)
             {
 
-                Form1 empleado = new Form1();
+                Form1 empleado = new Form1(null,null);
 
                 empleado.ShowDialog();
                 this.Close();
@@ -3413,26 +3528,26 @@ namespace Kosturas.View
             }
 
             var botonmas = new Button();
-            // botonmas.Text = "+";
+          
             botonmas.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\mas.png");
 
             botonmas.Name = "btnmas";
             botonmas.Location = new Point(0, 330);
             botonmas.Size = new Size(76, 169);
-           // botonmas.Click += new EventHandler(ClickPrendas);
+          
             botonmas.MouseLeave += new EventHandler(Mouseleave);
             botonmas.MouseEnter += new EventHandler(Mouseover);
             this.Prueba.Controls.Add(botonmas);
 
 
             var txtboxdato = new TextBox();
-            // txtboxdato.Text = "+";
+          
             txtboxdato.Name = "txtdato";
             txtboxdato.Location = new Point(79, 330);
             txtboxdato.Multiline = true;
             txtboxdato.Size = new Size(317, 169);
-            //  txtboxdato.BackColor = System.Drawing.Color.Black;
-            //  txtboxdato.Click += new EventHandler(ClickPrendas);
+        
+            txtboxdato.KeyPress += new KeyPressEventHandler(ClickPrecioneTecla);
             this.Prueba.Controls.Add(txtboxdato);
 
             var combo = new ComboBox();
@@ -3623,8 +3738,8 @@ namespace Kosturas.View
 
         }
 
-
-    public void CargarPanelTodo(int aidControl, string Tarea, int detalle, double precio)
+        
+        public void CargarPanelTodo(int aidControl, string Tarea, int detalle, double precio)
         {
       
             var id = aidControl;
@@ -3696,12 +3811,200 @@ namespace Kosturas.View
             tareaView.Panel.Controls.Add(tareaView.lblDetalleTarea);
             tareaView.Panel.Controls.Add(tareaView.lblAfiliado);
             tareaView.Panel.Controls.Add(tareaView.txtPrecio);
+            tareaView.Panel.Controls.Add(tareaView.txtDescripcion);
             tareaView.Panel.Controls.Add(tareaView.btnBorrarTarea);
             tareaView.DetalleOrdenesId = detalletareatenporal.DetalleOrdenesId;
             rowCount += 1;
             tbpDatos.RowCount = rowCount;
             listatareas.Add(tareaView);
             this.tbpDatos.Controls.Add(listatareas.Last().Panel,0,rowCount);
+        }
+
+        void ClickCargarOrdenEditadas()
+        {
+
+           
+
+            listaTareas = new List<OrdenDetalleViewModel>();
+            listaPrendas = new List<OrdenPrendaViewModel>();
+
+            IdOrden = OrdenId;
+
+            var Colores = true;
+
+            rowCount = 0;
+
+            var query = db.Ordenes.Where(q => q.OrdenId == OrdenId).ToList();
+
+            var idDetale = query.FirstOrDefault().Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleOrdenesId;
+            var detallesO = db.OrdenDetalleTareas.Find(idDetale).Subtotal;
+
+            foreach (var itemdos in query)
+
+            {
+
+
+                var orden = db.Ordenes.Find(itemdos.OrdenId);
+                var idDetaleOrden = orden.Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleOrdenesId;
+                var detallesOrden = db.OrdenDetalleTareas.Find(idDetaleOrden);
+
+                if (detallesOrden.Estado == false)
+                {
+                    foreach (var prenda in orden.Prendas)
+
+                    {
+                        var panelViewPrenda = new OrdenPrendaViewModel(string.Empty);
+
+
+
+
+
+                        panelViewPrenda.Panel.Name = prenda.DetalleOrdenPrendaId.ToString();
+                        panelViewPrenda.Panel.Size = new Size(897, 45);
+                        panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
+
+
+
+
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.lblPrenda);
+
+
+                        panelViewPrenda.btnagregartarea.Click += new EventHandler(ClickAddtax);
+                        panelViewPrenda.btnagregartarea.Text = panelViewPrenda.DetalleOrdenPrendaId.ToString();
+
+
+                        panelViewPrenda.btnDuplicar.Click += new EventHandler(ClickDuplicar);
+                        panelViewPrenda.btnDuplicar.Text = panelViewPrenda.DetalleOrdenPrendaId.ToString();
+
+                        panelViewPrenda.btnmascinco.Click += new EventHandler(Clickcincomas);
+                        panelViewPrenda.btnmascinco.Text = panelViewPrenda.DetalleOrdenPrendaId.ToString();
+
+                        panelViewPrenda.btnmasuno.Click += new EventHandler(Clickunomas);
+                        panelViewPrenda.btnmasuno.Text = panelViewPrenda.DetalleOrdenPrendaId.ToString();
+
+                        panelViewPrenda.btnmenosuno.Click += new EventHandler(Clickunomenos);
+                        panelViewPrenda.btnmenosuno.Text = panelViewPrenda.DetalleOrdenPrendaId.ToString();
+
+
+                        panelViewPrenda.btnmenoscinco.Click += new EventHandler(Clickcincomenos);
+                        panelViewPrenda.btnmenoscinco.Text = panelViewPrenda.DetalleOrdenPrendaId.ToString();
+
+                        panelViewPrenda.btnCantidad.Click += new EventHandler(ClickCantidad);
+                        panelViewPrenda.btnCantidad.Text = panelViewPrenda.DetalleOrdenPrendaId.ToString();
+
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.btnCantidad);
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.btnmascinco);
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.btnDuplicar);
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.btnmasuno);
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.btnmenosuno);
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.btnmenoscinco);
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.btnagregartarea);
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.lblPrenda);
+                        panelViewPrenda.Panel.Controls.Add(panelViewPrenda.btnPrioridad);
+
+                        listaPrendas.Add(panelViewPrenda);
+                        rowCount += 1;
+                        tbpDatos.RowCount = rowCount;
+                        this.tbpDatos.Controls.Add(listaPrendas.Last().Panel, 0, rowCount);
+
+                        foreach (var tarea in prenda.DetalleTareas)
+                        {
+
+                            var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty, 0);
+
+
+
+                            panelViewTarea.panelTarea.Size = new Size(897, 45);
+                            panelViewTarea.panelTarea.MouseEnter += new EventHandler(Mouseovertabla);
+                            panelViewTarea.panelTarea.MouseLeave += new EventHandler(Mouseleavetabla);
+                            panelViewTarea.panelTarea.Name = tarea.DetalleOrdenesId.ToString();
+                            panelViewTarea.DetalleOrdenesId = tarea.DetalleOrdenesId;
+                            if (Colores == true)
+                            {
+                                panelViewTarea.panelTarea.BackColor = Color.White;
+                                Colores = false;
+                            }
+                            else
+                            {
+                                panelViewTarea.panelTarea.BackColor = Color.WhiteSmoke;
+                                Colores = true;
+                            }
+
+
+
+                            panelViewTarea.lblTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
+
+                            panelViewTarea.lblTarea.Location = new Point(0, 10);
+                           
+                            panelViewTarea.lblTarea.Size = new Size(110, 45);
+
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
+
+                            panelViewTarea.lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
+
+                            panelViewTarea.lblDetalleTarea.Location = new Point(115, 10);
+                     
+                            panelViewTarea.lblDetalleTarea.Size = new System.Drawing.Size(150, 34);
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
+
+                            panelViewTarea.lblPrecio.Text = tarea.Detalle.Precio.ToString();
+                       
+                            panelViewTarea.lblPrecio.Location = new Point(270, 10);
+
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblPrecio);
+
+                            panelViewTarea.txtTotalPrecio.Text = (tarea.Descuento).ToString() + "%";
+                           
+                            panelViewTarea.txtTotalPrecio.Location = new Point(325, 10);
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtTotalPrecio);
+
+                            panelViewTarea.lblSubTotal.Text = (tarea.Subtotal).ToString();
+                          
+                            panelViewTarea.lblSubTotal.Location = new Point(462, 10);
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblSubTotal);
+                            if (tarea.AfiliadoId > 0)
+                            {
+                                var nombre = db.Afiliados.Find(tarea.AfiliadoId);
+                                panelViewTarea.lblAfiliado.Text = (nombre.Nombre);
+
+                            }
+                            else
+                            {
+                                panelViewTarea.lblAfiliado.Text = "";
+                            }
+
+
+                            panelViewTarea.lblAfiliado.Location = new Point(768, 10);
+                            
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblAfiliado);
+
+                            panelViewTarea.lblDescripcion.Text = (tarea.Descripcion).ToString();
+                            
+                            panelViewTarea.lblDescripcion.Location = new Point(555, 10);
+                            panelViewTarea.lblDescripcion.Size = new Size(210, 34);
+
+
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescripcion);
+
+                            panelViewTarea.btnBorrarTarea.Name = tarea.DetalleOrdenesId.ToString();
+                            panelViewTarea.btnBorrarTarea.Click += new EventHandler(ClickBorrartax);
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnBorrarTarea);
+
+                            listaTareas.Add(panelViewTarea);
+                            rowCount += 1;
+                            tbpDatos.RowCount = rowCount;
+                            this.tbpDatos.Controls.Add(listaTareas.Last().panelTarea, 0, rowCount);
+                        }
+
+
+
+
+
+                    }
+                }
+
+            }
+
         }
 
         public void CargarPanelTarea(int aidControl, string Tarea, int detalle, double precio)
@@ -3777,6 +4080,49 @@ namespace Kosturas.View
                 ultimatarea.lblAfiliado.Text = "";
             }
 
+        }
+
+       private void ClickPrecioneTecla(object sender, KeyPressEventArgs e)
+        {
+
+            TextBox btn = sender as TextBox;
+            var iddos = btn.Name;
+            var id = btn.Text;
+            String x = "";
+
+
+            x = id + e.KeyChar;
+
+            if (e.KeyChar == '\b')
+            {
+                if (x.Length == 1)
+                {
+                    x = x.Remove(x.Length - 1);
+                    BorrarPanel();
+                }
+                else
+                {
+                    x = x.Remove(x.Length - 2);
+                    BorrarPanel();
+                }
+            }
+
+
+            if (x != "")
+            {
+                var ultimatarea = listatareas.Last();
+
+                if (!string.IsNullOrEmpty(ultimatarea.txtPrecio.Text))
+                {
+                 
+                    ultimatarea.txtDescripcion.Text = x;
+                    //GuardarCambiosTarea();
+                }
+
+
+            }
+
+          
         }
         void ClickaplicarDescuento(object sender, EventArgs e)
         {

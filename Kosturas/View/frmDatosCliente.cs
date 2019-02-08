@@ -115,7 +115,7 @@ namespace Kosturas.View
                 panelViewSMS.Panel.BackColor = Color.Yellow;
                 panelViewSMS.Panel.MouseEnter += new EventHandler(Mouseover);
                 panelViewSMS.Panel.MouseLeave += new EventHandler(Mouseleave);
-                panelViewSMS.Panel.Size = new Size(1265, 30);
+                panelViewSMS.Panel.Size = new Size(1410, 30);
                 if (Colores == true)
                 {
                     panelViewSMS.Panel.BackColor = Color.White;
@@ -137,20 +137,20 @@ namespace Kosturas.View
 
 
 
-                panelViewSMS.lblHoraEntrada.Text = itemdos.Cliente.TelefonoDos;
+                panelViewSMS.lblHoraEntrada.Text = itemdos.Cliente.Email.ToString();
 
                 panelViewSMS.lblHoraEntrada.Size = new Size(100, 25);
                 panelViewSMS.lblHoraEntrada.Location = new Point(280, 8);
 
 
 
-                panelViewSMS.lblLocalizacion.Text = itemdos.Cliente.Telefonotres.ToString();
+                panelViewSMS.lblLocalizacion.Text = itemdos.Cliente.Calle.ToString();
 
                 panelViewSMS.lblLocalizacion.Size = new Size(100, 25);
                 panelViewSMS.lblLocalizacion.Location = new Point(430, 8);
 
 
-                panelViewSMS.lblFechaEntrada.Text = itemdos.Cliente.Email.ToString();
+                panelViewSMS.lblFechaEntrada.Text = itemdos.Cliente.Ciudad.ToString();
 
                 panelViewSMS.lblFechaEntrada.Location = new Point(570, 8);
                 panelViewSMS.lblFechaEntrada.Size = new Size(130, 25);
@@ -164,7 +164,7 @@ namespace Kosturas.View
                 panelViewSMS.lblMontoPagado.Location = new Point(710, 8);
 
 
-                panelViewSMS.lblTotal.Text = itemdos.Cliente.Visitas.ToString();
+                panelViewSMS.lblTotal.Text = itemdos.CantidadPagada.ToString();
 
                 panelViewSMS.lblTotal.Location = new Point(855, 8);
                 panelViewSMS.lblTotal.Size = new Size(100, 25);
@@ -186,12 +186,21 @@ namespace Kosturas.View
                 panelViewSMS.lblEstado.Text = itemdos.Cliente.Notas.ToString();
 
                 panelViewSMS.lblEstado.Location = new Point(1130, 8);
+               
                 panelViewSMS.lblEstado.Size = new Size(130, 25);
 
 
 
 
 
+                panelViewSMS.lblDetalles.Text = "Ver Ordenes";
+                panelViewSMS.lblDetalles.Name = itemdos.ClienteId.ToString();
+                panelViewSMS.lblDetalles.ForeColor = Color.Blue;
+                panelViewSMS.lblDetalles.Size = new Size(120, 25);
+           
+                panelViewSMS.lblDetalles.Location = new Point(1300, 8);
+
+                panelViewSMS.lblDetalles.Click += new EventHandler(ClickCargarListaOrdenes);
 
 
 
@@ -203,6 +212,7 @@ namespace Kosturas.View
                 panelViewSMS.Panel.Controls.Add(panelViewSMS.lblEstado);
                 panelViewSMS.Panel.Controls.Add(panelViewSMS.lblMontoRestante);
                 panelViewSMS.Panel.Controls.Add(panelViewSMS.lblTotal);
+                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblDetalles);
 
                 panelViewSMS.Panel.Controls.Add(panelViewSMS.lblMontoPagado);
 
@@ -219,7 +229,20 @@ namespace Kosturas.View
             }
 
         }
+        void ClickCargarListaOrdenes(object sender, EventArgs e)
+        {
+            Label btn = sender as Label;
+            var id = int.Parse(btn.Name);
+            DateTime FechaEntrada;
+            DateTime FechaSalida;
+            FechaEntrada = DateTime.Parse(txtDesde.Text);
+            FechaSalida = DateTime.Parse(txtHasta.Text);
+            frmOrdenesPorCliente pagos = new frmOrdenesPorCliente(id, FechaEntrada, FechaSalida);
+            pagos.Location = new Point(495, 310);
+            pagos.ShowDialog();
+        
 
+        }
         private void BorrarPanelReporteClientes()
         {
             var totaldos = tblDetalleSMS.Controls.Count;
@@ -257,5 +280,28 @@ namespace Kosturas.View
 
         }
 
+        private void btnVerOrdenes_MouseEnter(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnVerOrdenes_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
     }
 }

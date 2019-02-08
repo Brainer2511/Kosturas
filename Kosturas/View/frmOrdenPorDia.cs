@@ -273,6 +273,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     }
 
                     Orden.EmpleadoActualizo = Program.Pin;
+                    Orden.EmpleadoCompleto = Program.Pin;
                     db.SaveChanges();
                     var ordenView = listaOrdenes.Where(w => w.OrdenId == Orden.OrdenId).FirstOrDefault();
                     ordenView.btnEstado.BackColor = Color.OliveDrab;
@@ -306,6 +307,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                 detallesOrden.Estado = true;
                 detallesOrden.EmpleadoActualizo = Program.Pin;
                 orden.EmpleadoActualizo = Program.Pin;
+                orden.EmpleadoCompleto = Program.Pin;
                     db.SaveChanges();
                 var panelTarea = listaTareas.Where(m => m.DetalleOrdenesId == detallesOrden.DetalleOrdenesId).FirstOrDefault();
                 panelTarea.btnEstado.BackColor = Color.OliveDrab;

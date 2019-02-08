@@ -25,6 +25,8 @@ namespace Kosturas.ViewModels
         public Label lblAfiliado;
         public Label lblPrecio;
         public TextBox txtPrecio;
+        public TextBox txtDescripcion;
+        public Label lblDescripcion;
         public Label txtTotalPrecio;
         public Button btnBorrarTarea { get; set; }
         public Button btnEstado { get; set; }
@@ -130,6 +132,34 @@ namespace Kosturas.ViewModels
             lblPrecio = new Label();
             lblPrecio.Size = new System.Drawing.Size(50, 34);
             lblPrecio.Location = new Point(188, 10);
+
+
+
+            txtPrecio.Text = precio.ToString();
+
+            #endregion
+
+            #region txtDescripcion
+
+            txtDescripcion = new TextBox();
+            txtDescripcion.Size = new System.Drawing.Size(250, 34);
+          
+            txtDescripcion.Location = new Point(550, 10);
+
+
+
+
+            txtPrecio.Text = precio.ToString();
+
+            #endregion
+
+            #region Descripcion
+
+            lblDescripcion = new Label();
+            lblDescripcion.Size = new System.Drawing.Size(250, 34);
+
+            lblDescripcion.Location = new Point(550, 10);
+
 
 
 

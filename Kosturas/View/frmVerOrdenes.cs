@@ -33,7 +33,7 @@ namespace Kosturas.View
             var fdesde = DateTime.Parse(desde);
             var fhasta = DateTime.Parse(hasta);
          
-            dgvOrdenes.DataSource = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta).Select(t => new { t.OrdenId, t.FeEnt,t.TotalOrden,t.CantidadPagada }).ToList();
+            dgvOrdenes.DataSource = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta).Select(t => new { t.OrdenId, t.FeEnt,t.TotalOrden,t.CantidadPagada,t.Prendas.FirstOrDefault().DetalleTareas }).ToList();
            
         }
     }

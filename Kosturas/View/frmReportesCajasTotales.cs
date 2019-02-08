@@ -54,14 +54,17 @@ namespace Kosturas.View
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            frmReporteSMS registros = new frmReporteSMS();
-            registros.Location = new Point(50, 145);
-            registros.ShowDialog();
+            //frmReporteSMS registros = new frmReporteSMS();
+            //registros.Location = new Point(50, 145);
+            //registros.ShowDialog();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+            frmDatosCliente registros = new frmDatosCliente();
+            registros.Location = new Point(10, 145);
+            registros.ShowDialog();
         }
 
         private void menuStrip1_MouseEnter(object sender, EventArgs e)
@@ -101,11 +104,24 @@ namespace Kosturas.View
         //    id = btr.ForeColor = System.Drawing.Color.White;
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+      
+
+        private void dfToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
             frmDatosCliente registros = new frmDatosCliente();
             registros.Location = new Point(10, 145);
+            registros.ShowDialog();
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            frmReporteSMS registros = new frmReporteSMS();
+            registros.Location = new Point(50, 145);
             registros.ShowDialog();
         }
     }

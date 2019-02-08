@@ -19,6 +19,7 @@ namespace Kosturas.ViewModels
         public Label lblFechaEntrada;
         public Label lblHoraEntrada;
         public Label lblTotal;
+        public Label lblDetalles;
         public Label lblEstado;
         public Label lblMontoPagado;
         public Label lblMontoRestante;
@@ -81,6 +82,13 @@ namespace Kosturas.ViewModels
             lblTotal.Size = new Size(150, 25);
             #endregion
 
+
+            #region lblDetalles
+            lblDetalles = new Label();
+
+            lblDetalles.Location = new Point(810, 8);
+            lblDetalles.Size = new Size(150, 25);
+            #endregion
 
             #region lblMontoPagado
             lblMontoPagado = new Label();

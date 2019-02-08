@@ -33,15 +33,19 @@ namespace Domain
         public double CantidadRestante { get; set; } = 0;
         public string EmpleadoRealizo { get; set; } = "";
         public int? ClienteId { get; set; }
-       
+        public int EstadoId { get; set; } = 6;
         public string EmpleadoActualizo { get; set; } = "";
         public string EmpleadoCompleto { get; set; } = "";
-        public virtual ICollection<TemDetallesOrdenPrenda> Prendas { get; set; }
+      
         public virtual Cliente Cliente { get; set; }
 
-        public virtual ICollection<Pagos> Pagos { get; set; }
-        // public int MedioPagoId { get; set; }
+        public virtual Estados Estados { get; set; }
 
-        // public virtual MediosPago MediosPago { get; set; }
+        public virtual ICollection<TemDetallesOrdenPrenda> Prendas { get; set; }
+
+        public virtual ICollection<Pagos> Pagos { get; set; }
+
+        public virtual ICollection<CodigoBarras> CodigoBarras { get; set; }
+
     }
 }

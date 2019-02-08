@@ -43,9 +43,9 @@ namespace Kosturas.View
         private void btnActualizaRegistros_Click(object sender, EventArgs e)
         {
 
-            var a = dtDesde.Value.ToShortDateString();
+            var a = this.txtDesde.Text;
 
-            var b = dtpHasta.Value.ToShortDateString();
+            var b = this.txtHasta.Text;
 
             var desde = a + " 00:00";
             var hasta = b + " 23:59";

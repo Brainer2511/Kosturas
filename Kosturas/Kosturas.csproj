@@ -40,11 +40,17 @@
     <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="BarcodeStandard, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BarcodeLib.2.2.1\lib\netstandard2.0\BarcodeStandard.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -70,6 +76,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -102,6 +111,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autoprint.cs" />
+    <Compile Include="AutoPrintCls.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSReporteFactura.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSReporteFactura.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Ayudas.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\ListViewExtender.cs" />
     <Compile Include="InfraExtructura\AutoMapperPerfil.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -176,6 +201,12 @@
     <Compile Include="View\frmEmpleado.Designer.cs">
       <DependentUpon>frmEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmFactura.Designer.cs">
+      <DependentUpon>FrmFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmImformacionCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +267,12 @@
     <Compile Include="View\frmOpcionesOrdenes.Designer.cs">
       <DependentUpon>frmOpcionesOrdenes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmOrdenesPorCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmOrdenesPorCliente.Designer.cs">
+      <DependentUpon>frmOrdenesPorCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmOrdenPorDia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +298,12 @@
     </Compile>
     <Compile Include="View\frmRegistros.Designer.cs">
       <DependentUpon>frmRegistros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmReporteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmReporteFactura.Designer.cs">
+      <DependentUpon>frmReporteFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmReportesCajasTotales.cs">
       <SubType>Form</SubType>
@@ -358,6 +401,18 @@
     <Compile Include="View\Multiplicacion.Designer.cs">
       <DependentUpon>Multiplicacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\prueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\prueba.Designer.cs">
+      <DependentUpon>prueba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReporteImagen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReporteImagen.Designer.cs">
+      <DependentUpon>ReporteImagen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -368,6 +423,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reportes\Report1.rdlc" />
+    <EmbeddedResource Include="Reportes\Reporte.rdlc" />
+    <EmbeddedResource Include="Reportes\ReportOrdenTrabajo.rdlc" />
     <EmbeddedResource Include="View\frmCierreCaja.resx">
       <DependentUpon>frmCierreCaja.cs</DependentUpon>
     </EmbeddedResource>
@@ -401,6 +459,9 @@
     <EmbeddedResource Include="View\frmEmpleado.resx">
       <DependentUpon>frmEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmFactura.resx">
+      <DependentUpon>FrmFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmImformacionCliente.resx">
       <DependentUpon>frmImformacionCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -431,6 +492,9 @@
     <EmbeddedResource Include="View\frmOpcionesOrdenes.resx">
       <DependentUpon>frmOpcionesOrdenes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmOrdenesPorCliente.resx">
+      <DependentUpon>frmOrdenesPorCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmOrdenPorDia.resx">
       <DependentUpon>frmOrdenPorDia.cs</DependentUpon>
     </EmbeddedResource>
@@ -442,6 +506,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmRegistros.resx">
       <DependentUpon>frmRegistros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmReporteFactura.resx">
+      <DependentUpon>frmReporteFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmReportesCajasTotales.resx">
       <DependentUpon>frmReportesCajasTotales.cs</DependentUpon>
@@ -491,6 +558,34 @@
     <EmbeddedResource Include="View\Multiplicacion.resx">
       <DependentUpon>Multiplicacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\prueba.resx">
+      <DependentUpon>prueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReporteImagen.resx">
+      <DependentUpon>ReporteImagen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DSReporteFactura.xsc">
+      <DependentUpon>DSReporteFactura.xsd</DependentUpon>
+    </None>
+    <None Include="DSReporteFactura.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReporteFactura.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSReporteFactura.xss">
+      <DependentUpon>DSReporteFactura.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -506,6 +601,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="CodigosBarras\" />
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>

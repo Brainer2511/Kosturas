@@ -159,6 +159,7 @@
             this.btnCancelar.TabIndex = 118;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             this.btnCancelar.MouseEnter += new System.EventHandler(this.btnCompletar_MouseEnter);
             this.btnCancelar.MouseLeave += new System.EventHandler(this.btnCompletar_MouseLeave);
             // 
@@ -187,6 +188,7 @@
             this.txtCalcularCambio.Name = "txtCalcularCambio";
             this.txtCalcularCambio.Size = new System.Drawing.Size(153, 19);
             this.txtCalcularCambio.TabIndex = 158;
+            this.txtCalcularCambio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCalcularCambio_KeyPress);
             // 
             // lblCalcularCambio
             // 

@@ -101,9 +101,49 @@ namespace Kosturas.View
             orden.EmpleadoRealizo = Program.Pin;
             orden.CantidadPagada = double.Parse(txtpago.Text);
             orden.FechaSalida = txtFecha.Text;
-            
+     
+            if (Program.Editar == 1)
+            {
+                orden.EmpleadoActualizo= Program.Pin;
+            }
             db.Entry(orden).State = EntityState.Modified;
             db.SaveChanges();
+            if (ckbNopagar.Checked == false&&Program.Editar==1)
+            {
+                var query = db.Pagos.Where(q=>q.OrdenId==OrdenId).ToList();
+                if (query.Count > 0)
+                {
+                    var idPAgo = query.FirstOrDefault().PagoId;
+
+
+
+                    
+
+                 
+
+
+                    Pagos pago = db.Pagos.Find(idPAgo);
+
+                    pago.Fecha = DateTime.Today;
+                    pago.EmpleadoRealizo = Program.Pin;
+                    pago.Monto = double.Parse(txtpago.Text);
+                    pago.MedioPagoId = int.Parse(cmbTipoPago.SelectedValue.ToString());
+                    pago.OrdenId = orden.OrdenId;
+                    db.Entry(pago).State = EntityState.Modified;
+                  
+                    db.SaveChanges();
+                    var TotalOrden = db.OrdenDetallePrendas.Where(w => w.OrdenId == orden.OrdenId).SelectMany(q => q.DetalleTareas).ToList().Sum(q => q.Subtotal);
+                    var TotalPagos = db.Pagos.Where(w => w.OrdenId == orden.OrdenId).Sum(q=>q.Monto);
+                    if (TotalOrden == TotalPagos)
+                    {
+                        orden.EstadoId = 5;
+                    }
+                    else { orden.EstadoId = 6; }
+                   
+                }
+                
+           
+            }else
             if (ckbNopagar.Checked == false) { 
             Pagos pago = new Pagos();
             pago.Fecha = DateTime.Today;
@@ -114,9 +154,16 @@ namespace Kosturas.View
         
             db.Pagos.Add(pago);
             db.SaveChanges();
+                var TotalOrden = db.OrdenDetallePrendas.Where(w => w.OrdenId == orden.OrdenId).SelectMany(q => q.DetalleTareas).ToList().Sum(q => q.Subtotal);
+                var TotalPagos = db.Pagos.Where(w => w.OrdenId == orden.OrdenId).Sum(q => q.Monto);
+                if (TotalOrden == TotalPagos)
+                {
+                    orden.EstadoId = 5;
+                }
+                else { orden.EstadoId = 6; }
             }
             Cliente cliente = db.Clientes.Find(ClienteId);
-            if (cliente.Visitas == null) {cliente.Visitas = "1"; cliente.Visitas = cliente.Visitas; } else
+            if (string.IsNullOrEmpty(cliente.Visitas)) {cliente.Visitas = "1"; cliente.Visitas = cliente.Visitas; } else
             {
                 var Visita = int.Parse(cliente.Visitas); Visita += 1;
                 cliente.Visitas = Visita.ToString();
@@ -126,8 +173,8 @@ namespace Kosturas.View
             db.Entry(cliente).State = EntityState.Modified;
             db.SaveChanges();
             this.Close();
-          
 
+            Program.Editar = 0;
         }
 
         private void ckbNopagar_CheckedChanged(object sender, EventArgs e)

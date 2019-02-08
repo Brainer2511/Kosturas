@@ -24,6 +24,8 @@ namespace Domain
 
         public double Descuento { get; set; }
 
+        public string Descripcion { get; set; } = "";
+
         public bool Estado { get; set; } = false;
 
         public string EmpleadoActualizo { get; set; } = "";

@@ -13,7 +13,8 @@ namespace Kosturas.InfraExtructura
         {
             CreateMap<OrdenDetalleViewModel, TemDetallesOrdenes>()
             .ForMember(dest => dest.Detalle, opt=>opt.Ignore())
-            .ForMember(dest => dest.Prenda, opt => opt.Ignore());
+            .ForMember(dest => dest.Prenda, opt => opt.Ignore())
+            .ForMember(dest=> dest.Descripcion,opt=>opt.MapFrom(src=>src.txtDescripcion.Text));
 
             CreateMap<OrdenPrendaViewModel, TemDetallesOrdenPrenda>()
                 .ForMember(dest => dest.Orden, opt => opt.Ignore())

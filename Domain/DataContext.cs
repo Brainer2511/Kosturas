@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Domain
 {
-    public class DataContext:DbContext
+    public class DataContext : DbContext
     {
         public DataContext() : base("DefaultConnection")
         {
@@ -60,5 +60,10 @@ namespace Domain
         public DbSet<TemDetallesOrdenPrenda> OrdenDetallePrendas { get; set; }
 
         public DbSet<CierreCaja> CierreCajas { get; set; }
+
+        public DbSet<Estados>  Estados { get; set; }
+
+
+        public DbSet<CodigoBarras> CodigoBarras { get; set; }
     }
 }

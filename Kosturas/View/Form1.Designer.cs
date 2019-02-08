@@ -31,6 +31,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Prueba = new System.Windows.Forms.Panel();
+            this.pv1 = new System.Windows.Forms.PictureBox();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.pv2 = new System.Windows.Forms.PictureBox();
+            this.lbl2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbabreviatura = new System.Windows.Forms.ComboBox();
             this.btnTelefonoDos = new System.Windows.Forms.Button();
@@ -63,23 +67,19 @@
             this.btnporsentaje = new System.Windows.Forms.Button();
             this.txtPrecioTotal = new System.Windows.Forms.TextBox();
             this.ckbasisnar = new System.Windows.Forms.CheckBox();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.lbl2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pv2 = new System.Windows.Forms.PictureBox();
-            this.pv1 = new System.Windows.Forms.PictureBox();
             this.tbpDatos = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grbNewOrder = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Prueba.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pv1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pv2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pv2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pv1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.grbNewOrder.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -96,6 +96,48 @@
             this.Prueba.Size = new System.Drawing.Size(401, 746);
             this.Prueba.TabIndex = 0;
             // 
+            // pv1
+            // 
+            this.pv1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pv1.BackgroundImage")));
+            this.pv1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pv1.Location = new System.Drawing.Point(84, 705);
+            this.pv1.Name = "pv1";
+            this.pv1.Size = new System.Drawing.Size(39, 38);
+            this.pv1.TabIndex = 92;
+            this.pv1.TabStop = false;
+            this.pv1.Click += new System.EventHandler(this.pv1_Click);
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(143, 722);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(13, 13);
+            this.lbl1.TabIndex = 95;
+            this.lbl1.Text = "1";
+            // 
+            // pv2
+            // 
+            this.pv2.BackColor = System.Drawing.Color.White;
+            this.pv2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pv2.BackgroundImage")));
+            this.pv2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pv2.ErrorImage = null;
+            this.pv2.Location = new System.Drawing.Point(260, 705);
+            this.pv2.Name = "pv2";
+            this.pv2.Size = new System.Drawing.Size(39, 38);
+            this.pv2.TabIndex = 93;
+            this.pv2.TabStop = false;
+            this.pv2.Click += new System.EventHandler(this.pv2_Click);
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.Location = new System.Drawing.Point(205, 722);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(13, 13);
+            this.lbl2.TabIndex = 96;
+            this.lbl2.Text = "2";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -108,7 +150,6 @@
             // cmbabreviatura
             // 
             this.cmbabreviatura.AccessibleName = "";
-            this.cmbabreviatura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbabreviatura.FormattingEnabled = true;
             this.cmbabreviatura.Location = new System.Drawing.Point(96, 10);
             this.cmbabreviatura.Name = "cmbabreviatura";
@@ -192,7 +233,7 @@
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(109, 23);
             this.button35.TabIndex = 66;
-            this.button35.Text = "Opciones";
+            this.button35.Text = "SubTotal";
             this.button35.UseVisualStyleBackColor = false;
             this.button35.MouseEnter += new System.EventHandler(this.button35_MouseEnter);
             this.button35.MouseLeave += new System.EventHandler(this.button35_MouseLeave);
@@ -464,24 +505,6 @@
             this.ckbasisnar.Text = "Citar/Reserva";
             this.ckbasisnar.UseVisualStyleBackColor = true;
             // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(143, 722);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(13, 13);
-            this.lbl1.TabIndex = 95;
-            this.lbl1.Text = "1";
-            // 
-            // lbl2
-            // 
-            this.lbl2.AutoSize = true;
-            this.lbl2.Location = new System.Drawing.Point(205, 722);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(13, 13);
-            this.lbl2.TabIndex = 96;
-            this.lbl2.Text = "2";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -517,30 +540,6 @@
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // pv2
-            // 
-            this.pv2.BackColor = System.Drawing.Color.White;
-            this.pv2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pv2.BackgroundImage")));
-            this.pv2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pv2.ErrorImage = null;
-            this.pv2.Location = new System.Drawing.Point(260, 705);
-            this.pv2.Name = "pv2";
-            this.pv2.Size = new System.Drawing.Size(39, 38);
-            this.pv2.TabIndex = 93;
-            this.pv2.TabStop = false;
-            this.pv2.Click += new System.EventHandler(this.pv2_Click);
-            // 
-            // pv1
-            // 
-            this.pv1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pv1.BackgroundImage")));
-            this.pv1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pv1.Location = new System.Drawing.Point(84, 705);
-            this.pv1.Name = "pv1";
-            this.pv1.Size = new System.Drawing.Size(39, 38);
-            this.pv1.TabIndex = 92;
-            this.pv1.TabStop = false;
-            this.pv1.Click += new System.EventHandler(this.pv1_Click);
             // 
             // tbpDatos
             // 
@@ -639,13 +638,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Prueba.ResumeLayout(false);
             this.Prueba.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pv1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pv2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pv2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pv1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.grbNewOrder.ResumeLayout(false);
