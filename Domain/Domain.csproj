@@ -78,9 +78,12 @@
     <Compile Include="CierreCaja.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="CodigoBarras.cs" />
+    <Compile Include="ConfiguracionEnvioCorreos.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Estados.cs" />
     <Compile Include="Pagos.cs" />
+    <Compile Include="Productos.cs" />
+    <Compile Include="Provedor.cs" />
     <Compile Include="TemDetallesOrdenPrenda.cs" />
     <Compile Include="TemDetallesOrdenes.cs" />
     <Compile Include="DetallesOrdenes.cs" />
@@ -98,7 +101,9 @@
     <Compile Include="Provincia.cs" />
     <Compile Include="Servicios.cs" />
     <Compile Include="Sucursal.cs" />
+    <Compile Include="Templeis.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="Ventas.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

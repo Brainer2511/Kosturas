@@ -25,6 +25,7 @@ namespace Kosturas.View
 
         private void busToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             frmCierreCaja cierreCaja = new frmCierreCaja();
             cierreCaja.Location = new Point(145, 140);
             cierreCaja.ShowDialog();

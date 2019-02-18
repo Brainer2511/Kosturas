@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteSMS));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbBusqueda = new System.Windows.Forms.ComboBox();
             this.btnVerOrdenes = new System.Windows.Forms.Button();
             this.txtHasta = new System.Windows.Forms.TextBox();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
@@ -43,18 +42,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.tblDetalleSMS = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -67,6 +61,19 @@
             this.panel2.Size = new System.Drawing.Size(1296, 39);
             this.panel2.TabIndex = 120;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1248, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -76,28 +83,10 @@
             this.label10.Location = new System.Drawing.Point(5, 7);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(228, 24);
+            this.label10.Size = new System.Drawing.Size(268, 24);
             this.label10.TabIndex = 12;
-            this.label10.Text = "Reporte Mensajes SMS";
+            this.label10.Text = "Reporte Pagos Provedorres";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(-1, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 17);
-            this.label3.TabIndex = 187;
-            this.label3.Text = "Buscar Por:";
-            // 
-            // cmbBusqueda
-            // 
-            this.cmbBusqueda.FormattingEnabled = true;
-            this.cmbBusqueda.Location = new System.Drawing.Point(104, 43);
-            this.cmbBusqueda.Name = "cmbBusqueda";
-            this.cmbBusqueda.Size = new System.Drawing.Size(211, 21);
-            this.cmbBusqueda.TabIndex = 186;
             // 
             // btnVerOrdenes
             // 
@@ -117,7 +106,7 @@
             // txtHasta
             // 
             this.txtHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHasta.Location = new System.Drawing.Point(104, 117);
+            this.txtHasta.Location = new System.Drawing.Point(104, 107);
             this.txtHasta.Multiline = true;
             this.txtHasta.Name = "txtHasta";
             this.txtHasta.Size = new System.Drawing.Size(187, 32);
@@ -126,7 +115,7 @@
             // dtpHasta
             // 
             this.dtpHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpHasta.Location = new System.Drawing.Point(297, 117);
+            this.dtpHasta.Location = new System.Drawing.Point(297, 107);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(18, 32);
             this.dtpHasta.TabIndex = 183;
@@ -137,7 +126,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(-1, 117);
+            this.label2.Location = new System.Drawing.Point(-1, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 17);
             this.label2.TabIndex = 182;
@@ -146,7 +135,7 @@
             // txtDesde
             // 
             this.txtDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesde.Location = new System.Drawing.Point(104, 70);
+            this.txtDesde.Location = new System.Drawing.Point(104, 48);
             this.txtDesde.Multiline = true;
             this.txtDesde.Name = "txtDesde";
             this.txtDesde.Size = new System.Drawing.Size(187, 32);
@@ -155,7 +144,7 @@
             // dtDesde
             // 
             this.dtDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtDesde.Location = new System.Drawing.Point(297, 70);
+            this.dtDesde.Location = new System.Drawing.Point(297, 48);
             this.dtDesde.Name = "dtDesde";
             this.dtDesde.Size = new System.Drawing.Size(18, 32);
             this.dtDesde.TabIndex = 180;
@@ -166,7 +155,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(-1, 70);
+            this.label1.Location = new System.Drawing.Point(-1, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 179;
@@ -174,12 +163,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.tblDetalleSMS);
             this.groupBox1.Controls.Add(this.button1);
@@ -196,11 +181,11 @@
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Control;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(429, 10);
+            this.button2.Location = new System.Drawing.Point(772, 10);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 23);
+            this.button2.Size = new System.Drawing.Size(255, 23);
             this.button2.TabIndex = 104;
-            this.button2.Text = "Telefono Tres";
+            this.button2.Text = "Total Ingreso";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
             this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
@@ -209,37 +194,24 @@
             // 
             this.button7.BackColor = System.Drawing.SystemColors.Control;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(5, 10);
+            this.button7.Location = new System.Drawing.Point(4, 10);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(140, 23);
+            this.button7.Size = new System.Drawing.Size(255, 23);
             this.button7.TabIndex = 99;
-            this.button7.Text = "Nombre";
+            this.button7.Text = "Nombre Provedor";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.MouseEnter += new System.EventHandler(this.button7_MouseEnter);
             this.button7.MouseLeave += new System.EventHandler(this.button7_MouseLeave);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.Control;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(712, 10);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(140, 23);
-            this.button5.TabIndex = 101;
-            this.button5.Text = "Total Ordenes";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.MouseEnter += new System.EventHandler(this.button5_MouseEnter);
-            this.button5.MouseLeave += new System.EventHandler(this.button5_MouseLeave);
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.SystemColors.Control;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(146, 10);
+            this.button4.Location = new System.Drawing.Point(260, 10);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(140, 23);
+            this.button4.Size = new System.Drawing.Size(255, 23);
             this.button4.TabIndex = 102;
-            this.button4.Text = "Telefono Principal";
+            this.button4.Text = "Total Pago";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.MouseEnter += new System.EventHandler(this.button4_MouseEnter);
             this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
@@ -272,11 +244,11 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(571, 10);
+            this.button1.Location = new System.Drawing.Point(1028, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 23);
+            this.button1.Size = new System.Drawing.Size(255, 23);
             this.button1.TabIndex = 105;
-            this.button1.Text = "Email";
+            this.button1.Text = "Porsentaje Ingreso";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
             this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
@@ -285,66 +257,14 @@
             // 
             this.button8.BackColor = System.Drawing.SystemColors.Control;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(287, 10);
+            this.button8.Location = new System.Drawing.Point(516, 10);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(140, 23);
+            this.button8.Size = new System.Drawing.Size(255, 23);
             this.button8.TabIndex = 113;
-            this.button8.Text = "Telefono Dos";
+            this.button8.Text = "Fecha Ingreso";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.MouseEnter += new System.EventHandler(this.button8_MouseEnter);
             this.button8.MouseLeave += new System.EventHandler(this.button8_MouseLeave);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.Control;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(853, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 23);
-            this.button3.TabIndex = 156;
-            this.button3.Text = "Total Visitas";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
-            this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.Control;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(995, 10);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(140, 23);
-            this.button6.TabIndex = 157;
-            this.button6.Text = "Total Puntos";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.MouseEnter += new System.EventHandler(this.button6_MouseEnter);
-            this.button6.MouseLeave += new System.EventHandler(this.button6_MouseLeave);
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.SystemColors.Control;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(1138, 10);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(140, 23);
-            this.button9.TabIndex = 158;
-            this.button9.Text = "Notas";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.MouseEnter += new System.EventHandler(this.button9_MouseEnter);
-            this.button9.MouseLeave += new System.EventHandler(this.button9_MouseLeave);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(1248, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 39);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // frmReporteSMS
             // 
@@ -353,8 +273,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1299, 750);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cmbBusqueda);
             this.Controls.Add(this.btnVerOrdenes);
             this.Controls.Add(this.txtHasta);
             this.Controls.Add(this.dtpHasta);
@@ -370,8 +288,8 @@
             this.Load += new System.EventHandler(this.frmReporteSMS_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,8 +300,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbBusqueda;
         private System.Windows.Forms.Button btnVerOrdenes;
         private System.Windows.Forms.TextBox txtHasta;
         private System.Windows.Forms.DateTimePicker dtpHasta;
@@ -392,12 +308,8 @@
         private System.Windows.Forms.DateTimePicker dtDesde;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         public System.Windows.Forms.TableLayoutPanel tblDetalleSMS;
         private System.Windows.Forms.Button button1;

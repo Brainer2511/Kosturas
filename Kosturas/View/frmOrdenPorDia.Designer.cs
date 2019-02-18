@@ -80,7 +80,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.dtprecogida = new System.Windows.Forms.DateTimePicker();
             this.txtFecha = new System.Windows.Forms.TextBox();
-            this.tlpOrdenesTotales = new System.Windows.Forms.TableLayoutPanel();
             this.tblDetalleOrdenesClientes = new System.Windows.Forms.TableLayoutPanel();
             this.grbNewOrder = new System.Windows.Forms.GroupBox();
             this.button16 = new System.Windows.Forms.Button();
@@ -88,6 +87,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvPagos = new System.Windows.Forms.DataGridView();
+            this.tlpOrdenesTotales = new System.Windows.Forms.TableLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -672,20 +672,6 @@
             this.txtFecha.Size = new System.Drawing.Size(187, 32);
             this.txtFecha.TabIndex = 153;
             // 
-            // tlpOrdenesTotales
-            // 
-            this.tlpOrdenesTotales.AutoScroll = true;
-            this.tlpOrdenesTotales.ColumnCount = 1;
-            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.Location = new System.Drawing.Point(4, 39);
-            this.tlpOrdenesTotales.Name = "tlpOrdenesTotales";
-            this.tlpOrdenesTotales.RowCount = 1;
-            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.Size = new System.Drawing.Size(1407, 232);
-            this.tlpOrdenesTotales.TabIndex = 154;
-            // 
             // tblDetalleOrdenesClientes
             // 
             this.tblDetalleOrdenesClientes.AutoScroll = true;
@@ -712,12 +698,12 @@
             // 
             // grbNewOrder
             // 
+            this.grbNewOrder.Controls.Add(this.tlpOrdenesTotales);
             this.grbNewOrder.Controls.Add(this.button16);
             this.grbNewOrder.Controls.Add(this.button15);
             this.grbNewOrder.Controls.Add(this.button32);
             this.grbNewOrder.Controls.Add(this.button29);
             this.grbNewOrder.Controls.Add(this.button30);
-            this.grbNewOrder.Controls.Add(this.tlpOrdenesTotales);
             this.grbNewOrder.Controls.Add(this.button31);
             this.grbNewOrder.Controls.Add(this.button34);
             this.grbNewOrder.Controls.Add(this.button33);
@@ -800,6 +786,30 @@
             this.dgvPagos.Name = "dgvPagos";
             this.dgvPagos.Size = new System.Drawing.Size(353, 196);
             this.dgvPagos.TabIndex = 159;
+            // 
+            // tlpOrdenesTotales
+            // 
+            this.tlpOrdenesTotales.AutoScroll = true;
+            this.tlpOrdenesTotales.ColumnCount = 1;
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.Location = new System.Drawing.Point(5, 39);
+            this.tlpOrdenesTotales.Name = "tlpOrdenesTotales";
+            this.tlpOrdenesTotales.RowCount = 1;
+            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpOrdenesTotales.Size = new System.Drawing.Size(1407, 232);
+            this.tlpOrdenesTotales.TabIndex = 159;
             // 
             // frmOrdenPorDia
             // 
@@ -900,7 +910,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DateTimePicker dtprecogida;
         private System.Windows.Forms.TextBox txtFecha;
-        private System.Windows.Forms.TableLayoutPanel tlpOrdenesTotales;
         public System.Windows.Forms.TableLayoutPanel tblDetalleOrdenesClientes;
         private System.Windows.Forms.GroupBox grbNewOrder;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -908,5 +917,6 @@
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.DataGridView dgvPagos;
+        public System.Windows.Forms.TableLayoutPanel tlpOrdenesTotales;
     }
 }

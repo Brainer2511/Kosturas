@@ -80,6 +80,7 @@
             this.busToolStripMenuItem.Name = "busToolStripMenuItem";
             this.busToolStripMenuItem.Size = new System.Drawing.Size(152, 19);
             this.busToolStripMenuItem.Text = "Configuracion de Negocio";
+            this.busToolStripMenuItem.Click += new System.EventHandler(this.busToolStripMenuItem_Click);
             this.busToolStripMenuItem.MouseEnter += new System.EventHandler(this.busToolStripMenuItem_MouseEnter);
             this.busToolStripMenuItem.MouseLeave += new System.EventHandler(this.busToolStripMenuItem_MouseLeave);
             // 

@@ -31,7 +31,7 @@ namespace Kosturas
             Application.SetCompatibleTextRenderingDefault(false);
             Ayudas.CheckEstadosOrdenes();
             AutoMapperPerfil.Run();
-            Application.Run(new frmPrincipal());
+            Application.Run(new MantenimientoProductos());
 
         }
     }

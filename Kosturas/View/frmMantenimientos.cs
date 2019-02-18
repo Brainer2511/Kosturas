@@ -143,5 +143,12 @@ namespace Kosturas.View
 
             //id = btr.ForeColor = System.Drawing.Color.White;
         }
+
+        private void busToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCorreosSMS correosSMS = new frmCorreosSMS();
+            correosSMS.Location = new Point(173, 150);
+            correosSMS.ShowDialog();
+        }
     }
 }

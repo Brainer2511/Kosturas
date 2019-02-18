@@ -30,7 +30,7 @@ namespace Kosturas.ViewModels
 
 
             Panel = new Panel();
-         //   Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+       
             Panel.Size = new Size(1397, 40);
             Panel.BackColor = Color.White;
 

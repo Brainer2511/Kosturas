@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -600,17 +601,28 @@ namespace Kosturas.View
         private void CierreCaja_Load(object sender, EventArgs e)
         {
 
-         
-             var a =DateTime.Today.ToShortDateString();
+            var fecha = db.CierreCajas.ToList();
+            var ultimaFechaApertura = fecha.LastOrDefault().FechaApertura;
+            var ultimoIdCierre = fecha.LastOrDefault().CierreId;
+            if (ultimaFechaApertura == null)
+            {
+                CierreCaja cierre = db.CierreCajas.Find(ultimoIdCierre);
+
+                cierre.FechaApertura = DateTime.Now;
+           
+                db.Entry(cierre).State = EntityState.Modified;
+                db.SaveChanges();
+
+
+            }
+            var a =DateTime.Today.ToShortDateString();
             var desde = a + " 00:00";
             var hasta = a + " 23:59";
             var fdesde = DateTime.Parse(desde);
             var fhasta = DateTime.Parse(hasta);
 
 
-
-            //dgvPagos.DataSource = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Select(t => new { t.MediosPago.FormaPago, t.Monto }).ToList();
-          //  var Pagos= db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).ToList();
+            
 
             var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta)
              .GroupBy(q => new { q.MedioPagoId, q.MediosPago.FormaPago, q.Fecha, })
@@ -618,20 +630,7 @@ namespace Kosturas.View
              .ToList();
             dgvPagos.DataSource = query.Select(t => new { t.MedioPago, t.Total }).ToList();
 
-            //foreach (var item in Pagos)
-            //{
-            //    if (item.MedioPagoId==1)
-            //    {
-
-            //        lblIngresosEfectivo.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta&&q.MedioPagoId==1).Sum(w=>w.Monto).ToString() + ",00";
-            //        lblTotalVentas.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(w => w.Monto).ToString() + ",00";
-            //    }
-            //    if (item.MedioPagoId == 3)
-            //    {
-            //        lblIngresosTarjeta.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta && q.MedioPagoId == 3).Sum(w => w.Monto).ToString() + ",00";
-            //        lblTotalVentas.Text= db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(w => w.Monto).ToString() + ",00";
-            //    }
-            //}
+   
             foreach (var itemdos in query.ToList())
 
             {
@@ -661,6 +660,9 @@ namespace Kosturas.View
             lblTotalEfectivo.Text = (double.Parse(lblIngresosEfectivo.Text) + double.Parse(txtMontoCaja.Text)).ToString() + ",00";
             lblTotalTarjetas.Text = (double.Parse(lblIngresosTarjeta.Text)).ToString() + ",00";
             lblTotalCajaVentas.Text = (double.Parse(lblTotalVentas.Text) + double.Parse(txtMontoCaja.Text)).ToString() + ",00";
+
+            label4.Text = fecha.LastOrDefault().FechaApertura.ToString();
+            label3.Text= fecha.LastOrDefault().FechaCierre.ToString();
         }
 
         private void label53_Click(object sender, EventArgs e)
@@ -696,8 +698,8 @@ namespace Kosturas.View
             CierreCaja cierre = new CierreCaja();
 
             cierre.MontoInicial = double.Parse(txtMontoCaja.Text);
-            cierre.FechaApertura = DateTime.Today;
-            cierre.FechaCierre = DateTime.Today;
+            //cierre.FechaApertura = DateTime.Today;
+            cierre.FechaCierre = DateTime.Now;
             cierre.TotalDiferencia = double.Parse(txtMontoEfectivo.Text);
             cierre.Notas = txtNotas.Text;
             cierre.EmpleadoCerro = Program.Pin;

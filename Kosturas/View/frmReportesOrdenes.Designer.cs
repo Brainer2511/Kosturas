@@ -66,7 +66,6 @@
             this.button32 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
-            this.tlpOrdenesTotales = new System.Windows.Forms.TableLayoutPanel();
             this.button31 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
@@ -78,6 +77,7 @@
             this.tlpPagos = new System.Windows.Forms.TableLayoutPanel();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
+            this.tlpOrdenesTotales = new System.Windows.Forms.TableLayoutPanel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -147,7 +147,6 @@
             this.txtHasta.Name = "txtHasta";
             this.txtHasta.Size = new System.Drawing.Size(187, 32);
             this.txtHasta.TabIndex = 166;
-         
             // 
             // dtpHasta
             // 
@@ -178,7 +177,6 @@
             this.txtDesde.Name = "txtDesde";
             this.txtDesde.Size = new System.Drawing.Size(187, 32);
             this.txtDesde.TabIndex = 163;
-           
             // 
             // dtDesde
             // 
@@ -477,12 +475,12 @@
             // 
             // grbNewOrder
             // 
+            this.grbNewOrder.Controls.Add(this.tlpOrdenesTotales);
             this.grbNewOrder.Controls.Add(this.button10);
             this.grbNewOrder.Controls.Add(this.button15);
             this.grbNewOrder.Controls.Add(this.button32);
             this.grbNewOrder.Controls.Add(this.button29);
             this.grbNewOrder.Controls.Add(this.button30);
-            this.grbNewOrder.Controls.Add(this.tlpOrdenesTotales);
             this.grbNewOrder.Controls.Add(this.button31);
             this.grbNewOrder.Controls.Add(this.button34);
             this.grbNewOrder.Controls.Add(this.button33);
@@ -565,21 +563,6 @@
             this.button30.Click += new System.EventHandler(this.button30_Click);
             this.button30.MouseEnter += new System.EventHandler(this.button30_MouseEnter);
             this.button30.MouseLeave += new System.EventHandler(this.button30_MouseLeave);
-            // 
-            // tlpOrdenesTotales
-            // 
-            this.tlpOrdenesTotales.AutoScroll = true;
-            this.tlpOrdenesTotales.ColumnCount = 1;
-            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.Location = new System.Drawing.Point(4, 39);
-            this.tlpOrdenesTotales.Name = "tlpOrdenesTotales";
-            this.tlpOrdenesTotales.RowCount = 1;
-            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOrdenesTotales.Size = new System.Drawing.Size(1248, 275);
-            this.tlpOrdenesTotales.TabIndex = 154;
-            this.tlpOrdenesTotales.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpOrdenesTotales_Paint);
             // 
             // button31
             // 
@@ -749,6 +732,30 @@
             this.button20.MouseEnter += new System.EventHandler(this.button20_MouseEnter);
             this.button20.MouseLeave += new System.EventHandler(this.button20_MouseLeave);
             // 
+            // tlpOrdenesTotales
+            // 
+            this.tlpOrdenesTotales.AutoScroll = true;
+            this.tlpOrdenesTotales.ColumnCount = 1;
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpOrdenesTotales.Location = new System.Drawing.Point(5, 39);
+            this.tlpOrdenesTotales.Name = "tlpOrdenesTotales";
+            this.tlpOrdenesTotales.RowCount = 1;
+            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpOrdenesTotales.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpOrdenesTotales.Size = new System.Drawing.Size(1248, 275);
+            this.tlpOrdenesTotales.TabIndex = 160;
+            // 
             // frmReportesOrdenes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -829,7 +836,6 @@
         private System.Windows.Forms.Button button32;
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.TableLayoutPanel tlpOrdenesTotales;
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button button33;
@@ -843,5 +849,6 @@
         public System.Windows.Forms.TableLayoutPanel tlpPagos;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
+        public System.Windows.Forms.TableLayoutPanel tlpOrdenesTotales;
     }
 }

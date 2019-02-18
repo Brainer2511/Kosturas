@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kosturas.ViewModels;
 using System.Data.Entity;
+using Kosturas.Helper;
 
 namespace Kosturas.View
 {
@@ -54,7 +55,7 @@ namespace Kosturas.View
                 if (itemdos.Rol == "E") { 
                 var horas= int.Parse(itemdos.HorasLunes.ToString());
                  resultado=resultado+horas;
-                label10.Text = resultado.ToString() + ":" + "00";
+                label10.Text = resultado.ToString();
                 var nombre = itemdos.Nombre;
                 label8.Text +=nombre + " , ";
                 }
@@ -65,7 +66,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasMartes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -76,7 +77,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasMiercoles.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -87,7 +88,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasJueves.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -98,7 +99,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasViernes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -109,7 +110,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasSabado.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -120,22 +121,28 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasDomingo.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
                 }
             }
-                
-            var a = dtprecogida.Value.ToShortDateString();
+            this.txtFecha.Text = DateTime.Today.ToShortDateString();
+            var a = DateTime.Today.ToShortDateString();
             var desde = a + " 00:00";
             var hasta = a + " 23:59";
             var fdesde = DateTime.Parse(desde);
             var fhasta = DateTime.Parse(hasta);
             var query = from l in db.Ordenes where l.FeEnt >= fdesde && l.FeEnt<=fhasta select l;
       
-            this.txtFecha.Text = DateTime.Today.ToShortDateString();
-       
+          
+            var consulta = db.Ordenes.Where(l => l.FeEnt >= fdesde && l.FeEnt <= fhasta).ToList();
+            
+            var precio = db.ConfiguracionEnvios.FirstOrDefault().CantidadDineroPorHora;
+            var TotalOrden = consulta.Sum(q=>q.TotalOrden);
+            label6.Text = (TotalOrden / precio).ToString("#,##0.00");
+            label9.Text = (double.Parse(label10.Text) - double.Parse(label6.Text)).ToString();
+
         }
 
 
@@ -143,7 +150,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             rowCount = 0;
 
-            ActualizarPanelTrabajadores();
+            
             BorrarPanelDetalleOrdenes();
             BorrarPanelOrdenes();
            
@@ -169,9 +176,13 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
 
             label6.Text = fddg.ToString() + ":" + "00";
 
-            var query = (from l in db.Ordenes where l.FeEnt >= fdesde && l.FeEnt <= fhasta select l).ToList();
+          //  var query = (from l in db.Ordenes where l.FeEnt >= fdesde && l.FeEnt <= fhasta select l).ToList();
 
-          
+            var query = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta)
+
+               .ToList();
+
+
             var Colores = true;
             foreach (var itemdos in query)
              
@@ -193,7 +204,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                 }
                
                 OrdenView.Panel.Name = itemdos.OrdenId.ToString();
-
+                OrdenView.Panel.Location = new Point(10,10);
                 OrdenView.lblId.Text = itemdos.OrdenId.ToString();
 
                 OrdenView.lblNombre.Text = itemdos.Cliente.Nombre.ToString();
@@ -237,23 +248,25 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
               
                 AutoMapper.Mapper.Map(itemdos, OrdenView);
                 listaOrdenes.Add(OrdenView);
+              
                 rowCount += 1;
                 tlpOrdenesTotales.RowCount = rowCount;
-                this.tlpOrdenesTotales.Controls.Add(listaOrdenes.Last().Panel,0,rowCount);
+        
+                this.tlpOrdenesTotales.Controls.Add(listaOrdenes.Last().Panel,0, rowCount);
 
 
                 
             }
-           
+            ActualizarPanelTrabajadores();
         }
 
-        void ClickCambiarEstado(object sender, EventArgs e)
+        async void  ClickCambiarEstado(object sender, EventArgs e)
         {
 
             frmPin pin = new frmPin();
             this.Opacity = 0.80;
             pin.ShowDialog();
-
+            this.Close();
             this.Opacity = 1;
             
 
@@ -271,16 +284,32 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         item.btnEstado.BackColor = Color.OliveDrab;
                     }
-
+                    Orden.EstadoId = 1;
                     Orden.EmpleadoActualizo = Program.Pin;
                     Orden.EmpleadoCompleto = Program.Pin;
                     db.SaveChanges();
                     var ordenView = listaOrdenes.Where(w => w.OrdenId == Orden.OrdenId).FirstOrDefault();
                     ordenView.btnEstado.BackColor = Color.OliveDrab;
-
+                    var TempleisEmpresa = db.ConfiguracionEnvios.ToList();
+                    var Detalle = db.Templeis.FirstOrDefault().TempleiSMS;
+                    Detalle = Detalle.Replace("{FirstName}", Orden.Cliente.Nombre+"%0A")
+                        .Replace("{OrderId(s)}", Orden.OrdenId.ToString() + "%0A")
+                        .Replace("{BusinessName}", TempleisEmpresa.FirstOrDefault().NombreEmpresa);
+                    System.Diagnostics.Process.Start("https://web.whatsapp.com/send?phone=506" + Orden.Cliente.TelefonoPrincipal + "&text=" + Detalle);
+                    var Email = db.Templeis.FirstOrDefault().TempleiEmail;
+                    var Subjet = "Su Orden Esta Lista Para Ser Retirada";
+                    Email = Email.Replace("{ClientName}",Orden.Cliente.Nombre)
+                    .Replace("{OrderId(s)}", Orden.OrdenId.ToString())
+                    .Replace("{BusinessName}", TempleisEmpresa.FirstOrDefault().NombreEmpresa)
+                    .Replace("{AddressLine1}", TempleisEmpresa.FirstOrDefault().DirrecionLinea1)
+                    .Replace("{AddressLine2}", TempleisEmpresa.FirstOrDefault().DirrecionLinea2)
+                    .Replace("P: {BusinessPhone}", TempleisEmpresa.FirstOrDefault().Telefono)
+                    .Replace("W: {BusinessWebsite}", TempleisEmpresa.FirstOrDefault().PaginaWeb)
+                    .Replace("E: {BusinessEmail}", TempleisEmpresa.FirstOrDefault().CorreoEmpresa);
+                    await EnvioCorreos.SendMail(Orden.Cliente.Email, Subjet, Email);
                 }
-            
-               
+
+
 
 
             }
@@ -450,7 +479,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasLunes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString()+":"+"00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -461,7 +490,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasMartes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -472,7 +501,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasMiercoles.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -483,7 +512,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasJueves.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -494,7 +523,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasViernes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -505,7 +534,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasSabado.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -516,14 +545,23 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
                     {
                         var horas = int.Parse(itemdos.HorasDomingo.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
                 }
             }
-
-
+            
+            var a =txtFecha.Text;
+            var desde = a + " 00:00";
+            var hasta = a + " 23:59";
+            var fdesde = DateTime.Parse(desde);
+            var fhasta = DateTime.Parse(hasta);
+            var consulta = db.Ordenes.Where(l => l.FeEnt >= fdesde && l.FeEnt <= fhasta).ToList();
+            var precio = db.ConfiguracionEnvios.FirstOrDefault().CantidadDineroPorHora;
+            var TotalOrden = consulta.Sum(q => q.TotalOrden);
+            label6.Text = (TotalOrden / precio).ToString("#,##0.00");
+            label9.Text = (double.Parse(label10.Text) - double.Parse(label6.Text)).ToString();
         }
 
         private void button29_MouseEnter(object sender, EventArgs e)

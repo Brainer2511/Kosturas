@@ -124,5 +124,12 @@ namespace Kosturas.View
             registros.Location = new Point(50, 145);
             registros.ShowDialog();
         }
+
+        private void toolStripMenuItem1_Click_2(object sender, EventArgs e)
+        {
+            EditarOrdenes registros = new EditarOrdenes();
+            registros.Location = new Point(300, 145);
+            registros.ShowDialog();
+        }
     }
 }

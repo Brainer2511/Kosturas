@@ -13,8 +13,8 @@ namespace Domain
         public int CierreId { get; set; }
 
         public double MontoInicial { get; set; } = 0;
-        public DateTime FechaApertura { get; set; }
-        public DateTime FechaCierre { get; set; }
+        public DateTime? FechaApertura { get; set; }
+        public DateTime? FechaCierre { get; set; }
         public double TotalDiferencia { get; set; } = 0;
         public string EmpleadoCerro { get; set; } = "";
         public string Notas { get; set; } = "";

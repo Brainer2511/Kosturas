@@ -57,7 +57,7 @@ namespace Kosturas.View
         int DAtoY = 0;
         int DAtoYdos = 50;
         int paginas = 0;
-        int ClickPrendaatras = 0;
+        
      
         int pagina = 1;
        
@@ -103,7 +103,7 @@ namespace Kosturas.View
             if (ClienteId == null) {
                 var Orden = new Ordenes
                 {
-                    FeEnt = DateTime.Today,
+                    FeEnt = DateTime.Now,
                  
                     
                   };
@@ -154,13 +154,23 @@ namespace Kosturas.View
             {
                 var Orden = new Ordenes
                 {
-                    FeEnt = DateTime.Today,
+                    FeEnt = DateTime.Now,
                     ClienteId = ClienteId
 
 
                 };
                 db.Ordenes.Add(Orden);
                 db.SaveChanges();
+                cmbabreviatura.Enabled = false;
+                txtNombre.Enabled = false;
+                txtEmail.Enabled = false;
+                txtCalle.Enabled = false;
+                txtCiudad.Enabled = false;
+                txttelefonoprincipal.Enabled = false;
+                txtNotas.Enabled = false;
+                txttelefonodos.Enabled = false;
+                txttelefonotres.Enabled = false;
+                txtCodigoPostal.Enabled = false;
                 ordenId = Orden.OrdenId;
 
                 CodigoBarras sucursal = new CodigoBarras();
@@ -350,561 +360,51 @@ namespace Kosturas.View
         }
         void ClickPrendas(object sender, EventArgs e)
         {
-            if (ClickPrendaatras == 1) {
-                var totaldos = tbpDatos.Controls.Count;
-                var litdos = tbpDatos.Controls.OfType<Button>();
-                for (int i = 0; i < totaldos; i++)
-                {
-                    tbpDatos.Controls.Remove(tbpDatos.Controls[0]);
-                }
-                Button btn = sender as Button;
+
+            tbpDatos.RowCount = rowCount;
+            Button btn = sender as Button;
                 var id = int.Parse(btn.Name);
                 prenda = db.Prendas.Find(id);
 
-                var dato = db.Prendas.Where(u => u.PrendaId == id).ToList();
+  
 
-                Panel Table = new Panel();
-                //  Table.AutoScroll = true;
-                Table.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                Table.Location = new Point(Datox, DAtoY);
-                Table.Size = new Size(897, 50);
-                Table.BackColor = Color.DarkGray;
 
-                Table.Name = "GAnazodos";
+            this.label4.Text = prenda.TipoRopa;
+            this.label3.Text = "Nueva Orden:";
 
-                var d = 0;
-                var f = 0;
-                var o = 0;
-                foreach (var item in dato)
-                {
 
-                    var botonesdos = new Label();
-                    botonesdos.Size = new System.Drawing.Size(70, 45);
-                    botonesdos.Location = new Point(0, 0);
 
-                    botonesdos.Text = item.TipoRopa + " " + "X";
-                    botonesdos.Name = item.TipoRopa;
-
-
-
-                    var Prioridad = new Button();
-
-
-                    Prioridad.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\primera.png");
-
-                    Prioridad.BackColor = System.Drawing.Color.DarkGray;
-                    Prioridad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    Prioridad.Location = new Point(634, 6);
-                    Prioridad.FlatAppearance.BorderSize = 0;
-                    Prioridad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    Prioridad.Size = new System.Drawing.Size(32, 34);
-                    Prioridad.TabIndex = 142;
-                    Prioridad.UseVisualStyleBackColor = false;
-
-
-                    Prioridad.Name = item.PrendaId.ToString();
-                    Prioridad.Click += new EventHandler(ClickNuevaOrden);
-
-                    var Duplicar = new Button();
-
-                    Duplicar.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\duplicar.png");
-
-                    Duplicar.BackColor = System.Drawing.Color.DarkGray;
-                    Duplicar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    Duplicar.FlatAppearance.BorderSize = 0;
-                    Duplicar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    Duplicar.Location = new Point(666, 6);
-                    Duplicar.Size = new System.Drawing.Size(32, 34);
-                    Duplicar.TabIndex = 142;
-                    Duplicar.UseVisualStyleBackColor = false;
-                    Duplicar.Click += new EventHandler(ClickDuplicar);
-
-                    Duplicar.Name = item.PrendaId.ToString();
-
-                    var cantidad = new Button();
-
-
-                    cantidad.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\qrd.png");
-
-                    cantidad.BackColor = System.Drawing.Color.DarkGray;
-                    cantidad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    cantidad.FlatAppearance.BorderSize = 0;
-                    cantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    cantidad.Location = new Point(698, 6);
-                    cantidad.Size = new System.Drawing.Size(32, 34);
-                    cantidad.TabIndex = 142;
-                    cantidad.UseVisualStyleBackColor = false;
-                    cantidad.Click += new EventHandler(ClickCantidad);
-
-                    cantidad.Name = item.PrendaId.ToString();
-
-                    var mascinco = new Button();
-
-
-                    mascinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomas.png");
-
-                    mascinco.BackColor = System.Drawing.Color.DarkGray;
-                    mascinco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    mascinco.FlatAppearance.BorderSize = 0;
-                    mascinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    mascinco.Location = new Point(730, 6);
-                    mascinco.Size = new System.Drawing.Size(32, 34);
-                    mascinco.TabIndex = 142;
-                    mascinco.UseVisualStyleBackColor = false;
-                    mascinco.Click += new EventHandler(Clickcincomas);
-
-                    mascinco.Name = item.PrendaId.ToString();
-
-                    var masuno = new Button();
-
-
-                    masuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomas.png");
-
-                    masuno.BackColor = System.Drawing.Color.DarkGray;
-                    masuno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    masuno.FlatAppearance.BorderSize = 0;
-                    masuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    masuno.Location = new Point(762, 6);
-                    masuno.Size = new System.Drawing.Size(32, 34);
-                    masuno.TabIndex = 142;
-                    masuno.UseVisualStyleBackColor = false;
-                    masuno.Click += new EventHandler(Clickunomas);
-
-                    masuno.Name = item.PrendaId.ToString();
-
-                    var menosuno = new Button();
-
-                    menosuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomenos.png");
-
-                    menosuno.BackColor = System.Drawing.Color.DarkGray;
-                    menosuno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    menosuno.FlatAppearance.BorderSize = 0;
-                    menosuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    menosuno.Location = new Point(794, 6);
-                    menosuno.Size = new System.Drawing.Size(32, 34);
-                    menosuno.TabIndex = 142;
-                    menosuno.UseVisualStyleBackColor = false;
-                    menosuno.Click += new EventHandler(Clickunomenos);
-                    menosuno.Name = item.PrendaId.ToString();
-                    var menoscinco = new Button();
-
-                    menoscinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomenos.png");
-
-                    menoscinco.BackColor = System.Drawing.Color.DarkGray;
-                    menoscinco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    menoscinco.FlatAppearance.BorderSize = 0;
-                    menoscinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    menoscinco.Location = new Point(828, 6);
-                    menoscinco.Size = new System.Drawing.Size(32, 34);
-                    menoscinco.TabIndex = 142;
-                    menoscinco.UseVisualStyleBackColor = false;
-                    menoscinco.Click += new EventHandler(Clickcincomenos);
-
-
-                    menoscinco.Name = item.PrendaId.ToString();
-                    var agregartarea = new Button();
-
-                    agregartarea.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\taps.png");
-
-                    agregartarea.BackColor = System.Drawing.Color.DarkGray;
-                    agregartarea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    agregartarea.FlatAppearance.BorderSize = 0;
-                    agregartarea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    agregartarea.Location = new Point(860, 6);
-                    agregartarea.Size = new System.Drawing.Size(32, 34);
-                    agregartarea.TabIndex = 142;
-                    agregartarea.Click += new EventHandler(ClickAddtax);
-                    agregartarea.UseVisualStyleBackColor = false;
-
-                    agregartarea.Name = item.PrendaId.ToString();
-
-
-                    Table.Controls.Add(botonesdos);
-
-                    Table.Controls.Add(Prioridad);
-                    Table.Controls.Add(Duplicar);
-                    Table.Controls.Add(cantidad);
-                    Table.Controls.Add(mascinco);
-                    Table.Controls.Add(masuno);
-                    Table.Controls.Add(menosuno);
-                    Table.Controls.Add(menoscinco);
-                    Table.Controls.Add(agregartarea);
-
-
-
-                }
-
-                Panel TableDos = new Panel();
-
-                TableDos.Name = "Ganazo";
-
-                TableDos.Location = new Point(Datox, DAtoYdos);
-                TableDos.Size = new Size(897, 45);
-                TableDos.BackColor = Color.White;
-                TableDos.MouseLeave += new EventHandler(Mouseleavetabla);
-                TableDos.MouseEnter += new EventHandler(Mouseovertabla);
-                TableDos.Click += new EventHandler(ClickBorrartax);
-
-
-
-
-                var prueba = prenda.Tareas.FirstOrDefault().NombreTareas;
-                var pruebadostres = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareas;
-                var pruebados = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
-
-                var labeltarea = new Label();
-                labeltarea.Size = new System.Drawing.Size(90, 34);
-                labeltarea.Location = new Point(0, 10);
-
-                labeltarea.Text = prueba;
-                labeltarea.Name = prueba;
-
-                var labeldetalle = new Label();
-                labeldetalle.Size = new System.Drawing.Size(90, 34);
-                labeldetalle.Location = new Point(92, 10);
-                labeldetalle.Text = pruebadostres;
-                labeldetalle.Name = pruebadostres;
-
-                var labelprecio = new TextBox();
-                labelprecio.Size = new System.Drawing.Size(50, 34);
-                labelprecio.Location = new Point(182, 10);
-                labelprecio.Text = pruebados.ToString();
-                labelprecio.Name = prenda.PrendaId.ToString();
-
-
-
-
-                var agregartareados = new Button();
-
-                agregartareados.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
-                agregartareados.Name = prenda.PrendaId.ToString();
-                agregartareados.BackColor = System.Drawing.Color.White;
-                agregartareados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                agregartareados.FlatAppearance.BorderSize = 0;
-                agregartareados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                agregartareados.Location = new Point(860, 6);
-                agregartareados.Size = new System.Drawing.Size(32, 34);
-                agregartareados.TabIndex = 142;
-                agregartareados.UseVisualStyleBackColor = false;
-                agregartareados.Click += new EventHandler(ClickBorrartax);
-
-         
-
-
-                TableDos.Controls.Add(labeltarea);
-                TableDos.Controls.Add(labeldetalle);
-                TableDos.Controls.Add(labelprecio);
-                TableDos.Controls.Add(agregartareados);
-
-
-
-                this.tbpDatos.Controls.Add(Table);
-                this.tbpDatos.Controls.Add(TableDos);
-
-
-                this.label4.Text = prenda.TipoRopa;
-                this.label3.Text = "Nueva Orden:";
-
-
-
-                var total = Prueba.Controls.Count;
-                var lit = Prueba.Controls.OfType<Button>();
-                for (int i = 0; i < total; i++)
-                {
-                    Prueba.Controls.Remove(Prueba.Controls[0]);
-                }
-                var btnAtras = new Button();
-                btnAtras.BackColor = System.Drawing.Color.WhiteSmoke;
-                btnAtras.ForeColor = System.Drawing.Color.Black;
-                btnAtras.Location = new System.Drawing.Point(49, 600);
-                btnAtras.Name = "btnAtras";
-                btnAtras.Size = new System.Drawing.Size(106, 41);
-                btnAtras.TabIndex = 145;
-                btnAtras.Text = "Atras";
-                btnAtras.UseVisualStyleBackColor = false;
-                btnAtras.Click += new System.EventHandler(ClickAtrasPrendas);
-                btnAtras.MouseLeave += new EventHandler(Mouseleave);
-                btn.MouseEnter += new EventHandler(Mouseover);
-                this.Prueba.Controls.Add(btnAtras);
-
-                servicios();
+            var total = Prueba.Controls.Count;
+            var lit = Prueba.Controls.OfType<Button>();
+            for (int i = 0; i < total; i++)
+            {
+                Prueba.Controls.Remove(Prueba.Controls[0]);
             }
-            else {
-                Button btn = sender as Button;
-                var id = int.Parse(btn.Name);
-                prenda = db.Prendas.Find(id);
-
-                var dato = db.Prendas.Where(u => u.PrendaId == id).ToList();
-
-                Panel Table = new Panel();
-            
-                Table.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                Table.Location = new Point(Datox, DAtoY);
-                Table.Size = new Size(897, 50);
-                Table.BackColor = Color.DarkGray;
-
-                Table.Name = "GAnazodos";
-
-                var d = 0;
-                var f = 0;
-                var o = 0;
-                foreach (var item in dato)
-                {
-
-                    var botonesdos = new Label();
-                    botonesdos.Size = new System.Drawing.Size(70, 45);
-                    botonesdos.Location = new Point(0, 0);
-
-                    botonesdos.Text = item.TipoRopa + " " + "X";
-                    botonesdos.Name = item.TipoRopa;
-
-
-
-                    var Prioridad = new Button();
-
-
-                    Prioridad.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\primera.png");
-
-                    Prioridad.BackColor = System.Drawing.Color.DarkGray;
-                    Prioridad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    Prioridad.Location = new Point(634, 6);
-                    Prioridad.FlatAppearance.BorderSize = 0;
-                    Prioridad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    Prioridad.Size = new System.Drawing.Size(32, 34);
-                    Prioridad.TabIndex = 142;
-                    Prioridad.UseVisualStyleBackColor = false;
-
-
-                    Prioridad.Name = item.PrendaId.ToString();
-                    Prioridad.Click += new EventHandler(ClickNuevaOrden);
-
-                    var Duplicar = new Button();
-
-                    Duplicar.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\duplicar.png");
-
-                    Duplicar.BackColor = System.Drawing.Color.DarkGray;
-                    Duplicar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    Duplicar.FlatAppearance.BorderSize = 0;
-                    Duplicar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    Duplicar.Location = new Point(666, 6);
-                    Duplicar.Size = new System.Drawing.Size(32, 34);
-                    Duplicar.TabIndex = 142;
-                    Duplicar.UseVisualStyleBackColor = false;
-                    Duplicar.Click += new EventHandler(ClickDuplicar);
-
-                    Duplicar.Name = item.PrendaId.ToString();
-
-                    var cantidad = new Button();
-
-
-                    cantidad.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\qrd.png");
-
-                    cantidad.BackColor = System.Drawing.Color.DarkGray;
-                    cantidad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    cantidad.FlatAppearance.BorderSize = 0;
-                    cantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    cantidad.Location = new Point(698, 6);
-                    cantidad.Size = new System.Drawing.Size(32, 34);
-                    cantidad.TabIndex = 142;
-                    cantidad.UseVisualStyleBackColor = false;
-                    cantidad.Click += new EventHandler(ClickCantidad);
-
-                    cantidad.Name = item.PrendaId.ToString();
-
-                    var mascinco = new Button();
-
-
-                    mascinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomas.png");
-
-                    mascinco.BackColor = System.Drawing.Color.DarkGray;
-                    mascinco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    mascinco.FlatAppearance.BorderSize = 0;
-                    mascinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    mascinco.Location = new Point(730, 6);
-                    mascinco.Size = new System.Drawing.Size(32, 34);
-                    mascinco.TabIndex = 142;
-                    mascinco.UseVisualStyleBackColor = false;
-                    mascinco.Click += new EventHandler(Clickcincomas);
-
-                    mascinco.Name = item.PrendaId.ToString();
-
-                    var masuno = new Button();
-
-
-                    masuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomas.png");
-
-                    masuno.BackColor = System.Drawing.Color.DarkGray;
-                    masuno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    masuno.FlatAppearance.BorderSize = 0;
-                    masuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    masuno.Location = new Point(762, 6);
-                    masuno.Size = new System.Drawing.Size(32, 34);
-                    masuno.TabIndex = 142;
-                    masuno.UseVisualStyleBackColor = false;
-                    masuno.Click += new EventHandler(Clickunomas);
-
-                    masuno.Name = item.PrendaId.ToString();
-
-                    var menosuno = new Button();
-
-                    menosuno.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\unomenos.png");
-
-                    menosuno.BackColor = System.Drawing.Color.DarkGray;
-                    menosuno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    menosuno.FlatAppearance.BorderSize = 0;
-                    menosuno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    menosuno.Location = new Point(794, 6);
-                    menosuno.Size = new System.Drawing.Size(32, 34);
-                    menosuno.TabIndex = 142;
-                    menosuno.UseVisualStyleBackColor = false;
-                    menosuno.Click += new EventHandler(Clickunomenos);
-                    menosuno.Name = item.PrendaId.ToString();
-                    var menoscinco = new Button();
-
-                    menoscinco.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\cincomenos.png");
-
-                    menoscinco.BackColor = System.Drawing.Color.DarkGray;
-                    menoscinco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    menoscinco.FlatAppearance.BorderSize = 0;
-                    menoscinco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    menoscinco.Location = new Point(828, 6);
-                    menoscinco.Size = new System.Drawing.Size(32, 34);
-                    menoscinco.TabIndex = 142;
-                    menoscinco.UseVisualStyleBackColor = false;
-                    menoscinco.Click += new EventHandler(Clickcincomenos);
-
-
-                    menoscinco.Name = item.PrendaId.ToString();
-                    var agregartarea = new Button();
-
-                    agregartarea.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\taps.png");
-
-                    agregartarea.BackColor = System.Drawing.Color.DarkGray;
-                    agregartarea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    agregartarea.FlatAppearance.BorderSize = 0;
-                    agregartarea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    agregartarea.Location = new Point(860, 6);
-                    agregartarea.Size = new System.Drawing.Size(32, 34);
-                    agregartarea.TabIndex = 142;
-                    agregartarea.Click += new EventHandler(ClickAddtax);
-                    agregartarea.UseVisualStyleBackColor = false;
-
-                    agregartarea.Name = item.PrendaId.ToString();
-
-
-                    Table.Controls.Add(botonesdos);
-
-                    Table.Controls.Add(Prioridad);
-                    Table.Controls.Add(Duplicar);
-                    Table.Controls.Add(cantidad);
-                    Table.Controls.Add(mascinco);
-                    Table.Controls.Add(masuno);
-                    Table.Controls.Add(menosuno);
-                    Table.Controls.Add(menoscinco);
-                    Table.Controls.Add(agregartarea);
-
-
-
-                }
-
-                Panel TableDos = new Panel();
-
-                TableDos.Name = "Ganazo";
-
-                TableDos.Location = new Point(Datox, DAtoYdos);
-                TableDos.Size = new Size(897, 45);
-                TableDos.BackColor = Color.White;
-                TableDos.MouseLeave += new EventHandler(Mouseleavetabla);
-                TableDos.MouseEnter += new EventHandler(Mouseovertabla);
-                TableDos.Click += new EventHandler(ClickBorrartax);
-
-            
-
-
-
-                var prueba = prenda.Tareas.FirstOrDefault().NombreTareas;
-                var pruebadostres = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareas;
-                var pruebados = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
-
-                var labeltarea = new Label();
-                labeltarea.Size = new System.Drawing.Size(90, 34);
-                labeltarea.Location = new Point(0, 10);
-
-                labeltarea.Text = prueba;
-                labeltarea.Name = prueba;
-
-                var labeldetalle = new Label();
-                labeldetalle.Size = new System.Drawing.Size(90, 34);
-                labeldetalle.Location = new Point(92, 10);
-                labeldetalle.Text = pruebadostres;
-                labeldetalle.Name = pruebadostres;
-
-                var labelprecio = new TextBox();
-                labelprecio.Size = new System.Drawing.Size(50, 34);
-                labelprecio.Location = new Point(188, 10);
-                labelprecio.Text = pruebados.ToString();
-                labelprecio.Name = prenda.PrendaId.ToString();
-
-
-
-
-                var agregartareados = new Button();
-
-                agregartareados.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");
-                agregartareados.Name = prenda.PrendaId.ToString();
-                agregartareados.BackColor = System.Drawing.Color.White;
-                agregartareados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                agregartareados.FlatAppearance.BorderSize = 0;
-                agregartareados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                agregartareados.Location = new Point(860, 6);
-                agregartareados.Size = new System.Drawing.Size(32, 34);
-                agregartareados.TabIndex = 142;
-                agregartareados.UseVisualStyleBackColor = false;
-                agregartareados.Click += new EventHandler(ClickBorrartax);
-
-          
-
-
-                TableDos.Controls.Add(labeltarea);
-                TableDos.Controls.Add(labeldetalle);
-                TableDos.Controls.Add(labelprecio);
-                TableDos.Controls.Add(agregartareados);
-
-
-
-                this.tbpDatos.Controls.Add(Table);
-                this.tbpDatos.Controls.Add(TableDos);
-
-
-                this.label4.Text = prenda.TipoRopa;
-                this.label3.Text = "Nueva Orden:";
-
-
-
-                var total = Prueba.Controls.Count;
-                var lit = Prueba.Controls.OfType<Button>();
-                for (int i = 0; i < total; i++)
-                {
-                    Prueba.Controls.Remove(Prueba.Controls[0]);
-                }
-                var btnAtras = new Button();
-                btnAtras.BackColor = System.Drawing.Color.WhiteSmoke;
-                btnAtras.ForeColor = System.Drawing.Color.Black;
-                btnAtras.Location = new System.Drawing.Point(49, 600);
-                btnAtras.Name = "btnAtras";
-                btnAtras.Size = new System.Drawing.Size(106, 41);
-                btnAtras.TabIndex = 145;
-                btnAtras.Text = "Atras";
-                btnAtras.UseVisualStyleBackColor = false;
-                btnAtras.Click += new System.EventHandler(ClickAtrasPrendas);
-                btnAtras.MouseLeave += new EventHandler(Mouseleave);
-                btn.MouseEnter += new EventHandler(Mouseover);
-                this.Prueba.Controls.Add(btnAtras);
-
+            var btnAtras = new Button();
+            btnAtras.BackColor = System.Drawing.Color.WhiteSmoke;
+            btnAtras.ForeColor = System.Drawing.Color.Black;
+            btnAtras.Location = new System.Drawing.Point(49, 600);
+            btnAtras.Name = "btnAtras";
+            btnAtras.Size = new System.Drawing.Size(106, 41);
+            btnAtras.TabIndex = 145;
+            btnAtras.Text = "Atras";
+            btnAtras.UseVisualStyleBackColor = false;
+            btnAtras.Click += new System.EventHandler(ClickAtrasPrendas);
+            btnAtras.MouseLeave += new EventHandler(Mouseleave);
+            btn.MouseEnter += new EventHandler(Mouseover);
+            this.Prueba.Controls.Add(btnAtras);
+
+       
+            var prueba = prenda.Tareas.FirstOrDefault().NombreTareas;
+            var pruebadostres = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareaId;
+            var pruebados = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().Precio;
+            var pruebadost = prenda.Tareas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleTareas;
+            CargarPanelGenerico(prenda.PrendaId, prueba, pruebadostres, pruebados);
                 istarea = false;
-                var p= tbpDatos.RowCount;
+                
+
                 servicios();
-            }
+           
         }
         void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
@@ -1104,7 +604,7 @@ namespace Kosturas.View
                 var ultimaTarea = listatareas.Last();
                 ultimaTarea.Precio = double.Parse(ultimaTarea.txtPrecio.Text);
                 AutoMapper.Mapper.Map(listatareas.Last(), ordenDetalleTarea);
-
+               
                 try
                 {
                     db.Entry(ordenDetalleTarea).State = EntityState.Modified;
@@ -1209,7 +709,7 @@ namespace Kosturas.View
         void ClickAtrasPrendas(object sender, EventArgs e)
         {
 
-            this.ClickPrendaatras = 1;
+           
 
             var total = Prueba.Controls.Count;
             var lit = Prueba.Controls.OfType<Button>();
@@ -1776,59 +1276,105 @@ namespace Kosturas.View
                 envio.ShowDialog();
                 this.Opacity = 1;
                 this.Show();
-            }else
-            if (ClienteId==null) { 
-            if (string.IsNullOrEmpty(txttelefonoprincipal.Text) || txttelefonoprincipal.Text == "Teléfono Cliente ")
-            {
-                MessageBox.Show("El telefono Es un dato Obligatorio");
-                txttelefonoprincipal.Text = "";
-                    return;
-                }
-                else
-            if (string.IsNullOrEmpty(txtNombre.Text) || txtNombre.Text=="Nombre Cliente")
-            {
-                MessageBox.Show("El Nombre Es un dato Obligatorio");
-                txtNombre.Text = "";
-                    return;
-            }
-            else { 
-            Cliente cliente = new Cliente();
-            cliente.Nombre = txtNombre.Text;
-            cliente.Email = txtEmail.Text;
-            cliente.TelefonoPrincipal = txttelefonoprincipal.Text;
-                    cliente.TelefonoDos = txttelefonodos.Text;
-                    cliente.Telefonotres = txttelefonotres.Text;
-                    cliente.Notas = txtNotas.Text;
-                    cliente.Calle = txtCalle.Text;
-                    cliente.Ciudad = txtCiudad.Text;
-                    cliente.Codigopostal = txtCodigoPostal.Text;
-                    if (cmbabreviatura.SelectedValue != null) { 
-                    cliente.Abreviatura = cmbabreviatura.SelectedValue.ToString();
-                       }
-                    db.Clientes.Add(cliente);
-                    db.SaveChanges();
-                var query = db.Clientes.ToList();
-                var ultimoIdCliente = query.LastOrDefault().ClienteId;
+            } else
+            if (ClienteId == null) {
 
-                    var querydos = db.Ordenes.ToList();
-                    var ultimaIdOrden = querydos.LastOrDefault().OrdenId;
+             
 
-                    Ordenes orden = db.Ordenes.Find(ultimaIdOrden);
 
-                    orden.ClienteId = ultimoIdCliente;
+
+
+
+
+                    if (txtEmail.Text.Trim() == "Correo Cliente")
+                    {
+
+                        txtEmail.Text = "";
+
+                    }
+                   
+            if (txtNotas.Text.Trim() == "Notas")
+                    {
+
+                        txtNotas.Text = "";
+
+                    }
                     
+            if (txttelefonodos.Text.Trim() == "Teléfono 2")
+                    {
 
-                    db.Entry(orden).State = EntityState.Modified;
-                    db.SaveChanges();
+                        txttelefonodos.Text = "";
+
+                    }
+                    
+            if (txttelefonotres.Text.Trim() == "Telefono 3")
+                    {
+
+                        txttelefonotres.Text = "";
+
+                    }
+                    
+            if (txtCalle.Text.Trim() == "Calle")
+                    {
+
+                        txtCalle.Text = "";
+
+                    }
+                   
+            if (txtCodigoPostal.Text.Trim() == "Codigo Postal")
+                    {
+
+                        txtCodigoPostal.Text = "";
+
+                    }
+                    
+            if (txtCiudad.Text.Trim() == "Ciudad")
+                    {
+
+                        txtCiudad.Text = "";
+
+                    }
+
+                    
+                    {
+                        Cliente cliente = new Cliente();
+                        cliente.Nombre = txtNombre.Text;
+                        cliente.Email = txtEmail.Text;
+                        cliente.TelefonoPrincipal = txttelefonoprincipal.Text;
+                        cliente.TelefonoDos = txttelefonodos.Text;
+                        cliente.Telefonotres = txttelefonotres.Text;
+                        cliente.Notas = txtNotas.Text;
+                        cliente.Calle = txtCalle.Text;
+                        cliente.Ciudad = txtCiudad.Text;
+                        cliente.Codigopostal = txtCodigoPostal.Text;
+                        if (cmbabreviatura.SelectedValue != null)
+                        {
+                            cliente.Abreviatura = cmbabreviatura.SelectedValue.ToString();
+                        }
+                        db.Clientes.Add(cliente);
+                        db.SaveChanges();
+                        var query = db.Clientes.ToList();
+                        var ultimoIdCliente = query.LastOrDefault().ClienteId;
+
+                        var querydos = db.Ordenes.ToList();
+                        var ultimaIdOrden = querydos.LastOrDefault().OrdenId;
+
+                        Ordenes orden = db.Ordenes.Find(ultimaIdOrden);
+
+                        orden.ClienteId = ultimoIdCliente;
+
+
+                        db.Entry(orden).State = EntityState.Modified;
+                        db.SaveChanges();
 
 
 
-                    EnvioOrden envio = new EnvioOrden(ultimoIdCliente,ultimaIdOrden);
-                this.Hide();
-                envio.ShowDialog();
-                this.Show();
-                 }
-
+                        EnvioOrden envio = new EnvioOrden(ultimoIdCliente, ultimaIdOrden);
+                        this.Hide();
+                        envio.ShowDialog();
+                        this.Show();
+                    }
+                
 
             }else
      
@@ -3115,7 +2661,7 @@ namespace Kosturas.View
 
         private void txttelefonoprincipal_Enter(object sender, EventArgs e)
         {
-            //this.txtNotas.Text = "";
+            this.txtNotas.Text = "";
         }
 
         private void txttelefonoprincipal_Leave(object sender, EventArgs e)
@@ -3125,7 +2671,7 @@ namespace Kosturas.View
 
         private void txttelefonodos_Enter(object sender, EventArgs e)
         {
-            //this.txttelefonodos.Text = "";
+           this.txttelefonodos.Text = "";
         }
 
         private void txttelefonodos_Leave(object sender, EventArgs e)
@@ -3135,7 +2681,7 @@ namespace Kosturas.View
 
         private void txttelefonotres_Enter(object sender, EventArgs e)
         {
-          //  this.txttelefonotres.Text = "";
+            this.txttelefonotres.Text = "";
         }
 
         private void txttelefonotres_Leave(object sender, EventArgs e)
@@ -3145,7 +2691,7 @@ namespace Kosturas.View
 
         private void txtNombre_Enter(object sender, EventArgs e)
         {
-           // this.txtNombre.Text = "";
+            this.txtNombre.Text = "";
         }
 
         private void txtNombre_Leave(object sender, EventArgs e)
@@ -3155,7 +2701,7 @@ namespace Kosturas.View
 
         private void txtCalle_Enter(object sender, EventArgs e)
         {
-          //  this.txtCalle.Text = "";
+            this.txtCalle.Text = "";
         }
 
         private void txtCalle_Leave(object sender, EventArgs e)
@@ -3175,7 +2721,7 @@ namespace Kosturas.View
 
         private void txtCiudad_Enter(object sender, EventArgs e)
         {
-           // this.txtCiudad.Text = "";
+            this.txtCiudad.Text = "";
         }
 
         private void txtCiudad_Leave(object sender, EventArgs e)
@@ -3185,7 +2731,7 @@ namespace Kosturas.View
 
         private void txtNotas_Enter(object sender, EventArgs e)
         {
-           // this.txttelefonoprincipal.Text = "";
+            //this.txttelefonoprincipal.Text = "";
         }
 
         private void txtNotas_Leave(object sender, EventArgs e)
@@ -3195,7 +2741,7 @@ namespace Kosturas.View
 
         private void txtCodigoPostal_Enter(object sender, EventArgs e)
         {
-        //   this.txtCodigoPostal.Text = "";
+          this.txtCodigoPostal.Text = "";
         }
 
         private void txtCodigoPostal_Leave(object sender, EventArgs e)
@@ -3741,7 +3287,8 @@ namespace Kosturas.View
         
         public void CargarPanelTodo(int aidControl, string Tarea, int detalle, double precio)
         {
-      
+            DAtoY = DAtoY += 50;
+            DAtoYdos = DAtoYdos += 50;
             var id = aidControl;
             prenda = db.Prendas.Find(id);
 
@@ -3819,7 +3366,85 @@ namespace Kosturas.View
             listatareas.Add(tareaView);
             this.tbpDatos.Controls.Add(listatareas.Last().Panel,0,rowCount);
         }
+        public void CargarPanelGenerico(int aidControl, string Tarea, int detalle, double precio)
+        {
+            
+            var id = aidControl;
+            prenda = db.Prendas.Find(id);
 
+            var detalletarea = db.DetalleTareas.Find(detalle);
+            var Orden = db.Ordenes.Find(ordenId);
+            var ordenPrenda = new TemDetallesOrdenPrenda { OrdenId = Orden.OrdenId, Cantidad = 1, PrendaId = prenda.PrendaId };
+          
+            var prendaView = new OrdenPrendaViewModel(prenda.TipoRopa + " X" + cantidad);
+            prendaView.DetalleOrdenPrendaId = ordenPrenda.DetalleOrdenPrendaId;
+            prendaView.Panel.Name = "GAnazodos";
+            prendaView.PrendaId = prenda.PrendaId;
+            prendaView.Cantidad = 1;
+
+
+
+            prendaView.btnagregartarea.Click += new EventHandler(ClickAddtax);
+            prendaView.btnagregartarea.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+
+            prendaView.btnDuplicar.Click += new EventHandler(ClickDuplicar);
+            prendaView.btnDuplicar.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            prendaView.btnmascinco.Click += new EventHandler(Clickcincomas);
+            prendaView.btnmascinco.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            prendaView.btnmasuno.Click += new EventHandler(Clickunomas);
+            prendaView.btnmasuno.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            prendaView.btnmenosuno.Click += new EventHandler(Clickunomenos);
+            prendaView.btnmenosuno.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+
+            prendaView.btnmenoscinco.Click += new EventHandler(Clickcincomenos);
+            prendaView.btnmenoscinco.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            prendaView.btnCantidad.Click += new EventHandler(ClickCantidad);
+            prendaView.btnCantidad.Text = prendaView.DetalleOrdenPrendaId.ToString();
+
+            prendaView.Panel.Controls.Add(prendaView.btnCantidad);
+            prendaView.Panel.Controls.Add(prendaView.btnmascinco);
+            prendaView.Panel.Controls.Add(prendaView.btnDuplicar);
+            prendaView.Panel.Controls.Add(prendaView.btnmasuno);
+            prendaView.Panel.Controls.Add(prendaView.btnmenosuno);
+            prendaView.Panel.Controls.Add(prendaView.btnmenoscinco);
+            prendaView.Panel.Controls.Add(prendaView.btnagregartarea);
+            prendaView.Panel.Controls.Add(prendaView.lblPrenda);
+            prendaView.Panel.Controls.Add(prendaView.btnPrioridad);
+
+            listaprendas.Add(prendaView);
+            rowCount += 1;
+            tbpDatos.RowCount = rowCount;
+            this.tbpDatos.Controls.Add(listaprendas.Last().Panel, 0, rowCount);
+            var detalletareatenporal = new TemDetallesOrdenes { DetalleOrdenPrendaId = ordenPrenda.DetalleOrdenPrendaId, DetalleTareaId = detalletarea.DetalleTareaId, Precio = detalletarea.Precio };
+            
+            var tareaView = new OrdenDetalleViewModel(Tarea, detalletarea.DetalleTareas, detalletarea.Precio);
+            AutoMapper.Mapper.Map(detalletareatenporal, tareaView);
+            tareaView.DetalleOrdenPrendaId = prendaView.DetalleOrdenPrendaId;
+            tareaView.Panel.Name = "Ganazo";
+            tareaView.Panel.MouseLeave += new EventHandler(Mouseleavetabla);
+            tareaView.Panel.MouseEnter += new EventHandler(Mouseovertabla);
+            tareaView.DetalleTareaId = detalletarea.DetalleTareaId;
+            tareaView.btnBorrarTarea.Name = detalletareatenporal.DetalleOrdenesId.ToString();
+            tareaView.btnBorrarTarea.Click += new EventHandler(ClickBorrartax);
+            tareaView.Panel.Controls.Add(tareaView.lblTarea);
+            tareaView.Panel.Controls.Add(tareaView.lblDescuento);
+            tareaView.Panel.Controls.Add(tareaView.lblDetalleTarea);
+            tareaView.Panel.Controls.Add(tareaView.lblAfiliado);
+            tareaView.Panel.Controls.Add(tareaView.txtPrecio);
+            tareaView.Panel.Controls.Add(tareaView.txtDescripcion);
+            tareaView.Panel.Controls.Add(tareaView.btnBorrarTarea);
+            tareaView.DetalleOrdenesId = detalletareatenporal.DetalleOrdenesId;
+            rowCount += 1;
+            tbpDatos.RowCount = rowCount;
+            listatareas.Add(tareaView);
+            this.tbpDatos.Controls.Add(listatareas.Last().Panel, 0, rowCount);
+        }
         void ClickCargarOrdenEditadas()
         {
 
@@ -4037,17 +3662,32 @@ namespace Kosturas.View
 
         void GuardarCambiosAfiliado(int id)
         {
+            GuardarCambiosTarea();
             using (var db = new DataContextLocal())
             {
                 var ordenDetalleTarea = new TemDetallesOrdenes();
                 var ultimaTarea = listatareas.Last();
                 ultimaTarea.AfiliadoId = id;
                 AutoMapper.Mapper.Map(listatareas.Last(), ordenDetalleTarea);
-
+                var query = db.Afiliados.Find(id);
+                var porsentaje = double.Parse(query.Porsentaje);
+                var PrecioTarea = ultimaTarea.Subtotal;
+                var MontoIngreso = PrecioTarea * porsentaje / 100;
+                var MontoPago = PrecioTarea - MontoIngreso;
                 try
                 {
                     db.Entry(ordenDetalleTarea).State = EntityState.Modified;
                     db.SaveChanges();
+
+                    Provedor   provedor = new Provedor();
+                    provedor.FechaIngreso = DateTime.Today;
+                    provedor.MontoIngreso = MontoIngreso;
+                    provedor.MontoPago = MontoPago;
+                    provedor.idServicio = id;
+
+                    db.Provedor.Add(provedor);
+                    db.SaveChanges();
+                
                 }
                 catch (Exception ex)
                 {
@@ -4216,6 +3856,35 @@ namespace Kosturas.View
             combo.DisplayMember = "Descripcion";
             combo.ValueMember = "OfertaId";
 
+        }
+
+        private void txttelefonoprincipal_Validated(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txttelefonoprincipal.Text.Trim()) || txttelefonoprincipal.Text.Trim() == "Teléfono Cliente")
+            {
+                MessageBox.Show("El Teléfono Es un dato Obligatorio");
+                txttelefonoprincipal.Text = "";
+                txttelefonoprincipal.Focus();
+
+            }
+            else
+            {
+                txtNombre.Focus();
+            }
+        
+        }
+
+        private void txtNombre_Validated(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtNombre.Text.Trim()) || txtNombre.Text.Trim() == "Nombre Cliente")
+            {
+                MessageBox.Show("El Nombre Es un dato Obligatorio");
+                txtNombre.Text = "";
+                txtNombre.Focus();
+
+            }
         }
     }
     

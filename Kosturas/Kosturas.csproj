@@ -43,14 +43,26 @@
     <Reference Include="BarcodeStandard, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BarcodeLib.2.2.1\lib\netstandard2.0\BarcodeStandard.dll</HintPath>
     </Reference>
+    <Reference Include="CloudrailSI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.Api.1.0.7\lib\CloudrailSI.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -70,15 +82,39 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.DataDesign.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.DataDesign.DataSetDesigner, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TemplateWizardInterface, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VSDesigner, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Microsoft.VSDesigner.DLL</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenSSL.PrivateKeyDecoder, Version=1.2.0.0, Culture=neutral, PublicKeyToken=78f5ba1b024431f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenSSL.PrivateKeyDecoder.1.2.0\lib\net45\OpenSSL.PrivateKeyDecoder.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenSSL.X509Certificate2.Provider, Version=1.2.0.0, Culture=neutral, PublicKeyToken=78f5ba1b024431f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenSSL.X509Certificate2.Provider.1.2.0\lib\net45\OpenSSL.X509Certificate2.Provider.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -109,6 +145,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Twilio, Version=5.26.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.5.26.0\lib\net451\Twilio.dll</HintPath>
+    </Reference>
+    <Reference Include="WhatsAppApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WhatsAppAPI.15.4.29\lib\net40\WhatsAppApi.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autoprint.cs" />
@@ -125,7 +167,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSReporteFactura.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSServicios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSServicios.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Helper\Ayudas.cs" />
+    <Compile Include="Helper\EnvioCorreos.cs" />
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\ListViewExtender.cs" />
     <Compile Include="InfraExtructura\AutoMapperPerfil.cs" />
@@ -135,6 +183,12 @@
     <Compile Include="ViewModels\OrdenDetalleViewModel.cs" />
     <Compile Include="ViewModels\OrdenPrendaViewModel.cs" />
     <Compile Include="ViewModels\OrdenViewModel.cs" />
+    <Compile Include="View\EditarOrdenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditarOrdenes.Designer.cs">
+      <DependentUpon>EditarOrdenes.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmCierreCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -395,11 +449,23 @@
     <Compile Include="View\frmVerPagos.Designer.cs">
       <DependentUpon>frmVerPagos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MantenimientoProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MantenimientoProductos.Designer.cs">
+      <DependentUpon>MantenimientoProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Multiplicacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Multiplicacion.Designer.cs">
       <DependentUpon>Multiplicacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\otro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\otro.Designer.cs">
+      <DependentUpon>otro.cs</DependentUpon>
     </Compile>
     <Compile Include="View\prueba.cs">
       <SubType>Form</SubType>
@@ -424,8 +490,14 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reportes\Report1.rdlc" />
+    <EmbeddedResource Include="Reportes\Report2.rdlc" />
+    <EmbeddedResource Include="Reportes\Report3.rdlc" />
     <EmbeddedResource Include="Reportes\Reporte.rdlc" />
+    <EmbeddedResource Include="Reportes\ReportePorPrenda.rdlc" />
     <EmbeddedResource Include="Reportes\ReportOrdenTrabajo.rdlc" />
+    <EmbeddedResource Include="View\EditarOrdenes.resx">
+      <DependentUpon>EditarOrdenes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmCierreCaja.resx">
       <DependentUpon>frmCierreCaja.cs</DependentUpon>
     </EmbeddedResource>
@@ -555,8 +627,14 @@
     <EmbeddedResource Include="View\frmVerPagos.resx">
       <DependentUpon>frmVerPagos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MantenimientoProductos.resx">
+      <DependentUpon>MantenimientoProductos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Multiplicacion.resx">
       <DependentUpon>Multiplicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\otro.resx">
+      <DependentUpon>otro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\prueba.resx">
       <DependentUpon>prueba.cs</DependentUpon>
@@ -585,6 +663,17 @@
     </None>
     <None Include="DSReporteFactura.xss">
       <DependentUpon>DSReporteFactura.xsd</DependentUpon>
+    </None>
+    <None Include="DSServicios.xsc">
+      <DependentUpon>DSServicios.xsd</DependentUpon>
+    </None>
+    <None Include="DSServicios.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSServicios.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSServicios.xss">
+      <DependentUpon>DSServicios.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

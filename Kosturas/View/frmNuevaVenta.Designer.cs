@@ -71,10 +71,12 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -288,6 +290,7 @@
             this.btnvacio.TabIndex = 146;
             this.btnvacio.Text = "Vacio";
             this.btnvacio.UseVisualStyleBackColor = false;
+            this.btnvacio.Click += new System.EventHandler(this.btnvacio_Click);
             // 
             // cbmafiliado
             // 
@@ -478,22 +481,45 @@
             this.panel1.Size = new System.Drawing.Size(932, 157);
             this.panel1.TabIndex = 165;
             // 
-            // panel2
+            // button1
             // 
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Location = new System.Drawing.Point(193, 118);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(535, 184);
-            this.panel2.TabIndex = 166;
+            this.button1.Location = new System.Drawing.Point(64, 169);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 167;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label15
+            // tabControl1
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(7, 17);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "label15";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(335, 160);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(200, 100);
+            this.tabControl1.TabIndex = 168;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(192, 74);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // frmNuevaVenta
             // 
@@ -501,7 +527,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(940, 516);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbabreviatura);
@@ -530,8 +557,7 @@
             this.Text = "frmNuevaVenta";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,7 +608,9 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }

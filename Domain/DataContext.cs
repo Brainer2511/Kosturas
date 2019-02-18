@@ -65,5 +65,16 @@ namespace Domain
 
 
         public DbSet<CodigoBarras> CodigoBarras { get; set; }
+
+        public DbSet<Templeis>   Templeis { get; set; }
+
+        public DbSet<ConfiguracionEnvioCorreos>  ConfiguracionEnvios { get; set; }
+
+        public DbSet<Provedor>  Provedor { get; set; }
+
+        public DbSet<Productos>  Productos { get; set; }
+
+
+        public DbSet<Ventas>  Ventas { get; set; }
     }
 }

@@ -375,6 +375,204 @@ namespace Kosturas
             }
              
          }
+        private void CargarClienteIdOrden(string texbox)
+        {
+
+
+
+
+            var query = db.Clientes.Where(j => j.Nombre==(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
+
+            foreach (var item in query)
+
+            {
+
+
+
+                var botonesdos = new TextBox();
+                botonesdos.Size = new Size(80, 30);
+                botonesdos.Multiline = true;
+
+                //  botonesdos.Click +=  new EventHandler(ClickMensaje);
+                botonesdos.Text = item.Abreviatura;
+
+
+                botonesdos.Name = item.ClienteId.ToString();
+                botonesdos.KeyPress += new KeyPressEventHandler(ClickTexbox1);
+
+                botonesdos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                //  botonesdos.Size = new System.Drawing.Size(131, 34);
+                botonesdos.TabIndex = 143;
+
+                var botonestres = new TextBox();
+
+                botonestres.Text = item.TelefonoPrincipal;
+                botonestres.Name = item.ClienteId.ToString();
+                botonestres.Multiline = true;
+                botonestres.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonestres.Size = new System.Drawing.Size(110, 30);
+                botonestres.KeyPress += new KeyPressEventHandler(ClickTexbox2);
+                botonestres.TabIndex = 143;
+                var botonescuatro = new TextBox();
+                botonescuatro.Text = item.Nombre;
+                botonescuatro.Name = item.ClienteId.ToString();
+                botonescuatro.Multiline = true;
+                botonescuatro.KeyPress += new KeyPressEventHandler(ClickTexbox3);
+                botonescuatro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonescuatro.Size = new System.Drawing.Size(110, 30);
+                botonescuatro.TabIndex = 143;
+
+                var botonecinco = new TextBox();
+                botonecinco.Text = item.Email;
+                botonecinco.Name = item.Email;
+                botonecinco.Multiline = true;
+                botonecinco.KeyPress += new KeyPressEventHandler(ClickTexbox4);
+                botonecinco.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonecinco.Size = new System.Drawing.Size(150, 30);
+                botonecinco.TabIndex = 143;
+
+                var botonesseis = new TextBox();
+                botonesseis.Text = item.Notas;
+                botonesseis.Name = item.Notas;
+                botonesseis.Multiline = true;
+                botonesseis.KeyPress += new KeyPressEventHandler(ClickTexbox5);
+                botonesseis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                botonesseis.Size = new System.Drawing.Size(340, 30);
+                botonesseis.TabIndex = 143;
+
+
+                var NuevaOrden = new Button();
+
+
+                NuevaOrden.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura10.png");
+
+                NuevaOrden.BackColor = System.Drawing.Color.White;
+                NuevaOrden.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                NuevaOrden.FlatAppearance.BorderSize = 0;
+                NuevaOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                NuevaOrden.Size = new System.Drawing.Size(32, 34);
+                NuevaOrden.TabIndex = 142;
+                NuevaOrden.UseVisualStyleBackColor = false;
+
+                NuevaOrden.Name = item.ClienteId.ToString();
+                NuevaOrden.Click += new EventHandler(ClickNuevaOrden);
+
+                var optenerordenes = new Button();
+
+
+                optenerordenes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura11.png");
+                optenerordenes.Name = item.ClienteId.ToString();
+                optenerordenes.BackColor = System.Drawing.Color.White;
+                optenerordenes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                optenerordenes.FlatAppearance.BorderSize = 0;
+                optenerordenes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                optenerordenes.Size = new System.Drawing.Size(32, 34);
+                optenerordenes.TabIndex = 142;
+
+
+                optenerordenes.Click += new EventHandler(ClickCargarOrdenSinCompletar);
+                optenerordenes.UseVisualStyleBackColor = false;
+
+                var guardarcambios = new Button();
+
+
+
+                guardarcambios.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura12.png");
+                guardarcambios.Name = item.ClienteId.ToString();
+                guardarcambios.BackColor = System.Drawing.Color.White;
+                guardarcambios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                guardarcambios.FlatAppearance.BorderSize = 0;
+                guardarcambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                guardarcambios.Size = new System.Drawing.Size(32, 34);
+                guardarcambios.TabIndex = 142;
+                guardarcambios.UseVisualStyleBackColor = false;
+                guardarcambios.Click += new EventHandler(ClickGuardarCambios);
+
+
+                var unirseldas = new Button();
+
+
+                unirseldas.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura13.png");
+                unirseldas.Name = item.ClienteId.ToString();
+                unirseldas.BackColor = System.Drawing.Color.White;
+                unirseldas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                unirseldas.FlatAppearance.BorderSize = 0;
+                unirseldas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                unirseldas.Size = new System.Drawing.Size(32, 34);
+                unirseldas.TabIndex = 142;
+                unirseldas.UseVisualStyleBackColor = false;
+
+
+                var detalleclientes = new Button();
+
+
+
+                detalleclientes.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura14.png");
+                detalleclientes.Name = item.ClienteId.ToString();
+                detalleclientes.BackColor = System.Drawing.Color.White;
+                detalleclientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                detalleclientes.FlatAppearance.BorderSize = 0;
+                detalleclientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                detalleclientes.Size = new System.Drawing.Size(32, 34);
+                detalleclientes.TabIndex = 142;
+                detalleclientes.Click += new EventHandler(ClickDetalleCliente);
+                detalleclientes.UseVisualStyleBackColor = false;
+
+
+                var Email = new Button();
+
+
+
+                Email.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura15.png");
+                Email.Name = item.ClienteId.ToString();
+                Email.BackColor = System.Drawing.Color.White;
+                Email.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                Email.FlatAppearance.BorderSize = 0;
+                Email.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                Email.Size = new System.Drawing.Size(32, 34);
+                Email.TabIndex = 142;
+                Email.UseVisualStyleBackColor = false;
+
+                var aumentocredito = new Button();
+
+
+
+                aumentocredito.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Captura16.png");
+                aumentocredito.Name = item.ClienteId.ToString();
+                aumentocredito.BackColor = System.Drawing.Color.White;
+                aumentocredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                aumentocredito.FlatAppearance.BorderSize = 0;
+                aumentocredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                aumentocredito.Size = new System.Drawing.Size(32, 34);
+                aumentocredito.TabIndex = 142;
+                aumentocredito.UseVisualStyleBackColor = false;
+
+                tableLayoutPanel1.Controls.Add(botonesdos);
+                tableLayoutPanel1.Controls.Add(botonestres);
+                tableLayoutPanel1.Controls.Add(botonescuatro);
+                tableLayoutPanel1.Controls.Add(botonecinco);
+                tableLayoutPanel1.Controls.Add(botonesseis);
+                tableLayoutPanel1.Controls.Add(NuevaOrden);
+                tableLayoutPanel1.Controls.Add(optenerordenes);
+                tableLayoutPanel1.Controls.Add(guardarcambios);
+                tableLayoutPanel1.Controls.Add(unirseldas);
+                tableLayoutPanel1.Controls.Add(detalleclientes);
+                tableLayoutPanel1.Controls.Add(Email);
+                tableLayoutPanel1.Controls.Add(aumentocredito);
+
+
+            }
+
+
+            if (query.Count > 0)
+            {
+
+                // x = "";
+                //dataGridView1.ClearSelection();
+
+            }
+
+        }
         private void CargarClienteTelefono(string texbox)
         {
 
@@ -692,14 +890,24 @@ namespace Kosturas
         private void txtOrden_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            string x = "";
-            x = txtOrden.Text;
-            if (x != "")
+          
+            if (e.KeyChar==Convert.ToChar(Keys.Enter))
             {
 
 
-                var query = db.Clientes.Where(j => j.Nombre.StartsWith(x.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
-
+                var IdOrden = (int.Parse(txtOrden.Text));
+                var Query = db.Ordenes.Where(q => q.OrdenId == IdOrden).ToList();
+                if (Query.Count == 0)
+                {
+                    BorrarPanel();
+                    BorrarPanelOrdenes();
+                }
+                if (Query.Count > 0)
+                {
+                    var NombreCliente = db.Ordenes.Find(int.Parse(txtOrden.Text)).Cliente.Nombre;
+                    ClickCargarOrdenIdOrden(int.Parse(txtOrden.Text));
+                    CargarClienteIdOrden(NombreCliente);
+                }
 
             }
          
@@ -939,14 +1147,16 @@ namespace Kosturas
             Button btn = sender as Button;
             var id = int.Parse(btn.Text);
 
+            var idDetalle = db.OrdenDetallePrendas.Where(q=>q.DetalleOrdenPrendaId==id).FirstOrDefault().OrdenId;
 
-            ReporteImagen reporte = new ReporteImagen(id);
+            ReporteImagen reporte = new ReporteImagen(idDetalle);
             reporte.ShowDialog();
-            //FrmFactura frm = new FrmFactura(id);
-            //frm.ShowDialog();
-            // frmReporteFactura form = new frmReporteFactura(id);
-            //form.ShowDialog();
-            
+            FrmFactura frm = new FrmFactura(idDetalle);
+            frm.ShowDialog();
+            frmReporteFactura form = new frmReporteFactura(idDetalle);
+            form.ShowDialog();
+            otro otro = new otro(idDetalle, id);
+            otro.ShowDialog();
 
 
             try
@@ -1030,7 +1240,32 @@ namespace Kosturas
 
                         panelViewPrenda.panelPrenda.Click += new EventHandler(ClickCargarOrdenSinCompletar);
                         panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
-                        panelViewPrenda.panelPrenda.Size = new Size(1380, 30);
+                    if (query.FirstOrDefault().EstadoId == 6)
+                    {
+                        panelViewPrenda.panelPrenda.BackColor = Color.Gray;
+                        panelViewPrenda.btncompletarOrden.BackColor = Color.Gray;
+                        panelViewPrenda.btnPrioridad.BackColor = Color.Gray;
+                        panelViewPrenda.btnCantidad.BackColor = Color.Gray;
+                        panelViewPrenda.btnagregartarea.BackColor = Color.Gray;
+                    }
+                    if (query.FirstOrDefault().EstadoId == 5)
+                    {
+                        panelViewPrenda.panelPrenda.BackColor = Color.Lime;
+                        panelViewPrenda.btncompletarOrden.BackColor = Color.Lime;
+                        panelViewPrenda.btnPrioridad.BackColor = Color.Lime;
+                        panelViewPrenda.btnCantidad.BackColor = Color.Lime;
+                        panelViewPrenda.btnagregartarea.BackColor = Color.Lime;
+                    }
+                    if (query.FirstOrDefault().EstadoId == 1)
+                    {
+                        panelViewPrenda.panelPrenda.BackColor = Color.Blue;
+                        panelViewPrenda.btncompletarOrden.BackColor = Color.Blue;
+                        panelViewPrenda.btnPrioridad.BackColor = Color.Blue;
+                        panelViewPrenda.btnCantidad.BackColor = Color.Blue;
+                        panelViewPrenda.btnagregartarea.BackColor = Color.Blue;
+                    }
+
+                    panelViewPrenda.panelPrenda.Size = new Size(1380, 30);
                         panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
 
 
@@ -1141,6 +1376,193 @@ namespace Kosturas
             }
 
         }
+        void ClickCargarOrdenIdOrden(int Id)
+        {
+            BorrarPanel();
+            BorrarPanelOrdenes();
+
+            listaTareas = new List<OrdenDetalleViewModel>();
+            listaPrendas = new List<OrdenPrendaViewModel>();
+
+
+            var id = Id;
+
+
+            var Colores = true;
+
+            rowCount = 0;
+
+            var query = db.Ordenes.Where(q => q.OrdenId == id).ToList();
+
+
+            lblTotalOrdenes.Text = query.Sum(q => q.TotalOrden).ToString();
+            foreach (var itemdos in query)
+
+            {
+
+
+                var orden = db.Ordenes.Find(itemdos.OrdenId);
+
+
+                foreach (var prenda in orden.Prendas)
+
+                {
+                    var panelViewPrenda = new OrdenPrendaViewModel(string.Empty);
+
+
+
+
+                    panelViewPrenda.panelPrenda.Click += new EventHandler(ClickCargarOrdenSinCompletar);
+                    panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
+
+                    if (query.FirstOrDefault().EstadoId == 6)
+                    {
+                        panelViewPrenda.panelPrenda.BackColor = Color.Gray;
+                        panelViewPrenda.btncompletarOrden.BackColor = Color.Gray;
+                        panelViewPrenda.btnPrioridad.BackColor = Color.Gray;
+                        panelViewPrenda.btnCantidad.BackColor = Color.Gray;
+                        panelViewPrenda.btnagregartarea.BackColor = Color.Gray;
+                    }
+                    if (query.FirstOrDefault().EstadoId == 5)
+                    {
+                        panelViewPrenda.panelPrenda.BackColor = Color.Lime;
+                        panelViewPrenda.btncompletarOrden.BackColor = Color.Lime;
+                        panelViewPrenda.btnPrioridad.BackColor = Color.Lime;
+                        panelViewPrenda.btnCantidad.BackColor = Color.Lime;
+                        panelViewPrenda.btnagregartarea.BackColor = Color.Lime;
+                    }
+                    if (query.FirstOrDefault().EstadoId == 1)
+                    {
+                        panelViewPrenda.panelPrenda.BackColor = Color.Blue;
+                        panelViewPrenda.btncompletarOrden.BackColor = Color.Blue;
+                        panelViewPrenda.btnPrioridad.BackColor = Color.Blue;
+                        panelViewPrenda.btnCantidad.BackColor = Color.Blue;
+                        panelViewPrenda.btnagregartarea.BackColor = Color.Blue;
+                    }
+                
+                    panelViewPrenda.panelPrenda.Size = new Size(1380, 30);
+                    panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
+
+
+
+
+
+                    panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
+
+                    panelViewPrenda.btnagregartarea.Text = prenda.OrdenId.ToString();
+                    panelViewPrenda.btnagregartarea.Location = new Point(1308, 0);
+                    panelViewPrenda.btnagregartarea.Click += new EventHandler(ClickImprimirOrden);
+                    panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnagregartarea);
+
+                    panelViewPrenda.btncompletarOrden.Text = prenda.OrdenId.ToString();
+                    panelViewPrenda.btncompletarOrden.Click += new EventHandler(ClickCompletarOrden);
+                    panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btncompletarOrden);
+
+                    panelViewPrenda.btnPrioridad.Text = prenda.OrdenId.ToString();
+                    panelViewPrenda.btnPrioridad.Location = new Point(1234, 0);
+                    panelViewPrenda.btnPrioridad.Click += new EventHandler(ClickEditarOrden);
+                    panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnPrioridad);
+
+                    panelViewPrenda.btnCantidad.Text = prenda.OrdenId.ToString();
+                    panelViewPrenda.btnCantidad.Location = new Point(1271, 0);
+                    panelViewPrenda.btnCantidad.Click += new EventHandler(ClickRemoverPagos);
+                    panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnCantidad);
+
+                    listaPrendas.Add(panelViewPrenda);
+                    rowCount += 1;
+                    tlpOrdenesClientes.RowCount = rowCount;
+                    this.tlpOrdenesClientes.Controls.Add(listaPrendas.Last().panelPrenda, 0, rowCount);
+
+                    foreach (var tarea in prenda.DetalleTareas)
+                    {
+
+                        var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty, 0);
+
+
+
+                        panelViewTarea.panelTarea.Click += new EventHandler(ClickCargarOrdenSinCompletar);
+                        panelViewTarea.panelTarea.MouseEnter += new EventHandler(MouseoverDos);
+                        panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
+                        panelViewTarea.panelTarea.Size = new Size(1380, 30);
+                        panelViewTarea.panelTarea.Name = tarea.DetalleOrdenesId.ToString();
+                        panelViewTarea.DetalleOrdenesId = tarea.DetalleOrdenesId;
+                        if (Colores == true)
+                        {
+                            panelViewTarea.panelTarea.BackColor = Color.White;
+                            Colores = false;
+                        }
+                        else
+                        {
+                            panelViewTarea.panelTarea.BackColor = Color.WhiteSmoke;
+                            Colores = true;
+                        }
+
+
+
+                        panelViewTarea.lblTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
+
+
+
+                        panelViewTarea.lblTarea.Location = new Point(80, 10);
+                        panelViewTarea.lblTarea.Size = new Size(110, 45);
+                        panelViewTarea.lblTarea.Size = new System.Drawing.Size(115, 45);
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
+
+                        panelViewTarea.lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
+                        panelViewTarea.lblDetalleTarea.Location = new Point(200, 10);
+                        panelViewTarea.lblDetalleTarea.Size = new System.Drawing.Size(150, 34);
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
+
+                        panelViewTarea.lblPrecio.Text = tarea.Detalle.Precio.ToString();
+                        panelViewTarea.lblPrecio.Location = new Point(400, 10);
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblPrecio);
+
+                        panelViewTarea.txtTotalPrecio.Text = (tarea.Descuento).ToString() + "%";
+
+                        panelViewTarea.txtTotalPrecio.Location = new Point(600, 10);
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtTotalPrecio);
+
+                        panelViewTarea.lblSubTotal.Text = (tarea.Subtotal).ToString();
+
+                        panelViewTarea.lblSubTotal.Location = new Point(800, 10);
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblSubTotal);
+                        if (tarea.AfiliadoId > 0)
+                        {
+                            var nombre = db.Afiliados.Find(tarea.AfiliadoId);
+                            panelViewTarea.lblAfiliado.Text = (nombre.Nombre);
+                        }
+                        else
+                        {
+                            panelViewTarea.lblAfiliado.Text = "";
+                        }
+                        panelViewTarea.lblAfiliado.Location = new Point(1100, 10);
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblAfiliado);
+
+                        panelViewTarea.lblDescripcion.Text = (tarea.Descripcion).ToString();
+                        panelViewTarea.lblDescripcion.Location = new Point(915, 10);
+                        panelViewTarea.lblDescripcion.Size = new Size(150, 34);
+
+
+
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescripcion);
+
+                        listaTareas.Add(panelViewTarea);
+                        rowCount += 1;
+                        tlpOrdenesClientes.RowCount = rowCount;
+                        this.tlpOrdenesClientes.Controls.Add(listaTareas.Last().panelTarea, 0, rowCount);
+
+                    }
+
+
+
+
+
+                }
+
+
+            }
+
+        }
         void ClickCargarOrdenSinCompletar(object sender, EventArgs e)
         {
 
@@ -1189,6 +1611,20 @@ namespace Kosturas
 
                         panelViewPrenda.panelPrenda.Click += new EventHandler(ClickCargarOrdenSinCompletar);
                         panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
+                        if (query.FirstOrDefault().EstadoId==6) {
+                            panelViewPrenda.panelPrenda.BackColor = Color.Gray;
+                            panelViewPrenda.btncompletarOrden.BackColor = Color.Gray;
+                            panelViewPrenda.btnPrioridad.BackColor = Color.Gray;
+                            panelViewPrenda.btnCantidad.BackColor = Color.Gray;
+                            panelViewPrenda.btnagregartarea.BackColor = Color.Gray;
+                        }
+                        if (query.FirstOrDefault().EstadoId == 5)
+                        { panelViewPrenda.panelPrenda.BackColor = Color.Lime;
+                            panelViewPrenda.btncompletarOrden.BackColor = Color.Lime;
+                            panelViewPrenda.btnPrioridad.BackColor = Color.Lime;
+                            panelViewPrenda.btnCantidad.BackColor = Color.Lime;
+                            panelViewPrenda.btnagregartarea.BackColor = Color.Lime;
+                        }
                         panelViewPrenda.panelPrenda.Size = new Size(1380, 30);
                         panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
 
@@ -1208,7 +1644,7 @@ namespace Kosturas
                         panelViewPrenda.btnCantidad.Click += new EventHandler(ClickRemoverPagos);
                         panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnCantidad);
 
-                        panelViewPrenda.btnagregartarea.Text = prenda.OrdenId.ToString();
+                        panelViewPrenda.btnagregartarea.Text = prenda.DetalleOrdenPrendaId.ToString();
                         panelViewPrenda.btnagregartarea.Location = new Point(1308, 0);
                         panelViewPrenda.btnagregartarea.Click += new EventHandler(ClickImprimirOrden);
                         panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnagregartarea);
@@ -2039,12 +2475,18 @@ namespace Kosturas
 
         private void pvBuscarOrden_Click(object sender, EventArgs e)
         {
-            
-
+            var IdOrden = (int.Parse(txtOrden.Text));
+            var Query = db.Ordenes.Where(q => q.OrdenId == IdOrden).ToList();
+            if (Query.Count == 0)
+            {
+                BorrarPanel();
+                BorrarPanelOrdenes();
+            }
+            if (Query.Count>0) { 
          var NombreCliente=  db.Ordenes.Find(int.Parse(txtOrden.Text)).Cliente.Nombre;
-            var IdCliente= db.Ordenes.Find(int.Parse(txtOrden.Text)).Cliente.ClienteId;
-            ClickCargarOrdenTotal(IdCliente);
-            CargarCliente(NombreCliente);
+            ClickCargarOrdenIdOrden(int.Parse(txtOrden.Text));
+            CargarClienteIdOrden(NombreCliente);
+            }
         }
         //void PruebaClick_2(object sender, EventArgs e)
         //{

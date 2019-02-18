@@ -38,6 +38,7 @@
             this.busToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.dfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -109,7 +110,8 @@
             this.toolStripMenuItem4,
             this.toolStripMenuItem3,
             this.toolStripMenuItem6,
-            this.toolStripMenuItem7});
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem1});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -135,8 +137,8 @@
             this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.toolStripMenuItem6.ForeColor = System.Drawing.Color.White;
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(119, 28);
-            this.toolStripMenuItem6.Text = "Reporte SMS";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(172, 28);
+            this.toolStripMenuItem6.Text = "Reporte Provedores";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // dfToolStripMenuItem
@@ -144,6 +146,15 @@
             this.dfToolStripMenuItem.Name = "dfToolStripMenuItem";
             this.dfToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             this.dfToolStripMenuItem.Text = "df";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(134, 28);
+            this.toolStripMenuItem1.Text = "Editar Ordenes";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click_2);
             // 
             // frmReportesCajasTotales
             // 
@@ -174,5 +185,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem dfToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem busToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

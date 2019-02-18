@@ -632,7 +632,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.215cm</Width>
+                  <Width>3.21323cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -704,7 +704,7 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>3.62416cm</Size>
+                        <Size>3.62239cm</Size>
                         <CellContents>
                           <Textbox Name="NombreServicio2">
                             <CanGrow>true</CanGrow>
@@ -759,8 +759,9 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>9.79296cm</Top>
+            <Left>0.00353cm</Left>
             <Height>0.6cm</Height>
-            <Width>6.83916cm</Width>
+            <Width>6.83563cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>

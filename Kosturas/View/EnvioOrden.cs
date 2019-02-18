@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Kosturas.Helper;
 using Kosturas.Model;
 using System;
 using System.Collections.Generic;
@@ -79,10 +80,17 @@ namespace Kosturas.View
             a = a.Remove(a.Length - 8);
             this.txtFecha.Text =a;
             txtpago.Text = orden.TotalOrden.ToString();
+
+            var precio = db.ConfiguracionEnvios.FirstOrDefault().CantidadDineroPorHora;
+            var TotalOrden = orden.TotalOrden;
+            label6.Text = (TotalOrden / precio).ToString("#,##0.00");
+            label14.Text = (double.Parse(label10.Text) - double.Parse(label6.Text)).ToString();
+
         }
 
-        private void btnEnviar_Click(object sender, EventArgs e)
+        private async void btnEnviar_Click(object sender, EventArgs e)
         {
+            
             this.Close();
             frmPin pin = new frmPin();
             this.Opacity = 0.80;
@@ -173,8 +181,40 @@ namespace Kosturas.View
             db.Entry(cliente).State = EntityState.Modified;
             db.SaveChanges();
             this.Close();
-
+            
             Program.Editar = 0;
+            var TempleisEmpresa = db.ConfiguracionEnvios.ToList();
+            var Email = db.Templeis.FirstOrDefault().DirrecTempleiFactura;
+            var Subjet= db.Templeis.FirstOrDefault().SubTempleiFactura;
+
+            Email = Email.Replace("{BusinessName}", TempleisEmpresa.FirstOrDefault().NombreEmpresa)
+                .Replace("{AddressLine1}", TempleisEmpresa.FirstOrDefault().DirrecionLinea1)
+                .Replace("{AddressLine2}", TempleisEmpresa.FirstOrDefault().DirrecionLinea2)
+                .Replace("{BusinessPhone}", TempleisEmpresa.FirstOrDefault().Telefono)
+                .Replace("{BusinessWebsite}", TempleisEmpresa.FirstOrDefault().PaginaWeb)
+                .Replace("{BusinessEmail}", TempleisEmpresa.FirstOrDefault().CorreoEmpresa)
+                .Replace("{FirstName}", orden.Cliente.Nombre)
+                .Replace("{OrderId(s)}", orden.OrdenId.ToString())
+               .Replace("{TotalPrice}", orden.TotalOrden.ToString())
+                .Replace("{AmountPaid}", orden.CantidadPagada.ToString() )
+                .Replace("{AmountLeft}", orden.CantidadRestante.ToString());
+            var DetallePrenda = "<table style='width:100%'><tbody>";
+            foreach (var item in orden.Prendas)
+            {
+                foreach (var itemT in item.DetalleTareas)
+                {
+
+                    DetallePrenda += "<tr><td colspan=3>"+item.Prenda.TipoRopa+"X"+item.Cantidad+"</tr></td>";
+                    DetallePrenda += "<tr><td>"+ itemT.Detalle.Tarea.NombreTareas + "</td>"
+                        +"<td>"+ itemT.Detalle.DetalleTareas+"</td>" + "<td>" +itemT.Subtotal+"</td></tr>";
+                }
+            }
+            DetallePrenda += "</tbody></table>";
+            Email = Email.Replace("{OrderDetails}", DetallePrenda);
+          await EnvioCorreos.SendMail(txtEmail.Text, Subjet, Email);
+
+ 
+
         }
 
         private void ckbNopagar_CheckedChanged(object sender, EventArgs e)
@@ -204,10 +244,12 @@ namespace Kosturas.View
         }
         void ActualizarPanelTrabajadores()
         {
+
+            
             label10.Text = "";
             label8.Text = "";
             label14.Text = "";
-            label6.Text = "";
+          
             resultado = 0;
            var FechaHoy = DateTime.Today;
             var Dia = FechaHoy.DayOfWeek;
@@ -223,7 +265,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasLunes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -234,7 +276,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasMartes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -245,7 +287,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasMiercoles.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -256,7 +298,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasJueves.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -267,7 +309,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasViernes.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -278,7 +320,7 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasSabado.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
@@ -289,25 +331,14 @@ namespace Kosturas.View
                     {
                         var horas = int.Parse(itemdos.HorasDomingo.ToString());
                         resultado = resultado + horas;
-                        label10.Text = resultado.ToString() + ":" + "00";
+                        label10.Text = resultado.ToString();
                         var nombre = itemdos.Nombre;
                         label8.Text += nombre + " , ";
                     }
                 }
             }
 
-            //var ordenes = db.OrdenDetalleTareas.Where(q => q.Prenda.Orden.FeEnt == DateTime.Today).ToList().Select(q => q.Duracion).Sum();
-            //var otra = ordenes / 60;
-
-            //var prueba = resultado * 60;
-
-            //var sfdg = prueba - ordenes;
-
-            //var sdh = sfdg / 60;
-            //label14.Text = sdh.ToString() + ":" + "00";
-            //var fddg = resultado - sdh;
-
-            //label6.Text = fddg.ToString() + ":" + "00";
+        
         }
 
         private void cmbTipoPago_SelectedIndexChanged(object sender, EventArgs e)
@@ -409,15 +440,12 @@ namespace Kosturas.View
             var ordenes = db.OrdenDetalleTareas.Where(q => q.Prenda.Orden.FeEnt >= fdesde && q.Prenda.Orden.FeEnt <= fhasta).ToList().Select(q => q.Duracion).Sum();
             var otra = ordenes / 60;
 
-            var prueba = resultado * 60;
+          
 
-            var sfdg = prueba - ordenes;
-
-            var sdh = sfdg / 60;
-            label14.Text = sdh.ToString() + ":" + "00";
-            var fddg = resultado - sdh;
-
-            label6.Text = fddg.ToString() + ":" + "00";
+            var precio = db.ConfiguracionEnvios.FirstOrDefault().CantidadDineroPorHora;
+            var TotalOrden = orden.TotalOrden;
+            label6.Text = (TotalOrden / precio).ToString("#,##0.00");
+            label14.Text = (double.Parse(label10.Text) - double.Parse(label6.Text)).ToString();
         }
 
         private void btnNumero_MouseEnter(object sender, EventArgs e)

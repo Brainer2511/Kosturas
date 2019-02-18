@@ -80,8 +80,12 @@ namespace Kosturas.View
             var hasta = b + " 23:59";
             var fdesde = DateTime.Parse(desde);
             var fhasta = DateTime.Parse(hasta);
+            var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).ToList();
+            if (query.Count>0)
+            {
+                this.lblTotalIngresos.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(q => q.Monto).ToString();
 
-            this.lblTotalIngresos.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(q => q.Monto).ToString();
+            }
 
         }
         void ClickCargarTotalIngresos(string a, string b)

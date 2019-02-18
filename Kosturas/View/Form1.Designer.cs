@@ -167,7 +167,7 @@
             this.btnTelefonoDos.Name = "btnTelefonoDos";
             this.btnTelefonoDos.Size = new System.Drawing.Size(62, 23);
             this.btnTelefonoDos.TabIndex = 71;
-            this.btnTelefonoDos.Text = "telefono";
+            this.btnTelefonoDos.Text = "telefono 2";
             this.btnTelefonoDos.UseVisualStyleBackColor = false;
             this.btnTelefonoDos.MouseEnter += new System.EventHandler(this.btnTelefonoDos_MouseEnter);
             this.btnTelefonoDos.MouseLeave += new System.EventHandler(this.btnTelefonoDos_MouseLeave);
@@ -357,6 +357,7 @@
             this.txtNombre.Text = "Nombre Cliente";
             this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
             this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
+            this.txtNombre.Validated += new System.EventHandler(this.txtNombre_Validated);
             // 
             // txtCalle
             // 
@@ -407,6 +408,7 @@
             this.txttelefonoprincipal.Text = "Teléfono Cliente ";
             this.txttelefonoprincipal.Enter += new System.EventHandler(this.txtNotas_Enter);
             this.txttelefonoprincipal.Leave += new System.EventHandler(this.txtNotas_Leave);
+            this.txttelefonoprincipal.Validated += new System.EventHandler(this.txttelefonoprincipal_Validated);
             // 
             // panel1
             // 
