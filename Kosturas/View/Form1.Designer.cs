@@ -408,7 +408,7 @@
             this.txttelefonoprincipal.Text = "Teléfono Cliente ";
             this.txttelefonoprincipal.Enter += new System.EventHandler(this.txtNotas_Enter);
             this.txttelefonoprincipal.Leave += new System.EventHandler(this.txtNotas_Leave);
-            this.txttelefonoprincipal.Validated += new System.EventHandler(this.txttelefonoprincipal_Validated);
+            this.txttelefonoprincipal.Validated += new System.EventHandler(this.txtNombre_Validated);
             // 
             // panel1
             // 

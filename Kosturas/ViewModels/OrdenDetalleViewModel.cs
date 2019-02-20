@@ -30,6 +30,7 @@ namespace Kosturas.ViewModels
         public Label txtTotalPrecio;
         public Button btnBorrarTarea { get; set; }
         public Button btnEstado { get; set; }
+        public ComboBox cmbDescuentos { get; set; }
 
         public OrdenDetalleViewModel(string tarea, string detalle, double precio)
         {
@@ -178,7 +179,17 @@ namespace Kosturas.ViewModels
 
             #endregion
 
-         
+            #region cmbDescuentos
+            cmbDescuentos = new ComboBox();
+            cmbDescuentos.Size = new System.Drawing.Size(120, 15);
+            cmbDescuentos.Location = new Point(517, 8);
+
+
+
+           
+
+            #endregion
+
             #region btnBorrarTarea
             btnBorrarTarea = new Button();
             btnBorrarTarea.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\equis.png");

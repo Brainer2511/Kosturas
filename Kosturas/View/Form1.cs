@@ -288,17 +288,6 @@ namespace Kosturas.View
         }
         void Mouseover(object sender, EventArgs e)
         {
-            Button btr = sender as Button;
-
-            
-
-
-
-
-            object id = btr.Name;
-            ColorEntrada = btr.BackColor;
-            id = btr.BackColor = Color.FromArgb(238, 141, 88);
-            id = btr.ForeColor = Color.White;
 
         }
         void Mouseleave(object sender, EventArgs e)
@@ -2779,77 +2768,6 @@ namespace Kosturas.View
 
         void ClickDuplicar(object sender, EventArgs e)
         {
-            BorrarControles();
-
-            GuardarCambiosTarea();
-            Button btr = sender as Button;
-
-            var ordenDetallePrendaId = int.Parse(btr.Text);
-
-            var ordenDetallePrenda = db.OrdenDetallePrendas.Find(ordenDetallePrendaId);
-
-            var Orden = db.Ordenes.Find(ordenId);
-            var ordenPrenda = new TemDetallesOrdenPrenda { OrdenId = Orden.OrdenId, Cantidad = ordenDetallePrenda.Cantidad, PrendaId = ordenDetallePrenda.PrendaId };
-            db.OrdenDetallePrendas.Add(ordenPrenda);
-            db.SaveChanges();
-
-
-            var prendaView = new OrdenPrendaViewModel(ordenDetallePrenda.Prenda.TipoRopa + " X" + ordenPrenda.Cantidad);
-            prendaView.DetalleOrdenPrendaId = ordenPrenda.DetalleOrdenPrendaId;
-            prendaView.PrendaId = ordenPrenda.PrendaId;
-            prendaView.Cantidad = ordenPrenda.Cantidad;
-
-            prendaView.Panel.Controls.Add(prendaView.lblPrenda);
-            prendaView.Panel.Controls.Add(prendaView.btnPrioridad);
-
-
-            prendaView.Panel.Controls.Add(prendaView.btnDuplicar);
-            prendaView.Panel.Controls.Add(prendaView.btnCantidad);
-            prendaView.Panel.Controls.Add(prendaView.btnmascinco);
-            prendaView.btnmascinco.Click += new EventHandler(Clickcincomas);
-            prendaView.btnDuplicar.Click += new EventHandler(ClickDuplicar);
-            prendaView.btnDuplicar.Text = prendaView.DetalleOrdenPrendaId.ToString();
-            prendaView.btnmascinco.Text = prendaView.DetalleOrdenPrendaId.ToString();
-            prendaView.Panel.Controls.Add(prendaView.btnmasuno);
-            prendaView.Panel.Controls.Add(prendaView.btnmenosuno);
-            prendaView.Panel.Controls.Add(prendaView.btnmenoscinco);
-            prendaView.Panel.Controls.Add(prendaView.btnagregartarea);
-            prendaView.btnagregartarea.Click += new EventHandler(ClickAddtax);
-            prendaView.btnagregartarea.Text = prendaView.DetalleOrdenPrendaId.ToString();
-
-            listaprendas.Add(prendaView);
-
-            rowCount += 1;
-            tbpDatos.RowCount = rowCount;      
-            this.tbpDatos.Controls.Add(prendaView.Panel, 0, rowCount);
-
-            foreach (var tarea in ordenDetallePrenda.DetalleTareas)
-                {
-                var detalletareatenporal = new TemDetallesOrdenes { DetalleOrdenPrendaId = ordenPrenda.DetalleOrdenPrendaId, DetalleTareaId = tarea.DetalleTareaId, Precio= tarea.Precio };
-                db.OrdenDetalleTareas.Add(detalletareatenporal);
-                db.SaveChanges();
-                var tareaView = new OrdenDetalleViewModel(tarea.Detalle.Tarea.NombreTareas,tarea.Detalle.DetalleTareas, tarea.Precio);
-                AutoMapper.Mapper.Map(detalletareatenporal,tareaView);
-                tareaView.DetalleOrdenPrendaId = prendaView.DetalleOrdenPrendaId;
-                tareaView.Panel.MouseLeave += new EventHandler(Mouseleavetabla);
-                tareaView.Panel.MouseEnter += new EventHandler(Mouseovertabla);
-                tareaView.DetalleTareaId = tarea.DetalleTareaId;
-                tareaView.btnBorrarTarea.Name = detalletareatenporal.DetalleOrdenesId.ToString();
-                tareaView.btnBorrarTarea.Click += new EventHandler(ClickBorrartax);
-                tareaView.Panel.Controls.Add(tareaView.lblTarea);
-                tareaView.Panel.Controls.Add(tareaView.lblDetalleTarea);
-                tareaView.Panel.Controls.Add(tareaView.txtPrecio);
-                tareaView.Panel.Controls.Add(tareaView.btnBorrarTarea);
-                tareaView.DetalleOrdenesId = detalletareatenporal.DetalleOrdenesId;
-
-                rowCount += 1;
-                tbpDatos.RowCount = rowCount;
-                listatareas.Add(tareaView);
-                this.tbpDatos.Controls.Add(tareaView.Panel, 0, rowCount);
-            }
-
-            mostrarcontrolesDos(listatareas.Last().Precio.ToString());
-
 
         }
         private void BorrarPanel()
@@ -3283,8 +3201,13 @@ namespace Kosturas.View
        
 
         }
-
         
+             public void ClickAfiliado(object sender, EventArgs e) { }
+        public void ClickaplicarDescuento(object sender, EventArgs e) { }
+         public void ClickRestaurarCombo2(object sender, EventArgs e) { }
+         public void ClickRestaurarCombo1(object sender, EventArgs e) { }
+
+
         public void CargarPanelTodo(int aidControl, string Tarea, int detalle, double precio)
         {
             DAtoY = DAtoY += 50;
@@ -3699,28 +3622,6 @@ namespace Kosturas.View
             }
 
         }
-        void ClickAfiliado(object sender, EventArgs e)
-        {
-            ComboBox btn = sender as ComboBox;
-            Combo2 = btn.Name;
-         
-
-            if (btn.SelectedIndex > 0)
-            {
-                var posicion = btn.SelectedValue;
-                var query = db.Afiliados.Find(posicion);
-                var ultimatarea = listatareas.Last();
-                ultimatarea.lblAfiliado.Text = query.Nombre;
-
-                GuardarCambiosAfiliado(query.AfiliadoId);
-            }
-            else
-            {
-                var ultimatarea = listatareas.Last();
-                ultimatarea.lblAfiliado.Text = "";
-            }
-
-        }
 
        private void ClickPrecioneTecla(object sender, KeyPressEventArgs e)
         {
@@ -3763,116 +3664,6 @@ namespace Kosturas.View
             }
 
           
-        }
-        void ClickaplicarDescuento(object sender, EventArgs e)
-        {
-
-
-            ComboBox btn = sender as ComboBox;
-            Combo1 = btn.Name;
-            var ultimatarea = listatareas.Last();
-            if (btn.SelectedIndex > 0)
-            {
-                var posicion = btn.SelectedValue;
-                var query = db.Ofertas.Find(posicion);
-                var Descuento = query.DescuentoPorsentaje;
-
-              
-                if (!string.IsNullOrEmpty(ultimatarea.txtPrecio.Text))
-                {
-                    ultimatarea.Descuento = Descuento;
-                    ultimatarea.lblDescuento.Text = Descuento.ToString() + "%";
-                    GuardarCambiosTarea();
-                }
-
-
-            }
-            else
-            {
-                ultimatarea.lblDescuento.Text = "";
-            }
-
-
-
-
-        }
-        void ClickRestaurarCombo2(object sender, EventArgs e)
-        {
-            foreach (Control item in Prueba.Controls.OfType<Control>())
-            {
-                if (item.Name == Combo2)
-                {
-                    Prueba.Controls.Remove(item);
-                }
-
-
-            }
-            var combodos = new ComboBox();
-            combodos.Text = "Selecione Un afiliado";
-            combodos.Name = "cmbafiliados";
-            combodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            combodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-            combodos.Location = new Point(3, 560);
-            combodos.Size = new Size(274, 30);
-            combodos.SelectedIndexChanged += new EventHandler(ClickAfiliado);
-            combodos.MouseLeave += new EventHandler(MouseleaveCombo);
-            combodos.MouseEnter += new EventHandler(MouseoverCombo);
-            this.Prueba.Controls.Add(combodos);
-
-            combodos.DataSource = db.Afiliados.ToList();
-            combodos.DisplayMember = "Nombre";
-            combodos.ValueMember = "AfiliadoId";
-
-        }
-        void ClickRestaurarCombo1(object sender, EventArgs e)
-        {
-
-
-
-            foreach (Control item in Prueba.Controls.OfType<Control>())
-            {
-                if (item.Name == Combo1)
-                {
-                    Prueba.Controls.Remove(item);
-                }
-
-
-            }
-            var combo = new ComboBox();
-            combo.Text = "Selecione una Oferta";
-            combo.Name = "cmbofertas";
-            combo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            combo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-            combo.Location = new Point(3, 520);
-            combo.Size = new Size(274, 30);
-            combo.MouseLeave += new EventHandler(MouseleaveCombo);
-            combo.MouseEnter += new EventHandler(MouseoverCombo);
-            combo.SelectedIndexChanged += new EventHandler(ClickaplicarDescuento);
-            this.Prueba.Controls.Add(combo);
-
-            combo.DataSource = db.Ofertas.ToList();
-            combo.DisplayMember = "Descripcion";
-            combo.ValueMember = "OfertaId";
-
-        }
-
-        private void txttelefonoprincipal_Validated(object sender, EventArgs e)
-        {
-
-            if (string.IsNullOrEmpty(txttelefonoprincipal.Text.Trim()) || txttelefonoprincipal.Text.Trim() == "Teléfono Cliente")
-            {
-                MessageBox.Show("El Teléfono Es un dato Obligatorio");
-                txttelefonoprincipal.Text = "";
-                txttelefonoprincipal.Focus();
-
-            }
-            else
-            {
-                txtNombre.Focus();
-            }
-        
         }
 
         private void txtNombre_Validated(object sender, EventArgs e)
