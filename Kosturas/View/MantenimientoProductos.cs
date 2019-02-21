@@ -31,91 +31,138 @@ namespace Kosturas.View
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtCodigo.Text.Trim()))
+            try
             {
-                Productos productos = new Productos();
+                if (!string.IsNullOrEmpty(txtCodigo.Text.Trim()))
+                {
+                    Productos productos = new Productos();
 
-                productos.CodigoId = int.Parse(txtCodigo.Text);
-                productos.Nombre = txtNombre.Text;
-                productos.Categoria = txtCategoria.Text;
-                productos.Provedor = txtProveedor.Text;
-                productos.PrecioCompra = double.Parse(txtPrecioCompra.Text);
-                productos.PrecioVenta = double.Parse(txtPrecioVenta.Text);
-                productos.Cantidad = double.Parse(txtCantidadInventario.Text);
-                var Codigo = CodigoBarras(int.Parse(txtCodigo.Text));
-                productos.Imagen = Codigo;
+                    productos.CodigoId = int.Parse(txtCodigo.Text);
+                    productos.Nombre = txtNombre.Text;
+                    productos.Categoria = txtCategoria.Text;
+                    productos.Provedor = txtProveedor.Text;
+                    productos.PrecioCompra = double.Parse(txtPrecioCompra.Text);
+                    productos.PrecioVenta = double.Parse(txtPrecioVenta.Text);
+                    productos.Cantidad = double.Parse(txtCantidadInventario.Text);
+                    var Codigo = CodigoBarras(int.Parse(txtCodigo.Text));
+                    productos.Imagen = Codigo;
 
-                db.Productos.Add(productos);
-                db.SaveChanges();
+                    db.Productos.Add(productos);
+                    db.SaveChanges();
 
-                dvgProductos.DataSource = db.Productos.ToList();
+                    dvgProductos.DataSource = db.Productos.ToList();
+                }
             }
+            catch (Exception)
+            {
+                
+            }
+
+           
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtCodigo.Text.Trim()))
+            try
             {
-                Productos productos = db.Productos.Find(int.Parse(txtCodigo.Text));
+                if (!string.IsNullOrEmpty(txtCodigo.Text.Trim()))
+                {
+                    Productos productos = db.Productos.Find(int.Parse(txtCodigo.Text));
 
-                productos.CodigoId = int.Parse(txtCodigo.Text);
-                productos.Nombre = txtNombre.Text;
-                productos.Provedor = txtProveedor.Text;
-                productos.PrecioCompra = double.Parse(txtPrecioCompra.Text);
-                productos.PrecioVenta = double.Parse(txtPrecioVenta.Text);
-                productos.Categoria = txtCategoria.Text;
-                productos.Cantidad = double.Parse(txtCantidadInventario.Text);
-                var Codigo = CodigoBarras(int.Parse(txtCodigo.Text));
-                productos.Imagen = Codigo;
-                db.Entry(productos).State = EntityState.Modified;
-                db.SaveChanges();
+                    productos.CodigoId = int.Parse(txtCodigo.Text);
+                    productos.Nombre = txtNombre.Text;
+                    productos.Provedor = txtProveedor.Text;
+                    productos.PrecioCompra = double.Parse(txtPrecioCompra.Text);
+                    productos.PrecioVenta = double.Parse(txtPrecioVenta.Text);
+                    productos.Categoria = txtCategoria.Text;
+                    productos.Cantidad = double.Parse(txtCantidadInventario.Text);
+                    var Codigo = CodigoBarras(int.Parse(txtCodigo.Text));
+                    productos.Imagen = Codigo;
+                    db.Entry(productos).State = EntityState.Modified;
+                    db.SaveChanges();
 
-                MessageBox.Show("Producto Actualizado");
+                    MessageBox.Show("Producto Actualizado");
 
-                dvgProductos.DataSource = db.Productos.ToList();
+                    dvgProductos.DataSource = db.Productos.ToList();
+                }
             }
+            catch (Exception)
+            {
+
+              
+            }
+
+          
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtCodigo.Text.Trim()))
+            try
+            {
+                if (!string.IsNullOrEmpty(txtCodigo.Text.Trim()))
+                {
+
+                    Productos productos = db.Productos.Find(int.Parse(txtNombre.Text));
+                    db.Productos.Remove(productos);
+                    db.SaveChanges();
+                    dvgProductos.DataSource = db.Productos.ToList();
+                }
+            }
+            catch (Exception)
             {
 
-                Productos productos = db.Productos.Find(int.Parse(txtNombre.Text));
-                db.Productos.Remove(productos);
-                db.SaveChanges();
-                dvgProductos.DataSource = db.Productos.ToList();
             }
+
+          
         }
 
         public string CodigoBarras(int idCodigoProducto)
         {
-            BarcodeLib.Barcode barcode = new BarcodeLib.Barcode();
-            barcode.IncludeLabel = true;
-            barcode.Encode(BarcodeLib.TYPE.CODE128, idCodigoProducto.ToString(), Color.Black, Color.White, 300, 50);
+            try
+            {
+                BarcodeLib.Barcode barcode = new BarcodeLib.Barcode();
+                barcode.IncludeLabel = true;
+                barcode.Encode(BarcodeLib.TYPE.CODE128, idCodigoProducto.ToString(), Color.Black, Color.White, 300, 50);
 
-            string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\CodigosBarrasProductos\"; // <---
-            if (Directory.Exists(appPath) == false)                                              // <---
-            {                                                                                    // <---
-                Directory.CreateDirectory(appPath);                                              // <---
-            }                                                                                    // <---
+                string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\CodigosBarrasProductos\"; // <---
+                if (Directory.Exists(appPath) == false)                                              // <---
+                {                                                                                    // <---
+                    Directory.CreateDirectory(appPath);                                              // <---
+                }                                                                                    // <---
 
-            appPath += idCodigoProducto.ToString() + ".png";
-            barcode.SaveImage(appPath, SaveTypes.PNG);
-           
-            return appPath;
+                appPath += idCodigoProducto.ToString() + ".png";
+                barcode.SaveImage(appPath, SaveTypes.PNG);
+
+                return appPath;
+            }
+            catch (Exception)
+            {
+
+                return string.Empty;
+            }
+       
 
         }
 
         private void dvgProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtNombre.Text = dvgProductos.SelectedRows[0].Cells[0].Value.ToString();
-            txtCodigo.Text = dvgProductos.SelectedRows[0].Cells[1].Value.ToString();
-            txtCategoria.Text = dvgProductos.SelectedRows[0].Cells[2].Value.ToString();
-            txtProveedor.Text = dvgProductos.SelectedRows[0].Cells[3].Value.ToString();
-            txtPrecioCompra.Text = dvgProductos.SelectedRows[0].Cells[4].Value.ToString();
-            txtPrecioVenta.Text = dvgProductos.SelectedRows[0].Cells[5].Value.ToString();
-            txtCantidadInventario.Text = dvgProductos.SelectedRows[0].Cells[6].Value.ToString();
+            try
+            {
+                txtNombre.Text = dvgProductos.SelectedRows[0].Cells[0].Value.ToString();
+                txtCodigo.Text = dvgProductos.SelectedRows[0].Cells[1].Value.ToString();
+                txtCategoria.Text = dvgProductos.SelectedRows[0].Cells[2].Value.ToString();
+                txtProveedor.Text = dvgProductos.SelectedRows[0].Cells[3].Value.ToString();
+                txtPrecioCompra.Text = dvgProductos.SelectedRows[0].Cells[4].Value.ToString();
+                txtPrecioVenta.Text = dvgProductos.SelectedRows[0].Cells[5].Value.ToString();
+                txtCantidadInventario.Text = dvgProductos.SelectedRows[0].Cells[6].Value.ToString();
+            }
+            catch (Exception)
+            {
+
+              
+            }
+
+   
 
         }
 

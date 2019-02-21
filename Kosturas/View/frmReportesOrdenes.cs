@@ -50,126 +50,134 @@ namespace Kosturas.View
         void cargarOrdenesTotales(string a, string b)
         {
 
+            try
+            {
+                var desde = a + " 00:00";
+                var hasta = b + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+                var query = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta).ToList();
 
-            var desde = a + " 00:00";
-            var hasta = b + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-            var query = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta).ToList();
+
+
+                var Colores = true;
+                foreach (var itemdos in query)
+
+                {
+
+                    var OrdenView = new OrdenViewModel();
+                    OrdenView.Panel.Click += new EventHandler(ClickCargarOrden);
+                    OrdenView.Panel.Click += new EventHandler(ClickPAgos);
+                    OrdenView.Panel.Size = new Size(1397, 20);
+                    OrdenView.Panel.MouseEnter += new EventHandler(Mouseover);
+                    OrdenView.Panel.MouseLeave += new EventHandler(Mouseleave);
+                    if (Colores == true)
+                    {
+                        OrdenView.Panel.BackColor = Color.White;
+                        Colores = false;
+                    }
+                    else
+                    {
+                        OrdenView.Panel.BackColor = Color.WhiteSmoke;
+                        Colores = true;
+                    }
+
+                    OrdenView.Panel.Name = itemdos.OrdenId.ToString();
+
+                    OrdenView.lblId.Text = itemdos.OrdenId.ToString();
+
+                    OrdenView.lblId.Location = new Point(0, 0);
+                    OrdenView.lblId.Size = new Size(100, 20);
+
+
+                    OrdenView.lblNombre.Text = itemdos.Cliente.Nombre.ToString();
+
+                    OrdenView.lblNombre.Size = new Size(200, 20);
+                    OrdenView.lblNombre.Location = new Point(110, 0);
+
+
+                    OrdenView.lblFechaEntrada.Text = itemdos.FechaEnt.ToString();
+
+                    OrdenView.lblFechaEntrada.Size = new Size(105, 20);
+                    OrdenView.lblFechaEntrada.Location = new Point(315, 0);
+
+
+                    OrdenView.lblLocalizacion.Text = itemdos.Localizacion.ToString();
+
+                    OrdenView.lblLocalizacion.Location = new Point(445, 0);
+                    OrdenView.lblLocalizacion.Size = new Size(50, 20);
+
+
+                    OrdenView.lblHoraEntrada.Text = itemdos.FechaSalida.ToString();
+
+                    OrdenView.lblHoraEntrada.Location = new Point(540, 0);
+                    OrdenView.lblHoraEntrada.Size = new Size(105, 20);
+
+                    OrdenView.lblTotal.Text = itemdos.TotalOrden.ToString();
+
+                    OrdenView.lblTotal.Location = new Point(685, 0);
+                    OrdenView.lblTotal.Size = new Size(105, 20);
+
+                    OrdenView.lblMontoPagado.Text = itemdos.CantidadPagada.ToString();
+
+                    OrdenView.lblMontoPagado.Location = new Point(835, 0);
+                    OrdenView.lblMontoPagado.Size = new Size(105, 20);
+
+                    OrdenView.lblMontoRestante.Text = itemdos.CantidadRestante.ToString();
+
+                    OrdenView.lblMontoRestante.Location = new Point(975, 0);
+                    OrdenView.lblMontoRestante.Size = new Size(105, 20);
+
+                    if (itemdos.Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().Estado == true)
+                    {
+                        OrdenView.lblEstado.Text = "Si";
+
+                        OrdenView.lblEstado.Location = new Point(1125, 0);
+                        OrdenView.lblEstado.Size = new Size(105, 20);
+
+                    }
+                    else
+                    {
+                        OrdenView.lblEstado.Text = "No";
+
+                        OrdenView.lblEstado.Location = new Point(1125, 0);
+                        OrdenView.lblEstado.Size = new Size(105, 20);
+
+                    }
 
 
 
-            var Colores = true;
-            foreach (var itemdos in query)
 
+
+
+                    OrdenView.Panel.Controls.Add(OrdenView.lblId);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblNombre);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblLocalizacion);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblFechaEntrada);
+
+                    OrdenView.Panel.Controls.Add(OrdenView.lblHoraEntrada);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblTotal);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblMontoPagado);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblMontoRestante);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblEstado);
+
+
+                    AutoMapper.Mapper.Map(itemdos, OrdenView);
+                    listaOrdenes.Add(OrdenView);
+                    rowCount += 1;
+                    tlpOrdenesTotales.RowCount = rowCount;
+                    this.tlpOrdenesTotales.Controls.Add(listaOrdenes.Last().Panel, 0, rowCount);
+
+
+
+                }
+            }
+            catch (Exception)
             {
 
-                var OrdenView = new OrdenViewModel();
-                OrdenView.Panel.Click += new EventHandler(ClickCargarOrden);
-                OrdenView.Panel.Click += new EventHandler(ClickPAgos);
-                OrdenView.Panel.Size = new Size(1397, 20);
-                OrdenView.Panel.MouseEnter += new EventHandler(Mouseover);
-                OrdenView.Panel.MouseLeave += new EventHandler(Mouseleave);
-                if (Colores == true)
-                {
-                    OrdenView.Panel.BackColor = Color.White;
-                    Colores = false;
-                }
-                else
-                {
-                    OrdenView.Panel.BackColor = Color.WhiteSmoke;
-                    Colores = true;
-                }
-
-                OrdenView.Panel.Name = itemdos.OrdenId.ToString();
-
-                OrdenView.lblId.Text = itemdos.OrdenId.ToString();
-           
-                OrdenView.lblId.Location = new Point(0, 0);
-                OrdenView.lblId.Size = new Size(100, 20);
-
-
-                OrdenView.lblNombre.Text = itemdos.Cliente.Nombre.ToString();
-             
-                OrdenView.lblNombre.Size = new Size(200, 20);
-                OrdenView.lblNombre.Location = new Point(110, 0);
-
-
-                OrdenView.lblFechaEntrada.Text = itemdos.FechaEnt.ToString();
               
-                OrdenView.lblFechaEntrada.Size = new Size(105, 20);
-                OrdenView.lblFechaEntrada.Location = new Point(315, 0);
-
-
-                OrdenView.lblLocalizacion.Text = itemdos.Localizacion.ToString();
-               
-                OrdenView.lblLocalizacion.Location = new Point(445, 0);
-                OrdenView.lblLocalizacion.Size = new Size(50, 20);
-
-
-                OrdenView.lblHoraEntrada.Text = itemdos.FechaSalida.ToString();
-              
-                OrdenView.lblHoraEntrada.Location = new Point(540, 0);
-                OrdenView.lblHoraEntrada.Size = new Size(105, 20);
-
-                OrdenView.lblTotal.Text = itemdos.TotalOrden.ToString();
-     
-                OrdenView.lblTotal.Location = new Point(685, 0);
-                OrdenView.lblTotal.Size = new Size(105, 20);
-
-                OrdenView.lblMontoPagado.Text = itemdos.CantidadPagada.ToString();
-            
-                OrdenView.lblMontoPagado.Location = new Point(835, 0);
-                OrdenView.lblMontoPagado.Size = new Size(105, 20);
-
-                OrdenView.lblMontoRestante.Text = itemdos.CantidadRestante.ToString();
-               
-                OrdenView.lblMontoRestante.Location = new Point(975, 0);
-                OrdenView.lblMontoRestante.Size = new Size(105, 20);
-
-                if (itemdos.Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().Estado == true)
-                {
-                    OrdenView.lblEstado.Text = "Si";
-
-                    OrdenView.lblEstado.Location = new Point(1125, 0);
-                    OrdenView.lblEstado.Size = new Size(105, 20);
-
-                }
-                else
-                {
-                    OrdenView.lblEstado.Text = "No";
-
-                    OrdenView.lblEstado.Location = new Point(1125, 0);
-                    OrdenView.lblEstado.Size = new Size(105, 20);
-
-                }
-
-
-
-
-
-
-                OrdenView.Panel.Controls.Add(OrdenView.lblId);
-                OrdenView.Panel.Controls.Add(OrdenView.lblNombre);
-                OrdenView.Panel.Controls.Add(OrdenView.lblLocalizacion);
-                OrdenView.Panel.Controls.Add(OrdenView.lblFechaEntrada);
-
-                OrdenView.Panel.Controls.Add(OrdenView.lblHoraEntrada);
-                OrdenView.Panel.Controls.Add(OrdenView.lblTotal);
-                OrdenView.Panel.Controls.Add(OrdenView.lblMontoPagado);
-                OrdenView.Panel.Controls.Add(OrdenView.lblMontoRestante);
-                OrdenView.Panel.Controls.Add(OrdenView.lblEstado);
-
-
-                AutoMapper.Mapper.Map(itemdos, OrdenView);
-                listaOrdenes.Add(OrdenView);
-                rowCount += 1;
-                tlpOrdenesTotales.RowCount = rowCount;
-                this.tlpOrdenesTotales.Controls.Add(listaOrdenes.Last().Panel, 0, rowCount);
-
-
-
             }
+         
 
         }
 
@@ -203,18 +211,20 @@ namespace Kosturas.View
 
         void ClickPAgos(object sender, EventArgs e)
         {
-            listaPagos = new List<OrdenDetalleViewModel>();
-            Panel btn = sender as Panel;
-            var id = int.Parse(btn.Name);
+            try
+            {
+                listaPagos = new List<OrdenDetalleViewModel>();
+                Panel btn = sender as Panel;
+                var id = int.Parse(btn.Name);
 
-            var Colores = true;
+                var Colores = true;
 
-            rowCount = 0;
+                rowCount = 0;
 
-           
-            var orden = db.Pagos.Where(q => q.OrdenId == id).ToList();
 
-         
+                var orden = db.Pagos.Where(q => q.OrdenId == id).ToList();
+
+
 
 
 
@@ -229,7 +239,7 @@ namespace Kosturas.View
                     panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
                     panelViewTarea.panelTarea.Size = new Size(370, 30);
                     panelViewTarea.panelTarea.Name = pago.PagoId.ToString();
-                   
+
                     if (Colores == true)
                     {
                         panelViewTarea.panelTarea.BackColor = Color.White;
@@ -242,45 +252,51 @@ namespace Kosturas.View
                     }
 
                     panelViewTarea.lblId.Text = pago.Fecha.ToString();
-               
+
                     panelViewTarea.lblId.Location = new Point(0, 0);
                     panelViewTarea.lblId.Size = new Size(65, 20);
                     panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblId);
 
-                    panelViewTarea.lblTarea.Text =pago.Monto.ToString();
-                  
+                    panelViewTarea.lblTarea.Text = pago.Monto.ToString();
+
                     panelViewTarea.lblTarea.Location = new Point(80, 0);
                     panelViewTarea.lblTarea.Size = new Size(65, 20);
 
                     panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
 
                     panelViewTarea.lblDetalleTarea.Text = pago.MediosPago.FormaPago.ToString();
-                   
+
                     panelViewTarea.lblDetalleTarea.Location = new Point(150, 0);
                     panelViewTarea.lblDetalleTarea.Size = new Size(65, 20);
 
                     panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
 
-                    panelViewTarea.lblPrecio.Text =pago.EmpleadoRealizo.ToString();
-                   
+                    panelViewTarea.lblPrecio.Text = pago.EmpleadoRealizo.ToString();
+
                     panelViewTarea.lblPrecio.Location = new Point(225, 0);
                     panelViewTarea.lblPrecio.Size = new Size(65, 20);
 
                     panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblPrecio);
 
-                panelViewTarea.lblDescuento.Text = pago.Puntos.ToString();
-               
-                panelViewTarea.lblDescuento.Location = new Point(300, 0);
-                panelViewTarea.lblDescuento.Size = new Size(45, 20);
+                    panelViewTarea.lblDescuento.Text = pago.Puntos.ToString();
 
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescuento);
+                    panelViewTarea.lblDescuento.Location = new Point(300, 0);
+                    panelViewTarea.lblDescuento.Size = new Size(45, 20);
 
-                listaPagos.Add(panelViewTarea);
+                    panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescuento);
+
+                    listaPagos.Add(panelViewTarea);
                     rowCount += 1;
                     tblDetalleOrdenesClientes.RowCount = rowCount;
                     this.tlpPagos.Controls.Add(listaPagos.Last().panelTarea, 0, rowCount);
                 }
 
+            }
+            catch (Exception)
+            {
+
+            }
+           
 
 
 
@@ -296,158 +312,168 @@ namespace Kosturas.View
 
     void ClickCargarOrden(object sender, EventArgs e)
     {
-        listaTareas = new List<OrdenDetalleViewModel>();
-        listaPrendas = new List<OrdenPrendaViewModel>();
 
-        BorrarPanelDetalleOrdenes();
-            BorrarPanelPagos();
-        Panel btn = sender as Panel;
-        var id = int.Parse(btn.Name);
+            try
+            {
+                listaTareas = new List<OrdenDetalleViewModel>();
+                listaPrendas = new List<OrdenPrendaViewModel>();
 
-        var Colores = true;
+                BorrarPanelDetalleOrdenes();
+                BorrarPanelPagos();
+                Panel btn = sender as Panel;
+                var id = int.Parse(btn.Name);
 
-        rowCount = 0;
+                var Colores = true;
 
-
-        var orden = db.Ordenes.Find(id);
-
-        label8.Text = orden.EmpleadoRealizo;
-        label9.Text = orden.EmpleadoActualizo;
-        label11.Text = orden.EmpleadoCompleto;
+                rowCount = 0;
 
 
+                var orden = db.Ordenes.Find(id);
 
-
-
-
-        foreach (var prenda in orden.Prendas)
-
-        {
-            var panelViewPrenda = new OrdenPrendaViewModel(string.Empty);
+                label8.Text = orden.EmpleadoRealizo;
+                label9.Text = orden.EmpleadoActualizo;
+                label11.Text = orden.EmpleadoCompleto;
 
 
 
 
-            panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
-
-            panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
 
 
+                foreach (var prenda in orden.Prendas)
+
+                {
+                    var panelViewPrenda = new OrdenPrendaViewModel(string.Empty);
 
 
-            panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
-            listaPrendas.Add(panelViewPrenda);
-            rowCount += 1;
-            tblDetalleOrdenesClientes.RowCount = rowCount;
-            this.tblDetalleOrdenesClientes.Controls.Add(listaPrendas.Last().panelPrenda, 0, rowCount);
 
-            foreach (var tarea in prenda.DetalleTareas)
+
+                    panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
+
+                    panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
+
+
+
+
+                    panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
+                    listaPrendas.Add(panelViewPrenda);
+                    rowCount += 1;
+                    tblDetalleOrdenesClientes.RowCount = rowCount;
+                    this.tblDetalleOrdenesClientes.Controls.Add(listaPrendas.Last().panelPrenda, 0, rowCount);
+
+                    foreach (var tarea in prenda.DetalleTareas)
+                    {
+
+                        var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty, 0);
+
+
+
+                        panelViewTarea.panelTarea.MouseEnter += new EventHandler(MouseoverDos);
+                        panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
+                        panelViewTarea.panelTarea.Size = new Size(1020, 30);
+                        panelViewTarea.panelTarea.Name = tarea.DetalleOrdenesId.ToString();
+                        panelViewTarea.DetalleOrdenesId = tarea.DetalleOrdenesId;
+                        if (Colores == true)
+                        {
+                            panelViewTarea.panelTarea.BackColor = Color.White;
+                            Colores = false;
+                        }
+                        else
+                        {
+                            panelViewTarea.panelTarea.BackColor = Color.WhiteSmoke;
+                            Colores = true;
+                        }
+
+                        panelViewTarea.lblId.Text = tarea.Prenda.OrdenId.ToString();
+
+                        panelViewTarea.lblId.Location = new Point(0, 0);
+                        panelViewTarea.lblId.Size = new Size(65, 20);
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblId);
+
+                        panelViewTarea.lblTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
+
+                        panelViewTarea.lblTarea.Location = new Point(90, 0);
+                        panelViewTarea.lblTarea.Size = new Size(135, 20);
+
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
+
+                        panelViewTarea.lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
+
+                        panelViewTarea.lblDetalleTarea.Location = new Point(230, 0);
+                        panelViewTarea.lblDetalleTarea.Size = new Size(135, 20);
+
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
+
+                        panelViewTarea.lblPrecio.Text = tarea.Detalle.Precio.ToString();
+
+                        panelViewTarea.lblPrecio.Location = new Point(400, 0);
+                        panelViewTarea.lblPrecio.Size = new Size(65, 20);
+
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblPrecio);
+
+                        panelViewTarea.txtTotalPrecio.Text = (tarea.Descuento).ToString();
+
+                        panelViewTarea.txtTotalPrecio.Location = new Point(480, 0);
+                        panelViewTarea.txtTotalPrecio.Size = new Size(65, 20);
+
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtTotalPrecio);
+
+                        panelViewTarea.lblSubTotal.Text = (tarea.Subtotal).ToString();
+
+                        panelViewTarea.lblSubTotal.Location = new Point(560, 0);
+                        panelViewTarea.lblSubTotal.Size = new Size(65, 20);
+
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblSubTotal);
+
+
+                        panelViewTarea.lblDescuento.Text = ("").ToString();
+
+                        panelViewTarea.lblDescuento.Location = new Point(640, 0);
+                        panelViewTarea.lblDescuento.Size = new Size(135, 20);
+
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescuento);
+
+                        if (tarea.AfiliadoId > 0)
+                        {
+                            var nombre = db.Afiliados.Find(tarea.AfiliadoId);
+                            panelViewTarea.lblAfiliado.Text = (nombre.Nombre);
+                        }
+                        else
+                        {
+                            panelViewTarea.lblAfiliado.Text = "";
+                        }
+
+
+
+                        panelViewTarea.lblAfiliado.Location = new Point(800, 0);
+                        panelViewTarea.lblAfiliado.Size = new Size(105, 20);
+
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblAfiliado);
+
+                        panelViewTarea.lblEmpleado.Text = (tarea.EmpleadoActualizo).ToString();
+
+                        panelViewTarea.lblEmpleado.Location = new Point(935, 0);
+                        panelViewTarea.lblEmpleado.Size = new Size(90, 20);
+
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblEmpleado);
+
+                        listaTareas.Add(panelViewTarea);
+                        rowCount += 1;
+                        tblDetalleOrdenesClientes.RowCount = rowCount;
+                        this.tblDetalleOrdenesClientes.Controls.Add(listaTareas.Last().panelTarea, 0, rowCount);
+                    }
+
+
+
+
+
+                }
+            }
+            catch (Exception)
             {
 
-                var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty, 0);
-
-
-
-                panelViewTarea.panelTarea.MouseEnter += new EventHandler(MouseoverDos);
-                panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
-                panelViewTarea.panelTarea.Size = new Size(1020, 30);
-                panelViewTarea.panelTarea.Name = tarea.DetalleOrdenesId.ToString();
-                panelViewTarea.DetalleOrdenesId = tarea.DetalleOrdenesId;
-                if (Colores == true)
-                {
-                    panelViewTarea.panelTarea.BackColor = Color.White;
-                    Colores = false;
-                }
-                else
-                {
-                    panelViewTarea.panelTarea.BackColor = Color.WhiteSmoke;
-                    Colores = true;
-                }
-
-                panelViewTarea.lblId.Text = tarea.Prenda.OrdenId.ToString();
-             
-                panelViewTarea.lblId.Location = new Point(0, 0);
-                panelViewTarea.lblId.Size = new Size(65, 20);
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblId);
-
-                panelViewTarea.lblTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
-             
-                panelViewTarea.lblTarea.Location = new Point(90, 0);
-                panelViewTarea.lblTarea.Size = new Size(135, 20);
-
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
-
-                panelViewTarea.lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
-               
-                panelViewTarea.lblDetalleTarea.Location = new Point(230, 0);
-                panelViewTarea.lblDetalleTarea.Size = new Size(135, 20);
-
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
-
-                panelViewTarea.lblPrecio.Text = tarea.Detalle.Precio.ToString();
-                
-                panelViewTarea.lblPrecio.Location = new Point(400, 0);
-                panelViewTarea.lblPrecio.Size = new Size(65, 20);
-
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblPrecio);
-
-                panelViewTarea.txtTotalPrecio.Text = (tarea.Descuento).ToString();
-        
-                panelViewTarea.txtTotalPrecio.Location = new Point(480, 0);
-                panelViewTarea.txtTotalPrecio.Size = new Size(65, 20);
-
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtTotalPrecio);
-
-                panelViewTarea.lblSubTotal.Text = (tarea.Subtotal).ToString();
               
-                panelViewTarea.lblSubTotal.Location = new Point(560, 0);
-                panelViewTarea.lblSubTotal.Size = new Size(65, 20);
-
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblSubTotal);
-
-
-                panelViewTarea.lblDescuento.Text = ("").ToString();
-             
-                panelViewTarea.lblDescuento.Location = new Point(640, 0);
-                panelViewTarea.lblDescuento.Size = new Size(135, 20);
-
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescuento);
-
-                    if (tarea.AfiliadoId > 0)
-                    {
-                        var nombre = db.Afiliados.Find(tarea.AfiliadoId);
-                        panelViewTarea.lblAfiliado.Text = (nombre.Nombre);
-                    }
-                    else
-                    {
-                        panelViewTarea.lblAfiliado.Text = "";
-                    }
-
-                   
-               
-                panelViewTarea.lblAfiliado.Location = new Point(800, 0);
-                panelViewTarea.lblAfiliado.Size = new Size(105, 20);
-
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblAfiliado);
-
-                panelViewTarea.lblEmpleado.Text = (tarea.EmpleadoActualizo).ToString();
-              
-                panelViewTarea.lblEmpleado.Location = new Point(935, 0);
-                panelViewTarea.lblEmpleado.Size = new Size(90, 20);
-
-                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblEmpleado);
-
-                listaTareas.Add(panelViewTarea);
-                rowCount += 1;
-                tblDetalleOrdenesClientes.RowCount = rowCount;
-                this.tblDetalleOrdenesClientes.Controls.Add(listaTareas.Last().panelTarea, 0, rowCount);
             }
-
-
-
-
-
-        }
+       
     }
         
 

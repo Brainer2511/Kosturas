@@ -23,32 +23,50 @@ namespace Kosturas.View
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            MediosPago mediopago = new MediosPago();
+            try
+            {
+                MediosPago mediopago = new MediosPago();
 
-            mediopago.FormaPago = txtFormaPago.Text;
-            mediopago.CodigosCuentas = txtCodigoCuentas.Text;
-            mediopago.VisualizarOrden = txtVirualisarOrden.Text;
-            mediopago.TipoMedio = cmbMedioPago.SelectedItem.ToString();
-            mediopago.AbrirCajon = ckbAbrirCAjon.Checked;
-            mediopago.IncluirTotal = ckbIncluirtotal.Checked;
+                mediopago.FormaPago = txtFormaPago.Text;
+                mediopago.CodigosCuentas = txtCodigoCuentas.Text;
+                mediopago.VisualizarOrden = txtVirualisarOrden.Text;
+                mediopago.TipoMedio = cmbMedioPago.SelectedItem.ToString();
+                mediopago.AbrirCajon = ckbAbrirCAjon.Checked;
+                mediopago.IncluirTotal = ckbIncluirtotal.Checked;
 
 
 
-            db.MediosPago.Add(mediopago);
-            db.SaveChanges();
+                db.MediosPago.Add(mediopago);
+                db.SaveChanges();
 
-            MessageBox.Show("Dato Insertado");
-            dvgMediosPago.DataSource = db.MediosPago.ToList();
+                MessageBox.Show("Dato Insertado");
+                dvgMediosPago.DataSource = db.MediosPago.ToList();
+            }
+            catch (Exception)
+            {
+
+            }
+
+          
         }
 
         private void frmMedioPagos_Load(object sender, EventArgs e)
         {
-            dvgMediosPago.DataSource = db.MediosPago.ToList();
-            cmbMedioPago.Items.Add("Efectivo");
-            cmbMedioPago.Items.Add("Tarjeta");
-            cmbMedioPago.Items.Add("Cheque");
-            cmbMedioPago.Items.Add("Transferencia Bancaria");
-            cmbMedioPago.Items.Add("Otros");
+            try
+            {
+                dvgMediosPago.DataSource = db.MediosPago.ToList();
+                cmbMedioPago.Items.Add("Efectivo");
+                cmbMedioPago.Items.Add("Tarjeta");
+                cmbMedioPago.Items.Add("Cheque");
+                cmbMedioPago.Items.Add("Transferencia Bancaria");
+                cmbMedioPago.Items.Add("Otros");
+            }
+            catch (Exception)
+            {
+
+            }
+
+           
             
         }
 

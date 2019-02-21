@@ -31,44 +31,51 @@ namespace Kosturas.View
 
         private void frmVerDiferencias_Load(object sender, EventArgs e)
         {
+            try
+            {
+                lblEfectivo.Text = cierre.CantidadActualEfectivo;
+                lblIngresosEfectivo.Text = cierre.CantidadIngresoEfectivo;
+                lblTotalEfectivo.Text = cierre.DiferenciaEfectivo;
 
-             lblEfectivo.Text=cierre.CantidadActualEfectivo ;
-             lblIngresosEfectivo.Text=cierre.CantidadIngresoEfectivo ;
-             lblTotalEfectivo.Text=cierre.DiferenciaEfectivo ;
+                lblTarjeta.Text = cierre.CantidadActualTarjetas;
+                lblIngresosTarjeta.Text = cierre.CantidadIngresoTarjetas;
+                lblTotalTarjetas.Text = cierre.DiferenciaTarjetas;
 
-             lblTarjeta.Text=cierre.CantidadActualTarjetas ;
-             lblIngresosTarjeta.Text=cierre.CantidadIngresoTarjetas ;
-             lblTotalTarjetas.Text=cierre.DiferenciaTarjetas ;
+                lblCheque.Text = cierre.CantidadActualCheques;
+                lblIngresosCheque.Text = cierre.CantidadIngresoCheques;
+                lblTotalCheque.Text = cierre.DiferenciaCheques;
 
-            lblCheque.Text=cierre.CantidadActualCheques  ;
-            lblIngresosCheque.Text= cierre.CantidadIngresoCheques ;
-             lblTotalCheque.Text=cierre.DiferenciaCheques ;
+                lblTransActual.Text = cierre.CantidadActualTransferencia;
+                lblTranferencia.Text = cierre.CantidadIngresoTransferencia;
+                lblTotalTransfer.Text = cierre.DiferenciaTransferencia;
 
-             lblTransActual.Text=cierre.CantidadActualTransferencia ;
-             lblTranferencia.Text=cierre.CantidadIngresoTransferencia ;
-            lblTotalTransfer.Text=cierre.DiferenciaTransferencia  ;
+                lblOtroActual.Text = cierre.CantidadActualOtros;
+                lblIngresosOtros.Text = cierre.CantidadIngresoOtros;
+                lblTotalOtros.Text = cierre.DiferenciaOtros;
 
-             lblOtroActual.Text=cierre.CantidadActualOtros ;
-            lblIngresosOtros.Text =cierre.CantidadIngresoOtros ;
-             lblTotalOtros.Text=cierre.DiferenciaOtros;
+                lblTotalActual.Text = (double.Parse(lblEfectivo.Text) +
+       double.Parse(lblTarjeta.Text) +
+       double.Parse(lblCheque.Text) +
+       double.Parse(lblTransActual.Text) +
+       double.Parse(lblOtroActual.Text) + ",00");
 
-            lblTotalActual.Text = (double.Parse(lblEfectivo.Text) +
-   double.Parse(lblTarjeta.Text) +
-   double.Parse(lblCheque.Text) +
-   double.Parse(lblTransActual.Text)+
-   double.Parse(lblOtroActual.Text) + ",00");
+                lblTotalIngresos.Text = (double.Parse(lblIngresosEfectivo.Text) +
+       double.Parse(lblIngresosTarjeta.Text) +
+       double.Parse(lblIngresosCheque.Text) +
+       double.Parse(lblTranferencia.Text) +
+       double.Parse(lblIngresosOtros.Text) + ",00");
 
-            lblTotalIngresos.Text = (double.Parse(lblIngresosEfectivo.Text) +
-   double.Parse(lblIngresosTarjeta.Text) +
-   double.Parse(lblIngresosCheque.Text) +
-   double.Parse(lblTranferencia.Text) +
-   double.Parse(lblIngresosOtros.Text) + ",00");
-
-            lblTotalDiferencias.Text = (double.Parse(lblTotalEfectivo.Text) +
-   double.Parse(lblTotalTarjetas.Text) +
-   double.Parse(lblTotalCheque.Text) +
-   double.Parse(lblTotalTransfer.Text) +
-   double.Parse(lblTotalOtros.Text) + ",00");
+                lblTotalDiferencias.Text = (double.Parse(lblTotalEfectivo.Text) +
+       double.Parse(lblTotalTarjetas.Text) +
+       double.Parse(lblTotalCheque.Text) +
+       double.Parse(lblTotalTransfer.Text) +
+       double.Parse(lblTotalOtros.Text) + ",00");
+            }
+            catch (Exception)
+            {
+                
+            }
+            
 
 
         }

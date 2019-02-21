@@ -23,32 +23,50 @@ namespace Kosturas.View
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                OpcionesOrdenes opcionesOrdenes = new OpcionesOrdenes();
 
-            OpcionesOrdenes opcionesOrdenes = new OpcionesOrdenes();
-
-            opcionesOrdenes.NombreOpcion = txtNombreOpcion.Text;
-            opcionesOrdenes.NumeroOpcion = txtNumeroOpcion.Text;
-            opcionesOrdenes.TipoOpcion = cmbTipoOpcion.SelectedIndex.ToString();
-            opcionesOrdenes.Precio = txtPrecio.Text;
+                opcionesOrdenes.NombreOpcion = txtNombreOpcion.Text;
+                opcionesOrdenes.NumeroOpcion = txtNumeroOpcion.Text;
+                opcionesOrdenes.TipoOpcion = cmbTipoOpcion.SelectedIndex.ToString();
+                opcionesOrdenes.Precio = txtPrecio.Text;
 
 
 
 
-            db.opcionesOrdenes.Add(opcionesOrdenes);
-            db.SaveChanges();
+                db.opcionesOrdenes.Add(opcionesOrdenes);
+                db.SaveChanges();
 
-            MessageBox.Show("Dato Insertado");
-            dgvOpcionesOrdenes.DataSource = db.opcionesOrdenes.ToList();
+                MessageBox.Show("Dato Insertado");
+                dgvOpcionesOrdenes.DataSource = db.opcionesOrdenes.ToList();
+            }
+            catch (Exception)
+            {
+
+            
+            }
+          
         }
 
         private void frmOpcionesOrdenes_Load(object sender, EventArgs e)
         {
-            dgvOpcionesOrdenes.DataSource = db.opcionesOrdenes.ToList();
-            this.cmbTipoOpcion.Items.Add("Color");
-            this.cmbTipoOpcion.Items.Add("Fabrica");
-            this.cmbTipoOpcion.Items.Add("Manchas");
-            this.cmbTipoOpcion.Items.Add("Pequeños Articulos");
-            this.cmbTipoOpcion.Items.Add("Otros");
+            try
+            {
+                dgvOpcionesOrdenes.DataSource = db.opcionesOrdenes.ToList();
+                this.cmbTipoOpcion.Items.Add("Color");
+                this.cmbTipoOpcion.Items.Add("Fabrica");
+                this.cmbTipoOpcion.Items.Add("Manchas");
+                this.cmbTipoOpcion.Items.Add("Pequeños Articulos");
+                this.cmbTipoOpcion.Items.Add("Otros");
+            }
+            catch (Exception)
+            {
+
+                
+            }
+
+     
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -58,6 +76,8 @@ namespace Kosturas.View
 
         private void btnGuardar_MouseEnter(object sender, EventArgs e)
         {
+        
+
             Button btr = sender as Button;
 
 

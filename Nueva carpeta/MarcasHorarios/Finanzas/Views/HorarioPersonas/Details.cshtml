@@ -1,0 +1,70 @@
+﻿@model Domain.HorarioPersona
+
+@{
+    ViewBag.Title = "Detalles Horario";
+}
+
+<h2>Detalles</h2>
+<h3>Horario</h3>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home")">Inicio</a></li>
+    <li><a href="@Url.Action("Index")">Horarios</a></li>
+    <li class="active">Detalles</li>
+</ol>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.NombreCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.NombreCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HorarioRubro.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HorarioRubro.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nota)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit",new { id=Model.HorarioPersonaId})" class="btn btn-warning raised-button  btn-round waves-effect"><span class="icon-pencil"></span> Editar</a>
+    <a href="@Url.Action("Index")" class="btn btn-success raised-button  btn-round waves-effect"> <span class="icon-arrow-left"></span> Volver a lista</a>
+</p>

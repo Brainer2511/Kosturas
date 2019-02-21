@@ -53,39 +53,53 @@ namespace Kosturas.View
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-           
-            Templeis templeis = db.Templeis.Find(1);
+            try
+            {
+                Templeis templeis = db.Templeis.Find(1);
 
-            templeis.TempleiSMS = txtPlantillaSMS.Text;
-            templeis.TempleiEmail = txtPlantillaCorreo.Text;
-            templeis.DirrecTempleiFactura = txtPlantillaFactura.Text;
-            templeis.DirrecTempleiVenta = txtPlantillaVenta.Text;
-            templeis.DirrecTempleiFacturaMaciva = txtPlantillaCorreoMacivo.Text;
-            templeis.SubTempleiFactura = txtSubFActura.Text;
-            templeis.SubTempleiVenta = txtSubCorreo.Text;
-            templeis.SubTempleiFacturaMaciva = txtSubMaciva.Text;
+                templeis.TempleiSMS = txtPlantillaSMS.Text;
+                templeis.TempleiEmail = txtPlantillaCorreo.Text;
+                templeis.DirrecTempleiFactura = txtPlantillaFactura.Text;
+                templeis.DirrecTempleiVenta = txtPlantillaVenta.Text;
+                templeis.DirrecTempleiFacturaMaciva = txtPlantillaCorreoMacivo.Text;
+                templeis.SubTempleiFactura = txtSubFActura.Text;
+                templeis.SubTempleiVenta = txtSubCorreo.Text;
+                templeis.SubTempleiFacturaMaciva = txtSubMaciva.Text;
 
-        
-            db.Entry(templeis).State = EntityState.Modified;
-            db.SaveChanges();
 
-            MessageBox.Show("Dato Actualizado");
+                db.Entry(templeis).State = EntityState.Modified;
+                db.SaveChanges();
+
+                MessageBox.Show("Dato Actualizado");
+            }
+            catch (Exception)
+            {
+
+            }
+      
         }
 
         private void CorreosSMSFacturas_Load(object sender, EventArgs e)
         {
-          
-            Templeis templeis = db.Templeis.Find(1);
+            try
+            {
+                Templeis templeis = db.Templeis.Find(1);
 
-            txtPlantillaSMS.Text = templeis.TempleiSMS;
-            txtPlantillaCorreo.Text = templeis.TempleiEmail;
-            txtPlantillaFactura.Text = templeis.DirrecTempleiFactura;
-            txtPlantillaVenta.Text = templeis.DirrecTempleiVenta;
-            txtPlantillaCorreoMacivo.Text = templeis.DirrecTempleiFacturaMaciva;
-             txtSubFActura.Text= templeis.SubTempleiFactura;
-            txtSubCorreo.Text=templeis.SubTempleiVenta;
-            txtSubMaciva.Text= templeis.SubTempleiFacturaMaciva;
+                txtPlantillaSMS.Text = templeis.TempleiSMS;
+                txtPlantillaCorreo.Text = templeis.TempleiEmail;
+                txtPlantillaFactura.Text = templeis.DirrecTempleiFactura;
+                txtPlantillaVenta.Text = templeis.DirrecTempleiVenta;
+                txtPlantillaCorreoMacivo.Text = templeis.DirrecTempleiFacturaMaciva;
+                txtSubFActura.Text = templeis.SubTempleiFactura;
+                txtSubCorreo.Text = templeis.SubTempleiVenta;
+                txtSubMaciva.Text = templeis.SubTempleiFacturaMaciva;
 
+            }
+            catch (Exception)
+            {
+
+            }
+           
 
         }
 

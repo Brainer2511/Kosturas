@@ -49,10 +49,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txttelefonoprincipal = new System.Windows.Forms.TextBox();
+            this.cmbDatosClientes = new System.Windows.Forms.ComboBox();
             this.txtNotas = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tbpDatos = new System.Windows.Forms.TableLayoutPanel();
-            this.txttelefonoprincipal = new System.Windows.Forms.TextBox();
             this.txtCodigoPostal = new System.Windows.Forms.TextBox();
             this.txtCiudad = new System.Windows.Forms.TextBox();
             this.txtCalle = new System.Windows.Forms.TextBox();
@@ -79,7 +80,6 @@
             this.lbl1 = new System.Windows.Forms.Label();
             this.pv2 = new System.Windows.Forms.PictureBox();
             this.lbl2 = new System.Windows.Forms.Label();
-            this.cmbDatosClientes = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -107,6 +107,7 @@
             this.btnFacturar.TabIndex = 148;
             this.btnFacturar.Text = "Facturar";
             this.btnFacturar.UseVisualStyleBackColor = false;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
             // 
             // txtpangandoahora
             // 
@@ -277,7 +278,7 @@
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Location = new System.Drawing.Point(1263, 1);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(58, 39);
             this.pictureBox3.TabIndex = 10;
@@ -312,13 +313,37 @@
             this.groupBox2.Controls.Add(this.button35);
             this.groupBox2.Controls.Add(this.button32);
             this.groupBox2.Location = new System.Drawing.Point(0, 44);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Size = new System.Drawing.Size(914, 596);
             this.groupBox2.TabIndex = 167;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // txttelefonoprincipal
+            // 
+            this.txttelefonoprincipal.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txttelefonoprincipal.Location = new System.Drawing.Point(254, 9);
+            this.txttelefonoprincipal.Multiline = true;
+            this.txttelefonoprincipal.Name = "txttelefonoprincipal";
+            this.txttelefonoprincipal.Size = new System.Drawing.Size(239, 22);
+            this.txttelefonoprincipal.TabIndex = 51;
+            this.txttelefonoprincipal.Text = "Teléfono Cliente ";
+            this.txttelefonoprincipal.Enter += new System.EventHandler(this.txttelefonoprincipal_Enter);
+            this.txttelefonoprincipal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txttelefonoprincipal_KeyPress);
+            this.txttelefonoprincipal.Leave += new System.EventHandler(this.txttelefonoprincipal_Leave);
+            this.txttelefonoprincipal.Validated += new System.EventHandler(this.txttelefonoprincipal_Validated);
+            // 
+            // cmbDatosClientes
+            // 
+            this.cmbDatosClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbDatosClientes.FormattingEnabled = true;
+            this.cmbDatosClientes.Location = new System.Drawing.Point(254, 9);
+            this.cmbDatosClientes.Name = "cmbDatosClientes";
+            this.cmbDatosClientes.Size = new System.Drawing.Size(239, 150);
+            this.cmbDatosClientes.TabIndex = 99;
+            this.cmbDatosClientes.SelectedIndexChanged += new System.EventHandler(this.cmbDatosClientes_SelectedIndexChanged);
             // 
             // txtNotas
             // 
@@ -363,20 +388,6 @@
             this.tbpDatos.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tbpDatos.Size = new System.Drawing.Size(912, 474);
             this.tbpDatos.TabIndex = 98;
-            // 
-            // txttelefonoprincipal
-            // 
-            this.txttelefonoprincipal.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txttelefonoprincipal.Location = new System.Drawing.Point(254, 9);
-            this.txttelefonoprincipal.Multiline = true;
-            this.txttelefonoprincipal.Name = "txttelefonoprincipal";
-            this.txttelefonoprincipal.Size = new System.Drawing.Size(239, 22);
-            this.txttelefonoprincipal.TabIndex = 51;
-            this.txttelefonoprincipal.Text = "Teléfono Cliente ";
-            this.txttelefonoprincipal.Enter += new System.EventHandler(this.txttelefonoprincipal_Enter);
-            this.txttelefonoprincipal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txttelefonoprincipal_KeyPress);
-            this.txttelefonoprincipal.Leave += new System.EventHandler(this.txttelefonoprincipal_Leave);
-            this.txttelefonoprincipal.Validated += new System.EventHandler(this.txttelefonoprincipal_Validated);
             // 
             // txtCodigoPostal
             // 
@@ -626,9 +637,9 @@
             // 
             this.grbNewOrder.Controls.Add(this.Prueba);
             this.grbNewOrder.Location = new System.Drawing.Point(919, 44);
-            this.grbNewOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.grbNewOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grbNewOrder.Name = "grbNewOrder";
-            this.grbNewOrder.Padding = new System.Windows.Forms.Padding(2);
+            this.grbNewOrder.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grbNewOrder.Size = new System.Drawing.Size(406, 762);
             this.grbNewOrder.TabIndex = 168;
             this.grbNewOrder.TabStop = false;
@@ -684,22 +695,12 @@
             this.lbl2.TabIndex = 96;
             this.lbl2.Text = "2";
             // 
-            // cmbDatosClientes
-            // 
-            this.cmbDatosClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.cmbDatosClientes.FormattingEnabled = true;
-            this.cmbDatosClientes.Location = new System.Drawing.Point(254, 9);
-            this.cmbDatosClientes.Name = "cmbDatosClientes";
-            this.cmbDatosClientes.Size = new System.Drawing.Size(239, 150);
-            this.cmbDatosClientes.TabIndex = 99;
-            this.cmbDatosClientes.SelectedIndexChanged += new System.EventHandler(this.cmbDatosClientes_SelectedIndexChanged);
-            // 
             // frmNuevaVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1336, 817);
+            this.ClientSize = new System.Drawing.Size(1336, 920);
             this.Controls.Add(this.grbNewOrder);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel2);

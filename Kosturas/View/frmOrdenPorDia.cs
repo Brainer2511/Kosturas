@@ -40,279 +40,305 @@ namespace Kosturas.View
 
         private void frmOrdenPorDia_Load(object sender, EventArgs e)
         {
-
-
-
-
-            var Dia = DateTime.Today.DayOfWeek;// dtprecogida.Value.DayOfWeek;
-
-            var datos= db.Empleados.ToList();
-
-            foreach (var itemdos in datos)
-
+            try
             {
-                if (Dia.ToString() == "Monday") { 
-                if (itemdos.Rol == "E") { 
-                var horas= int.Parse(itemdos.HorasLunes.ToString());
-                 resultado=resultado+horas;
-                label10.Text = resultado.ToString();
-                var nombre = itemdos.Nombre;
-                label8.Text +=nombre + " , ";
-                }
-                }
-                if (Dia.ToString() == "Tuesday")
+                var Dia = DateTime.Today.DayOfWeek;// dtprecogida.Value.DayOfWeek;
+
+                var datos = db.Empleados.ToList();
+
+                foreach (var itemdos in datos)
+
                 {
-                    if (itemdos.Rol == "E")
+                    if (Dia.ToString() == "Monday")
                     {
-                        var horas = int.Parse(itemdos.HorasMartes.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasLunes.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Tuesday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasMartes.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Wednesday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasMiercoles.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Thursday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasJueves.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Friday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasViernes.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Saturday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasSabado.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Sunday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasDomingo.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
                     }
                 }
-                if (Dia.ToString() == "Wednesday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasMiercoles.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
-                if (Dia.ToString() == "Thursday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasJueves.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
-                if (Dia.ToString() == "Friday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasViernes.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
-                if (Dia.ToString() == "Saturday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasSabado.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
-                if (Dia.ToString() == "Sunday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasDomingo.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
+                this.txtFecha.Text = DateTime.Today.ToShortDateString();
+                var a = DateTime.Today.ToShortDateString();
+                var desde = a + " 00:00";
+                var hasta = a + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+                var query = from l in db.Ordenes where l.FeEnt >= fdesde && l.FeEnt <= fhasta select l;
+
+
+                var consulta = db.Ordenes.Where(l => l.FeEnt >= fdesde && l.FeEnt <= fhasta).ToList();
+
+                var precio = db.ConfiguracionEnvios.FirstOrDefault().CantidadDineroPorHora;
+                var TotalOrden = consulta.Sum(q => q.TotalOrden);
+                label6.Text = (TotalOrden / precio).ToString("#,##0.00");
+                label9.Text = (double.Parse(label10.Text) - double.Parse(label6.Text)).ToString();
             }
-            this.txtFecha.Text = DateTime.Today.ToShortDateString();
-            var a = DateTime.Today.ToShortDateString();
-            var desde = a + " 00:00";
-            var hasta = a + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-            var query = from l in db.Ordenes where l.FeEnt >= fdesde && l.FeEnt<=fhasta select l;
-      
+            catch (Exception)
+            {
+
+            }
+
+
+
           
-            var consulta = db.Ordenes.Where(l => l.FeEnt >= fdesde && l.FeEnt <= fhasta).ToList();
-            
-            var precio = db.ConfiguracionEnvios.FirstOrDefault().CantidadDineroPorHora;
-            var TotalOrden = consulta.Sum(q=>q.TotalOrden);
-            label6.Text = (TotalOrden / precio).ToString("#,##0.00");
-            label9.Text = (double.Parse(label10.Text) - double.Parse(label6.Text)).ToString();
 
         }
 
 
 private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            rowCount = 0;
 
-            
-            BorrarPanelDetalleOrdenes();
-            BorrarPanelOrdenes();
-           
-            var a = dtprecogida.Value.ToShortDateString();
-            var desde = a + " 00:00";
-            var hasta = a + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-            this.txtFecha.Text = a;
+            try
+            {
+                rowCount = 0;
 
 
-            var ordenes = db.OrdenDetalleTareas.Where(q => q.Prenda.Orden.FeEnt >= fdesde && q.Prenda.Orden.FeEnt <= fhasta).ToList().Select(q => q.Duracion).Sum();
-           
-           var otra = ordenes / 60;
+                BorrarPanelDetalleOrdenes();
+                BorrarPanelOrdenes();
 
-            var prueba = resultado * 60;
-
-            var sfdg = prueba - ordenes;
-
-            var sdh = sfdg / 60;
-            label9.Text = sdh.ToString() + ":" + "00";
-            var fddg = resultado - sdh;
-
-            label6.Text = fddg.ToString() + ":" + "00";
-
-          //  var query = (from l in db.Ordenes where l.FeEnt >= fdesde && l.FeEnt <= fhasta select l).ToList();
-
-            var query = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta)
-
-               .ToList();
+                var a = dtprecogida.Value.ToShortDateString();
+                var desde = a + " 00:00";
+                var hasta = a + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+                this.txtFecha.Text = a;
 
 
-            var Colores = true;
-            foreach (var itemdos in query)
-             
+                var ordenes = db.OrdenDetalleTareas.Where(q => q.Prenda.Orden.FeEnt >= fdesde && q.Prenda.Orden.FeEnt <= fhasta).ToList().Select(q => q.Duracion).Sum();
+
+                var otra = ordenes / 60;
+
+                var prueba = resultado * 60;
+
+                var sfdg = prueba - ordenes;
+
+                var sdh = sfdg / 60;
+                label9.Text = sdh.ToString() + ":" + "00";
+                var fddg = resultado - sdh;
+
+                label6.Text = fddg.ToString() + ":" + "00";
+
+
+                var query = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta)
+
+                   .ToList();
+
+
+                var Colores = true;
+                foreach (var itemdos in query)
+
+                {
+
+                    var OrdenView = new OrdenViewModel();
+                    OrdenView.Panel.Click += new EventHandler(ClickCargarOrden);
+                    OrdenView.Panel.MouseEnter += new EventHandler(Mouseover);
+                    OrdenView.Panel.MouseLeave += new EventHandler(Mouseleave);
+                    if (Colores == true)
+                    {
+                        OrdenView.Panel.BackColor = Color.White;
+                        Colores = false;
+                    }
+                    else
+                    {
+                        OrdenView.Panel.BackColor = Color.WhiteSmoke;
+                        Colores = true;
+                    }
+
+                    OrdenView.Panel.Name = itemdos.OrdenId.ToString();
+                    OrdenView.Panel.Location = new Point(10, 10);
+                    OrdenView.lblId.Text = itemdos.OrdenId.ToString();
+
+                    OrdenView.lblNombre.Text = itemdos.Cliente.Nombre.ToString();
+
+                    OrdenView.lblFechaEntrada.Text = itemdos.FechaEnt.ToString();
+
+                    OrdenView.lblLocalizacion.Text = itemdos.Localizacion.ToString();
+
+                    OrdenView.lblHoraEntrada.Text = itemdos.HoraSalida.ToString();
+
+                    OrdenView.lblTotal.Text = itemdos.TotalOrden.ToString();
+
+                    OrdenView.lblMontoPagado.Text = itemdos.CantidadPagada.ToString();
+
+                    OrdenView.lblMontoRestante.Text = itemdos.CantidadRestante.ToString();
+
+
+                    if (itemdos.Prendas.SelectMany(q => q.DetalleTareas).Where(w => !w.Estado).Count() == 0)
+                    {
+                        OrdenView.btnEstado.BackColor = Color.OliveDrab;
+                    }
+
+                    OrdenView.btnEstado.Text = itemdos.OrdenId.ToString();
+                    OrdenView.btnEstado.Click += new EventHandler(ClickCambiarEstado);
+
+
+
+
+
+
+                    OrdenView.Panel.Controls.Add(OrdenView.lblId);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblNombre);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblLocalizacion);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblFechaEntrada);
+
+                    OrdenView.Panel.Controls.Add(OrdenView.lblHoraEntrada);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblTotal);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblMontoPagado);
+                    OrdenView.Panel.Controls.Add(OrdenView.lblMontoRestante);
+                    OrdenView.Panel.Controls.Add(OrdenView.btnEstado);
+
+                    AutoMapper.Mapper.Map(itemdos, OrdenView);
+                    listaOrdenes.Add(OrdenView);
+
+                    rowCount += 1;
+                    tlpOrdenesTotales.RowCount = rowCount;
+
+                    this.tlpOrdenesTotales.Controls.Add(listaOrdenes.Last().Panel, 0, rowCount);
+
+
+
+                }
+                ActualizarPanelTrabajadores();
+            }
+            catch (Exception)
             {
 
-                var OrdenView = new OrdenViewModel();
-                OrdenView.Panel.Click += new EventHandler(ClickCargarOrden);
-                OrdenView.Panel.MouseEnter += new EventHandler(Mouseover);
-                OrdenView.Panel.MouseLeave += new EventHandler(Mouseleave);
-                if (Colores == true)
-                {
-                    OrdenView.Panel.BackColor = Color.White;
-                    Colores = false;
-                }
-                else
-                {
-                    OrdenView.Panel.BackColor = Color.WhiteSmoke;
-                    Colores = true;
-                }
-               
-                OrdenView.Panel.Name = itemdos.OrdenId.ToString();
-                OrdenView.Panel.Location = new Point(10,10);
-                OrdenView.lblId.Text = itemdos.OrdenId.ToString();
-
-                OrdenView.lblNombre.Text = itemdos.Cliente.Nombre.ToString();
-
-                OrdenView.lblFechaEntrada.Text = itemdos.FechaEnt.ToString();
-
-                OrdenView.lblLocalizacion.Text = itemdos.Localizacion.ToString();
-
-                OrdenView.lblHoraEntrada.Text = itemdos.HoraSalida.ToString();
-
-                OrdenView.lblTotal.Text = itemdos.TotalOrden.ToString();
-
-                OrdenView.lblMontoPagado.Text = itemdos.CantidadPagada.ToString();
-
-                OrdenView.lblMontoRestante.Text = itemdos.CantidadRestante.ToString();
-
-
-                if (itemdos.Prendas.SelectMany(q=>q.DetalleTareas).Where(w=>!w.Estado).Count()==0)
-                {
-                    OrdenView.btnEstado.BackColor = Color.OliveDrab;
-                }
-
-                OrdenView.btnEstado.Text = itemdos.OrdenId.ToString();
-                OrdenView.btnEstado.Click += new EventHandler(ClickCambiarEstado);
-
-
-
-
-
-
-                OrdenView.Panel.Controls.Add(OrdenView.lblId);
-                OrdenView.Panel.Controls.Add(OrdenView.lblNombre);
-                OrdenView.Panel.Controls.Add(OrdenView.lblLocalizacion);
-                OrdenView.Panel.Controls.Add(OrdenView.lblFechaEntrada);
-
-                OrdenView.Panel.Controls.Add(OrdenView.lblHoraEntrada);
-                OrdenView.Panel.Controls.Add(OrdenView.lblTotal);
-                OrdenView.Panel.Controls.Add(OrdenView.lblMontoPagado);
-                OrdenView.Panel.Controls.Add(OrdenView.lblMontoRestante);
-                OrdenView.Panel.Controls.Add(OrdenView.btnEstado);
-              
-                AutoMapper.Mapper.Map(itemdos, OrdenView);
-                listaOrdenes.Add(OrdenView);
-              
-                rowCount += 1;
-                tlpOrdenesTotales.RowCount = rowCount;
-        
-                this.tlpOrdenesTotales.Controls.Add(listaOrdenes.Last().Panel,0, rowCount);
-
-
-                
             }
-            ActualizarPanelTrabajadores();
+         
         }
 
         async void  ClickCambiarEstado(object sender, EventArgs e)
         {
+            try
+            {
+                frmPin pin = new frmPin();
+                this.Opacity = 0.80;
+                pin.ShowDialog();
+                this.Close();
+                this.Opacity = 1;
 
-            frmPin pin = new frmPin();
-            this.Opacity = 0.80;
-            pin.ShowDialog();
-            this.Close();
-            this.Opacity = 1;
-            
 
-            if (Program.Pin != null) { 
-            var Mensaje= MessageBox.Show("Esta Seguro desea Completar Orden","Mensaje",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-                if (Mensaje == DialogResult.Yes)
+                if (Program.Pin != null)
                 {
-                    Button btn = sender as Button;
-                    var id = int.Parse(btn.Text);
-
-                    var Orden = db.Ordenes.Find(id);
-
-                    Orden.Prendas.SelectMany(m => m.DetalleTareas).ToList().ForEach(w => { w.Estado = true; w.EmpleadoActualizo = Program.Pin; } );
-                    foreach (var item in listaTareas)
+                    var Mensaje = MessageBox.Show("Esta Seguro desea Completar Orden", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (Mensaje == DialogResult.Yes)
                     {
-                        item.btnEstado.BackColor = Color.OliveDrab;
+                        Button btn = sender as Button;
+                        var id = int.Parse(btn.Text);
+
+                        var Orden = db.Ordenes.Find(id);
+
+                        Orden.Prendas.SelectMany(m => m.DetalleTareas).ToList().ForEach(w => { w.Estado = true; w.EmpleadoActualizo = Program.Pin; });
+                        foreach (var item in listaTareas)
+                        {
+                            item.btnEstado.BackColor = Color.OliveDrab;
+                        }
+                        Orden.EstadoId = 1;
+                        Orden.EmpleadoActualizo = Program.Pin;
+                        Orden.EmpleadoCompleto = Program.Pin;
+                        db.SaveChanges();
+                        var ordenView = listaOrdenes.Where(w => w.OrdenId == Orden.OrdenId).FirstOrDefault();
+                        ordenView.btnEstado.BackColor = Color.OliveDrab;
+                        var TempleisEmpresa = db.ConfiguracionEnvios.ToList();
+                        var Detalle = db.Templeis.FirstOrDefault().TempleiSMS;
+                        Detalle = Detalle.Replace("{FirstName}", Orden.Cliente.Nombre + "%0A")
+                            .Replace("{OrderId(s)}", Orden.OrdenId.ToString() + "%0A")
+                            .Replace("{BusinessName}", TempleisEmpresa.FirstOrDefault().NombreEmpresa);
+                        System.Diagnostics.Process.Start("https://web.whatsapp.com/send?phone=506" + Orden.Cliente.TelefonoPrincipal + "&text=" + Detalle);
+                        var Email = db.Templeis.FirstOrDefault().TempleiEmail;
+                        var Subjet = "Su Orden Esta Lista Para Ser Retirada";
+                        Email = Email.Replace("{ClientName}", Orden.Cliente.Nombre)
+                        .Replace("{OrderId(s)}", Orden.OrdenId.ToString())
+                        .Replace("{BusinessName}", TempleisEmpresa.FirstOrDefault().NombreEmpresa)
+                        .Replace("{AddressLine1}", TempleisEmpresa.FirstOrDefault().DirrecionLinea1)
+                        .Replace("{AddressLine2}", TempleisEmpresa.FirstOrDefault().DirrecionLinea2)
+                        .Replace("P: {BusinessPhone}", TempleisEmpresa.FirstOrDefault().Telefono)
+                        .Replace("W: {BusinessWebsite}", TempleisEmpresa.FirstOrDefault().PaginaWeb)
+                        .Replace("E: {BusinessEmail}", TempleisEmpresa.FirstOrDefault().CorreoEmpresa);
+                        await EnvioCorreos.SendMail(Orden.Cliente.Email, Subjet, Email);
                     }
-                    Orden.EstadoId = 1;
-                    Orden.EmpleadoActualizo = Program.Pin;
-                    Orden.EmpleadoCompleto = Program.Pin;
-                    db.SaveChanges();
-                    var ordenView = listaOrdenes.Where(w => w.OrdenId == Orden.OrdenId).FirstOrDefault();
-                    ordenView.btnEstado.BackColor = Color.OliveDrab;
-                    var TempleisEmpresa = db.ConfiguracionEnvios.ToList();
-                    var Detalle = db.Templeis.FirstOrDefault().TempleiSMS;
-                    Detalle = Detalle.Replace("{FirstName}", Orden.Cliente.Nombre+"%0A")
-                        .Replace("{OrderId(s)}", Orden.OrdenId.ToString() + "%0A")
-                        .Replace("{BusinessName}", TempleisEmpresa.FirstOrDefault().NombreEmpresa);
-                    System.Diagnostics.Process.Start("https://web.whatsapp.com/send?phone=506" + Orden.Cliente.TelefonoPrincipal + "&text=" + Detalle);
-                    var Email = db.Templeis.FirstOrDefault().TempleiEmail;
-                    var Subjet = "Su Orden Esta Lista Para Ser Retirada";
-                    Email = Email.Replace("{ClientName}",Orden.Cliente.Nombre)
-                    .Replace("{OrderId(s)}", Orden.OrdenId.ToString())
-                    .Replace("{BusinessName}", TempleisEmpresa.FirstOrDefault().NombreEmpresa)
-                    .Replace("{AddressLine1}", TempleisEmpresa.FirstOrDefault().DirrecionLinea1)
-                    .Replace("{AddressLine2}", TempleisEmpresa.FirstOrDefault().DirrecionLinea2)
-                    .Replace("P: {BusinessPhone}", TempleisEmpresa.FirstOrDefault().Telefono)
-                    .Replace("W: {BusinessWebsite}", TempleisEmpresa.FirstOrDefault().PaginaWeb)
-                    .Replace("E: {BusinessEmail}", TempleisEmpresa.FirstOrDefault().CorreoEmpresa);
-                    await EnvioCorreos.SendMail(Orden.Cliente.Email, Subjet, Email);
+
+
+
+
                 }
-
-
-
-
             }
+            catch (Exception)
+            {
+
+                
+            }
+           
           
 
 
@@ -320,248 +346,278 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         }
         void ClickCambiarEstadoTarea(object sender, EventArgs e)
         {
-            frmPin pin = new frmPin();
-            this.Opacity = 0.80;
-            pin.ShowDialog();
-            this.Opacity = 1;
-            if (Program.Pin != null)
+            try
             {
-                var Mensaje = MessageBox.Show("Esta Seguro desea Completar Tarea", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (Mensaje == DialogResult.Yes) { 
-                Button btn = sender as Button;
-                var id = int.Parse(btn.Text);
+                frmPin pin = new frmPin();
+                this.Opacity = 0.80;
+                pin.ShowDialog();
+                this.Opacity = 1;
+                if (Program.Pin != null)
+                {
+                    var Mensaje = MessageBox.Show("Esta Seguro desea Completar Tarea", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (Mensaje == DialogResult.Yes)
+                    {
+                        Button btn = sender as Button;
+                        var id = int.Parse(btn.Text);
 
-                var detallesOrden = db.OrdenDetalleTareas.Find(id);
-                var orden = db.Ordenes.Find(detallesOrden.Prenda.OrdenId);
-                detallesOrden.Estado = true;
-                detallesOrden.EmpleadoActualizo = Program.Pin;
-                orden.EmpleadoActualizo = Program.Pin;
-                orden.EmpleadoCompleto = Program.Pin;
-                    db.SaveChanges();
-                var panelTarea = listaTareas.Where(m => m.DetalleOrdenesId == detallesOrden.DetalleOrdenesId).FirstOrDefault();
-                panelTarea.btnEstado.BackColor = Color.OliveDrab;
-             
+                        var detallesOrden = db.OrdenDetalleTareas.Find(id);
+                        var orden = db.Ordenes.Find(detallesOrden.Prenda.OrdenId);
+                        detallesOrden.Estado = true;
+                        detallesOrden.EmpleadoActualizo = Program.Pin;
+                        orden.EmpleadoActualizo = Program.Pin;
+                        orden.EmpleadoCompleto = Program.Pin;
+                        db.SaveChanges();
+                        var panelTarea = listaTareas.Where(m => m.DetalleOrdenesId == detallesOrden.DetalleOrdenesId).FirstOrDefault();
+                        panelTarea.btnEstado.BackColor = Color.OliveDrab;
+
+                    }
                 }
             }
+            catch (Exception)
+            {
+
+               
+            }
+          
         }
         void ClickCargarOrden(object sender, EventArgs e)
         {
-            listaTareas = new List<OrdenDetalleViewModel>();
-            listaPrendas = new List<OrdenPrendaViewModel>();
-
-            BorrarPanelDetalleOrdenes();
-      
-            Panel btn = sender as Panel;
-            var id = int.Parse(btn.Name);
-            var Colores = true;
-
-            rowCount = 0;
-
-
-            var orden = db.Ordenes.Find(id);
-            
-            label19.Text = orden.EmpleadoRealizo;
-            label15.Text = orden.EmpleadoActualizo;
-            label14.Text = orden.EmpleadoCompleto;
-        
-
-     
-
-        
-            
-            foreach (var prenda in orden.Prendas)
-
+            try
             {
-                var panelViewPrenda = new OrdenPrendaViewModel(string.Empty);
+                listaTareas = new List<OrdenDetalleViewModel>();
+                listaPrendas = new List<OrdenPrendaViewModel>();
+
+                BorrarPanelDetalleOrdenes();
+
+                Panel btn = sender as Panel;
+                var id = int.Parse(btn.Name);
+                var Colores = true;
+
+                rowCount = 0;
+
+
+                var orden = db.Ordenes.Find(id);
+
+                label19.Text = orden.EmpleadoRealizo;
+                label15.Text = orden.EmpleadoActualizo;
+                label14.Text = orden.EmpleadoCompleto;
 
 
 
-             
-                panelViewPrenda.panelPrenda.Click += new EventHandler(ClickCargarOrden);
-                panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
-                
-                panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
 
 
-           
-              
-                panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
-                listaPrendas.Add(panelViewPrenda);
-                rowCount += 1;
-                tblDetalleOrdenesClientes.RowCount = rowCount;
-                this.tblDetalleOrdenesClientes.Controls.Add(listaPrendas.Last().panelPrenda, 0, rowCount);
-           
-                foreach (var tarea in prenda.DetalleTareas)
+
+                foreach (var prenda in orden.Prendas)
+
                 {
-                   
-                    var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty,0);
-                 
-                  
-           
-                    panelViewTarea.panelTarea.Click += new EventHandler(ClickCargarOrden);
-                    panelViewTarea.panelTarea.MouseEnter += new EventHandler(MouseoverDos);
-                    panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
-                    panelViewTarea.panelTarea.Name = tarea.DetalleOrdenesId.ToString();
-                    panelViewTarea.DetalleOrdenesId = tarea.DetalleOrdenesId;
-                    if (Colores == true)
-                    {
-                        panelViewTarea.panelTarea.BackColor = Color.White;
-                        Colores = false;
-                    }
-                    else
-                    {
-                        panelViewTarea.panelTarea.BackColor = Color.WhiteSmoke;
-                        Colores = true;
-                    }
+                    var panelViewPrenda = new OrdenPrendaViewModel(string.Empty);
 
 
 
-                    panelViewTarea.lblTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
-              panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
 
-              panelViewTarea.lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
-              panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
+                    panelViewPrenda.panelPrenda.Click += new EventHandler(ClickCargarOrden);
+                    panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
 
-           panelViewTarea.txtPrecio.Text = tarea.Detalle.Precio.ToString();
-           panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtPrecio);
-
-           panelViewTarea.txtTotalPrecio.Text =(prenda.Cantidad*tarea.Detalle.Precio).ToString();
-           panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtTotalPrecio);
-
-                    if (tarea.Estado == true)
-                    {
-                        panelViewTarea.btnEstado.BackColor = Color.OliveDrab;
-                        panelViewTarea.btnEstado.ForeColor = Color.OliveDrab;
-                        panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
-                        panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
-                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
-                    } else
-                    {
-                       
-                        panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
-                        panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
-                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
-                    }
+                    panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
 
 
-                    listaTareas.Add(panelViewTarea);
+
+
+                    panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
+                    listaPrendas.Add(panelViewPrenda);
                     rowCount += 1;
                     tblDetalleOrdenesClientes.RowCount = rowCount;
-                    this.tblDetalleOrdenesClientes.Controls.Add(listaTareas.Last().panelTarea,0,rowCount);
+                    this.tblDetalleOrdenesClientes.Controls.Add(listaPrendas.Last().panelPrenda, 0, rowCount);
+
+                    foreach (var tarea in prenda.DetalleTareas)
+                    {
+
+                        var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty, 0);
+
+
+
+                        panelViewTarea.panelTarea.Click += new EventHandler(ClickCargarOrden);
+                        panelViewTarea.panelTarea.MouseEnter += new EventHandler(MouseoverDos);
+                        panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
+                        panelViewTarea.panelTarea.Name = tarea.DetalleOrdenesId.ToString();
+                        panelViewTarea.DetalleOrdenesId = tarea.DetalleOrdenesId;
+                        if (Colores == true)
+                        {
+                            panelViewTarea.panelTarea.BackColor = Color.White;
+                            Colores = false;
+                        }
+                        else
+                        {
+                            panelViewTarea.panelTarea.BackColor = Color.WhiteSmoke;
+                            Colores = true;
+                        }
+
+
+
+                        panelViewTarea.lblTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
+
+                        panelViewTarea.lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
+
+                        panelViewTarea.txtPrecio.Text = tarea.Detalle.Precio.ToString();
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtPrecio);
+
+                        panelViewTarea.txtTotalPrecio.Text = (prenda.Cantidad * tarea.Detalle.Precio).ToString();
+                        panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtTotalPrecio);
+
+                        if (tarea.Estado == true)
+                        {
+                            panelViewTarea.btnEstado.BackColor = Color.OliveDrab;
+                            panelViewTarea.btnEstado.ForeColor = Color.OliveDrab;
+                            panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
+                            panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
+                        }
+                        else
+                        {
+
+                            panelViewTarea.btnEstado.Text = tarea.DetalleOrdenesId.ToString();
+                            panelViewTarea.btnEstado.Click += new EventHandler(ClickCambiarEstadoTarea);
+                            panelViewTarea.panelTarea.Controls.Add(panelViewTarea.btnEstado);
+                        }
+
+
+                        listaTareas.Add(panelViewTarea);
+                        rowCount += 1;
+                        tblDetalleOrdenesClientes.RowCount = rowCount;
+                        this.tblDetalleOrdenesClientes.Controls.Add(listaTareas.Last().panelTarea, 0, rowCount);
+                    }
+
+
+
+
+
                 }
-                  
+
+                dgvPagos.DataSource = db.Pagos.Where(q => q.OrdenId == orden.OrdenId).Select(t => new { t.Fecha, t.Monto, t.MediosPago.FormaPago, t.EmpleadoRealizo, t.Puntos }).ToList();
 
 
-              
+            }
+            catch (Exception)
+            {
 
             }
 
-            dgvPagos.DataSource = db.Pagos.Where(q=>q.OrdenId==orden.OrdenId).Select(t=>new {t.Fecha,t.Monto,t.MediosPago.FormaPago,t.EmpleadoRealizo,t.Puntos }).ToList();
-   
-
+           
         }
 
         void ActualizarPanelTrabajadores()
         {
-            label10.Text = "";
-            label8.Text = "";
-            resultado = 0;
-            var Dia = dtprecogida.Value.DayOfWeek;
-
-            var datos = db.Empleados.ToList();
-
-            foreach (var itemdos in datos)
-
+            try
             {
-                if (Dia.ToString() == "Monday")
+                label10.Text = "";
+                label8.Text = "";
+                resultado = 0;
+                var Dia = dtprecogida.Value.DayOfWeek;
+
+                var datos = db.Empleados.ToList();
+
+                foreach (var itemdos in datos)
+
                 {
-                    if (itemdos.Rol == "E")
+                    if (Dia.ToString() == "Monday")
                     {
-                        var horas = int.Parse(itemdos.HorasLunes.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasLunes.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Tuesday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasMartes.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Wednesday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasMiercoles.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Thursday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasJueves.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Friday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasViernes.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Saturday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasSabado.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
+                    }
+                    if (Dia.ToString() == "Sunday")
+                    {
+                        if (itemdos.Rol == "E")
+                        {
+                            var horas = int.Parse(itemdos.HorasDomingo.ToString());
+                            resultado = resultado + horas;
+                            label10.Text = resultado.ToString();
+                            var nombre = itemdos.Nombre;
+                            label8.Text += nombre + " , ";
+                        }
                     }
                 }
-                if (Dia.ToString() == "Tuesday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasMartes.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
-                if (Dia.ToString() == "Wednesday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasMiercoles.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
-                if (Dia.ToString() == "Thursday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasJueves.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
-                if (Dia.ToString() == "Friday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasViernes.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
-                if (Dia.ToString() == "Saturday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasSabado.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
-                if (Dia.ToString() == "Sunday")
-                {
-                    if (itemdos.Rol == "E")
-                    {
-                        var horas = int.Parse(itemdos.HorasDomingo.ToString());
-                        resultado = resultado + horas;
-                        label10.Text = resultado.ToString();
-                        var nombre = itemdos.Nombre;
-                        label8.Text += nombre + " , ";
-                    }
-                }
+
+                var a = txtFecha.Text;
+                var desde = a + " 00:00";
+                var hasta = a + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+                var consulta = db.Ordenes.Where(l => l.FeEnt >= fdesde && l.FeEnt <= fhasta).ToList();
+                var precio = db.ConfiguracionEnvios.FirstOrDefault().CantidadDineroPorHora;
+                var TotalOrden = consulta.Sum(q => q.TotalOrden);
+                label6.Text = (TotalOrden / precio).ToString("#,##0.00");
+                label9.Text = (double.Parse(label10.Text) - double.Parse(label6.Text)).ToString();
             }
-            
-            var a =txtFecha.Text;
-            var desde = a + " 00:00";
-            var hasta = a + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-            var consulta = db.Ordenes.Where(l => l.FeEnt >= fdesde && l.FeEnt <= fhasta).ToList();
-            var precio = db.ConfiguracionEnvios.FirstOrDefault().CantidadDineroPorHora;
-            var TotalOrden = consulta.Sum(q => q.TotalOrden);
-            label6.Text = (TotalOrden / precio).ToString("#,##0.00");
-            label9.Text = (double.Parse(label10.Text) - double.Parse(label6.Text)).ToString();
+            catch (Exception)
+            {
+
+              
+            }
+
+          
         }
 
         private void button29_MouseEnter(object sender, EventArgs e)
@@ -1158,12 +1214,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
             if (a != -1)
             {
             
-              //  var t = dbgOdenesTotales.SelectedRows[0].Cells[0].Value.ToString();
-
-       
-                //var query = from l in db.Ordenes where l.NumeroOrden==t select l;
-                //this.dgvPagosPorcliente.DataSource = query.Select(x => new { x.FeEnt, x.CantidadPagada,x.MedioPago, x.EmpleadoRealizo}).ToList();
-              
+             
             }
         }
 
@@ -1178,16 +1229,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
             }
 
         }
-        //private void BorrarPanelDetallePagos()
-        //{
-        //    var totaldos = tlpPagos.Controls.Count;
-        //    var litdos = tlpPagos.Controls.OfType<Button>();
-        //    for (int i = 0; i < totaldos; i++)
-        //    {
-        //        tlpPagos.Controls.Remove(tlpPagos.Controls[0]);
-        //    }
 
-        //}
         private void BorrarPanelOrdenes()
         {
             var totaldos = tlpOrdenesTotales.Controls.Count;

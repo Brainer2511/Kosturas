@@ -1,0 +1,66 @@
+﻿@model Domain.Marca
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Marca</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.ADMCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.ADMCC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ubicacion.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ubicacion.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraEntrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraEntrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraSalida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraOT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraOT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MarcaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

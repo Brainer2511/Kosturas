@@ -1,0 +1,201 @@
+﻿@model IEnumerable<Domain.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecibirInforme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResivirNotifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditPagina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditSegundaPagina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApcederTarjeta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditCreditoClinte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditPuntosClinte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AbrirCajon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desdelunes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desdemartes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desdemiercoles)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desdejueves)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desdeviernes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desdesabado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desdedomingo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hastalunes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hastamartes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hastamiercoles)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hastajueves)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hastaviernes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hastasabado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hastadomingo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecibirInforme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResivirNotifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditPagina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditSegundaPagina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApcederTarjeta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditCreditoClinte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditPuntosClinte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AbrirCajon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.desdelunes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.desdemartes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.desdemiercoles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.desdejueves)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.desdeviernes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.desdesabado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.desdedomingo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hastalunes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hastamartes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hastamiercoles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hastajueves)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hastaviernes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hastasabado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hastadomingo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmpleadoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EmpleadoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmpleadoId })
+        </td>
+    </tr>
+}
+
+</table>

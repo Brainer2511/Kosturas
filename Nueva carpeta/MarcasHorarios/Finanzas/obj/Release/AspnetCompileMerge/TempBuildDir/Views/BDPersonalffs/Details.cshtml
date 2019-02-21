@@ -1,0 +1,246 @@
+﻿@model Domain.BDPersonalff
+@{
+
+    ViewBag.Title = "Detalles Perfil";
+}
+
+<h2>Detalles</h2>
+<h3>Perfil</h3>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home")">Inicio</a></li>
+    <li><a href="@Url.Action("Index")">Perfiles</a></li>
+    <li class="active">Detalles</li>
+</ol>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RZ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RZ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADM_CC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADM_CC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bilingue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilingue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_completo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_completo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cédula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cédula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuenta_Banco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuenta_Banco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nacionalidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nacionalidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Provincia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Provincia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Canton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Canton)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distrito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distrito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proyecto_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proyecto_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proyecto_actual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proyecto_actual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._Supervisor_actual_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._Supervisor_actual_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MARCA_SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MARCA_SP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._MARCA_ZAP_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._MARCA_ZAP_)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit",new { id=Model.BDPersonalffId})" class="btn btn-warning raised-button  btn-round waves-effect"><span class="icon-pencil"></span> Editar</a>
+    <a href="@Url.Action("Index")" class="btn btn-success raised-button  btn-round waves-effect"> <span class="icon-arrow-left"></span> Volver a lista</a>
+</p>

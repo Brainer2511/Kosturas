@@ -28,14 +28,22 @@ namespace Kosturas.View
 
         private void frmVerDetalles_Load(object sender, EventArgs e)
         {
-            var a = DateTime.Today.ToShortDateString();
-            var desde = a + " 00:00";
-            var hasta = a + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-           
+            try
+            {
+                var a = DateTime.Today.ToShortDateString();
+                var desde = a + " 00:00";
+                var hasta = a + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+
                 dgvOrdenes.DataSource = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta && q.Pagos.FirstOrDefault().MedioPagoId == MedioPagoId).Select(t => new { t.OrdenId, t.Cliente.Nombre, t.Cliente.TelefonoPrincipal, t.CantidadPagada, t.Pagos.FirstOrDefault().MediosPago.FormaPago, t.FeEnt, t.EmpleadoRealizo }).ToList();
-          
+
+            }
+            catch (Exception)
+            {
+
+            }
+           
         }
     }
 }

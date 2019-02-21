@@ -20,41 +20,56 @@ namespace Kosturas.View
         Color ColorEntrada;
         public frmMonedasBilletes(int cierreId = 0)
         {
-            CierreId = cierreId;
-            cierre = db.CierreCajas.Find(cierreId);
+            try
+            {
+                CierreId = cierreId;
+                cierre = db.CierreCajas.Find(cierreId);
+            }
+            catch (Exception)
+            {
+
+            }
+           
             InitializeComponent();
         }
 
         private void frmMonedasBilletes_Load(object sender, EventArgs e)
         {
+            try
+            {
+                txt5.Text = cierre.CantidadMonedas5;
+                txt10.Text = cierre.CantidadMonedas10;
+                txt25.Text = cierre.CantidadMonedas25;
+                txt50.Text = cierre.CantidadMonedas50;
+                txt100.Text = cierre.CantidadMonedas100;
+                txt500.Text = cierre.CantidadMonedas500;
 
-            txt5.Text = cierre.CantidadMonedas5;
-            txt10.Text = cierre.CantidadMonedas10;
-            txt25.Text = cierre.CantidadMonedas25;
-            txt50.Text = cierre.CantidadMonedas50;
-            txt100.Text = cierre.CantidadMonedas100;
-            txt500.Text = cierre.CantidadMonedas500;
+                txt1000.Text = cierre.CantidadBilletes1000;
+                txt2000.Text = cierre.CantidadBilletes2000;
+                txt5000.Text = cierre.CantidadBilletes5000;
+                txt10000.Text = cierre.CantidadBilletes10000;
+                txt20000.Text = cierre.CantidadBilletes20000;
+                txt50000.Text = cierre.CantidadBilletes50000;
 
-            txt1000.Text = cierre.CantidadBilletes1000;
-            txt2000.Text = cierre.CantidadBilletes2000;
-            txt5000.Text = cierre.CantidadBilletes5000;
-            txt10000.Text = cierre.CantidadBilletes10000;
-            txt20000.Text = cierre.CantidadBilletes20000;
-            txt50000.Text = cierre.CantidadBilletes50000;
+                lbl5.Text = (double.Parse(txt5.Text) * 5).ToString() + ",00";
+                lbl10.Text = (double.Parse(txt10.Text) * 10).ToString() + ",00";
+                lbl25.Text = (double.Parse(txt25.Text) * 25).ToString() + ",00";
+                lbl50.Text = (double.Parse(txt50.Text) * 50).ToString() + ",00";
+                lbl100.Text = (double.Parse(txt100.Text) * 100).ToString() + ",00";
+                lbl500.Text = (double.Parse(txt500.Text) * 500).ToString() + ",00";
 
-            lbl5.Text = (double.Parse(txt5.Text)*5).ToString() + ",00";
-            lbl10.Text = (double.Parse(txt10.Text) * 10).ToString() + ",00";
-            lbl25.Text = (double.Parse(txt25.Text) * 25).ToString() + ",00";
-            lbl50.Text = (double.Parse(txt50.Text) * 50).ToString() + ",00";
-            lbl100.Text = (double.Parse(txt100.Text) * 100).ToString() + ",00";
-            lbl500.Text = (double.Parse(txt500.Text) * 500).ToString() + ",00";
+                lbl1000.Text = (double.Parse(txt1000.Text) * 1000).ToString() + ",00";
+                lbl2000.Text = (double.Parse(txt2000.Text) * 2000).ToString() + ",00";
+                lbl5000.Text = (double.Parse(txt5000.Text) * 5000).ToString() + ",00";
+                lbl10000.Text = (double.Parse(txt10000.Text) * 10000).ToString() + ",00";
+                lbl20000.Text = (double.Parse(txt20000.Text) * 20000).ToString() + ",00";
+                lbl50000.Text = (double.Parse(txt50000.Text) * 50000).ToString() + ",00";
+            }
+            catch (Exception)
+            {
 
-            lbl1000.Text = (double.Parse(txt1000.Text) * 1000).ToString() + ",00";
-            lbl2000.Text = (double.Parse(txt2000.Text) * 2000).ToString() + ",00";
-            lbl5000.Text = (double.Parse(txt5000.Text) * 5000).ToString() + ",00";
-            lbl10000.Text = (double.Parse(txt10000.Text) * 10000).ToString() + ",00";
-            lbl20000.Text = (double.Parse(txt20000.Text) * 20000).ToString() + ",00";
-            lbl50000.Text = (double.Parse(txt50000.Text) * 50000).ToString() + ",00";
+            }
+          
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

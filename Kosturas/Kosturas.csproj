@@ -297,12 +297,6 @@
     <Compile Include="View\frmMonedasBilletes.Designer.cs">
       <DependentUpon>frmMonedasBilletes.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\frmNuevaOrden.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmNuevaOrden.Designer.cs">
-      <DependentUpon>frmNuevaOrden.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\frmNuevaVenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -377,23 +371,11 @@
     <Compile Include="View\frmReportesOrdenes.Designer.cs">
       <DependentUpon>frmReportesOrdenes.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\frmReportesSMS.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmReportesSMS.Designer.cs">
-      <DependentUpon>frmReportesSMS.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\frmReporteVentas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\frmReporteVentas.Designer.cs">
       <DependentUpon>frmReporteVentas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\frmSeguimientos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmSeguimientos.Designer.cs">
-      <DependentUpon>frmSeguimientos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmServicios.cs">
       <SubType>Form</SubType>
@@ -552,9 +534,6 @@
     <EmbeddedResource Include="View\frmMonedasBilletes.resx">
       <DependentUpon>frmMonedasBilletes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\frmNuevaOrden.resx">
-      <DependentUpon>frmNuevaOrden.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\frmNuevaVenta.resx">
       <DependentUpon>frmNuevaVenta.cs</DependentUpon>
     </EmbeddedResource>
@@ -591,14 +570,8 @@
     <EmbeddedResource Include="View\frmReportesOrdenes.resx">
       <DependentUpon>frmReportesOrdenes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\frmReportesSMS.resx">
-      <DependentUpon>frmReportesSMS.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\frmReporteVentas.resx">
       <DependentUpon>frmReporteVentas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\frmSeguimientos.resx">
-      <DependentUpon>frmSeguimientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmServicios.resx">
       <DependentUpon>frmServicios.cs</DependentUpon>

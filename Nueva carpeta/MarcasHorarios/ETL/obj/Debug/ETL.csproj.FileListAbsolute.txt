@@ -1,0 +1,24 @@
+C:\Users\rnunez\Desktop\Sist.Planillas\ETL\bin\Debug\ETL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\ETL\bin\Debug\ETL.pdb
+C:\Users\rnunez\Desktop\Sist.Planillas\ETL\obj\Debug\ETL.csproj.CoreCompileInputs.cache
+C:\Users\rnunez\Desktop\Sist.Planillas\ETL\obj\Debug\ETL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\ETL\obj\Debug\ETL.pdb
+C:\Users\rnunez\Desktop\Sist.Planillas\ETL\obj\Debug\ETL.csprojResolveAssemblyReference.cache
+C:\Users\rnunez\Desktop\MarcasHorarios\ETL\bin\Debug\ETL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\ETL\bin\Debug\ETL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\ETL\obj\Debug\ETL.csprojResolveAssemblyReference.cache
+C:\Users\rnunez\Desktop\MarcasHorarios\ETL\obj\Debug\ETL.csproj.CoreCompileInputs.cache
+C:\Users\rnunez\Desktop\MarcasHorarios\ETL\obj\Debug\ETL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\ETL\obj\Debug\ETL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\bin\Debug\ETL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\bin\Debug\ETL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\obj\Debug\ETL.csprojAssemblyReference.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\obj\Debug\ETL.csproj.CoreCompileInputs.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\obj\Debug\ETL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\obj\Debug\ETL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\bin\Debug\ETL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\bin\Debug\ETL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\obj\Debug\ETL.csprojAssemblyReference.cache
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\obj\Debug\ETL.csproj.CoreCompileInputs.cache
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\obj\Debug\ETL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\ETL\obj\Debug\ETL.pdb

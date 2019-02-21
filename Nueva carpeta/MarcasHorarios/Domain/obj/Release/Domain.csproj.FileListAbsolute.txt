@@ -1,0 +1,14 @@
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\bin\Release\Domain.dll.config
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\bin\Release\Domain.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\bin\Release\Domain.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\bin\Release\EntityFramework.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\bin\Release\Newtonsoft.Json.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\bin\Release\EntityFramework.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\bin\Release\Newtonsoft.Json.xml
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\obj\Release\Domain.csprojAssemblyReference.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\obj\Release\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\obj\Release\Domain.csproj.CopyComplete
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\obj\Release\Domain.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\Domain\obj\Release\Domain.pdb

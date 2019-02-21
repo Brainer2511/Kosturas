@@ -80,6 +80,7 @@
     <Compile Include="CodigoBarras.cs" />
     <Compile Include="ConfiguracionEnvioCorreos.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="DetalleVentas.cs" />
     <Compile Include="Estados.cs" />
     <Compile Include="Pagos.cs" />
     <Compile Include="Productos.cs" />

@@ -1,0 +1,42 @@
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\bin\Debug\BLL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\bin\Debug\BLL.pdb
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\bin\Debug\DAL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\bin\Debug\ETL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\bin\Debug\DAL.pdb
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\bin\Debug\ETL.pdb
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\obj\Debug\BLL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\BLL\obj\Debug\BLL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\bin\Debug\BLL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\bin\Debug\BLL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\bin\Debug\DAL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\bin\Debug\ETL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\bin\Debug\DAL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\bin\Debug\ETL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\obj\Debug\BLL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\BLL\obj\Debug\BLL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\BLL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\BLL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\DAL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\ETL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\DAL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\ETL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\BLL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\BLL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\DAL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\ETL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\DAL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\bin\Debug\ETL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\BLL\obj\Debug\BLL.pdb

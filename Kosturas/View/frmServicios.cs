@@ -24,53 +24,70 @@ namespace Kosturas.View
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Servicios servicio = new Servicios();
+            try
+            {
+                Servicios servicio = new Servicios();
 
-            servicio.VisualizarServicio = txtVisualizarServicio.Text;
-            servicio.NombreServicio = txtNombreServicio.Text;
-            servicio.Prefijo = txtPrefijo.Text;
-            servicio.Impuesto = cmbImpuesto.SelectedIndex.ToString();
-            servicio.Afiliado = cmbAfiliado.SelectedIndex.ToString();
-            servicio.Descuentos = cmbDescuentos.SelectedIndex.ToString();
-            servicio.Alerta = ckbAlerta.Checked;
-            servicio.Habilitar = ckbHabilitar.Checked;
-            servicio.Imagen = txtRutaServicio.Text;
+                servicio.VisualizarServicio = txtVisualizarServicio.Text;
+                servicio.NombreServicio = txtNombreServicio.Text;
+                servicio.Prefijo = txtPrefijo.Text;
+                servicio.Impuesto = cmbImpuesto.SelectedIndex.ToString();
+                servicio.Afiliado = cmbAfiliado.SelectedIndex.ToString();
+                servicio.Descuentos = cmbDescuentos.SelectedIndex.ToString();
+                servicio.Alerta = ckbAlerta.Checked;
+                servicio.Habilitar = ckbHabilitar.Checked;
+                servicio.Imagen = txtRutaServicio.Text;
 
 
 
 
-            db.Servicios.Add(servicio);
-            db.SaveChanges();
+                db.Servicios.Add(servicio);
+                db.SaveChanges();
 
-            MessageBox.Show("Dato Insertado");
-            dvgServicios.DataSource = db.Servicios.ToList();
+                MessageBox.Show("Dato Insertado");
+                dvgServicios.DataSource = db.Servicios.ToList();
+            }
+            catch (Exception)
+            {
+
+            }
+
+           
         }
 
         private void frmServicios_Load(object sender, EventArgs e)
         {
-            this.btnActualizar.Visible = false;
-            this.cmbImpuesto.Items.Add("Prueba");
-            dvgServicios.DataSource = db.Servicios.ToList();
+            try
+            {
+                this.btnActualizar.Visible = false;
+                this.cmbImpuesto.Items.Add("Prueba");
+                dvgServicios.DataSource = db.Servicios.ToList();
 
 
-            var ofertas =
-     from a in db.Ofertas
+                var ofertas =
+         from a in db.Ofertas
 
-     select new { Names = a.Descripcion };
+         select new { Names = a.Descripcion };
 
-            cmbDescuentos.DataSource = ofertas.ToList();
-            cmbDescuentos.DisplayMember = "Names";
-
-
+                cmbDescuentos.DataSource = ofertas.ToList();
+                cmbDescuentos.DisplayMember = "Names";
 
 
-            var afiliados =
-     from a in db.Afiliados
 
-     select new { Names = a.Nombre };
 
-            cmbAfiliado.DataSource = afiliados.ToList();
-            cmbAfiliado.DisplayMember = "Names";
+                var afiliados =
+         from a in db.Afiliados
+
+         select new { Names = a.Nombre };
+
+                cmbAfiliado.DataSource = afiliados.ToList();
+                cmbAfiliado.DisplayMember = "Names";
+            }
+            catch (Exception)
+            {
+
+            }
+           
         }
         
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -80,81 +97,108 @@ namespace Kosturas.View
 
         private void dvgServicios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                int a = e.RowIndex;
 
-            int a = e.RowIndex;
+                if (a != -1)
+                {
 
-            if (a!= -1) {
+                    this.btnActualizar.Visible = true;
+                    this.btnGuardar.Visible = false;
 
-                this.btnActualizar.Visible = true;
-                this.btnGuardar.Visible = false;
+                    txtVisualizarServicio.Text = dvgServicios.SelectedRows[0].Cells[1].Value.ToString();
+                    txtNombreServicio.Text = dvgServicios.SelectedRows[0].Cells[2].Value.ToString();
+                    txtPrefijo.Text = dvgServicios.SelectedRows[0].Cells[3].Value.ToString();
+                    cmbImpuesto.SelectedIndex = int.Parse(dvgServicios.SelectedRows[0].Cells[4].Value.ToString());
+                    cmbDescuentos.SelectedIndex = int.Parse(dvgServicios.SelectedRows[0].Cells[5].Value.ToString());
+                    cmbAfiliado.SelectedIndex = int.Parse(dvgServicios.SelectedRows[0].Cells[6].Value.ToString());
+                    var check = dvgServicios.SelectedRows[0].Cells[7].Value.ToString();
+                    if (check == "True")
+                    {
+                        ckbAlerta.Checked = true;
+                    }
+                    else
+                    {
+                        ckbAlerta.Checked = false;
+                    }
+                    var checkdos = dvgServicios.SelectedRows[0].Cells[8].Value.ToString();
+                    if (checkdos == "True")
+                    {
+                        ckbHabilitar.Checked = true;
+                    }
+                    else
+                    {
+                        ckbHabilitar.Checked = false;
+                    }
+                    var checktres = dvgServicios.SelectedRows[0].Cells[9].Value.ToString();
+                    if (checktres == "True")
+                    {
+                        ckbImprimirEtiqueta.Checked = true;
+                    }
+                    else
+                    {
+                        ckbImprimirEtiqueta.Checked = false;
+                    }
 
-                txtVisualizarServicio.Text = dvgServicios.SelectedRows[0].Cells[1].Value.ToString();
-            txtNombreServicio.Text = dvgServicios.SelectedRows[0].Cells[2].Value.ToString();
-            txtPrefijo.Text = dvgServicios.SelectedRows[0].Cells[3].Value.ToString();
-            cmbImpuesto.SelectedIndex = int.Parse(dvgServicios.SelectedRows[0].Cells[4].Value.ToString());
-            cmbDescuentos.SelectedIndex = int.Parse(dvgServicios.SelectedRows[0].Cells[5].Value.ToString());
-            cmbAfiliado.SelectedIndex = int.Parse(dvgServicios.SelectedRows[0].Cells[6].Value.ToString());
-            var check = dvgServicios.SelectedRows[0].Cells[7].Value.ToString();
-            if (check == "True")
-            {
-                ckbAlerta.Checked = true;
+                }
             }
-            else
+            catch (Exception)
             {
-                ckbAlerta.Checked = false;
-            }
-            var checkdos = dvgServicios.SelectedRows[0].Cells[8].Value.ToString();
-            if (checkdos == "True")
-            {
-                ckbHabilitar.Checked = true;
-            }
-            else
-            {
-                ckbHabilitar.Checked = false;
-            }
-            var checktres = dvgServicios.SelectedRows[0].Cells[9].Value.ToString();
-            if (checktres == "True")
-            {
-                ckbImprimirEtiqueta.Checked = true;
-            }
-            else
-            {
-                ckbImprimirEtiqueta.Checked = false;
-            }
 
             }
+            
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            Servicios servicio = db.Servicios.Find(int.Parse(dvgServicios.SelectedRows[0].Cells[0].Value.ToString()));
+            try
+            {
+                Servicios servicio = db.Servicios.Find(int.Parse(dvgServicios.SelectedRows[0].Cells[0].Value.ToString()));
 
-            servicio.VisualizarServicio = txtVisualizarServicio.Text;
-            servicio.NombreServicio = txtNombreServicio.Text;
-            servicio.Prefijo = txtPrefijo.Text;
-            servicio.Impuesto = cmbImpuesto.SelectedIndex.ToString();
-            servicio.Afiliado = cmbAfiliado.SelectedIndex.ToString();
-            servicio.Descuentos = cmbDescuentos.SelectedIndex.ToString();
-            servicio.Alerta = ckbAlerta.Checked;
-            servicio.Habilitar = ckbHabilitar.Checked;
-            servicio.Imagen = txtRutaServicio.Text;
-            db.Entry(servicio).State = EntityState.Modified;
-            db.SaveChanges();
+                servicio.VisualizarServicio = txtVisualizarServicio.Text;
+                servicio.NombreServicio = txtNombreServicio.Text;
+                servicio.Prefijo = txtPrefijo.Text;
+                servicio.Impuesto = cmbImpuesto.SelectedIndex.ToString();
+                servicio.Afiliado = cmbAfiliado.SelectedIndex.ToString();
+                servicio.Descuentos = cmbDescuentos.SelectedIndex.ToString();
+                servicio.Alerta = ckbAlerta.Checked;
+                servicio.Habilitar = ckbHabilitar.Checked;
+                servicio.Imagen = txtRutaServicio.Text;
+                db.Entry(servicio).State = EntityState.Modified;
+                db.SaveChanges();
 
-            MessageBox.Show("Dato Actualizado");
+                MessageBox.Show("Dato Actualizado");
 
-            dvgServicios.DataSource = db.Servicios.ToList();
+                dvgServicios.DataSource = db.Servicios.ToList();
+            }
+            catch (Exception)
+            {
+
+              
+            }
+
+           
         }
 
         private void btnImagen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                txtRutaServicio.Text = openFileDialog1.FileName;
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    txtRutaServicio.Text = openFileDialog1.FileName;
+                }
             }
+            catch (Exception)
+            {
+
+            }
+
+           
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

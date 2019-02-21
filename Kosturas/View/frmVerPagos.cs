@@ -34,11 +34,18 @@ namespace Kosturas.View
 
         private void frmVerPagos_Load(object sender, EventArgs e)
         {
+            try
+            {
+                Fechahasta = Fechahasta.AddHours(23).AddMinutes(59);
+                lblTotalPagos.Text = db.Pagos.Where(q => q.MedioPagoId == MedioPagoid && q.Fecha >= Fechadesde && q.Fecha <= Fechahasta).Sum(q => q.Monto).ToString();
+                dvgPagos.DataSource = db.Pagos.Where(q => q.MedioPagoId == MedioPagoid && q.Fecha >= Fechadesde && q.Fecha <= Fechahasta).Select(t => new { t.OrdenId, t.Ordenes.Cliente.Nombre, t.Ordenes.Cliente.TelefonoPrincipal, t.Monto, t.MediosPago.FormaPago, t.EmpleadoRealizo }).ToList();
 
-            Fechahasta = Fechahasta.AddHours(23).AddMinutes(59);
-            lblTotalPagos.Text = db.Pagos.Where(q => q.MedioPagoId == MedioPagoid && q.Fecha >= Fechadesde && q.Fecha <= Fechahasta).Sum(q=>q.Monto).ToString();
-            dvgPagos.DataSource = db.Pagos.Where(q => q.MedioPagoId==MedioPagoid&&  q.Fecha >= Fechadesde && q.Fecha <= Fechahasta).Select(t=>new {t.OrdenId,t.Ordenes.Cliente.Nombre,t.Ordenes.Cliente.TelefonoPrincipal,t.Monto,t.MediosPago.FormaPago,t.EmpleadoRealizo }).ToList();
-        }
+            }
+            catch (Exception)
+            {
+
+            }
+            }
 
         private void button7_MouseEnter(object sender, EventArgs e)
         {

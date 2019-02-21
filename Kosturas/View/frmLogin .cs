@@ -32,39 +32,40 @@ namespace Kosturas.View
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var consulta = from p in db.Usuarios
+                               where p.Nombre == txtUsuario.Text
+                               && p.Clave == txtClave.Text
+                               select p;
 
+                if (consulta.Any())
+
+                {
+                    MessageBox.Show("Bienvenido");
+                    frmPrincipal principal = new frmPrincipal();
+                    principal.ShowDialog();
+                }
+                else
+                {
+
+                    MessageBox.Show("Usuario o Contraseña invalidos");
+                    txtUsuario.Clear();
+                    txtClave.Clear();
+                }
+            }
+            catch (Exception)
+            {
+
+              
+            }
             
-           // var consulta = db.Usuarios.Single(x => x.Nombre == txtUsuario.Text && x.Clave == txtClave.Text);
-            var consulta = from p in db.Usuarios
-                    where p.Nombre == txtUsuario.Text
-                    && p.Clave == txtClave.Text
-                    select p;
-
-            if (consulta.Any())
-
-            {
-                MessageBox.Show("Bienvenido");
-                frmPrincipal principal = new frmPrincipal();
-                principal.ShowDialog();
-            }
-            else
-            {
-
-                MessageBox.Show("Usuario o Contraseña invalidos");
-                txtUsuario.Clear();
-                txtClave.Clear();
-            }
+          
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-          //  txtClave.PasswordChar = '*';
-            //using (Font font = new Font("Arial", 35))
-            //{
-               
-            //    txtClave.Font = font;
-            //    txtUsuario.Font = font;
-            //}
+        
         }
 
         private void btnIngresar_MouseEnter(object sender, EventArgs e)

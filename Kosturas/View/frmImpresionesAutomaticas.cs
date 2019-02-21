@@ -24,60 +24,78 @@ namespace Kosturas.View
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            ImpresionesAutomaticas impresiones = new ImpresionesAutomaticas();
+            try
+            {
+                ImpresionesAutomaticas impresiones = new ImpresionesAutomaticas();
 
-            impresiones.NumeroImprecion = txtNumeroImpresion.Text;
-            if (rbPlantillaCliente.Checked == true)
-            {
-                impresiones.TipoImpresion = rbPlantillaCliente.Text;
+                impresiones.NumeroImprecion = txtNumeroImpresion.Text;
+                if (rbPlantillaCliente.Checked == true)
+                {
+                    impresiones.TipoImpresion = rbPlantillaCliente.Text;
+                }
+                if (rbPlantillaPersonalizada.Checked == true)
+                {
+                    impresiones.TipoImpresion = rbPlantillaPersonalizada.Text;
+                }
+                if (rbVenta.Checked == true)
+                {
+                    impresiones.TipoImpresion = rbVenta.Text;
+                }
+
+                if (rbPlantillaTienda.Checked == true)
+                {
+                    impresiones.TipoImpresion = rbPlantillaTienda.Text;
+                }
+                if (rbOrden.Checked == true)
+                {
+                    impresiones.TipoImpresion = rbOrden.Text;
+                }
+
+
+                impresiones.Precio = ckbPrecio.Checked;
+                impresiones.CodigoBarras = ckbCodigoBarras.Checked;
+                impresiones.Servicio = cmbServicios.SelectedIndex.ToString();
+
+
+
+
+                db.impresiones.Add(impresiones);
+                db.SaveChanges();
+
+                MessageBox.Show("Dato Insertado");
+                dvgImpresiones.DataSource = db.impresiones.ToList();
             }
-            if (rbPlantillaPersonalizada.Checked == true)
+            catch (Exception)
             {
-                impresiones.TipoImpresion = rbPlantillaPersonalizada.Text;
-            }
-            if (rbVenta.Checked == true)
-            {
-                impresiones.TipoImpresion = rbVenta.Text;
+
+               
             }
           
-             if (rbPlantillaTienda.Checked == true)
-            {
-                impresiones.TipoImpresion = rbPlantillaTienda.Text;
-            }
-            if (rbOrden.Checked == true)
-            {
-                impresiones.TipoImpresion = rbOrden.Text;
-            }
-
-           
-            impresiones.Precio = ckbPrecio.Checked;
-            impresiones.CodigoBarras = ckbCodigoBarras.Checked;
-            impresiones.Servicio = cmbServicios.SelectedIndex.ToString();
-
-
-
-
-            db.impresiones.Add(impresiones);
-            db.SaveChanges();
-
-            MessageBox.Show("Dato Insertado");
-            dvgImpresiones.DataSource = db.impresiones.ToList();
         }
 
         private void frmImpresionesAutomaticas_Load(object sender, EventArgs e)
         {
-            dvgImpresiones.DataSource = db.impresiones.ToList();
+            try
+            {
+                dvgImpresiones.DataSource = db.impresiones.ToList();
 
-         
 
-            var servicios =
-     from a in db.Servicios
-    // where a.position == "Supervisor" && a.department == "Quality Assurance"
-     select new { Names = a.NombreServicio};
 
-            cmbServicios.DataSource = servicios.ToList();
-            cmbServicios.DisplayMember = "Names";
-           // cmbServicios.ValueMember = "Id";
+                var servicios =
+         from a in db.Servicios
+
+         select new { Names = a.NombreServicio };
+
+                cmbServicios.DataSource = servicios.ToList();
+                cmbServicios.DisplayMember = "Names";
+
+            }
+            catch (Exception)
+            {
+
+              
+            }
+           
 
            
         

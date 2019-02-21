@@ -1,0 +1,39 @@
+﻿@model Domain.HorarioRubro
+
+@{
+    ViewBag.Title = "Detalles Rubro de Horario";
+}
+
+<h2>Detalles</h2>
+<h3>Rubro de Horario</h3>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home")">Inicio</a></li>
+    <li><a href="@Url.Action("Index")">Rubros de Horario</a></li>
+    <li class="active">Detalles</li>
+</ol>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit",new { id=Model.NacionalidadId})" class="btn btn-warning raised-button  btn-round waves-effect"><span class="icon-pencil"></span> Editar</a>
+    <a href="@Url.Action("Index")" class="btn btn-success raised-button  btn-round waves-effect"> <span class="icon-arrow-left"></span> Volver a lista</a>
+</p>

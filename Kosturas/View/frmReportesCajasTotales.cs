@@ -54,9 +54,6 @@ namespace Kosturas.View
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            //frmReporteSMS registros = new frmReporteSMS();
-            //registros.Location = new Point(50, 145);
-            //registros.ShowDialog();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -79,29 +76,12 @@ namespace Kosturas.View
 
         private void busToolStripMenuItem_MouseEnter(object sender, EventArgs e)
         {
-            //ToolStripMenuItem btr = sender as ToolStripMenuItem;
-
-
-
-
-
-
-            //object id = btr.Name;
-            //ColorEntrada = btr.BackColor;
-            //id = btr.BackColor = Color.FromArgb(238, 141, 88);
-            //id = btr.ForeColor = Color.White;
+           
         }
 
         private void busToolStripMenuItem_MouseLeave(object sender, EventArgs e)
         {
-        //    ToolStripMenuItem btr = sender as ToolStripMenuItem;
-
-
-
-        //    object id = btr.ToolTipText;
-        //    id = btr.BackColor = ColorEntrada;
-
-        //    id = btr.ForeColor = System.Drawing.Color.White;
+       
         }
 
       

@@ -84,115 +84,122 @@ namespace Kosturas.View
 
         void ClickCargarCierres(string a,string b)
         {
-
-            BorrarPanelCierres();
-            listaCierres = new List<OrdenViewModel>();
-           
-
-
-            
-
-
-            var Colores = true;
-
-            rowCount = 0;
-        
-
-            var desde = a + " 00:00";
-            var hasta = b + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-           
-            var query = db.CierreCajas.Where(q => q.FechaApertura >= fdesde && q.FechaCierre <= fhasta).ToList();
-
-
-
-            foreach (var itemdos in query.ToList())
-
+            try
             {
-
-                var panelViewCierre = new OrdenViewModel();
-
-
+                BorrarPanelCierres();
+                listaCierres = new List<OrdenViewModel>();
 
 
-                panelViewCierre.Panel.Name = itemdos.CierreId.ToString();
-                panelViewCierre.Panel.Size = new Size(1270, 30);
-                panelViewCierre.Panel.MouseEnter += new EventHandler(MouseoverDos);
-                panelViewCierre.Panel.MouseLeave += new EventHandler(MouseleaveDos);
 
 
-                if (Colores == true)
+
+
+                var Colores = true;
+
+                rowCount = 0;
+
+
+                var desde = a + " 00:00";
+                var hasta = b + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+
+                var query = db.CierreCajas.Where(q => q.FechaApertura >= fdesde && q.FechaCierre <= fhasta).ToList();
+
+
+
+                foreach (var itemdos in query.ToList())
+
                 {
-                    panelViewCierre.Panel.BackColor = Color.White;
-                    Colores = false;
-                }
-                else
-                {
-                    panelViewCierre.Panel.BackColor = Color.WhiteSmoke;
-                    Colores = true;
-                }
 
-                panelViewCierre.lblId.Text = itemdos.MontoInicial.ToString();
-                
-
-                panelViewCierre.lblFechaEntrada.Text = itemdos.FechaApertura.ToString();
-              
-
-                panelViewCierre.lblHoraEntrada.Text = itemdos.FechaCierre.ToString();
-
-                panelViewCierre.lblHoraEntrada.Location = new Point(600, 8);
-               
-
-                panelViewCierre.lblLocalizacion.Text = itemdos.TotalDiferencia.ToString();
-                panelViewCierre.lblLocalizacion.Location = new Point(500, 8);
-                
-
-                panelViewCierre.lblNombre.Text = itemdos.EmpleadoCerro.ToString();
-               
-               
-
-                panelViewCierre.lblTotal.Text = itemdos.Notas.ToString();
-                panelViewCierre.lblTotal.Location = new Point(765, 8);
-                
+                    var panelViewCierre = new OrdenViewModel();
 
 
 
-                panelViewCierre.lblMontoPagado.Text = "Ver Monedas Y Billetes";
-                panelViewCierre.lblMontoPagado.Name = itemdos.CierreId.ToString();
-                panelViewCierre.lblMontoPagado.Location = new Point(935, 8);
-             
-                panelViewCierre.lblMontoPagado.Click += new EventHandler(ClickCargarMonedas);
 
-                panelViewCierre.lblMontoRestante.Text = "Ver Actual/Ingresos/ Diferencias";
-               
-                panelViewCierre.lblMontoRestante.Location = new Point(1105, 8);
-                panelViewCierre.lblMontoRestante.Name = itemdos.CierreId.ToString();
-                panelViewCierre.lblMontoRestante.Click += new EventHandler(ClickCargarDiferencias);
+                    panelViewCierre.Panel.Name = itemdos.CierreId.ToString();
+                    panelViewCierre.Panel.Size = new Size(1270, 30);
+                    panelViewCierre.Panel.MouseEnter += new EventHandler(MouseoverDos);
+                    panelViewCierre.Panel.MouseLeave += new EventHandler(MouseleaveDos);
 
 
+                    if (Colores == true)
+                    {
+                        panelViewCierre.Panel.BackColor = Color.White;
+                        Colores = false;
+                    }
+                    else
+                    {
+                        panelViewCierre.Panel.BackColor = Color.WhiteSmoke;
+                        Colores = true;
+                    }
 
-                panelViewCierre.Panel.Controls.Add(panelViewCierre.lblId);
-                panelViewCierre.Panel.Controls.Add(panelViewCierre.lblFechaEntrada);
-                panelViewCierre.Panel.Controls.Add(panelViewCierre.lblHoraEntrada);
-                panelViewCierre.Panel.Controls.Add(panelViewCierre.lblLocalizacion);
-                panelViewCierre.Panel.Controls.Add(panelViewCierre.lblNombre);
-                panelViewCierre.Panel.Controls.Add(panelViewCierre.lblTotal);
+                    panelViewCierre.lblId.Text = itemdos.MontoInicial.ToString();
 
-                panelViewCierre.Panel.Controls.Add(panelViewCierre.lblMontoRestante);
-                panelViewCierre.Panel.Controls.Add(panelViewCierre.lblMontoPagado);
 
-                
+                    panelViewCierre.lblFechaEntrada.Text = itemdos.FechaApertura.ToString();
+
+
+                    panelViewCierre.lblHoraEntrada.Text = itemdos.FechaCierre.ToString();
+
+                    panelViewCierre.lblHoraEntrada.Location = new Point(600, 8);
+
+
+                    panelViewCierre.lblLocalizacion.Text = itemdos.TotalDiferencia.ToString();
+                    panelViewCierre.lblLocalizacion.Location = new Point(500, 8);
+
+
+                    panelViewCierre.lblNombre.Text = itemdos.EmpleadoCerro.ToString();
+
+
+
+                    panelViewCierre.lblTotal.Text = itemdos.Notas.ToString();
+                    panelViewCierre.lblTotal.Location = new Point(765, 8);
+
+
+
+
+                    panelViewCierre.lblMontoPagado.Text = "Ver Monedas Y Billetes";
+                    panelViewCierre.lblMontoPagado.Name = itemdos.CierreId.ToString();
+                    panelViewCierre.lblMontoPagado.Location = new Point(935, 8);
+
+                    panelViewCierre.lblMontoPagado.Click += new EventHandler(ClickCargarMonedas);
+
+                    panelViewCierre.lblMontoRestante.Text = "Ver Actual/Ingresos/ Diferencias";
+
+                    panelViewCierre.lblMontoRestante.Location = new Point(1105, 8);
+                    panelViewCierre.lblMontoRestante.Name = itemdos.CierreId.ToString();
+                    panelViewCierre.lblMontoRestante.Click += new EventHandler(ClickCargarDiferencias);
+
+
+
+                    panelViewCierre.Panel.Controls.Add(panelViewCierre.lblId);
+                    panelViewCierre.Panel.Controls.Add(panelViewCierre.lblFechaEntrada);
+                    panelViewCierre.Panel.Controls.Add(panelViewCierre.lblHoraEntrada);
+                    panelViewCierre.Panel.Controls.Add(panelViewCierre.lblLocalizacion);
+                    panelViewCierre.Panel.Controls.Add(panelViewCierre.lblNombre);
+                    panelViewCierre.Panel.Controls.Add(panelViewCierre.lblTotal);
+
+                    panelViewCierre.Panel.Controls.Add(panelViewCierre.lblMontoRestante);
+                    panelViewCierre.Panel.Controls.Add(panelViewCierre.lblMontoPagado);
+
+
 
                     listaCierres.Add(panelViewCierre);
                     rowCount += 1;
-                tlpCierresCajas.RowCount = rowCount;
-               this.tlpCierresCajas.Controls.Add(listaCierres.Last().Panel, 0, rowCount);
+                    tlpCierresCajas.RowCount = rowCount;
+                    this.tlpCierresCajas.Controls.Add(listaCierres.Last().Panel, 0, rowCount);
 
-             
 
+
+
+                }
+            }
+            catch (Exception)
+            {
 
             }
+        
 
         }
         void ClickCargarMonedas(object sender, EventArgs e)

@@ -1,0 +1,9 @@
+Busqueda Por Nombre  o Telefono
+Nombre Cliente
+Telefono 2
+Telefono 3
+Calle
+Correo Cliente
+Ciudad
+Notas
+Codigo Postal

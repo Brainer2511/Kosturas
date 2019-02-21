@@ -19,7 +19,7 @@ namespace Domain
         public double CantidadRestante { get; set; } = 0;
         public string EmpleadoRealizo { get; set; } = "";
         public int? ClienteId { get; set; }
-        public int? CodigoId { get; set; }
+        public int? ProductoId { get; set; }
 
         public virtual ICollection<Productos> Productos { get; set; }
 

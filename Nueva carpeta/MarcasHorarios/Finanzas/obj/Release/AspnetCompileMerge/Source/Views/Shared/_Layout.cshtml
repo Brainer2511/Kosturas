@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Patty ERP | @ViewBag.Title</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <!-- Custom styling plus plugins -->
+    <link href="/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/maps/jquery-jvectormap-2.0.3.css" />
+    <link href="/css/icheck/flat/green.css" rel="stylesheet" />
+    <link href="/css/floatexamples.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/semantic.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/fonts.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/alertify.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/themes/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/buttons.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-colorselector.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/switchery/switchery.min.css">
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/Content/summernote/summernote.css" rel="stylesheet" />
+    <script src="~/js/jquery.min.js"></script>
+    <script src="/js/nprogress.js"></script>
+</head>
+<body class="nav-md">
+    <!--Modal-->
+    <div id="modal">
+        @RenderSection("Modal", required: false)
+    </div>
+    <div class="container body">
+        <div class="main_container">
+            @{
+                Html.RenderAction("MenuAdministrador", "Home");
+            }
+            <!-- page content -->
+            <div class="right_col container2" role="main">
+                @RenderBody()
+                <!-- footer content -->
+                <br />
+                <hr />
+                <footer>
+                    <div class="copyright-info">
+                        <p class="pull-right">
+                            NetCom Finanzas - version 1 by <a href="https://amarusystems.com">Amaru Systems</a>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
+            </div>
+            <!-- /page content -->
+        </div>
+    </div>
+    <div id="custom_notifications" class="custom-notifications dsp_none">
+        <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group"></ul>
+        <div class="clearfix"></div>
+        <div id="notif-group" class="tabbed_notifications"></div>
+    </div>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="~/Scripts/bootstrap-colorselector.js"></script>
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+
+    <!-- daterangepicker -->
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+
+    <!-- bootstrap progress js -->
+    <script src="/js/progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="/js/nicescroll/jquery.nicescroll.min.js"></script>
+    <!-- icheck -->
+    <script src="/js/icheck/icheck.min.js"></script>
+
+    <!-- chart js -->
+    <script src="/js/chartjs/chart.min.js"></script>
+    <!-- sparkline -->
+    <script src="/js/sparkline/jquery.sparkline.min.js"></script>
+
+    <script src="/js/custom.js"></script>
+    <!-- flot js -->
+    <!--[if lte IE 8]><script type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
+    <script type="text/javascript" src="/js/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="/js/flot/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="/js/flot/jquery.flot.orderBars.js"></script>
+    <script type="text/javascript" src="/js/flot/jquery.flot.time.min.js"></script>
+    <script type="text/javascript" src="/js/flot/date.js"></script>
+    <script type="text/javascript" src="/js/flot/jquery.flot.spline.js"></script>
+    <script type="text/javascript" src="/js/flot/jquery.flot.stack.js"></script>
+    <script type="text/javascript" src="/js/flot/curvedLines.js"></script>
+    <script type="text/javascript" src="/js/flot/jquery.flot.resize.js"></script>
+    <!-- pace -->
+    <script src="/js/pace/pace.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/DataTables/buttons.colVis.min.js"></script>
+    <script src="~/Scripts/DataTables/buttons.html5.min.js"></script>
+    <script src="~/Scripts/DataTables/buttons.flash.min.js"></script>
+    <script src="~/Scripts/DataTables/buttons.print.min.js"></script>
+    <script src="~/Scripts/DataTables/buttons.print.min.js"></script>
+    <script src="~/Scripts/DataTables/buttons.print.min.js"></script>
+    <script src="~/Scripts/DataTables/buttons.bootstrap.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/pdfmake/pdfmake.min.js"></script>
+    <script src="~/Scripts/pdfmake/vfs_fonts.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.fixedColumns.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Scripts/datatable.js"></script>
+    <!-- PNotify -->
+    <script type="text/javascript" src="/js/notify/pnotify.core.js"></script>
+    <script type="text/javascript" src="/js/notify/pnotify.buttons.js"></script>
+    <script type="text/javascript" src="/js/notify/pnotify.nonblock.js"></script>
+    <script src="~/Scripts/alertify.js"></script>
+    <script type="text/javascript">
+        //override defaults
+        alertify.defaults.transition = "slide";
+        alertify.defaults.theme.ok = "btn btn-primary";
+        alertify.defaults.theme.cancel = "btn btn-danger";
+        alertify.defaults.theme.input = "form-control";
+    </script>
+    <script src="~/Scripts/semantic.js"></script>
+    <script src="~/Scripts/summernote/summernote.js"></script>   
+    @*<script type="text/javascript">
+        window.setInterval(function () { // Set interval for checking
+            debugger;           
+            var date = new Date(); // Create a Date object to find out what time it is
+            if (date.getHours() === 7 && date.getMinutes() === 0) { // Check the time
+                  $.ajax(
+                    {
+                        type: "GET",
+                        traditional: true,
+                        url: '@Url.Action("SendEmailTodayEvent","Home")'              
+                    });
+            }                      
+        }, 60000);
+    </script>*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,233 @@
+﻿@model IEnumerable<Domain.BDPersonalff>
+
+@{
+    ViewBag.Title = "Perfiles";
+}
+<h2>Perfiles</h2>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home")">Inicio</a></li>
+    <li class="active">Perfiles</li>
+</ol>
+<hr />
+<div>
+    <div class="form-inline">
+        @Html.Label("Buscar", htmlAttributes: new { @class = "control-label" })
+        @Html.Editor(" ", new { htmlAttributes = new { @class = "form-control",@id="txtBuscar", @placeholder = "Identificación" } })
+        <a href="@Url.Action("Create")" class="btn btn-lg btn-floating raised-button blue-gradient waves-effect" data-toggle="tooltip" data-placement="right" title="Crear nuevo"><span class="icon-plus"></span></a>
+    </div>
+</div>
+<hr />
+<div class="table-responsive">
+    <table class="display hover table table0" data-page-length="25">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LoginId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RZ)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ADM_CC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Activo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bilingue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha_ingreso)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha_salida)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Genero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre_completo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cédula)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cuenta_Banco)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nacionalidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ano)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Celular)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Provincia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Canton)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Distrito)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Proyecto_ingreso)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Proyecto_actual)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model._Supervisor_actual_)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MARCA_SP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model._MARCA_ZAP_)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LoginId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RZ)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ADM_CC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bilingue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha_ingreso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha_salida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genero)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre_completo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cédula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cuenta_Banco)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nacionalidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ano)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Celular)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Provincia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Canton)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Distrito)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Proyecto_ingreso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Proyecto_actual)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item._Supervisor_actual_)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MARCA_SP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item._MARCA_ZAP_)
+                    </td>
+                    <td>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-navicon" style="color:darkblue"></i><b class="caret" style="color:darkblue"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="@Url.Action("Edit",new { id=item.BDPersonalffId})"><span class="icon-pencil"></span>&nbsp;Editar</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Details",new { id = item.BDPersonalffId })"><span class="icon-eye"></span>&nbsp;Detalles</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="return alertify.confirm('Confirmar', 'Desea eliminar el registro', function(){ location.href='@Url.Action("Delete",new { id=item.BDPersonalffId})' }
+                                        , function(){ alertify.error('Cancelado')});"><span class="icon-bin2"></span>&nbsp;Borrar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    $('#txtBuscar').keyup(function () {
+        debugger;
+        oTable.columns(9).search($('#txtBuscar').val().trim());      
+        oTable.draw();       
+    });
+
+    </script>
+}

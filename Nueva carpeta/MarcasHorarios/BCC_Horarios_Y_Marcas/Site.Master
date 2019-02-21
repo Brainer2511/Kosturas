@@ -1,0 +1,238 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BCC_Horarios_Y_Marcas.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Planillas BCC</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">Planillas</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <html>
+                    <head>
+                        <title>Menu Desplegable</title>
+                        <style type="text/css">
+                            * {
+                                margin: 0px;
+                                padding: 0px;
+                            }
+
+                            #header {
+                                margin: auto;
+                                width: 500px;
+                                font-family: Arial, Helvetica, sans-serif;
+                            }
+
+                            ul, ol {
+                                list-style: none;
+                            }
+
+                            .nav > li {
+                                float: left;
+                            }
+
+                            .nav li a {
+                                background-color: #101010;
+                                color: #fff;
+                                text-decoration: none;
+                                padding: 15px 12px;
+                                display: block;
+                            }
+
+                                .nav li a:hover {
+                                    background-color: #434343;
+                                }
+
+                            .nav li ul {
+                                display: none;
+                                position: absolute;
+                                min-width: 140px;
+                            }
+
+                            .nav li:hover > ul {
+                                display: block;
+                            }
+
+                            .nav li ul li {
+                                position: relative;
+                            }
+
+                                .nav li ul li ul {
+                                    right: -140px;
+                                    top: 0px;
+                                }
+                        </style>
+                    </head>
+                    <body>
+                        <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                <div id="header" class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav" style="color: #777777">
+                                        <%--<li><a href="../Default.aspx">Inicio</a></li>--%>
+                                        <li>
+                                            <asp:LinkButton runat="server" ID="lkbPlanillas" Visible="True">Planillas</asp:LinkButton>
+                                            <ul>
+                                                <li>
+                                                    <asp:LinkButton runat="server" ID="lkbCargaDatos" Visible="True">Carga Datos</asp:LinkButton>
+                                                    <ul>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbHorMar" href="../Forms/frmCargaDatos.aspx" Visible="True">Horarios y/o Marcas</asp:LinkButton></li>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbPlantilla" href="../Forms/frmPlantillaHorario.aspx" Visible="True">Plantilla Horarios</asp:LinkButton></li>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbAvaya" href="../Forms/frmCargaDatosAvaya.aspx" Visible="True">AACC</asp:LinkButton></li>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbElite" href="../Forms/frmCargarDatosElite.aspx" Visible="True">ELITE</asp:LinkButton></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton runat="server" ID="lkbPersonal" href="" Visible="True">Personal</asp:LinkButton>
+                                                    <ul>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbListadoPersonal" href="../Forms/frmListadoPersonal.aspx" Visible="True">Listado</asp:LinkButton></li>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbRegistroPersonal" href="../Forms/frmRegistroPersonal.aspx" Visible="True">Registro</asp:LinkButton></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton runat="server" ID="lkbProgramacion" href="" Visible="True">Programación</asp:LinkButton>
+                                                    <ul>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbAsigHorario" href="../Forms/frmProgramacion.aspx" Visible="True">Horarios</asp:LinkButton></li>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbRepXProy" href="../Forms/frmReportePorProyecto.aspx" Visible="True">Rep. Por Proyecto</asp:LinkButton></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton runat="server" ID="lkbJefaturas" href="" Visible="True">Supervisión</asp:LinkButton>
+                                                    <ul>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbAsistencia" href="../Forms/frmControlAsistencia.aspx" Visible="True">Asistencia</asp:LinkButton></li>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lkbConsulta" href="../Forms/frmConsultaAsistencia.aspx" Visible="True">Consulta</asp:LinkButton></li>
+                                                        <li>
+                                                            <asp:LinkButton runat="server" ID="lbkSupHorarios" href="../Forms/frmHorariosAgentes.aspx" Visible="True">Horarios</asp:LinkButton></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <%--<li>
+                                            <asp:LinkButton runat="server" ID="lkbPlazas" href="" Visible="True">Control Plazas</asp:LinkButton>
+                                            <ul>
+                                                <li>
+                                                    <asp:LinkButton runat="server" ID="lkbSplit" href="../Forms/frmCP_RegistroSplit.aspx" Visible="True">Mant. Split</asp:LinkButton>
+                                                    
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton runat="server" ID="lkbConsPlazas" href="../Forms/frmCP_ConsultaPlazas.aspx" Visible="True">Consulta</asp:LinkButton></li>
+                                            </ul>
+                                        </li>--%>
+                                        <li>
+                                            <asp:LinkButton runat="server" ID="lkbUsuarios" href="" Visible="True">Usuarios</asp:LinkButton>
+                                            <ul>
+                                                <li>
+                                                    <asp:LinkButton runat="server" ID="lkbRegUser" href="../Account/Register.aspx" Visible="True">Registro</asp:LinkButton></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <asp:LinkButton ID="LoginTag" runat="server" href="Account/Login" Style="position: fixed; right: 50px;">Log in</asp:LinkButton></li>
+                                        <li>
+                                            <asp:LinkButton ID="LogoffTag" runat="server" OnClick="Logoff_Click" CausesValidation="False" Visible="false" Style="position: fixed; right: 50px;">Log off</asp:LinkButton></li>
+                                        <li style="position: absolute; right: 0px;">
+                                            <img src="<%= ResolveClientUrl("~/Imagenes/tigo-logo.png") %>" style="width: 50px; height: 51px;" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </AnonymousTemplate>
+                        </asp:LoginView>
+                    </body>
+                    </html>
+                    <%--<ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Register">Register</a></li>
+                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>--%>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <%--<footer>
+                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            </footer>--%>
+            <footer style="position: absolute; bottom: 0; left: 20px; right: 0px;">
+                <%--<hr />--%>
+                <table style="width: 90%; margin: 0 auto">
+                    <tr>
+                        <td style="text-align: left">
+                            <p>NETCOM &copy; <%: DateTime.Now.Year %></p>
+                        </td>
+                        <td style="width: 81%;"></td>
+                        <td style="text-align: right">
+                            <img src="<%= ResolveClientUrl("~/Imagenes/netcom-main_09_1.png") %>" style="float: right;" />
+                        </td>
+                    </tr>
+                </table>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>

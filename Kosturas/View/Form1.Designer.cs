@@ -74,6 +74,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grbNewOrder = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbDatosClientes = new System.Windows.Forms.ComboBox();
             this.Prueba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pv1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pv2)).BeginInit();
@@ -401,12 +402,13 @@
             // 
             // txttelefonoprincipal
             // 
-            this.txttelefonoprincipal.Location = new System.Drawing.Point(254, 12);
+            this.txttelefonoprincipal.Location = new System.Drawing.Point(254, 9);
             this.txttelefonoprincipal.Name = "txttelefonoprincipal";
             this.txttelefonoprincipal.Size = new System.Drawing.Size(239, 20);
             this.txttelefonoprincipal.TabIndex = 51;
             this.txttelefonoprincipal.Text = "Teléfono Cliente ";
             this.txttelefonoprincipal.Enter += new System.EventHandler(this.txtNotas_Enter);
+            this.txttelefonoprincipal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txttelefonoprincipal_KeyPress);
             this.txttelefonoprincipal.Leave += new System.EventHandler(this.txtNotas_Leave);
             this.txttelefonoprincipal.Validated += new System.EventHandler(this.txtNombre_Validated);
             // 
@@ -569,6 +571,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbDatosClientes);
             this.groupBox2.Controls.Add(this.txtNotas);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.tbpDatos);
@@ -622,6 +625,16 @@
             this.groupBox1.Size = new System.Drawing.Size(1323, 74);
             this.groupBox1.TabIndex = 101;
             this.groupBox1.TabStop = false;
+            // 
+            // cmbDatosClientes
+            // 
+            this.cmbDatosClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbDatosClientes.FormattingEnabled = true;
+            this.cmbDatosClientes.Location = new System.Drawing.Point(254, 10);
+            this.cmbDatosClientes.Name = "cmbDatosClientes";
+            this.cmbDatosClientes.Size = new System.Drawing.Size(239, 150);
+            this.cmbDatosClientes.TabIndex = 102;
+            this.cmbDatosClientes.SelectedIndexChanged += new System.EventHandler(this.cmbDatosClientes_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -701,5 +714,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox grbNewOrder;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmbDatosClientes;
     }
 }

@@ -25,18 +25,28 @@ namespace Kosturas.View
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Pagos pago = db.Pagos.Find(int.Parse(txtIdOrden.Text));
+            try
+            {
+                Pagos pago = db.Pagos.Find(int.Parse(txtIdOrden.Text));
 
-            pago.Monto = double.Parse(txtMonto.Text);
-            pago.MedioPagoId = int.Parse(cmbMedioPago.SelectedValue.ToString());
-            pago.EmpleadoRealizo = CmbEmpleado.SelectedValue.ToString();
-            db.Entry(pago).State = EntityState.Modified;
-            db.SaveChanges();
+                pago.Monto = double.Parse(txtMonto.Text);
+                pago.MedioPagoId = int.Parse(cmbMedioPago.SelectedValue.ToString());
+                pago.EmpleadoRealizo = CmbEmpleado.SelectedValue.ToString();
+                db.Entry(pago).State = EntityState.Modified;
+                db.SaveChanges();
 
-            MessageBox.Show("Pago Actualizado");
+                MessageBox.Show("Pago Actualizado");
 
-            listPagos.DataSource = db.Pagos.Where(q => q.Fecha == DateTime.Today).Select(q => new { q.PagoId, q.Fecha, q.Monto, q.MediosPago.FormaPago, q.EmpleadoRealizo }).ToList();
+                listPagos.DataSource = db.Pagos.Where(q => q.Fecha == DateTime.Today).Select(q => new { q.PagoId, q.Fecha, q.Monto, q.MediosPago.FormaPago, q.EmpleadoRealizo }).ToList();
 
+            }
+            catch (Exception)
+            {
+
+               
+            }
+
+          
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -46,29 +56,48 @@ namespace Kosturas.View
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            Pagos  pago = db.Pagos.Find(int.Parse(txtIdOrden.Text));
-            db.Pagos.Remove(pago);
-            db.SaveChanges();
-            MessageBox.Show("Pago Borrado");
-            listPagos.DataSource = db.Pagos.Where(q => q.Fecha == DateTime.Today).Select(q => new { q.PagoId, q.Fecha, q.Monto, q.MediosPago.FormaPago, q.EmpleadoRealizo }).ToList();
+            try
+            {
+                Pagos pago = db.Pagos.Find(int.Parse(txtIdOrden.Text));
+                db.Pagos.Remove(pago);
+                db.SaveChanges();
+                MessageBox.Show("Pago Borrado");
+                listPagos.DataSource = db.Pagos.Where(q => q.Fecha == DateTime.Today).Select(q => new { q.PagoId, q.Fecha, q.Monto, q.MediosPago.FormaPago, q.EmpleadoRealizo }).ToList();
 
+            }
+            catch (Exception)
+            {
+
+                
+            }
+
+           
         }
 
         private void EditarOrdenes_Load(object sender, EventArgs e)
         {
 
-            btnBorrar.Visible = false;
-            btnModificar.Visible = false;
-            cmbMedioPago.DataSource = db.MediosPago.ToList();
-            cmbMedioPago.DisplayMember = "FormaPago";
-            cmbMedioPago.ValueMember = "MedioPagoId";
+            try
+            {
+                btnBorrar.Visible = false;
+                btnModificar.Visible = false;
+                cmbMedioPago.DataSource = db.MediosPago.ToList();
+                cmbMedioPago.DisplayMember = "FormaPago";
+                cmbMedioPago.ValueMember = "MedioPagoId";
 
-            CmbEmpleado.DataSource = db.Empleados.ToList();
-            CmbEmpleado.DisplayMember = "Nombre";
-            CmbEmpleado.ValueMember = "Nombre";
+                CmbEmpleado.DataSource = db.Empleados.ToList();
+                CmbEmpleado.DisplayMember = "Nombre";
+                CmbEmpleado.ValueMember = "Nombre";
 
-            listPagos.DataSource = db.Pagos.Where(q=>q.Fecha==DateTime.Today).Select(q=>new {q.PagoId,q.Fecha,q.Monto, q.MediosPago.FormaPago, q.EmpleadoRealizo }).ToList();
-        }
+                listPagos.DataSource = db.Pagos.Where(q => q.Fecha == DateTime.Today).Select(q => new { q.PagoId, q.Fecha, q.Monto, q.MediosPago.FormaPago, q.EmpleadoRealizo }).ToList();
+
+            }
+            catch (Exception)
+            {
+                
+            }
+
+               }
 
         private void btnModificar_MouseEnter(object sender, EventArgs e)
         {
@@ -100,19 +129,27 @@ namespace Kosturas.View
 
         private void listPagos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int a = e.RowIndex;
-
-            if (a != -1)
+            try
             {
-                btnBorrar.Visible = true;
-                btnModificar.Visible = true;
-            
+                int a = e.RowIndex;
 
-                txtIdOrden.Text = listPagos.SelectedRows[0].Cells[0].Value.ToString();
-                txtMonto.Text = listPagos.SelectedRows[0].Cells[2].Value.ToString();
-                cmbMedioPago.Text = listPagos.SelectedRows[0].Cells[3].Value.ToString();
-                CmbEmpleado.Text = listPagos.SelectedRows[0].Cells[4].Value.ToString();
+                if (a != -1)
+                {
+                    btnBorrar.Visible = true;
+                    btnModificar.Visible = true;
+
+
+                    txtIdOrden.Text = listPagos.SelectedRows[0].Cells[0].Value.ToString();
+                    txtMonto.Text = listPagos.SelectedRows[0].Cells[2].Value.ToString();
+                    cmbMedioPago.Text = listPagos.SelectedRows[0].Cells[3].Value.ToString();
+                    CmbEmpleado.Text = listPagos.SelectedRows[0].Cells[4].Value.ToString();
+                }
             }
+            catch (Exception)
+            {
+                
+            }
+        
         }
     }
 }

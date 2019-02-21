@@ -23,25 +23,34 @@ namespace Kosturas.View
 
         private void frmCorreosSMS_Load(object sender, EventArgs e)
         {
-            ConfiguracionEnvioCorreos configuracion = db.ConfiguracionEnvios.Find(1);
-           
-            txtNombre.Text = configuracion.NombreEmpresa;
-            txtEncabezado.Text = configuracion.Emcabezado;
-            txtDirecionRecibo.Text = configuracion.Dirrecion;
-            txtHorario.Text = configuracion.Horario;
-            txtPiePagina.Text = configuracion.PiePagina;
-            txtDirecionLinea1.Text = configuracion.DirrecionLinea1;
-            txtDirecionLinea2.Text = configuracion.DirrecionLinea2;
-            txtTelefono.Text = configuracion.Telefono;
-            txtSitioWeb.Text = configuracion.PaginaWeb;
-            txtNumeroEmpresa.Text = configuracion.NumeroEmpresa;
-            txtMontoCaja.Text = configuracion.MontoInicialCaja.ToString();
-            txtMontoOrdenes.Text= configuracion.CantidadDineroPorHora.ToString();
-            txtSTP.Text = configuracion.STPMinutos;
-            txtCorreo.Text = configuracion.CorreoEmpresa;
-            txtSMS.Text = configuracion.SMSEmpresa;
-            ckbCorreo.Checked = configuracion.ActivoCorreo;
-            ckbSMS.Checked = configuracion.ActivoSMS;
+
+            try
+            {
+                ConfiguracionEnvioCorreos configuracion = db.ConfiguracionEnvios.Find(1);
+
+                txtNombre.Text = configuracion.NombreEmpresa;
+                txtEncabezado.Text = configuracion.Emcabezado;
+                txtDirecionRecibo.Text = configuracion.Dirrecion;
+                txtHorario.Text = configuracion.Horario;
+                txtPiePagina.Text = configuracion.PiePagina;
+                txtDirecionLinea1.Text = configuracion.DirrecionLinea1;
+                txtDirecionLinea2.Text = configuracion.DirrecionLinea2;
+                txtTelefono.Text = configuracion.Telefono;
+                txtSitioWeb.Text = configuracion.PaginaWeb;
+                txtNumeroEmpresa.Text = configuracion.NumeroEmpresa;
+                txtMontoCaja.Text = configuracion.MontoInicialCaja.ToString();
+                txtMontoOrdenes.Text = configuracion.CantidadDineroPorHora.ToString();
+                txtSTP.Text = configuracion.STPMinutos;
+                txtCorreo.Text = configuracion.CorreoEmpresa;
+                txtSMS.Text = configuracion.SMSEmpresa;
+                ckbCorreo.Checked = configuracion.ActivoCorreo;
+                ckbSMS.Checked = configuracion.ActivoSMS;
+            }
+            catch (Exception)
+            {
+
+            }
+          
 
         }
 
@@ -62,31 +71,40 @@ namespace Kosturas.View
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            ConfiguracionEnvioCorreos configuracion = db.ConfiguracionEnvios.Find(1);
-        
-            configuracion.NombreEmpresa = txtNombre.Text;
-            configuracion.Emcabezado = txtEncabezado.Text;
-            configuracion.Dirrecion = txtDirecionRecibo.Text;
-            configuracion.Horario = txtHorario.Text;
-            configuracion.PiePagina = txtPiePagina.Text;
-            configuracion.DirrecionLinea1 = txtDirecionLinea1.Text;
-            configuracion.DirrecionLinea2 = txtDirecionLinea2.Text;
-            configuracion.Telefono = txtTelefono.Text;
-            configuracion.PaginaWeb = txtSitioWeb.Text;
-            configuracion.NumeroEmpresa = txtNumeroEmpresa.Text;
-            configuracion.MontoInicialCaja = double.Parse(txtMontoCaja.Text);
-            configuracion.CantidadDineroPorHora = double.Parse(txtMontoOrdenes.Text);
-            configuracion.STPMinutos = txtSTP.Text;
-            configuracion.CorreoEmpresa = txtCorreo.Text;
-            configuracion.SMSEmpresa = txtSMS.Text;
-            configuracion.ActivoCorreo = ckbCorreo.Checked;
-            configuracion.ActivoSMS = ckbSMS.Checked;
 
-      
-            db.Entry(configuracion).State = EntityState.Modified;
-            db.SaveChanges();
+            try
+            {
+                ConfiguracionEnvioCorreos configuracion = db.ConfiguracionEnvios.Find(1);
 
-            MessageBox.Show("Dato Actualizado");
+                configuracion.NombreEmpresa = txtNombre.Text;
+                configuracion.Emcabezado = txtEncabezado.Text;
+                configuracion.Dirrecion = txtDirecionRecibo.Text;
+                configuracion.Horario = txtHorario.Text;
+                configuracion.PiePagina = txtPiePagina.Text;
+                configuracion.DirrecionLinea1 = txtDirecionLinea1.Text;
+                configuracion.DirrecionLinea2 = txtDirecionLinea2.Text;
+                configuracion.Telefono = txtTelefono.Text;
+                configuracion.PaginaWeb = txtSitioWeb.Text;
+                configuracion.NumeroEmpresa = txtNumeroEmpresa.Text;
+                configuracion.MontoInicialCaja = double.Parse(txtMontoCaja.Text);
+                configuracion.CantidadDineroPorHora = double.Parse(txtMontoOrdenes.Text);
+                configuracion.STPMinutos = txtSTP.Text;
+                configuracion.CorreoEmpresa = txtCorreo.Text;
+                configuracion.SMSEmpresa = txtSMS.Text;
+                configuracion.ActivoCorreo = ckbCorreo.Checked;
+                configuracion.ActivoSMS = ckbSMS.Checked;
+
+
+                db.Entry(configuracion).State = EntityState.Modified;
+                db.SaveChanges();
+
+                MessageBox.Show("Dato Actualizado");
+            }
+            catch (Exception)
+            {
+                
+            }
+          
 
         }
     }

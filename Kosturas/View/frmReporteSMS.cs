@@ -42,6 +42,7 @@ namespace Kosturas.View
 
         private void btnVerOrdenes_Click(object sender, EventArgs e)
         {
+          
             var a =this.txtDesde.Text;
            
 
@@ -59,121 +60,134 @@ namespace Kosturas.View
         }
         void CargarReporteSMS(string a, string b)
         {
-            BorrarPanelReporteSMS();
+            try
+            {
+                BorrarPanelReporteSMS();
 
 
-            listaSMS = new List<OrdenViewModel>();
-
-
-
-
-
-
-
-            rowCount = 0;
-            var Colores = true;
-
-            var desde = a + " 00:00";
-            var hasta = b + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
+                listaSMS = new List<OrdenViewModel>();
 
 
 
-            var query = db.Provedor.Where(q => q.FechaIngreso >= fdesde && q.FechaIngreso <= fhasta)
-               .GroupBy(q => new { q.idServicio,q.FechaIngreso })
-               .Select(x => new { ServicoId = x.Key.idServicio, Fecha=x.FirstOrDefault().FechaIngreso,
-                   MontoPagos = x.Sum(q=>q.MontoPago), MontoIngresos = x.Sum(q => q.MontoIngreso) })
-               .ToList();
-         
 
 
 
-            foreach (var itemdos in query.ToList())
 
+                rowCount = 0;
+                var Colores = true;
+
+                var desde = a + " 00:00";
+                var hasta = b + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+
+
+
+                var query = db.Provedor.Where(q => q.FechaIngreso >= fdesde && q.FechaIngreso <= fhasta)
+                   .GroupBy(q => new { q.idServicio, q.FechaIngreso })
+                   .Select(x => new {
+                       ServicoId = x.Key.idServicio,
+                       Fecha = x.FirstOrDefault().FechaIngreso,
+                       MontoPagos = x.Sum(q => q.MontoPago),
+                       MontoIngresos = x.Sum(q => q.MontoIngreso)
+                   })
+                   .ToList();
+
+
+
+
+                foreach (var itemdos in query.ToList())
+
+                {
+
+                    var panelViewSMS = new OrdenViewModel();
+
+                    var DatosProvedor = db.Afiliados.Find(query.FirstOrDefault().ServicoId);
+
+
+                    panelViewSMS.Panel.Name = itemdos.ServicoId.ToString();
+
+                    panelViewSMS.Panel.MouseEnter += new EventHandler(Mouseover);
+                    panelViewSMS.Panel.MouseLeave += new EventHandler(Mouseleave);
+                    panelViewSMS.Panel.Size = new Size(1265, 30);
+                    if (Colores == true)
+                    {
+                        panelViewSMS.Panel.BackColor = Color.White;
+                        Colores = false;
+                    }
+                    else
+                    {
+                        panelViewSMS.Panel.BackColor = Color.WhiteSmoke;
+                        Colores = true;
+                    }
+
+                    panelViewSMS.lblId.Text = DatosProvedor.Nombre.ToString();
+
+                    panelViewSMS.lblId.Size = new Size(200, 25);
+
+                    panelViewSMS.lblNombre.Text = itemdos.MontoPagos.ToString();
+
+                    panelViewSMS.lblNombre.Location = new Point(260, 8);
+                    panelViewSMS.lblNombre.Size = new Size(200, 25);
+
+
+
+                    panelViewSMS.lblHoraEntrada.Text = itemdos.Fecha.ToString();
+
+                    panelViewSMS.lblHoraEntrada.Size = new Size(200, 25);
+                    panelViewSMS.lblHoraEntrada.Location = new Point(520, 8);
+
+
+
+                    panelViewSMS.lblLocalizacion.Text = itemdos.MontoIngresos.ToString();
+
+                    panelViewSMS.lblLocalizacion.Size = new Size(200, 25);
+                    panelViewSMS.lblLocalizacion.Location = new Point(780, 8);
+
+
+                    panelViewSMS.lblFechaEntrada.Text = DatosProvedor.Porsentaje.ToString();
+
+                    panelViewSMS.lblFechaEntrada.Location = new Point(1050, 8);
+                    panelViewSMS.lblFechaEntrada.Size = new Size(200, 25);
+
+
+
+
+
+
+
+
+
+
+
+
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblId);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblFechaEntrada);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblHoraEntrada);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblLocalizacion);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblNombre);
+
+
+
+
+
+
+                    listaSMS.Add(panelViewSMS);
+                    rowCount += 1;
+                    tblDetalleSMS.RowCount = rowCount;
+                    this.tblDetalleSMS.Controls.Add(listaSMS.Last().Panel, 0, rowCount);
+
+
+
+
+                }
+            }
+            catch (Exception)
             {
 
-                var panelViewSMS = new OrdenViewModel();
-
-                var DatosProvedor = db.Afiliados.Find(query.FirstOrDefault().ServicoId);
-
-
-                panelViewSMS.Panel.Name = itemdos.ServicoId.ToString();
-             
-                panelViewSMS.Panel.MouseEnter += new EventHandler(Mouseover);
-                panelViewSMS.Panel.MouseLeave += new EventHandler(Mouseleave);
-                panelViewSMS.Panel.Size = new Size(1265, 30);
-                if (Colores == true)
-                {
-                    panelViewSMS.Panel.BackColor = Color.White;
-                    Colores = false;
-                }
-                else
-                {
-                    panelViewSMS.Panel.BackColor = Color.WhiteSmoke;
-                    Colores = true;
-                }
-
-                panelViewSMS.lblId.Text = DatosProvedor.Nombre.ToString();
-               
-                panelViewSMS.lblId.Size = new Size(200, 25);
-
-                panelViewSMS.lblNombre.Text = itemdos.MontoPagos.ToString();
-              
-                panelViewSMS.lblNombre.Location = new Point(260, 8);
-                panelViewSMS.lblNombre.Size = new Size(200, 25);
-
-
-
-                panelViewSMS.lblHoraEntrada.Text = itemdos.Fecha.ToString();
-               
-                panelViewSMS.lblHoraEntrada.Size = new Size(200, 25);
-                panelViewSMS.lblHoraEntrada.Location = new Point(520, 8);
-
-
-
-                panelViewSMS.lblLocalizacion.Text = itemdos.MontoIngresos.ToString();
-               
-                panelViewSMS.lblLocalizacion.Size = new Size(200, 25);
-                panelViewSMS.lblLocalizacion.Location = new Point(780, 8);
-
-
-                panelViewSMS.lblFechaEntrada.Text =DatosProvedor.Porsentaje.ToString();
-                
-                panelViewSMS.lblFechaEntrada.Location = new Point(1050, 8);
-                panelViewSMS.lblFechaEntrada.Size = new Size(200, 25);
-
-
-             
-
-            
-
-
-
-                
-
-
-
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblId);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblFechaEntrada);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblHoraEntrada);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblLocalizacion);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblNombre);
-              
-
-              
-
-
-
-                listaSMS.Add(panelViewSMS);
-                rowCount += 1;
-                tblDetalleSMS.RowCount = rowCount;
-                this.tblDetalleSMS.Controls.Add(listaSMS.Last().Panel, 0, rowCount);
-
-
-
-
             }
+
+        
 
         }
 

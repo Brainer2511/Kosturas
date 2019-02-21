@@ -136,17 +136,10 @@ namespace Kosturas.View
       
      
           
-            var bm = System.Drawing.Imaging.ImageFormat.Png;
-            // ConvertBitMapToByteArray();
+        
 
             var prueba = CodigoBarras();
-            //pictureBox1.Image= codigo128("1005", true, 200);
-          //  var prueba = codigo128("1005", true, 30);
-
-            //sucursal.Imagen = (prueba);
-            //sucursal.OrdenId = 1005;
-            //db.CodigoBarras.Add(sucursal);
-            //db.SaveChanges();
+      
         }
 
         public Bitmap codigo128(string _code, bool vertexto= true, int Height = 0)

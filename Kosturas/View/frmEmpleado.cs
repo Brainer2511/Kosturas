@@ -36,86 +36,93 @@ namespace Kosturas.View
         public void cargar()
         {
 
-
-            cmbRol.Items.Add("Administrador");
-            cmbRol.Items.Add("Cajero");
-            cmbRol.Items.Add("Empleado");
-
-
-            cmbSucursal.DataSource = db.Sucursales.ToList();
-            cmbSucursal.DisplayMember = "NombreSucursal";
-            cmbSucursal.ValueMember = "SucursalId";
-
-
-
-            using (var en = new DataContext())
+            try
             {
+                cmbRol.Items.Add("Administrador");
+                cmbRol.Items.Add("Cajero");
+                cmbRol.Items.Add("Empleado");
 
-                var primerempleado = db.Empleados.FirstOrDefault();
+
+                cmbSucursal.DataSource = db.Sucursales.ToList();
+                cmbSucursal.DisplayMember = "NombreSucursal";
+                cmbSucursal.ValueMember = "SucursalId";
 
 
 
-                this.txtbuscaEmpleado.Text = primerempleado.EmpleadoId.ToString();
-                this.txtNombre.Text = primerempleado.Nombre;
-                this.txtApellidos.Text = primerempleado.Apellidos;
-                this.txtAlias.Text = primerempleado.Alias;
-                this.txtEmal.Text = primerempleado.Email;
-                this.ckbActivo.Checked = primerempleado.Activo;
-                this.txtUsuario.Text = primerempleado.Usuario;
-                if (primerempleado.SucursalId.ToString() == "1")
+                using (var en = new DataContext())
                 {
-                    this.cmbSucursal.SelectedIndex = 0;
-                }
 
-                if (primerempleado.SucursalId.ToString() == "2")
-                {
-                    this.cmbSucursal.SelectedIndex = 1;
-                }
-                if (primerempleado.SucursalId.ToString() == "3")
-                {
-                    this.cmbSucursal.SelectedIndex = 2;
-                }
+                    var primerempleado = db.Empleados.FirstOrDefault();
 
 
-                if (primerempleado.Rol.ToString() == "A")
-                {
-                    this.cmbRol.SelectedIndex = 0;
-                }
 
-                if (primerempleado.Rol.ToString() == "C")
-                {
-                    this.cmbRol.SelectedIndex = 1;
-                }
-                if (primerempleado.Rol.ToString() == "E")
-                {
-                    this.cmbRol.SelectedIndex = 2;
-                }
-                this.ckbrecibeNotifi.Checked = primerempleado.ResivirNotifica;
-                this.ckbRecibeinfo.Checked = primerempleado.RecibirInforme;
-                this.ckbEditPagina.Checked = primerempleado.EditPagina;
-                this.ckbEditPuntos.Checked = primerempleado.EditPuntosClinte;
-                this.ckbEditSegunda.Checked = primerempleado.EditSegundaPagina;
-                this.ckbapcedeTarjeta.Checked = primerempleado.ApcederTarjeta;
-                this.ckbAbrirCajon.Checked = primerempleado.AbrirCajon;
-                this.ckbEditCredito.Checked = primerempleado.EditCreditoClinte;
+                    this.txtbuscaEmpleado.Text = primerempleado.EmpleadoId.ToString();
+                    this.txtNombre.Text = primerempleado.Nombre;
+                    this.txtApellidos.Text = primerempleado.Apellidos;
+                    this.txtAlias.Text = primerempleado.Alias;
+                    this.txtEmal.Text = primerempleado.Email;
+                    this.ckbActivo.Checked = primerempleado.Activo;
+                    this.txtUsuario.Text = primerempleado.Usuario;
+                    if (primerempleado.SucursalId.ToString() == "1")
+                    {
+                        this.cmbSucursal.SelectedIndex = 0;
+                    }
+
+                    if (primerempleado.SucursalId.ToString() == "2")
+                    {
+                        this.cmbSucursal.SelectedIndex = 1;
+                    }
+                    if (primerempleado.SucursalId.ToString() == "3")
+                    {
+                        this.cmbSucursal.SelectedIndex = 2;
+                    }
 
 
-                this.duddesdelunes.Text = primerempleado.desdelunes.ToString();
-                this.duddesdemartes.Text = primerempleado.desdemartes.ToString();
-                this.duddesdemiercoles.Text = primerempleado.desdemiercoles.ToString();
-                this.duddesdejueves.Text = primerempleado.desdejueves.ToString();
-                this.duddesdeviernes.Text = primerempleado.desdeviernes.ToString();
-                this.duddesdesabado.Text = primerempleado.desdesabado.ToString();
-                this.duddesdedomingo.Text = primerempleado.desdedomingo.ToString();
-                this.dudhastalunes.Text = primerempleado.hastalunes.ToString();
-                this.dudhastamartes.Text = primerempleado.hastamartes.ToString();
-                this.dudhastamiercoles.Text = primerempleado.hastamiercoles.ToString();
-                this.dudhastajueves.Text = primerempleado.hastajueves.ToString();
-                this.dudhastaviernes.Text = primerempleado.hastaviernes.ToString();
-                this.dudhastasabado.Text = primerempleado.hastasabado.ToString();
-                this.dudhastadomingo.Text = primerempleado.hastadomingo.ToString();
-               
+                    if (primerempleado.Rol.ToString() == "A")
+                    {
+                        this.cmbRol.SelectedIndex = 0;
+                    }
+
+                    if (primerempleado.Rol.ToString() == "C")
+                    {
+                        this.cmbRol.SelectedIndex = 1;
+                    }
+                    if (primerempleado.Rol.ToString() == "E")
+                    {
+                        this.cmbRol.SelectedIndex = 2;
+                    }
+                    this.ckbrecibeNotifi.Checked = primerempleado.ResivirNotifica;
+                    this.ckbRecibeinfo.Checked = primerempleado.RecibirInforme;
+                    this.ckbEditPagina.Checked = primerempleado.EditPagina;
+                    this.ckbEditPuntos.Checked = primerempleado.EditPuntosClinte;
+                    this.ckbEditSegunda.Checked = primerempleado.EditSegundaPagina;
+                    this.ckbapcedeTarjeta.Checked = primerempleado.ApcederTarjeta;
+                    this.ckbAbrirCajon.Checked = primerempleado.AbrirCajon;
+                    this.ckbEditCredito.Checked = primerempleado.EditCreditoClinte;
+
+
+                    this.duddesdelunes.Text = primerempleado.desdelunes.ToString();
+                    this.duddesdemartes.Text = primerempleado.desdemartes.ToString();
+                    this.duddesdemiercoles.Text = primerempleado.desdemiercoles.ToString();
+                    this.duddesdejueves.Text = primerempleado.desdejueves.ToString();
+                    this.duddesdeviernes.Text = primerempleado.desdeviernes.ToString();
+                    this.duddesdesabado.Text = primerempleado.desdesabado.ToString();
+                    this.duddesdedomingo.Text = primerempleado.desdedomingo.ToString();
+                    this.dudhastalunes.Text = primerempleado.hastalunes.ToString();
+                    this.dudhastamartes.Text = primerempleado.hastamartes.ToString();
+                    this.dudhastamiercoles.Text = primerempleado.hastamiercoles.ToString();
+                    this.dudhastajueves.Text = primerempleado.hastajueves.ToString();
+                    this.dudhastaviernes.Text = primerempleado.hastaviernes.ToString();
+                    this.dudhastasabado.Text = primerempleado.hastasabado.ToString();
+                    this.dudhastadomingo.Text = primerempleado.hastadomingo.ToString();
+
+                }
             }
+            catch (Exception)
+            {
+                
+            }
+       
         }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -124,56 +131,65 @@ namespace Kosturas.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Empleado empleado = new Empleado();
-
-            empleado.Nombre = txtNombre.Text;
-            empleado.Apellidos = txtApellidos.Text;
-            empleado.Alias = txtAlias.Text;
-            empleado.Email = txtEmal.Text;
-            empleado.Activo = ckbActivo.Checked;
-            empleado.Usuario = txtUsuario.Text;
-            empleado.Clave = txtClave.Text;
-            empleado.SucursalId = cmbSucursal.SelectedValue.ToString();
-            if (cmbRol.SelectedIndex == 0)
+            try
             {
-                empleado.Rol = "A";
+                Empleado empleado = new Empleado();
+
+                empleado.Nombre = txtNombre.Text;
+                empleado.Apellidos = txtApellidos.Text;
+                empleado.Alias = txtAlias.Text;
+                empleado.Email = txtEmal.Text;
+                empleado.Activo = ckbActivo.Checked;
+                empleado.Usuario = txtUsuario.Text;
+                empleado.Clave = txtClave.Text;
+                empleado.SucursalId = cmbSucursal.SelectedValue.ToString();
+                if (cmbRol.SelectedIndex == 0)
+                {
+                    empleado.Rol = "A";
+                }
+                if (cmbRol.SelectedIndex == 1)
+                {
+                    empleado.Rol = "C";
+                }
+                if (cmbRol.SelectedIndex == 2)
+                {
+                    empleado.Rol = "E";
+                }
+                empleado.RecibirInforme = ckbRecibeinfo.Checked;
+                empleado.ResivirNotifica = ckbrecibeNotifi.Checked;
+                empleado.EditPagina = ckbEditPagina.Checked;
+                empleado.EditSegundaPagina = ckbEditSegunda.Checked;
+                empleado.ApcederTarjeta = ckbapcedeTarjeta.Checked;
+                empleado.AbrirCajon = ckbAbrirCajon.Checked;
+                empleado.EditCreditoClinte = ckbEditCredito.Checked;
+                empleado.EditPuntosClinte = ckbEditPuntos.Checked;
+                empleado.desdelunes = TimeSpan.Parse(duddesdelunes.Value.ToString("HH:mm"));
+                empleado.desdemartes = TimeSpan.Parse(duddesdemartes.Value.ToString("HH:mm"));
+                empleado.desdemiercoles = TimeSpan.Parse(duddesdemiercoles.Value.ToString("HH:mm"));
+                empleado.desdejueves = TimeSpan.Parse(duddesdejueves.Value.ToString("HH:mm"));
+                empleado.desdesabado = TimeSpan.Parse(duddesdeviernes.Value.ToString("HH:mm"));
+                empleado.desdeviernes = TimeSpan.Parse(duddesdesabado.Value.ToString("HH:mm"));
+                empleado.desdedomingo = TimeSpan.Parse(duddesdedomingo.Value.ToString("HH:mm"));
+                empleado.hastalunes = TimeSpan.Parse(dudhastalunes.Value.ToString("HH:mm"));
+                empleado.hastamartes = TimeSpan.Parse(dudhastamartes.Value.ToString("HH:mm"));
+                empleado.hastamiercoles = TimeSpan.Parse(dudhastamiercoles.Value.ToString("HH:mm"));
+                empleado.hastajueves = TimeSpan.Parse(dudhastajueves.Value.ToString("HH:mm"));
+                empleado.hastasabado = TimeSpan.Parse(dudhastaviernes.Value.ToString("HH:mm"));
+                empleado.hastaviernes = TimeSpan.Parse(dudhastasabado.Value.ToString("HH:mm"));
+                empleado.hastadomingo = TimeSpan.Parse(dudhastadomingo.Value.ToString("HH:mm"));
+
+
+                db.Empleados.Add(empleado);
+                db.SaveChanges();
+
+                MessageBox.Show("Empleado Guardado");
             }
-            if (cmbRol.SelectedIndex == 1)
+            catch (Exception)
             {
-                empleado.Rol = "C";
+                
             }
-            if (cmbRol.SelectedIndex == 2)
-            {
-                empleado.Rol = "E";
-            }
-            empleado.RecibirInforme = ckbRecibeinfo.Checked;
-            empleado.ResivirNotifica = ckbrecibeNotifi.Checked;
-            empleado.EditPagina = ckbEditPagina.Checked;
-            empleado.EditSegundaPagina = ckbEditSegunda.Checked;
-            empleado.ApcederTarjeta = ckbapcedeTarjeta.Checked;
-            empleado.AbrirCajon = ckbAbrirCajon.Checked;
-            empleado.EditCreditoClinte = ckbEditCredito.Checked;
-            empleado.EditPuntosClinte = ckbEditPuntos.Checked;
-            empleado.desdelunes= TimeSpan.Parse(duddesdelunes.Value.ToString("HH:mm"));
-            empleado.desdemartes = TimeSpan.Parse(duddesdemartes.Value.ToString("HH:mm"));
-            empleado.desdemiercoles = TimeSpan.Parse(duddesdemiercoles.Value.ToString("HH:mm"));
-            empleado.desdejueves = TimeSpan.Parse(duddesdejueves.Value.ToString("HH:mm"));
-            empleado.desdesabado = TimeSpan.Parse(duddesdeviernes.Value.ToString("HH:mm"));
-            empleado.desdeviernes = TimeSpan.Parse(duddesdesabado.Value.ToString("HH:mm"));
-            empleado.desdedomingo = TimeSpan.Parse(duddesdedomingo.Value.ToString("HH:mm"));
-            empleado.hastalunes = TimeSpan.Parse(dudhastalunes.Value.ToString("HH:mm"));
-            empleado.hastamartes = TimeSpan.Parse(dudhastamartes.Value.ToString("HH:mm"));
-            empleado.hastamiercoles = TimeSpan.Parse(dudhastamiercoles.Value.ToString("HH:mm"));
-            empleado.hastajueves = TimeSpan.Parse(dudhastajueves.Value.ToString("HH:mm"));
-            empleado.hastasabado = TimeSpan.Parse(dudhastaviernes.Value.ToString("HH:mm"));
-            empleado.hastaviernes = TimeSpan.Parse(dudhastasabado.Value.ToString("HH:mm"));
-            empleado.hastadomingo = TimeSpan.Parse(dudhastadomingo.Value.ToString("HH:mm"));
 
-
-            db.Empleados.Add(empleado);
-            db.SaveChanges();
-
-            MessageBox.Show("Empleado Guardado");
+          
         }
 
         private void label21_Click(object sender, EventArgs e)
@@ -298,56 +314,57 @@ namespace Kosturas.View
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
+            try
+            {
+                this.btnCancelar.Enabled = false;
+                this.btnGuardar.Enabled = false;
+                int id = int.Parse(this.txtbuscaEmpleado.Text);
 
-            this.btnCancelar.Enabled = false;
-            this.btnGuardar.Enabled = false;
-            int id = int.Parse(this.txtbuscaEmpleado.Text);
-          
 
                 var busquedaempleado = db.Empleados.Find(id);
-                           
 
-             
 
-                
+
+
+
                 this.txtNombre.Text = busquedaempleado.Nombre;
                 this.txtApellidos.Text = busquedaempleado.Apellidos;
                 this.txtAlias.Text = busquedaempleado.Alias;
                 this.txtEmal.Text = busquedaempleado.Email;
                 this.ckbActivo.Checked = busquedaempleado.Activo;
                 this.txtUsuario.Text = busquedaempleado.Usuario;
-          
-
-            if (busquedaempleado.SucursalId.ToString() == "1")
-            {
-                this.cmbSucursal.SelectedIndex = 0;
-            }
-
-            if (busquedaempleado.SucursalId.ToString() == "2")
-            {
-                this.cmbSucursal.SelectedIndex = 1;
-            }
-            if (busquedaempleado.SucursalId.ToString() == "3")
-            {
-                this.cmbSucursal.SelectedIndex = 2;
-            }
 
 
-            if (busquedaempleado.Rol.ToString()=="A")
-            {
-                this.cmbRol.SelectedIndex = 0;
-            }
+                if (busquedaempleado.SucursalId.ToString() == "1")
+                {
+                    this.cmbSucursal.SelectedIndex = 0;
+                }
 
-            if (busquedaempleado.Rol.ToString() == "C")
-            {
-                this.cmbRol.SelectedIndex = 1;
-            }
-            if (busquedaempleado.Rol.ToString() == "E")
-            {
-                this.cmbRol.SelectedIndex = 2;
-            }
+                if (busquedaempleado.SucursalId.ToString() == "2")
+                {
+                    this.cmbSucursal.SelectedIndex = 1;
+                }
+                if (busquedaempleado.SucursalId.ToString() == "3")
+                {
+                    this.cmbSucursal.SelectedIndex = 2;
+                }
 
-            this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
+
+                if (busquedaempleado.Rol.ToString() == "A")
+                {
+                    this.cmbRol.SelectedIndex = 0;
+                }
+
+                if (busquedaempleado.Rol.ToString() == "C")
+                {
+                    this.cmbRol.SelectedIndex = 1;
+                }
+                if (busquedaempleado.Rol.ToString() == "E")
+                {
+                    this.cmbRol.SelectedIndex = 2;
+                }
+
+                this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
                 this.ckbRecibeinfo.Checked = busquedaempleado.RecibirInforme;
                 this.ckbEditPagina.Checked = busquedaempleado.EditPagina;
                 this.ckbEditPuntos.Checked = busquedaempleado.EditPuntosClinte;
@@ -371,6 +388,13 @@ namespace Kosturas.View
                 this.dudhastasabado.Text = busquedaempleado.hastasabado.ToString();
                 this.dudhastadomingo.Text = busquedaempleado.hastadomingo.ToString();
 
+            }
+            catch (Exception)
+            {
+
+              
+            }
+        
             
       
         }
@@ -390,58 +414,68 @@ namespace Kosturas.View
 
         private void btnGuardaarDos_Click(object sender, EventArgs e)
         {
-            Empleado empleado = db.Empleados.Find(int.Parse(txtbuscaEmpleado.Text));
-
-           
-
-            empleado.Nombre = txtNombre.Text;
-            empleado.Apellidos = txtApellidos.Text;
-            empleado.Alias = txtAlias.Text;
-            empleado.Email = txtEmal.Text;
-            empleado.Activo = ckbActivo.Checked;
-            empleado.Usuario = txtUsuario.Text;
-            empleado.Clave = txtClave.Text;
-            empleado.SucursalId = cmbSucursal.SelectedValue.ToString();
-            if (cmbRol.SelectedIndex==0)
+            try
             {
-                empleado.Rol = "A";
+                Empleado empleado = db.Empleados.Find(int.Parse(txtbuscaEmpleado.Text));
+
+
+
+                empleado.Nombre = txtNombre.Text;
+                empleado.Apellidos = txtApellidos.Text;
+                empleado.Alias = txtAlias.Text;
+                empleado.Email = txtEmal.Text;
+                empleado.Activo = ckbActivo.Checked;
+                empleado.Usuario = txtUsuario.Text;
+                empleado.Clave = txtClave.Text;
+                empleado.SucursalId = cmbSucursal.SelectedValue.ToString();
+                if (cmbRol.SelectedIndex == 0)
+                {
+                    empleado.Rol = "A";
+                }
+                if (cmbRol.SelectedIndex == 1)
+                {
+                    empleado.Rol = "C";
+                }
+                if (cmbRol.SelectedIndex == 2)
+                {
+                    empleado.Rol = "E";
+                }
+
+                empleado.RecibirInforme = ckbRecibeinfo.Checked;
+                empleado.ResivirNotifica = ckbrecibeNotifi.Checked;
+                empleado.EditPagina = ckbEditPagina.Checked;
+                empleado.EditSegundaPagina = ckbEditSegunda.Checked;
+                empleado.ApcederTarjeta = ckbapcedeTarjeta.Checked;
+                empleado.AbrirCajon = ckbAbrirCajon.Checked;
+                empleado.EditCreditoClinte = ckbEditCredito.Checked;
+                empleado.EditPuntosClinte = ckbEditPuntos.Checked;
+                empleado.desdelunes = TimeSpan.Parse(duddesdelunes.Value.ToString("HH:mm"));
+                empleado.desdemartes = TimeSpan.Parse(duddesdemartes.Value.ToString("HH:mm"));
+                empleado.desdemiercoles = TimeSpan.Parse(duddesdemiercoles.Value.ToString("HH:mm"));
+                empleado.desdejueves = TimeSpan.Parse(duddesdejueves.Value.ToString("HH:mm"));
+                empleado.desdesabado = TimeSpan.Parse(duddesdeviernes.Value.ToString("HH:mm"));
+                empleado.desdeviernes = TimeSpan.Parse(duddesdesabado.Value.ToString("HH:mm"));
+                empleado.desdedomingo = TimeSpan.Parse(duddesdedomingo.Value.ToString("HH:mm"));
+                empleado.hastalunes = TimeSpan.Parse(dudhastalunes.Value.ToString("HH:mm"));
+                empleado.hastamartes = TimeSpan.Parse(dudhastamartes.Value.ToString("HH:mm"));
+                empleado.hastamiercoles = TimeSpan.Parse(dudhastamiercoles.Value.ToString("HH:mm"));
+                empleado.hastajueves = TimeSpan.Parse(dudhastajueves.Value.ToString("HH:mm"));
+                empleado.hastasabado = TimeSpan.Parse(dudhastaviernes.Value.ToString("HH:mm"));
+                empleado.hastaviernes = TimeSpan.Parse(dudhastasabado.Value.ToString("HH:mm"));
+                empleado.hastadomingo = TimeSpan.Parse(dudhastadomingo.Value.ToString("HH:mm"));
+
+                db.Entry(empleado).State = EntityState.Modified;
+                db.SaveChanges();
+
+                MessageBox.Show("Dato Actualizado");
             }
-            if (cmbRol.SelectedIndex == 1)
+            catch (Exception)
             {
-                empleado.Rol = "C";
-            }
-            if (cmbRol.SelectedIndex == 2)
-            {
-                empleado.Rol = "E";
+
+              
             }
 
-            empleado.RecibirInforme = ckbRecibeinfo.Checked;
-            empleado.ResivirNotifica = ckbrecibeNotifi.Checked;
-            empleado.EditPagina = ckbEditPagina.Checked;
-            empleado.EditSegundaPagina = ckbEditSegunda.Checked;
-            empleado.ApcederTarjeta = ckbapcedeTarjeta.Checked;
-            empleado.AbrirCajon = ckbAbrirCajon.Checked;
-            empleado.EditCreditoClinte = ckbEditCredito.Checked;
-            empleado.EditPuntosClinte = ckbEditPuntos.Checked;
-            empleado.desdelunes = TimeSpan.Parse(duddesdelunes.Value.ToString("HH:mm"));
-            empleado.desdemartes = TimeSpan.Parse(duddesdemartes.Value.ToString("HH:mm"));
-            empleado.desdemiercoles = TimeSpan.Parse(duddesdemiercoles.Value.ToString("HH:mm"));
-            empleado.desdejueves = TimeSpan.Parse(duddesdejueves.Value.ToString("HH:mm"));
-            empleado.desdesabado = TimeSpan.Parse(duddesdeviernes.Value.ToString("HH:mm"));
-            empleado.desdeviernes = TimeSpan.Parse(duddesdesabado.Value.ToString("HH:mm"));
-            empleado.desdedomingo = TimeSpan.Parse(duddesdedomingo.Value.ToString("HH:mm"));
-            empleado.hastalunes = TimeSpan.Parse(dudhastalunes.Value.ToString("HH:mm"));
-            empleado.hastamartes = TimeSpan.Parse(dudhastamartes.Value.ToString("HH:mm"));
-            empleado.hastamiercoles = TimeSpan.Parse(dudhastamiercoles.Value.ToString("HH:mm"));
-            empleado.hastajueves = TimeSpan.Parse(dudhastajueves.Value.ToString("HH:mm"));
-            empleado.hastasabado = TimeSpan.Parse(dudhastaviernes.Value.ToString("HH:mm"));
-            empleado.hastaviernes = TimeSpan.Parse(dudhastasabado.Value.ToString("HH:mm"));
-            empleado.hastadomingo = TimeSpan.Parse(dudhastadomingo.Value.ToString("HH:mm"));
-
-            db.Entry(empleado).State = EntityState.Modified;
-            db.SaveChanges();
-
-            MessageBox.Show("Dato Actualizado");
+          
 
         }
 
@@ -485,172 +519,193 @@ namespace Kosturas.View
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            this.btnCancelar.Enabled = false;
-            this.btnGuardar.Enabled = false;
-            Empleado busquedaempleado = new Empleado();
-            if (!string.IsNullOrEmpty(this.txtbuscaEmpleado.Text))
+
+            try
+            {
+                this.btnCancelar.Enabled = false;
+                this.btnGuardar.Enabled = false;
+                Empleado busquedaempleado = new Empleado();
+                if (!string.IsNullOrEmpty(this.txtbuscaEmpleado.Text))
+                {
+
+                    int id = int.Parse(this.txtbuscaEmpleado.Text);
+
+
+                    var listaempleados = db.Empleados.Where(x => x.EmpleadoId > id).ToList();
+                    busquedaempleado = listaempleados.FirstOrDefault();
+                    if (listaempleados.Count == 0) return;
+                }
+                else
+                {
+                    busquedaempleado = db.Empleados.FirstOrDefault();
+
+                }
+
+
+
+
+                this.txtbuscaEmpleado.Text = busquedaempleado.EmpleadoId.ToString();
+
+                this.txtNombre.Text = busquedaempleado.Nombre;
+                this.txtApellidos.Text = busquedaempleado.Apellidos;
+                this.txtAlias.Text = busquedaempleado.Alias;
+                this.txtEmal.Text = busquedaempleado.Email;
+                this.ckbActivo.Checked = busquedaempleado.Activo;
+                this.txtUsuario.Text = busquedaempleado.Usuario;
+                if (busquedaempleado.SucursalId.ToString() == "1")
+                {
+                    this.cmbSucursal.SelectedIndex = 0;
+                }
+
+                if (busquedaempleado.SucursalId.ToString() == "2")
+                {
+                    this.cmbSucursal.SelectedIndex = 1;
+                }
+                if (busquedaempleado.SucursalId.ToString() == "3")
+                {
+                    this.cmbSucursal.SelectedIndex = 2;
+                }
+
+
+                if (busquedaempleado.Rol.ToString() == "A")
+                {
+                    this.cmbRol.SelectedIndex = 0;
+                }
+
+                if (busquedaempleado.Rol.ToString() == "C")
+                {
+                    this.cmbRol.SelectedIndex = 1;
+                }
+                if (busquedaempleado.Rol.ToString() == "E")
+                {
+                    this.cmbRol.SelectedIndex = 2;
+                }
+
+                this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
+                this.ckbRecibeinfo.Checked = busquedaempleado.RecibirInforme;
+                this.ckbEditPagina.Checked = busquedaempleado.EditPagina;
+                this.ckbEditPuntos.Checked = busquedaempleado.EditPuntosClinte;
+                this.ckbEditSegunda.Checked = busquedaempleado.EditSegundaPagina;
+                this.ckbapcedeTarjeta.Checked = busquedaempleado.ApcederTarjeta;
+                this.ckbAbrirCajon.Checked = busquedaempleado.AbrirCajon;
+                this.ckbEditCredito.Checked = busquedaempleado.EditCreditoClinte;
+
+                this.duddesdelunes.Text = busquedaempleado.desdelunes.ToString();
+                this.duddesdemartes.Text = busquedaempleado.desdemartes.ToString();
+                this.duddesdemiercoles.Text = busquedaempleado.desdemiercoles.ToString();
+                this.duddesdejueves.Text = busquedaempleado.desdejueves.ToString();
+                this.duddesdeviernes.Text = busquedaempleado.desdeviernes.ToString();
+                this.duddesdesabado.Text = busquedaempleado.desdesabado.ToString();
+                this.duddesdedomingo.Text = busquedaempleado.desdedomingo.ToString();
+                this.dudhastalunes.Text = busquedaempleado.hastalunes.ToString();
+                this.dudhastamartes.Text = busquedaempleado.hastamartes.ToString();
+                this.dudhastamiercoles.Text = busquedaempleado.hastamiercoles.ToString();
+                this.dudhastajueves.Text = busquedaempleado.hastajueves.ToString();
+                this.dudhastaviernes.Text = busquedaempleado.hastaviernes.ToString();
+                this.dudhastasabado.Text = busquedaempleado.hastasabado.ToString();
+                this.dudhastadomingo.Text = busquedaempleado.hastadomingo.ToString();
+            }
+            catch (Exception)
             {
 
-                int id = int.Parse(this.txtbuscaEmpleado.Text);
-
-
-                var listaempleados = db.Empleados.Where(x => x.EmpleadoId > id).ToList();
-                busquedaempleado = listaempleados.FirstOrDefault();
-                if (listaempleados.Count == 0) return;
+              
             }
-            else {
-                busquedaempleado = db.Empleados.FirstOrDefault();
-
-            }
-
-            
-
-        
-            this.txtbuscaEmpleado.Text = busquedaempleado.EmpleadoId.ToString();
-
-            this.txtNombre.Text = busquedaempleado.Nombre;
-            this.txtApellidos.Text = busquedaempleado.Apellidos;
-            this.txtAlias.Text = busquedaempleado.Alias;
-            this.txtEmal.Text = busquedaempleado.Email;
-            this.ckbActivo.Checked = busquedaempleado.Activo;
-            this.txtUsuario.Text = busquedaempleado.Usuario;
-            if (busquedaempleado.SucursalId.ToString() == "1")
-            {
-                this.cmbSucursal.SelectedIndex = 0;
-            }
-
-            if (busquedaempleado.SucursalId.ToString() == "2")
-            {
-                this.cmbSucursal.SelectedIndex = 1;
-            }
-            if (busquedaempleado.SucursalId.ToString() == "3")
-            {
-                this.cmbSucursal.SelectedIndex = 2;
-            }
-
-
-            if (busquedaempleado.Rol.ToString() == "A")
-            {
-                this.cmbRol.SelectedIndex = 0;
-            }
-
-            if (busquedaempleado.Rol.ToString() == "C")
-            {
-                this.cmbRol.SelectedIndex = 1;
-            }
-            if (busquedaempleado.Rol.ToString() == "E")
-            {
-                this.cmbRol.SelectedIndex = 2;
-            }
-
-            this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
-            this.ckbRecibeinfo.Checked = busquedaempleado.RecibirInforme;
-            this.ckbEditPagina.Checked = busquedaempleado.EditPagina;
-            this.ckbEditPuntos.Checked = busquedaempleado.EditPuntosClinte;
-            this.ckbEditSegunda.Checked = busquedaempleado.EditSegundaPagina;
-            this.ckbapcedeTarjeta.Checked = busquedaempleado.ApcederTarjeta;
-            this.ckbAbrirCajon.Checked = busquedaempleado.AbrirCajon;
-            this.ckbEditCredito.Checked = busquedaempleado.EditCreditoClinte;
-
-            this.duddesdelunes.Text = busquedaempleado.desdelunes.ToString();
-            this.duddesdemartes.Text = busquedaempleado.desdemartes.ToString();
-            this.duddesdemiercoles.Text = busquedaempleado.desdemiercoles.ToString();
-            this.duddesdejueves.Text = busquedaempleado.desdejueves.ToString();
-            this.duddesdeviernes.Text = busquedaempleado.desdeviernes.ToString();
-            this.duddesdesabado.Text = busquedaempleado.desdesabado.ToString();
-            this.duddesdedomingo.Text = busquedaempleado.desdedomingo.ToString();
-            this.dudhastalunes.Text = busquedaempleado.hastalunes.ToString();
-            this.dudhastamartes.Text = busquedaempleado.hastamartes.ToString();
-            this.dudhastamiercoles.Text = busquedaempleado.hastamiercoles.ToString();
-            this.dudhastajueves.Text = busquedaempleado.hastajueves.ToString();
-            this.dudhastaviernes.Text = busquedaempleado.hastaviernes.ToString();
-            this.dudhastasabado.Text = busquedaempleado.hastasabado.ToString();
-            this.dudhastadomingo.Text = busquedaempleado.hastadomingo.ToString();
+          
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            this.btnCancelar.Enabled = false;
-            this.btnGuardar.Enabled = false;
-            Empleado busquedaempleado = new Empleado();
-            if (!string.IsNullOrEmpty(this.txtbuscaEmpleado.Text))
+            try
+            {
+                this.btnCancelar.Enabled = false;
+                this.btnGuardar.Enabled = false;
+                Empleado busquedaempleado = new Empleado();
+                if (!string.IsNullOrEmpty(this.txtbuscaEmpleado.Text))
+                {
+
+                    int id = int.Parse(this.txtbuscaEmpleado.Text);
+
+
+                    var listaempleados = db.Empleados.Where(x => x.EmpleadoId < id).OrderByDescending(x => x.EmpleadoId).ToList();
+                    busquedaempleado = listaempleados.FirstOrDefault();
+                    if (listaempleados.Count == 0) return;
+                }
+                else
+                {
+                    busquedaempleado = db.Empleados.OrderByDescending(x => x.EmpleadoId).FirstOrDefault();
+
+                }
+
+
+
+
+                this.txtbuscaEmpleado.Text = busquedaempleado.EmpleadoId.ToString();
+
+                this.txtNombre.Text = busquedaempleado.Nombre;
+                this.txtApellidos.Text = busquedaempleado.Apellidos;
+                this.txtAlias.Text = busquedaempleado.Alias;
+                this.txtEmal.Text = busquedaempleado.Email;
+                this.ckbActivo.Checked = busquedaempleado.Activo;
+                this.txtUsuario.Text = busquedaempleado.Usuario;
+                if (busquedaempleado.SucursalId.ToString() == "1")
+                {
+                    this.cmbSucursal.SelectedIndex = 0;
+                }
+
+                if (busquedaempleado.SucursalId.ToString() == "2")
+                {
+                    this.cmbSucursal.SelectedIndex = 1;
+                }
+                if (busquedaempleado.SucursalId.ToString() == "3")
+                {
+                    this.cmbSucursal.SelectedIndex = 2;
+                }
+
+
+                if (busquedaempleado.Rol.ToString() == "A")
+                {
+                    this.cmbRol.SelectedIndex = 0;
+                }
+
+                if (busquedaempleado.Rol.ToString() == "C")
+                {
+                    this.cmbRol.SelectedIndex = 1;
+                }
+                if (busquedaempleado.Rol.ToString() == "E")
+                {
+                    this.cmbRol.SelectedIndex = 2;
+                }
+                this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
+                this.ckbRecibeinfo.Checked = busquedaempleado.RecibirInforme;
+                this.ckbEditPagina.Checked = busquedaempleado.EditPagina;
+                this.ckbEditPuntos.Checked = busquedaempleado.EditPuntosClinte;
+                this.ckbEditSegunda.Checked = busquedaempleado.EditSegundaPagina;
+                this.ckbapcedeTarjeta.Checked = busquedaempleado.ApcederTarjeta;
+                this.ckbAbrirCajon.Checked = busquedaempleado.AbrirCajon;
+                this.ckbEditCredito.Checked = busquedaempleado.EditCreditoClinte;
+
+                this.duddesdelunes.Text = busquedaempleado.desdelunes.ToString();
+                this.duddesdemartes.Text = busquedaempleado.desdemartes.ToString();
+                this.duddesdemiercoles.Text = busquedaempleado.desdemiercoles.ToString();
+                this.duddesdejueves.Text = busquedaempleado.desdejueves.ToString();
+                this.duddesdeviernes.Text = busquedaempleado.desdeviernes.ToString();
+                this.duddesdesabado.Text = busquedaempleado.desdesabado.ToString();
+                this.duddesdedomingo.Text = busquedaempleado.desdedomingo.ToString();
+                this.dudhastalunes.Text = busquedaempleado.hastalunes.ToString();
+                this.dudhastamartes.Text = busquedaempleado.hastamartes.ToString();
+                this.dudhastamiercoles.Text = busquedaempleado.hastamiercoles.ToString();
+                this.dudhastajueves.Text = busquedaempleado.hastajueves.ToString();
+                this.dudhastaviernes.Text = busquedaempleado.hastaviernes.ToString();
+                this.dudhastasabado.Text = busquedaempleado.hastasabado.ToString();
+                this.dudhastadomingo.Text = busquedaempleado.hastadomingo.ToString();
+            }
+            catch (Exception)
             {
 
-                int id = int.Parse(this.txtbuscaEmpleado.Text);
-
-
-                var listaempleados = db.Empleados.Where(x => x.EmpleadoId < id).OrderByDescending(x => x.EmpleadoId).ToList();
-                busquedaempleado = listaempleados.FirstOrDefault();
-                if (listaempleados.Count == 0) return;
-            }
-            else
-            {
-                busquedaempleado = db.Empleados.OrderByDescending(x => x.EmpleadoId).FirstOrDefault();
-
+              
             }
 
-
-
-
-            this.txtbuscaEmpleado.Text = busquedaempleado.EmpleadoId.ToString();
-
-            this.txtNombre.Text = busquedaempleado.Nombre;
-            this.txtApellidos.Text = busquedaempleado.Apellidos;
-            this.txtAlias.Text = busquedaempleado.Alias;
-            this.txtEmal.Text = busquedaempleado.Email;
-            this.ckbActivo.Checked = busquedaempleado.Activo;
-            this.txtUsuario.Text = busquedaempleado.Usuario;
-            if (busquedaempleado.SucursalId.ToString() == "1")
-            {
-                this.cmbSucursal.SelectedIndex = 0;
-            }
-
-            if (busquedaempleado.SucursalId.ToString() == "2")
-            {
-                this.cmbSucursal.SelectedIndex = 1;
-            }
-            if (busquedaempleado.SucursalId.ToString() == "3")
-            {
-                this.cmbSucursal.SelectedIndex = 2;
-            }
-
-
-            if (busquedaempleado.Rol.ToString() == "A")
-            {
-                this.cmbRol.SelectedIndex = 0;
-            }
-
-            if (busquedaempleado.Rol.ToString() == "C")
-            {
-                this.cmbRol.SelectedIndex = 1;
-            }
-            if (busquedaempleado.Rol.ToString() == "E")
-            {
-                this.cmbRol.SelectedIndex = 2;
-            }
-            this.ckbrecibeNotifi.Checked = busquedaempleado.ResivirNotifica;
-            this.ckbRecibeinfo.Checked = busquedaempleado.RecibirInforme;
-            this.ckbEditPagina.Checked = busquedaempleado.EditPagina;
-            this.ckbEditPuntos.Checked = busquedaempleado.EditPuntosClinte;
-            this.ckbEditSegunda.Checked = busquedaempleado.EditSegundaPagina;
-            this.ckbapcedeTarjeta.Checked = busquedaempleado.ApcederTarjeta;
-            this.ckbAbrirCajon.Checked = busquedaempleado.AbrirCajon;
-            this.ckbEditCredito.Checked = busquedaempleado.EditCreditoClinte;
-
-            this.duddesdelunes.Text = busquedaempleado.desdelunes.ToString();
-            this.duddesdemartes.Text = busquedaempleado.desdemartes.ToString();
-            this.duddesdemiercoles.Text = busquedaempleado.desdemiercoles.ToString();
-            this.duddesdejueves.Text = busquedaempleado.desdejueves.ToString();
-            this.duddesdeviernes.Text = busquedaempleado.desdeviernes.ToString();
-            this.duddesdesabado.Text = busquedaempleado.desdesabado.ToString();
-            this.duddesdedomingo.Text = busquedaempleado.desdedomingo.ToString();
-            this.dudhastalunes.Text = busquedaempleado.hastalunes.ToString();
-            this.dudhastamartes.Text = busquedaempleado.hastamartes.ToString();
-            this.dudhastamiercoles.Text = busquedaempleado.hastamiercoles.ToString();
-            this.dudhastajueves.Text = busquedaempleado.hastajueves.ToString();
-            this.dudhastaviernes.Text = busquedaempleado.hastaviernes.ToString();
-            this.dudhastasabado.Text = busquedaempleado.hastasabado.ToString();
-            this.dudhastadomingo.Text = busquedaempleado.hastadomingo.ToString();
+           
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)

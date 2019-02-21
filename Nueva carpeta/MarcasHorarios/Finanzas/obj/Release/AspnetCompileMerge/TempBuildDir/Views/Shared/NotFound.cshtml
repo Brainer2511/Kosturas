@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "NotFound";
+}
+<div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+        <div style="padding-top:15px">
+            <div class="row">
+                <span class="oops derecha">Oops!</span>
+            </div>
+            <br />
+            <div class="row">
+                <span class="title-error"><b>Algo salió mal aquí...</b></span>
+                <h3>Extraviado</h3>
+                <br />
+                <p class="texto-error">
+                    Es posible que desee comprobar su enlace, o tal vez esa página ya no existe.
+                </p>
+                <p class="texto-error">
+                    Puede volver atrás e intentarlo nuevamente.                    
+                </p>
+                @Html.ActionLink("<< Volver", "Index", "Home", new { }, new { @class = "btn btn-default raised-button  btn-round waves-effect" })
+            </div>
+        </div>
+    </div>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+        <img class="img-responsive" width="350" height="450" src="~/Content/Imagenes/AvatarError.png" />
+    </div>
+</div>

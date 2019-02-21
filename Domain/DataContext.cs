@@ -76,5 +76,8 @@ namespace Domain
 
 
         public DbSet<Ventas>  Ventas { get; set; }
+
+
+        public DbSet<DetalleVentas> DetalleVentas { get; set; }
     }
 }

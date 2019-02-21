@@ -39,65 +39,86 @@ namespace Kosturas.View
 
         private void CompletarAgregarPago_Load(object sender, EventArgs e)
         {
+            try
+            {
+                this.lblCalcularCambio.Visible = false;
+                this.lblCAmbio.Visible = false;
+                this.lblresultado.Visible = false;
+                this.txtCalcularCambio.Visible = false;
+                var query = db.Ordenes.Where(q => q.OrdenId == OrdenId).ToList();
+                if (query.Count > 0)
+                {
+                    this.txtMonto.Text = query.Last().CantidadRestante.ToString();
+                }
+                else { this.txtMonto.Text = "0"; this.btnAgregarPago.Enabled = true; }
+                if (query.FirstOrDefault().CantidadRestante == 0) { this.btnAgregarPago.Enabled = false; }
+
+                cbPagos.DataSource = db.MediosPago.ToList();
+                cbPagos.DisplayMember = "FormaPago";
+                cbPagos.ValueMember = "MedioPagoId";
+
+                cbPagos.SelectedIndex = 0;
+            }
+            catch (Exception)
+            {
+
+               
+            }
+
+       
 
 
-            this.lblCalcularCambio.Visible = false;
-            this.lblCAmbio.Visible = false;
-            this.lblresultado.Visible = false;
-            this.txtCalcularCambio.Visible = false;
-            var query = db.Ordenes.Where(q => q.OrdenId == OrdenId).ToList();
-            if (query.Count > 0) {
-                this.txtMonto.Text = query.Last().CantidadRestante.ToString();
-            } else { this.txtMonto.Text = "0"; this.btnAgregarPago.Enabled = true; }
-            if (query.FirstOrDefault().CantidadRestante==0) { this.btnAgregarPago.Enabled = false; }
-            
-            cbPagos.DataSource = db.MediosPago.ToList();
-            cbPagos.DisplayMember = "FormaPago";
-            cbPagos.ValueMember = "MedioPagoId";
-
-            cbPagos.SelectedIndex = 0;
         }
 
         private void btnAgregarPago_Click(object sender, EventArgs e)
         {
-            
-            frmPin pin = new frmPin();
-            this.Opacity = 0.80;
-            pin.ShowDialog();
-            this.Opacity = 1;
-            var query = db.Pagos.Where(q => q.OrdenId == OrdenId).ToList();
-            if (query.Count > 0) {
+            try
+            {
+                frmPin pin = new frmPin();
+                this.Opacity = 0.80;
+                pin.ShowDialog();
+                this.Opacity = 1;
+                var query = db.Pagos.Where(q => q.OrdenId == OrdenId).ToList();
+                if (query.Count > 0)
+                {
 
-               
 
-                var idPAgo = query.FirstOrDefault().PagoId;
-                Pagos pagos = db.Pagos.Find(idPAgo);
-                var MontoActual = query.Last().Monto;
 
-                pagos.MedioPagoId = int.Parse(cbPagos.SelectedValue.ToString());
-                pagos.OrdenId = OrdenId;
-                if (!string.IsNullOrEmpty(txtMonto.Text)) { pagos.Monto = MontoActual - double.Parse(txtMonto.Text); }
-                else { pagos.Monto = MontoActual - double.Parse("0"); }
+                    var idPAgo = query.FirstOrDefault().PagoId;
+                    Pagos pagos = db.Pagos.Find(idPAgo);
+                    var MontoActual = query.Last().Monto;
 
-                db.Entry(pagos).State = EntityState.Modified;
+                    pagos.MedioPagoId = int.Parse(cbPagos.SelectedValue.ToString());
+                    pagos.OrdenId = OrdenId;
+                    if (!string.IsNullOrEmpty(txtMonto.Text)) { pagos.Monto = MontoActual - double.Parse(txtMonto.Text); }
+                    else { pagos.Monto = MontoActual - double.Parse("0"); }
+
+                    db.Entry(pagos).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                }
+                Pagos pago = new Pagos();
+                pago.Fecha = DateTime.Today;
+                pago.EmpleadoRealizo = Program.Pin;
+                pago.Monto = double.Parse(txtMonto.Text);
+
+                pago.MedioPagoId = int.Parse(cbPagos.SelectedValue.ToString());
+                pago.OrdenId = OrdenId;
+                db.Pagos.Add(pago);
                 db.SaveChanges();
 
+                Ordenes orden = db.Ordenes.Find(OrdenId);
+                orden.CantidadPagada = double.Parse(txtMonto.Text);
+                orden.CantidadRestante = orden.CantidadRestante - double.Parse(txtMonto.Text);
+                db.Entry(orden).State = EntityState.Modified;
+                db.SaveChanges();
             }
-            Pagos pago = new Pagos();
-            pago.Fecha = DateTime.Today;
-            pago.EmpleadoRealizo = Program.Pin;
-            pago.Monto = double.Parse(txtMonto.Text);
+            catch (Exception)
+            {
 
-            pago.MedioPagoId = int.Parse(cbPagos.SelectedValue.ToString());
-            pago.OrdenId = OrdenId;
-            db.Pagos.Add(pago);
-            db.SaveChanges();
+            }
             
-            Ordenes orden = db.Ordenes.Find(OrdenId);
-            orden.CantidadPagada = double.Parse(txtMonto.Text);
-            orden.CantidadRestante= orden.CantidadRestante- double.Parse(txtMonto.Text);
-            db.Entry(orden).State = EntityState.Modified;
-            db.SaveChanges();
+          
 
         }
 
@@ -158,30 +179,38 @@ namespace Kosturas.View
         void ClickCambiarEstado()
         {
 
-          
-
-
-            if (Program.Pin != null)
+            try
             {
-                var Mensaje = MessageBox.Show("Esta Seguro desea Completar Orden", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (Mensaje == DialogResult.Yes)
+                if (Program.Pin != null)
                 {
-                   
+                    var Mensaje = MessageBox.Show("Esta Seguro desea Completar Orden", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (Mensaje == DialogResult.Yes)
+                    {
 
-                    var Orden = db.Ordenes.Find(OrdenId);
 
-                    Orden.Prendas.SelectMany(m => m.DetalleTareas).ToList().ForEach(w => { w.Estado = true; w.EmpleadoActualizo = Program.Pin; });
-                   
-                   
-                    db.SaveChanges();
-                  
+                        var Orden = db.Ordenes.Find(OrdenId);
+
+                        Orden.Prendas.SelectMany(m => m.DetalleTareas).ToList().ForEach(w => { w.Estado = true; w.EmpleadoActualizo = Program.Pin; });
+
+
+                        db.SaveChanges();
+
+
+                    }
+
+
+
 
                 }
-
-
-
-
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+     
 
 
 

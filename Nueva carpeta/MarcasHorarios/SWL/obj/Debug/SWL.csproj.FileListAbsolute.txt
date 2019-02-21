@@ -1,0 +1,54 @@
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\bin\Debug\SWL.dll.config
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\bin\Debug\SWL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\bin\Debug\SWL.pdb
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\bin\Debug\BLL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\bin\Debug\ETL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\bin\Debug\DAL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\bin\Debug\BLL.pdb
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\bin\Debug\ETL.pdb
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\bin\Debug\DAL.pdb
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\obj\Debug\SWL.csprojResolveAssemblyReference.cache
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\obj\Debug\SWL.csproj.CoreCompileInputs.cache
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\obj\Debug\SWL.dll
+C:\Users\rnunez\Desktop\Sist.Planillas\SWL\obj\Debug\SWL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\bin\Debug\SWL.dll.config
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\bin\Debug\SWL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\bin\Debug\SWL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\bin\Debug\BLL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\bin\Debug\ETL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\bin\Debug\DAL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\bin\Debug\BLL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\bin\Debug\ETL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\bin\Debug\DAL.pdb
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\obj\Debug\SWL.csprojResolveAssemblyReference.cache
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\obj\Debug\SWL.csproj.CoreCompileInputs.cache
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\obj\Debug\SWL.dll
+C:\Users\rnunez\Desktop\MarcasHorarios\SWL\obj\Debug\SWL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\SWL.dll.config
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\SWL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\SWL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\BLL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\ETL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\DAL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\BLL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\ETL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\DAL.pdb
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.csprojAssemblyReference.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.csproj.CoreCompileInputs.cache
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.csproj.CopyComplete
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.dll
+C:\Users\Donovan\OneDrive\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\SWL.dll.config
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\SWL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\SWL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\BLL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\ETL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\DAL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\BLL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\ETL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\bin\Debug\DAL.pdb
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.csprojAssemblyReference.cache
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.csproj.CoreCompileInputs.cache
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.csproj.CopyComplete
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.dll
+C:\Users\donov\Documents\Documentos\Proyectos Net 2017\MarcasHorarios\SWL\obj\Debug\SWL.pdb

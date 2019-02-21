@@ -39,18 +39,26 @@ namespace Kosturas.View
 
         private void frmImformacionCliente_Load(object sender, EventArgs e)
         {
-
-            var medios =
-      from a in db.MediosPago
-
-      select new { Names = a.FormaPago };
-
-            this.cmbMediosPago.DataSource = medios.ToList();
-            this.cmbMediosPago.DisplayMember = "Names";
-            if (ClienteId > 0)
+            try
             {
-                cargar();
+                var medios =
+ from a in db.MediosPago
+
+ select new { Names = a.FormaPago };
+
+                this.cmbMediosPago.DataSource = medios.ToList();
+                this.cmbMediosPago.DisplayMember = "Names";
+                if (ClienteId > 0)
+                {
+                    cargar();
+                }
             }
+            catch (Exception)
+            {
+
+                
+            }
+       
 
         }
         private void cargar()
@@ -72,36 +80,46 @@ namespace Kosturas.View
 
         private void btnActualizarCliente_Click(object sender, EventArgs e)
         {
-            this.Opacity = 0.99;
-            this.Close();
-            Program.abrirform = 3;
 
-            frmPin frmPin = new frmPin();
-            frmPin.ShowDialog();
-            Cliente cliente = db.Clientes.Find(ClienteId);
+            try
+            {
+                this.Opacity = 0.99;
+                this.Close();
+                Program.abrirform = 3;
 
-
-            cliente.Nombre = txtNombre.Text;
-            cliente.Email = txtEmail.Text;
-            cliente.Calle = txtCalle.Text;
-            cliente.Ciudad = txtCiudad.Text;
-            cliente.TelefonoPrincipal = txtTelefonoPrincipal.Text;
-            cliente.TelefonoDos = txtTelefono2.Text;
-            cliente.Telefonotres = txtTelefono3.Text;
-
-            cliente.Codigopostal = txtCodigoPostal.Text;
-            cliente.FechaModificacion = DateTime.Now.ToString("dd/MM/yyyy") + " " + DateTime.Now.ToString("HH:mm:ss");
-            cliente.Empleadoactualiza = Program.Pin;
+                frmPin frmPin = new frmPin();
+                frmPin.ShowDialog();
+                Cliente cliente = db.Clientes.Find(ClienteId);
 
 
-         
+                cliente.Nombre = txtNombre.Text;
+                cliente.Email = txtEmail.Text;
+                cliente.Calle = txtCalle.Text;
+                cliente.Ciudad = txtCiudad.Text;
+                cliente.TelefonoPrincipal = txtTelefonoPrincipal.Text;
+                cliente.TelefonoDos = txtTelefono2.Text;
+                cliente.Telefonotres = txtTelefono3.Text;
 
-            db.Entry(cliente).State = EntityState.Modified;
-            db.SaveChanges();
-            frmPrincipal frm = new frmPrincipal();
-        
-            frm.Opacity = 1;
-            frm.Show();
+                cliente.Codigopostal = txtCodigoPostal.Text;
+                cliente.FechaModificacion = DateTime.Now.ToString("dd/MM/yyyy") + " " + DateTime.Now.ToString("HH:mm:ss");
+                cliente.Empleadoactualiza = Program.Pin;
+
+
+
+
+                db.Entry(cliente).State = EntityState.Modified;
+                db.SaveChanges();
+                frmPrincipal frm = new frmPrincipal();
+
+                frm.Opacity = 1;
+                frm.Show();
+            }
+            catch (Exception)
+            {
+
+               
+            }
+          
         }
 
         private void button2_MouseEnter(object sender, EventArgs e)

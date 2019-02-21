@@ -30,20 +30,28 @@ namespace Kosturas.View
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Ofertas oferta = new Ofertas();
+            try
+            {
+                Ofertas oferta = new Ofertas();
 
-            oferta.NumeroOferta = txtNumeroOferta.Text;
-            oferta.Descripcion = txtDescripcion.Text;
-            oferta.DescuentoPorsentaje = int.Parse(txtDescuento.Text);
-            oferta.ImporteDescuento = txtImporte.Text;
-            oferta.Habilitar = ckbHabilitar.Checked;
+                oferta.NumeroOferta = txtNumeroOferta.Text;
+                oferta.Descripcion = txtDescripcion.Text;
+                oferta.DescuentoPorsentaje = int.Parse(txtDescuento.Text);
+                oferta.ImporteDescuento = txtImporte.Text;
+                oferta.Habilitar = ckbHabilitar.Checked;
 
 
-            db.Ofertas.Add(oferta);
-            db.SaveChanges();
+                db.Ofertas.Add(oferta);
+                db.SaveChanges();
 
-            MessageBox.Show("Oferta Guardada");
-            dvgOfertas.DataSource = db.Ofertas.ToList();
+                MessageBox.Show("Oferta Guardada");
+                dvgOfertas.DataSource = db.Ofertas.ToList();
+            }
+            catch (Exception)
+            {
+
+            }
+           
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -58,50 +66,67 @@ namespace Kosturas.View
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            Ofertas oferta = db.Ofertas.Find(int.Parse(dvgOfertas.SelectedRows[0].Cells[0].Value.ToString()));
-            oferta.NumeroOferta = txtNumeroOferta.Text;
-            oferta.Descripcion = txtDescripcion.Text;
-            oferta.DescuentoPorsentaje = int.Parse(txtDescuento.Text);
-            oferta.ImporteDescuento = txtImporte.Text;
-            oferta.Habilitar = ckbHabilitar.Checked;
+            try
+            {
+                Ofertas oferta = db.Ofertas.Find(int.Parse(dvgOfertas.SelectedRows[0].Cells[0].Value.ToString()));
+                oferta.NumeroOferta = txtNumeroOferta.Text;
+                oferta.Descripcion = txtDescripcion.Text;
+                oferta.DescuentoPorsentaje = int.Parse(txtDescuento.Text);
+                oferta.ImporteDescuento = txtImporte.Text;
+                oferta.Habilitar = ckbHabilitar.Checked;
 
 
-            db.Entry(oferta).State = EntityState.Modified;
-            db.SaveChanges();
+                db.Entry(oferta).State = EntityState.Modified;
+                db.SaveChanges();
 
-            MessageBox.Show("Oferta Actualizada");
+                MessageBox.Show("Oferta Actualizada");
 
-            dvgOfertas.DataSource = db.Ofertas.ToList();
+                dvgOfertas.DataSource = db.Ofertas.ToList();
+            }
+            catch (Exception)
+            {
+
+              
+            }
+
+         
         }
 
         private void dvgOfertas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                int a = e.RowIndex;
 
-            int a = e.RowIndex;
+                if (a != -1)
+                {
 
-            if (a != -1)
+                    this.btnActualizar.Visible = true;
+                    this.btnGuardar.Visible = false;
+                    txtNumeroOferta.Text = dvgOfertas.SelectedRows[0].Cells[1].Value.ToString();
+                    txtDescripcion.Text = dvgOfertas.SelectedRows[0].Cells[2].Value.ToString();
+                    txtDescuento.Text = dvgOfertas.SelectedRows[0].Cells[3].Value.ToString();
+                    txtImporte.Text = dvgOfertas.SelectedRows[0].Cells[4].Value.ToString();
+
+                    var check = dvgOfertas.SelectedRows[0].Cells[5].Value.ToString();
+                    if (check == "True")
+                    {
+                        ckbHabilitar.Checked = true;
+                    }
+                    else
+                    {
+                        ckbHabilitar.Checked = false;
+                    }
+
+
+
+                }
+            }
+            catch (Exception)
             {
 
-                this.btnActualizar.Visible = true;
-                this.btnGuardar.Visible = false;
-                txtNumeroOferta.Text= dvgOfertas.SelectedRows[0].Cells[1].Value.ToString();
-                 txtDescripcion.Text= dvgOfertas.SelectedRows[0].Cells[2].Value.ToString();
-                 txtDescuento.Text= dvgOfertas.SelectedRows[0].Cells[3].Value.ToString();
-                 txtImporte.Text= dvgOfertas.SelectedRows[0].Cells[4].Value.ToString();
-              
-               var check = dvgOfertas.SelectedRows[0].Cells[5].Value.ToString();
-                if (check == "True")
-                {
-                    ckbHabilitar.Checked = true;
-                }
-                else
-                {
-                    ckbHabilitar.Checked = false;
-                }
-           
-           
-
             }
+         
         }
 
         private void btnGuardar_MouseEnter(object sender, EventArgs e)

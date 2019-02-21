@@ -74,159 +74,168 @@ namespace Kosturas.View
         }
         void CargarReporteClientes(string a, string b)
         {
-            BorrarPanelReporteClientes();
-
-
-            listaClientes = new List<OrdenViewModel>();
-
-
-
-
-
-
-
-            rowCount = 0;
-            var Colores = true;
-
-            var desde = a + " 00:00";
-            var hasta = b + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-
-
-
-            var query = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta)
-
-               .ToList();
-
-
-
-
-            foreach (var itemdos in query.ToList())
-
+            try
             {
-
-                var panelViewSMS = new OrdenViewModel();
-
+                BorrarPanelReporteClientes();
 
 
+                listaClientes = new List<OrdenViewModel>();
 
-                panelViewSMS.Panel.Name = itemdos.OrdenId.ToString();
-                panelViewSMS.Panel.BackColor = Color.Yellow;
-                panelViewSMS.Panel.MouseEnter += new EventHandler(Mouseover);
-                panelViewSMS.Panel.MouseLeave += new EventHandler(Mouseleave);
-                panelViewSMS.Panel.Size = new Size(1410, 30);
-                if (Colores == true)
+
+
+
+
+
+
+                rowCount = 0;
+                var Colores = true;
+
+                var desde = a + " 00:00";
+                var hasta = b + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+
+
+
+                var query = db.Ordenes.Where(q => q.FeEnt >= fdesde && q.FeEnt <= fhasta)
+
+                   .ToList();
+
+
+
+
+                foreach (var itemdos in query.ToList())
+
                 {
-                    panelViewSMS.Panel.BackColor = Color.White;
-                    Colores = false;
+
+                    var panelViewSMS = new OrdenViewModel();
+
+
+
+
+                    panelViewSMS.Panel.Name = itemdos.OrdenId.ToString();
+                    panelViewSMS.Panel.BackColor = Color.Yellow;
+                    panelViewSMS.Panel.MouseEnter += new EventHandler(Mouseover);
+                    panelViewSMS.Panel.MouseLeave += new EventHandler(Mouseleave);
+                    panelViewSMS.Panel.Size = new Size(1410, 30);
+                    if (Colores == true)
+                    {
+                        panelViewSMS.Panel.BackColor = Color.White;
+                        Colores = false;
+                    }
+                    else
+                    {
+                        panelViewSMS.Panel.BackColor = Color.WhiteSmoke;
+                        Colores = true;
+                    }
+
+                    panelViewSMS.lblId.Text = itemdos.Cliente.Nombre.ToString();
+
+
+                    panelViewSMS.lblNombre.Text = itemdos.Cliente.TelefonoPrincipal.ToString();
+
+                    panelViewSMS.lblNombre.Location = new Point(140, 8);
+                    panelViewSMS.lblNombre.Size = new Size(100, 25);
+
+
+
+                    panelViewSMS.lblHoraEntrada.Text = itemdos.Cliente.Email.ToString();
+
+                    panelViewSMS.lblHoraEntrada.Size = new Size(100, 25);
+                    panelViewSMS.lblHoraEntrada.Location = new Point(280, 8);
+
+
+
+                    panelViewSMS.lblLocalizacion.Text = itemdos.Cliente.Calle.ToString();
+
+                    panelViewSMS.lblLocalizacion.Size = new Size(100, 25);
+                    panelViewSMS.lblLocalizacion.Location = new Point(430, 8);
+
+
+                    panelViewSMS.lblFechaEntrada.Text = itemdos.Cliente.Ciudad.ToString();
+
+                    panelViewSMS.lblFechaEntrada.Location = new Point(570, 8);
+                    panelViewSMS.lblFechaEntrada.Size = new Size(130, 25);
+
+
+                    panelViewSMS.lblMontoPagado.Text = itemdos.TotalOrden.ToString();
+
+                    panelViewSMS.lblMontoPagado.Name = itemdos.OrdenId.ToString();
+
+                    panelViewSMS.lblMontoPagado.Size = new Size(120, 25);
+                    panelViewSMS.lblMontoPagado.Location = new Point(710, 8);
+
+
+                    panelViewSMS.lblTotal.Text = itemdos.CantidadPagada.ToString();
+
+                    panelViewSMS.lblTotal.Location = new Point(855, 8);
+                    panelViewSMS.lblTotal.Size = new Size(100, 25);
+
+                    if (itemdos.Pagos.Count > 0)
+                    {
+                        panelViewSMS.lblMontoRestante.Text = itemdos.Pagos.FirstOrDefault().Puntos.ToString();
+
+                        panelViewSMS.lblMontoRestante.Location = new Point(990, 8);
+                        panelViewSMS.lblMontoRestante.Size = new Size(100, 25);
+                    }
+                    else
+                    {
+                        panelViewSMS.lblMontoRestante.Text = "0";
+
+                        panelViewSMS.lblMontoRestante.Location = new Point(990, 8);
+                        panelViewSMS.lblMontoRestante.Size = new Size(100, 25);
+                    }
+                    panelViewSMS.lblEstado.Text = itemdos.Cliente.Notas.ToString();
+
+                    panelViewSMS.lblEstado.Location = new Point(1130, 8);
+
+                    panelViewSMS.lblEstado.Size = new Size(130, 25);
+
+
+
+
+
+                    panelViewSMS.lblDetalles.Text = "Ver Ordenes";
+                    panelViewSMS.lblDetalles.Name = itemdos.ClienteId.ToString();
+                    panelViewSMS.lblDetalles.ForeColor = Color.Blue;
+                    panelViewSMS.lblDetalles.Size = new Size(120, 25);
+
+                    panelViewSMS.lblDetalles.Location = new Point(1300, 8);
+
+                    panelViewSMS.lblDetalles.Click += new EventHandler(ClickCargarListaOrdenes);
+
+
+
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblId);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblFechaEntrada);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblHoraEntrada);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblLocalizacion);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblNombre);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblEstado);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblMontoRestante);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblTotal);
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblDetalles);
+
+                    panelViewSMS.Panel.Controls.Add(panelViewSMS.lblMontoPagado);
+
+
+
+                    listaClientes.Add(panelViewSMS);
+                    rowCount += 1;
+                    tblDetalleSMS.RowCount = rowCount;
+                    this.tblDetalleSMS.Controls.Add(listaClientes.Last().Panel, 0, rowCount);
+
+
+
+
                 }
-                else
-                {
-                    panelViewSMS.Panel.BackColor = Color.WhiteSmoke;
-                    Colores = true;
-                }
-
-                panelViewSMS.lblId.Text = itemdos.Cliente.Nombre.ToString();
-
-
-                panelViewSMS.lblNombre.Text = itemdos.Cliente.TelefonoPrincipal.ToString();
-
-                panelViewSMS.lblNombre.Location = new Point(140, 8);
-                panelViewSMS.lblNombre.Size = new Size(100, 25);
-
-
-
-                panelViewSMS.lblHoraEntrada.Text = itemdos.Cliente.Email.ToString();
-
-                panelViewSMS.lblHoraEntrada.Size = new Size(100, 25);
-                panelViewSMS.lblHoraEntrada.Location = new Point(280, 8);
-
-
-
-                panelViewSMS.lblLocalizacion.Text = itemdos.Cliente.Calle.ToString();
-
-                panelViewSMS.lblLocalizacion.Size = new Size(100, 25);
-                panelViewSMS.lblLocalizacion.Location = new Point(430, 8);
-
-
-                panelViewSMS.lblFechaEntrada.Text = itemdos.Cliente.Ciudad.ToString();
-
-                panelViewSMS.lblFechaEntrada.Location = new Point(570, 8);
-                panelViewSMS.lblFechaEntrada.Size = new Size(130, 25);
-
-
-                panelViewSMS.lblMontoPagado.Text = itemdos.TotalOrden.ToString();
-
-                panelViewSMS.lblMontoPagado.Name = itemdos.OrdenId.ToString();
-
-                panelViewSMS.lblMontoPagado.Size = new Size(120, 25);
-                panelViewSMS.lblMontoPagado.Location = new Point(710, 8);
-
-
-                panelViewSMS.lblTotal.Text = itemdos.CantidadPagada.ToString();
-
-                panelViewSMS.lblTotal.Location = new Point(855, 8);
-                panelViewSMS.lblTotal.Size = new Size(100, 25);
-
-                if (itemdos.Pagos.Count > 0)
-                {
-                    panelViewSMS.lblMontoRestante.Text = itemdos.Pagos.FirstOrDefault().Puntos.ToString();
-
-                    panelViewSMS.lblMontoRestante.Location = new Point(990, 8);
-                    panelViewSMS.lblMontoRestante.Size = new Size(100, 25);
-                }
-                else
-                {
-                    panelViewSMS.lblMontoRestante.Text = "0";
-
-                    panelViewSMS.lblMontoRestante.Location = new Point(990, 8);
-                    panelViewSMS.lblMontoRestante.Size = new Size(100, 25);
-                }
-                panelViewSMS.lblEstado.Text = itemdos.Cliente.Notas.ToString();
-
-                panelViewSMS.lblEstado.Location = new Point(1130, 8);
-               
-                panelViewSMS.lblEstado.Size = new Size(130, 25);
-
-
-
-
-
-                panelViewSMS.lblDetalles.Text = "Ver Ordenes";
-                panelViewSMS.lblDetalles.Name = itemdos.ClienteId.ToString();
-                panelViewSMS.lblDetalles.ForeColor = Color.Blue;
-                panelViewSMS.lblDetalles.Size = new Size(120, 25);
-           
-                panelViewSMS.lblDetalles.Location = new Point(1300, 8);
-
-                panelViewSMS.lblDetalles.Click += new EventHandler(ClickCargarListaOrdenes);
-
-
-
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblId);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblFechaEntrada);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblHoraEntrada);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblLocalizacion);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblNombre);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblEstado);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblMontoRestante);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblTotal);
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblDetalles);
-
-                panelViewSMS.Panel.Controls.Add(panelViewSMS.lblMontoPagado);
-
-
-
-                listaClientes.Add(panelViewSMS);
-                rowCount += 1;
-                tblDetalleSMS.RowCount = rowCount;
-                this.tblDetalleSMS.Controls.Add(listaClientes.Last().Panel, 0, rowCount);
-
-
-
-
             }
+            catch (Exception)
+            {
+                
+            }
+
+         
 
         }
         void ClickCargarListaOrdenes(object sender, EventArgs e)

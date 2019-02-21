@@ -76,213 +76,242 @@ namespace Kosturas.View
         }
         void cargarTotalIngresos(string a, string b)
         {
-            var desde = a + " 00:00";
-            var hasta = b + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-            var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).ToList();
-            if (query.Count>0)
+            try
             {
-                this.lblTotalIngresos.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(q => q.Monto).ToString();
+                var desde = a + " 00:00";
+                var hasta = b + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+                var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).ToList();
+                if (query.Count > 0)
+                {
+                    this.lblTotalIngresos.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(q => q.Monto).ToString();
 
+                }
             }
+            catch (Exception)
+            {
+
+            
+            }
+
+           
 
         }
         void ClickCargarTotalIngresos(string a, string b)
         {
-            BorrarPanelTotalPagos();
+            try
+            {
+                BorrarPanelTotalPagos();
 
 
-            listaIngresos = new List<OrdenViewModel>();
-
-
-
-
-
-
-
-            rowCount = 0;
-           
-
-            var desde = a + " 00:00";
-            var hasta = b + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-
-         
-            var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta)
-                .GroupBy(q=>new { q.MedioPagoId , q.MediosPago.FormaPago, q.Fecha,})
-                .Select(x=>new { MedioPagoId = x.Key.MedioPagoId,Fecha=x.Key.Fecha,MedioPAgo=x.Key.FormaPago,Total=x.Sum(q=>q.Monto)} )
-                .ToList();
+                listaIngresos = new List<OrdenViewModel>();
 
 
 
-            foreach (var itemdos in query.ToList())
 
+
+
+
+                rowCount = 0;
+
+
+                var desde = a + " 00:00";
+                var hasta = b + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+
+
+                var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta)
+                    .GroupBy(q => new { q.MedioPagoId, q.MediosPago.FormaPago, q.Fecha, })
+                    .Select(x => new { MedioPagoId = x.Key.MedioPagoId, Fecha = x.Key.Fecha, MedioPAgo = x.Key.FormaPago, Total = x.Sum(q => q.Monto) })
+                    .ToList();
+
+
+
+                foreach (var itemdos in query.ToList())
+
+                {
+
+                    var panelViewPagosTotales = new OrdenViewModel();
+
+
+
+
+                    panelViewPagosTotales.Panel.Name = itemdos.MedioPagoId.ToString();
+                    panelViewPagosTotales.Panel.Size = new Size(430, 30);
+                    panelViewPagosTotales.Panel.BackColor = Color.WhiteSmoke;
+
+
+
+                    panelViewPagosTotales.lblId.Text = "Total " + itemdos.MedioPAgo;
+
+
+                    panelViewPagosTotales.lblNombre.Text = itemdos.Total.ToString();
+                    panelViewPagosTotales.lblNombre.Size = new Size(100, 25);
+
+
+
+
+
+
+
+
+
+                    panelViewPagosTotales.Panel.Controls.Add(panelViewPagosTotales.lblId);
+                    panelViewPagosTotales.Panel.Controls.Add(panelViewPagosTotales.lblNombre);
+
+
+
+
+                    listaIngresos.Add(panelViewPagosTotales);
+                    rowCount += 1;
+                    tlpPagos.RowCount = rowCount;
+                    this.tlpPagos.Controls.Add(listaIngresos.Last().Panel, 0, rowCount);
+
+
+
+
+
+                }
+            }
+            catch (Exception)
             {
 
-                var panelViewPagosTotales = new OrdenViewModel();
-
-
-
-
-                panelViewPagosTotales.Panel.Name = itemdos.MedioPagoId.ToString();
-                panelViewPagosTotales.Panel.Size = new Size(430, 30);
-                panelViewPagosTotales.Panel.BackColor = Color.WhiteSmoke;
+               
+            }
 
           
-
-                panelViewPagosTotales.lblId.Text = "Total " +itemdos.MedioPAgo ;
-                
-               
-                panelViewPagosTotales.lblNombre.Text = itemdos.Total.ToString();
-                panelViewPagosTotales.lblNombre.Size = new Size(100, 25);
-                
-               
-            
-
-        
-
-
-
-
-                panelViewPagosTotales.Panel.Controls.Add(panelViewPagosTotales.lblId);
-                panelViewPagosTotales.Panel.Controls.Add(panelViewPagosTotales.lblNombre);
-
-
-
-
-                listaIngresos.Add(panelViewPagosTotales);
-                rowCount += 1;
-                tlpPagos.RowCount = rowCount;
-                this.tlpPagos.Controls.Add(listaIngresos.Last().Panel, 0, rowCount);
-                
-
-
-
-
-            }
 
             
 
         }
         void ClickCargarPagos(string a, string b)
         {
-            BorrarPanelPagos();
-
-
-            listaPagos = new List<OrdenViewModel>();
-
-
-
-
-
-
-
-            rowCount = 0;
-            var Colores = true;
-
-            var desde = a + " 00:00";
-            var hasta = b + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-
-
-
-            var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta)
-               .GroupBy(q => new { q.MedioPagoId, q.MediosPago.FormaPago, q.Fecha, })
-               .Select(x => new { MedioPagoId = x.Key.MedioPagoId, Fecha = x.Key.Fecha, MedioPAgo = x.Key.FormaPago, Total = x.Sum(q => q.Monto) })
-               .ToList();
-
-
-
-
-            foreach (var itemdos in query.ToList())
-
+            try
             {
-
-                var panelViewPagos = new OrdenViewModel();
-
+                BorrarPanelPagos();
 
 
+                listaPagos = new List<OrdenViewModel>();
 
-                panelViewPagos.Panel.Name = itemdos.MedioPagoId.ToString();
-                panelViewPagos.Panel.MouseEnter += new EventHandler(Mouseover);
-                panelViewPagos.Panel.MouseLeave += new EventHandler(Mouseleave);
-                panelViewPagos.Panel.Size =new Size(800, 30);
-                if (Colores == true)
+
+
+
+
+
+
+                rowCount = 0;
+                var Colores = true;
+
+                var desde = a + " 00:00";
+                var hasta = b + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+
+
+
+                var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta)
+                   .GroupBy(q => new { q.MedioPagoId, q.MediosPago.FormaPago, q.Fecha, })
+                   .Select(x => new { MedioPagoId = x.Key.MedioPagoId, Fecha = x.Key.Fecha, MedioPAgo = x.Key.FormaPago, Total = x.Sum(q => q.Monto) })
+                   .ToList();
+
+
+
+
+                foreach (var itemdos in query.ToList())
+
                 {
-                    panelViewPagos.Panel.BackColor = Color.White;
-                    Colores = false;
-                }
-                else
-                {
-                    panelViewPagos.Panel.BackColor = Color.WhiteSmoke;
-                    Colores = true;
-                }
 
-                panelViewPagos.lblId.Text = itemdos.Fecha.ToString();
-                
+                    var panelViewPagos = new OrdenViewModel();
 
-                panelViewPagos.lblNombre.Text = itemdos.MedioPAgo.ToString();
-                panelViewPagos.lblNombre.Size =new Size(100, 25);
-                
 
-                
+
+
+                    panelViewPagos.Panel.Name = itemdos.MedioPagoId.ToString();
+                    panelViewPagos.Panel.MouseEnter += new EventHandler(Mouseover);
+                    panelViewPagos.Panel.MouseLeave += new EventHandler(Mouseleave);
+                    panelViewPagos.Panel.Size = new Size(800, 30);
+                    if (Colores == true)
+                    {
+                        panelViewPagos.Panel.BackColor = Color.White;
+                        Colores = false;
+                    }
+                    else
+                    {
+                        panelViewPagos.Panel.BackColor = Color.WhiteSmoke;
+                        Colores = true;
+                    }
+
+                    panelViewPagos.lblId.Text = itemdos.Fecha.ToString();
+
+
+                    panelViewPagos.lblNombre.Text = itemdos.MedioPAgo.ToString();
+                    panelViewPagos.lblNombre.Size = new Size(100, 25);
+
+
+
                     panelViewPagos.lblHoraEntrada.Text = "Codigo";
 
                     panelViewPagos.lblHoraEntrada.Size = new Size(100, 25);
                     panelViewPagos.lblHoraEntrada.Location = new Point(250, 8);
-                    
-                 
+
+
 
                     panelViewPagos.lblLocalizacion.Text = itemdos.Total.ToString();
                     panelViewPagos.lblLocalizacion.Size = new Size(100, 25);
                     panelViewPagos.lblLocalizacion.Location = new Point(380, 8);
-                    
+
 
                     panelViewPagos.lblFechaEntrada.Text = itemdos.Total.ToString();
                     panelViewPagos.lblFechaEntrada.Location = new Point(530, 8);
                     panelViewPagos.lblFechaEntrada.Size = new Size(100, 25);
-                    
-
-
-               
 
 
 
 
-                panelViewPagos.lblMontoPagado.Text = "Ver Lista Pagos";
-                panelViewPagos.lblMontoPagado.Name = itemdos.MedioPagoId.ToString();
-                panelViewPagos.lblMontoPagado.ForeColor = Color.Red;
-                panelViewPagos.lblMontoPagado.Size = new Size(120, 25);
-                panelViewPagos.lblMontoPagado.Location = new Point(670, 8);
-               
-                panelViewPagos.lblMontoPagado.Click += new EventHandler(ClickCargarListaPagos);
-
-              
-
-
-                panelViewPagos.Panel.Controls.Add(panelViewPagos.lblId);
-                panelViewPagos.Panel.Controls.Add(panelViewPagos.lblFechaEntrada);
-                panelViewPagos.Panel.Controls.Add(panelViewPagos.lblHoraEntrada);
-                panelViewPagos.Panel.Controls.Add(panelViewPagos.lblLocalizacion);
-                panelViewPagos.Panel.Controls.Add(panelViewPagos.lblNombre);
- 
-
-                panelViewPagos.Panel.Controls.Add(panelViewPagos.lblMontoPagado);
 
 
 
-                listaPagos.Add(panelViewPagos);
-                rowCount += 1;
-                tlpPagos.RowCount = rowCount;
-                this.tblDetallePagos.Controls.Add(listaPagos.Last().Panel, 0, rowCount);
+
+                    panelViewPagos.lblMontoPagado.Text = "Ver Lista Pagos";
+                    panelViewPagos.lblMontoPagado.Name = itemdos.MedioPagoId.ToString();
+                    panelViewPagos.lblMontoPagado.ForeColor = Color.Red;
+                    panelViewPagos.lblMontoPagado.Size = new Size(120, 25);
+                    panelViewPagos.lblMontoPagado.Location = new Point(670, 8);
+
+                    panelViewPagos.lblMontoPagado.Click += new EventHandler(ClickCargarListaPagos);
 
 
 
+
+                    panelViewPagos.Panel.Controls.Add(panelViewPagos.lblId);
+                    panelViewPagos.Panel.Controls.Add(panelViewPagos.lblFechaEntrada);
+                    panelViewPagos.Panel.Controls.Add(panelViewPagos.lblHoraEntrada);
+                    panelViewPagos.Panel.Controls.Add(panelViewPagos.lblLocalizacion);
+                    panelViewPagos.Panel.Controls.Add(panelViewPagos.lblNombre);
+
+
+                    panelViewPagos.Panel.Controls.Add(panelViewPagos.lblMontoPagado);
+
+
+
+                    listaPagos.Add(panelViewPagos);
+                    rowCount += 1;
+                    tlpPagos.RowCount = rowCount;
+                    this.tblDetallePagos.Controls.Add(listaPagos.Last().Panel, 0, rowCount);
+
+
+
+
+                }
+            }
+            catch (Exception)
+            {
 
             }
+
+            
 
         }
         void ClickCargarListaPagos(object sender, EventArgs e)

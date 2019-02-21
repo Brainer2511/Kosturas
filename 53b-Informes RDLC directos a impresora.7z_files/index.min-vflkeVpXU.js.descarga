@@ -1,0 +1,2 @@
+define(["require","exports"],function(e,T){"use strict";Object.defineProperty(T,"__esModule",{value:!0}),T.DEFAULT_COLOR_SCHEME={mainColor:"#e6e8eb",accentColor:"#6a7c8f"},T.SIGNATURE_HEIGHT=40,T.SIGNATURE_FONT="px Kristi",T.TEXT_FIELD_FONT_TMPL="px Arial",T.TEXT_OVERFLOW_PADDING=30,T.ICON_SIZE=40,T.SPECTRUM_BUTTON_PADDING=20});
+//# sourceMappingURL=index.min.js-vflIvlsOA.map

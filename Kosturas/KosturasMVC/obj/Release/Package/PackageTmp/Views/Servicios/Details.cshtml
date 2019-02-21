@@ -1,0 +1,98 @@
+﻿@model Domain.Servicios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Servicios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VisualizarServicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisualizarServicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreServicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreServicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prefijo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prefijo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Impuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Impuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descuentos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descuentos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Afiliado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Afiliado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alerta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alerta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habilitar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habilitar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImprimirEtiqueta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImprimirEtiqueta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imagen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ServiciosId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

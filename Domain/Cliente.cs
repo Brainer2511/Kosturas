@@ -29,5 +29,6 @@ namespace Domain
         public string Empleadoactualiza { get; set; } = "";
 
         public virtual ICollection<Ordenes> Ordenes { get; set; }
+        public virtual ICollection<Ventas> Ventas { get; set; }
     }
 }

@@ -10,9 +10,11 @@ namespace Domain
 {
   public class Productos
     {
-        [KeyAttribute()]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int CodigoId { get; set; }
+
+        [Key]
+        public int ProductoId { get; set; }
+
+        public int? CodigoId { get; set; }
 
         public string Nombre { get; set; } = "";
         public string Categoria { get; set; } = "";

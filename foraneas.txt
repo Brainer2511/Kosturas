@@ -1,0 +1,8 @@
+ ordenes public virtual ICollection<TemDetallesOrdenPrenda> Prendas { get; set; }
+un aorden tiene muchas prendas
+relaciona de uno a muchos 
+
+  public virtual Cliente Cliente { get; set; }
+
+
+una orden prestenece a un solo cliente 

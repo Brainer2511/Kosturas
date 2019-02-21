@@ -510,159 +510,187 @@ namespace Kosturas.View
 
         private void txtMontoCaja_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string x = "";
 
-
-            x = this.txtMontoCaja.Text + e.KeyChar;
-
-            if (e.KeyChar == '\b')
+            try
             {
-                if (x.Length == 1)
+                string x = "";
+
+
+                x = this.txtMontoCaja.Text + e.KeyChar;
+
+                if (e.KeyChar == '\b')
                 {
-                    x = x.Remove(x.Length - 1);
+                    if (x.Length == 1)
+                    {
+                        x = x.Remove(x.Length - 1);
+
+                    }
+                    else
+                    {
+                        x = x.Remove(x.Length - 2);
+
+
+                    }
+                }
+
+
+
+
+                if (x != "")
+                {
+
+                    txtMontoEfectivo.Text = "-" + x.ToString() + ",00";
+                    lblTotalCaja.Text = "-" + x.ToString() + ",00";
+                    lblTotalEfectivo.Text = x.ToString() + ",00";
 
                 }
-                else
+                var a = DateTime.Today.ToShortDateString();
+                var desde = a + " 00:00";
+                var hasta = a + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+                var Pagos = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).ToList();
+
+                foreach (var item in Pagos)
                 {
-                    x = x.Remove(x.Length - 2);
+                    if (item.MedioPagoId == 1)
+                    {
 
+                        lblTotalEfectivo.Text = (double.Parse(lblIngresosEfectivo.Text) + double.Parse(x)).ToString() + ",00";
 
+                    }
+                    if (item.MedioPagoId == 3)
+                    {
+                        lblTotalTarjetas.Text = (double.Parse(lblIngresosTarjeta.Text)).ToString() + ",00";
+                    }
                 }
+
+
+                lblTotalCajaVentas.Text = (double.Parse(lblIngresosEfectivo.Text) +
+                   double.Parse(lblIngresosTarjeta.Text) +
+                   double.Parse(lblIngresosCheque.Text) +
+                   double.Parse(lblTranferencia.Text) +
+                   double.Parse(lblIngresosOtros.Text) + double.Parse(x)).ToString() + ",00";
             }
-
-
-
-
-            if (x != "")
-           {
-             
-                txtMontoEfectivo.Text ="-"+ x.ToString() + ",00";
-                lblTotalCaja.Text = "-" + x.ToString() + ",00";
-                lblTotalEfectivo.Text = x.ToString() + ",00";
-
-            }
-            var a = DateTime.Today.ToShortDateString();
-            var desde = a + " 00:00";
-            var hasta = a + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-            var Pagos = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).ToList();
-
-            foreach (var item in Pagos)
+            catch (Exception)
             {
-                if (item.MedioPagoId == 1)
-                {
 
-                    lblTotalEfectivo.Text = (double.Parse(lblIngresosEfectivo.Text) + double.Parse(x)).ToString() + ",00";
-
-                }
-                if (item.MedioPagoId == 3)
-                {
-                    lblTotalTarjetas.Text = (double.Parse(lblIngresosTarjeta.Text)).ToString() + ",00";
-                }
+               
             }
-       
-
-            lblTotalCajaVentas.Text = (double.Parse(lblIngresosEfectivo.Text) +
-               double.Parse(lblIngresosTarjeta.Text) +
-               double.Parse(lblIngresosCheque.Text) +
-               double.Parse(lblTranferencia.Text) +
-               double.Parse(lblIngresosOtros.Text) + double.Parse(x)).ToString() + ",00";
+          
         }
 
         void Sumatoria()
         {
-            if (this.txtMontoCaja.Text == "")
+            try
             {
-                MontoCaja = 0;
+                if (this.txtMontoCaja.Text == "")
+                {
+                    MontoCaja = 0;
+                }
+                else
+                { MontoCaja = double.Parse(this.txtMontoCaja.Text); }
+
+
+                this.lblSaldoCaja.Text = (double.Parse((lbl5.Text).Remove(0, 1)) +
+                    double.Parse((lbl10.Text).Remove(0, 1)) +
+                    double.Parse((lbl25.Text).Remove(0, 1)) +
+                    double.Parse((lbl50.Text).Remove(0, 1)) +
+                    double.Parse((lbl100.Text).Remove(0, 1)) +
+                    double.Parse((lbl500.Text).Remove(0, 1)) +
+                    double.Parse((lbl1000.Text).Remove(0, 1))
+                    + double.Parse((lbl2000.Text).Remove(0, 1)) +
+                    double.Parse((lbl5000.Text).Remove(0, 1)) +
+                    double.Parse((lbl10000.Text).Remove(0, 1)) +
+                    double.Parse((lbl20000.Text).Remove(0, 1))
+                    + double.Parse((lbl50000.Text).Remove(0, 1))).ToString() + ",00";
+                var Sumatoria = double.Parse(lblSaldoCaja.Text);
+                var ResultadoDatos = Sumatoria - MontoCaja;
+                this.txtMontoEfectivo.Text = ResultadoDatos + ",00";
+                this.lblTotalCaja.Text = ResultadoDatos + ",00";
             }
-            else
-            { MontoCaja = double.Parse(this.txtMontoCaja.Text); }
+            catch (Exception)
+            {
 
+                
+            }
 
-            this.lblSaldoCaja.Text = (double.Parse((lbl5.Text).Remove(0, 1)) +
-                double.Parse((lbl10.Text).Remove(0, 1)) +
-                double.Parse((lbl25.Text).Remove(0, 1)) +
-                double.Parse((lbl50.Text).Remove(0, 1)) +
-                double.Parse((lbl100.Text).Remove(0, 1)) +
-                double.Parse((lbl500.Text).Remove(0, 1)) +
-                double.Parse((lbl1000.Text).Remove(0, 1))
-                + double.Parse((lbl2000.Text).Remove(0, 1)) +
-                double.Parse((lbl5000.Text).Remove(0, 1)) +
-                double.Parse((lbl10000.Text).Remove(0, 1)) +
-                double.Parse((lbl20000.Text).Remove(0, 1))
-                + double.Parse((lbl50000.Text).Remove(0, 1))).ToString() + ",00";
-            var Sumatoria = double.Parse(lblSaldoCaja.Text);
-            var ResultadoDatos = Sumatoria - MontoCaja;
-            this.txtMontoEfectivo.Text = ResultadoDatos + ",00";
-            this.lblTotalCaja.Text = ResultadoDatos + ",00";
+           
         }
 
         private void CierreCaja_Load(object sender, EventArgs e)
         {
-
-            var fecha = db.CierreCajas.ToList();
-            var ultimaFechaApertura = fecha.LastOrDefault().FechaApertura;
-            var ultimoIdCierre = fecha.LastOrDefault().CierreId;
-            if (ultimaFechaApertura == null)
+            try
             {
-                CierreCaja cierre = db.CierreCajas.Find(ultimoIdCierre);
+                var fecha = db.CierreCajas.ToList();
+                var ultimaFechaApertura = fecha.LastOrDefault().FechaApertura;
+                var ultimoIdCierre = fecha.LastOrDefault().CierreId;
+                if (ultimaFechaApertura == null)
+                {
+                    CierreCaja cierre = db.CierreCajas.Find(ultimoIdCierre);
 
-                cierre.FechaApertura = DateTime.Now;
+                    cierre.FechaApertura = DateTime.Now;
+
+                    db.Entry(cierre).State = EntityState.Modified;
+                    db.SaveChanges();
+
+
+                }
+                var a = DateTime.Today.ToShortDateString();
+                var desde = a + " 00:00";
+                var hasta = a + " 23:59";
+                var fdesde = DateTime.Parse(desde);
+                var fhasta = DateTime.Parse(hasta);
+
+
+
+
+                var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta)
+                 .GroupBy(q => new { q.MedioPagoId, q.MediosPago.FormaPago, q.Fecha, })
+                 .Select(x => new { MedioPagoId = x.Key.MedioPagoId, Fecha = x.Key.Fecha, MedioPago = x.Key.FormaPago, Total = x.Sum(q => q.Monto) })
+                 .ToList();
+                dgvPagos.DataSource = query.Select(t => new { t.MedioPago, t.Total }).ToList();
+
+
+                foreach (var itemdos in query.ToList())
+
+                {
+                    if (itemdos.MedioPagoId == 1)
+                    {
+                        lblIngresosEfectivo.Text = itemdos.Total.ToString();
+                        lblVerDetalleEfectivo.Name = itemdos.MedioPagoId.ToString();
+                    }
+                    else { lblVerDetalleEfectivo.Name = "0"; }
+
+                    if (itemdos.MedioPagoId == 3)
+                    {
+                        lblIngresosTarjeta.Text = itemdos.Total.ToString();
+                        lblVerDetalleTarjeta.Name = itemdos.MedioPagoId.ToString();
+                    }
+                    else { lblVerDetalleTarjeta.Name = "0"; }
+
+                }
+                if (query.Count > 0)
+                {
+                    lblTotalVentas.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(w => w.Monto).ToString() + ",00";
+                }
+                txtMontoEfectivo.Text = "-" + txtMontoCaja.Text + ",00";
+                lblTotalCaja.Text = "-" + txtMontoCaja.Text + ",00";
+                lblTotalEfectivo.Text = txtMontoCaja.Text + ",00";
+
+                lblTotalEfectivo.Text = (double.Parse(lblIngresosEfectivo.Text) + double.Parse(txtMontoCaja.Text)).ToString() + ",00";
+                lblTotalTarjetas.Text = (double.Parse(lblIngresosTarjeta.Text)).ToString() + ",00";
+                lblTotalCajaVentas.Text = (double.Parse(lblTotalVentas.Text) + double.Parse(txtMontoCaja.Text)).ToString() + ",00";
+
+                label4.Text = fecha.LastOrDefault().FechaApertura.ToString();
+                label3.Text = fecha.LastOrDefault().FechaCierre.ToString();
+            }
+            catch (Exception)
+            {
+
+                
+            }
            
-                db.Entry(cierre).State = EntityState.Modified;
-                db.SaveChanges();
-
-
-            }
-            var a =DateTime.Today.ToShortDateString();
-            var desde = a + " 00:00";
-            var hasta = a + " 23:59";
-            var fdesde = DateTime.Parse(desde);
-            var fhasta = DateTime.Parse(hasta);
-
-
-            
-
-            var query = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta)
-             .GroupBy(q => new { q.MedioPagoId, q.MediosPago.FormaPago, q.Fecha, })
-             .Select(x => new { MedioPagoId = x.Key.MedioPagoId, Fecha = x.Key.Fecha, MedioPago = x.Key.FormaPago, Total = x.Sum(q => q.Monto) })
-             .ToList();
-            dgvPagos.DataSource = query.Select(t => new { t.MedioPago, t.Total }).ToList();
-
-   
-            foreach (var itemdos in query.ToList())
-
-            {
-                if (itemdos.MedioPagoId == 1)
-                {
-                    lblIngresosEfectivo.Text = itemdos.Total.ToString();
-                    lblVerDetalleEfectivo.Name = itemdos.MedioPagoId.ToString();
-                }
-                else { lblVerDetalleEfectivo.Name = "0"; }
-
-                if (itemdos.MedioPagoId == 3)
-                {
-                    lblIngresosTarjeta.Text = itemdos.Total.ToString();
-                    lblVerDetalleTarjeta.Name = itemdos.MedioPagoId.ToString();
-                }
-                else { lblVerDetalleTarjeta.Name = "0"; }
-              
-            }
-            if (query.Count>0)
-            {
-                lblTotalVentas.Text = db.Pagos.Where(q => q.Fecha >= fdesde && q.Fecha <= fhasta).Sum(w => w.Monto).ToString() + ",00";
-            }
-            txtMontoEfectivo.Text = "-" + txtMontoCaja.Text + ",00";
-            lblTotalCaja.Text = "-" + txtMontoCaja.Text + ",00";
-            lblTotalEfectivo.Text = txtMontoCaja.Text + ",00";
-
-            lblTotalEfectivo.Text = (double.Parse(lblIngresosEfectivo.Text) + double.Parse(txtMontoCaja.Text)).ToString() + ",00";
-            lblTotalTarjetas.Text = (double.Parse(lblIngresosTarjeta.Text)).ToString() + ",00";
-            lblTotalCajaVentas.Text = (double.Parse(lblTotalVentas.Text) + double.Parse(txtMontoCaja.Text)).ToString() + ",00";
-
-            label4.Text = fecha.LastOrDefault().FechaApertura.ToString();
-            label3.Text= fecha.LastOrDefault().FechaCierre.ToString();
         }
 
         private void label53_Click(object sender, EventArgs e)
@@ -690,60 +718,70 @@ namespace Kosturas.View
 
         private void btnCerrarCaja_Click(object sender, EventArgs e)
         {
-            frmPin pin = new frmPin();
-            this.Opacity = 0.80;
-            pin.ShowDialog();
-            this.Opacity = 1;
+            try
+            {
+                frmPin pin = new frmPin();
+                this.Opacity = 0.80;
+                pin.ShowDialog();
+                this.Opacity = 1;
 
-            CierreCaja cierre = new CierreCaja();
+                CierreCaja cierre = new CierreCaja();
 
-            cierre.MontoInicial = double.Parse(txtMontoCaja.Text);
-            //cierre.FechaApertura = DateTime.Today;
-            cierre.FechaCierre = DateTime.Now;
-            cierre.TotalDiferencia = double.Parse(txtMontoEfectivo.Text);
-            cierre.Notas = txtNotas.Text;
-            cierre.EmpleadoCerro = Program.Pin;
+                cierre.MontoInicial = double.Parse(txtMontoCaja.Text);
 
-            cierre.CantidadMonedas5 = txt5.Text;
-            cierre.CantidadMonedas10 = txt10.Text;
-            cierre.CantidadMonedas25 = txt25.Text;
-            cierre.CantidadMonedas50 = txt50.Text;
-            cierre.CantidadMonedas100 = txt100.Text;
-            cierre.CantidadMonedas500 = txt500.Text;
+                cierre.FechaCierre = DateTime.Now;
+                cierre.TotalDiferencia = double.Parse(txtMontoEfectivo.Text);
+                cierre.Notas = txtNotas.Text;
+                cierre.EmpleadoCerro = Program.Pin;
 
-            cierre.CantidadBilletes1000 = txt1000.Text;
-            cierre.CantidadBilletes2000 = txt2000.Text;
-            cierre.CantidadBilletes5000 = txt5000.Text;
-            cierre.CantidadBilletes10000 = txt10000.Text;
-            cierre.CantidadBilletes20000 = txt20000.Text;
-            cierre.CantidadBilletes50000 = txt50000.Text;
+                cierre.CantidadMonedas5 = txt5.Text;
+                cierre.CantidadMonedas10 = txt10.Text;
+                cierre.CantidadMonedas25 = txt25.Text;
+                cierre.CantidadMonedas50 = txt50.Text;
+                cierre.CantidadMonedas100 = txt100.Text;
+                cierre.CantidadMonedas500 = txt500.Text;
 
-            cierre.CantidadActualEfectivo = lblIngresosEfectivo.Text;
-            cierre.CantidadIngresoEfectivo = lblIngresosEfectivo.Text;
-            cierre.DiferenciaEfectivo= txtMontoEfectivo.Text;
+                cierre.CantidadBilletes1000 = txt1000.Text;
+                cierre.CantidadBilletes2000 = txt2000.Text;
+                cierre.CantidadBilletes5000 = txt5000.Text;
+                cierre.CantidadBilletes10000 = txt10000.Text;
+                cierre.CantidadBilletes20000 = txt20000.Text;
+                cierre.CantidadBilletes50000 = txt50000.Text;
 
-            cierre.CantidadActualTarjetas = lblIngresosTarjeta.Text;
-            cierre.CantidadIngresoTarjetas = lblIngresosTarjeta.Text;
-            cierre.DiferenciaTarjetas = txtMontoTarjeta.Text;
+                cierre.CantidadActualEfectivo = lblIngresosEfectivo.Text;
+                cierre.CantidadIngresoEfectivo = lblIngresosEfectivo.Text;
+                cierre.DiferenciaEfectivo = txtMontoEfectivo.Text;
 
-            cierre.CantidadActualCheques = lblIngresosCheque.Text;
-            cierre.CantidadIngresoCheques = lblIngresosCheque.Text;
-            cierre.DiferenciaCheques = txtMontoCheque.Text;
+                cierre.CantidadActualTarjetas = lblIngresosTarjeta.Text;
+                cierre.CantidadIngresoTarjetas = lblIngresosTarjeta.Text;
+                cierre.DiferenciaTarjetas = txtMontoTarjeta.Text;
 
-            cierre.CantidadActualTransferencia = lblTranferencia.Text;
-            cierre.CantidadIngresoTransferencia = lblTranferencia.Text;
-            cierre.DiferenciaTransferencia = txtTransferencia.Text;
+                cierre.CantidadActualCheques = lblIngresosCheque.Text;
+                cierre.CantidadIngresoCheques = lblIngresosCheque.Text;
+                cierre.DiferenciaCheques = txtMontoCheque.Text;
 
-            cierre.CantidadActualOtros = lblIngresosOtros.Text;
-            cierre.CantidadIngresoOtros = lblIngresosOtros.Text;
-            cierre.DiferenciaOtros = txtOtro.Text;
+                cierre.CantidadActualTransferencia = lblTranferencia.Text;
+                cierre.CantidadIngresoTransferencia = lblTranferencia.Text;
+                cierre.DiferenciaTransferencia = txtTransferencia.Text;
 
-
-            db.CierreCajas.Add(cierre);
-            db.SaveChanges();
+                cierre.CantidadActualOtros = lblIngresosOtros.Text;
+                cierre.CantidadIngresoOtros = lblIngresosOtros.Text;
+                cierre.DiferenciaOtros = txtOtro.Text;
 
 
-            this.Close();
+                db.CierreCajas.Add(cierre);
+                db.SaveChanges();
+
+
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+                
+            }
+
+           
         }
 
         private void btnActualizaRegistros_MouseEnter(object sender, EventArgs e)

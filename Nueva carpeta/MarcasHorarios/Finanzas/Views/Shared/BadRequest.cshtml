@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "BadRequest";
+}
+<div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+        <div style="padding-top:15px">
+            <div class="row">
+                <span class="oops derecha">Oops!</span>
+            </div>
+            <br />
+            <div class="row">
+                <span class="title-error"><b>Algo salió mal aquí...</b></span>
+                <h3>Solicitud incorrecta</h3>
+                <br />
+                <p class="texto-error">
+                    Estamos trabajando en ello y esperamos que muy pronto esté solucionado, discúlpanos por todos los inconvenientes.
+                </p>
+                <p class="texto-error">
+                    Puede volver atrás e intentarlo nuevamente.                    
+                </p>
+                @Html.ActionLink("<< Volver", "Index", "Home", new { }, new { @class = "btn btn-default raised-button  btn-round waves-effect" })
+            </div>
+        </div>
+    </div>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+        <img class="img-responsive" width="350" height="450" src="~/Content/Imagenes/AvatarError.png" />
+    </div>
+</div>
