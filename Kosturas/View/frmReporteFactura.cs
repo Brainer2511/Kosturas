@@ -37,11 +37,13 @@ namespace Kosturas
         {
             try
             {
-             
+                this.sp_ReporteFActuradosTableAdapter.Fill(this.DataSet5.sp_ReporteFActurados, OrdenId);
+            
+               // DataSet3.sp_ReporteFActurados.Fill,GetData(OrdenId);
                 //AutoPrintCls autoprintme = new AutoPrintCls(reportViewer1.LocalReport);
                 //autoprintme.Print();
 
-             
+
             }
             catch (Exception ex)
             {
@@ -50,6 +52,7 @@ namespace Kosturas
             
             }
             // TODO: esta línea de código carga datos en la tabla 'DataSet1.sp_ReporteFActura' Puede moverla o quitarla según sea necesario.
+
 
 
 

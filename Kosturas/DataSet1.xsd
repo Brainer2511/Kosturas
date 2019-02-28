@@ -2,14 +2,15 @@
 <xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="KosturasDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="KosturasDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Kosturas.Properties.Settings.GlobalReference.Default.KosturasDBConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DB_A27AB6_djarquin01ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DB_A27AB6_djarquin01ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Kosturas.Properties.Settings.GlobalReference.Default.DB_A27AB6_djarquin01ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sp_ReporteFActuradosTableAdapter" GeneratorDataComponentClassName="sp_ReporteFActuradosTableAdapter" Name="sp_ReporteFActurados" UserDataComponentName="sp_ReporteFActuradosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="KosturasDBConnectionString (Settings)" DbObjectName="KosturasDB.dbo.sp_ReporteFActurados" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="DB_A27AB6_djarquin01ConnectionString (Settings)" DbObjectName="DB_A27AB6_djarquin01.dbo.sp_ReporteFActurados" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_ReporteFActurados</CommandText>
@@ -24,11 +25,8 @@
             <Mappings>
               <Mapping SourceColumn="OrdenId" DataSetColumn="OrdenId" />
               <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
-              <Mapping SourceColumn="TelefonoPrincipal" DataSetColumn="TelefonoPrincipal" />
               <Mapping SourceColumn="TipoRopa" DataSetColumn="TipoRopa" />
               <Mapping SourceColumn="Total" DataSetColumn="Total" />
-              <Mapping SourceColumn="CantidadRestante" DataSetColumn="CantidadRestante" />
-              <Mapping SourceColumn="CantidadPagada" DataSetColumn="CantidadPagada" />
               <Mapping SourceColumn="EmpleadoRealizo" DataSetColumn="EmpleadoRealizo" />
               <Mapping SourceColumn="FeEnt" DataSetColumn="FeEnt" />
               <Mapping SourceColumn="FechaSalida" DataSetColumn="FechaSalida" />
@@ -36,7 +34,6 @@
               <Mapping SourceColumn="DetalleTareas" DataSetColumn="DetalleTareas" />
               <Mapping SourceColumn="NombreTareas" DataSetColumn="NombreTareas" />
               <Mapping SourceColumn="NombreServicio" DataSetColumn="NombreServicio" />
-              <Mapping SourceColumn="Imagen" DataSetColumn="Imagen" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -59,13 +56,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TelefonoPrincipal" msprop:Generator_ColumnVarNameInTable="columnTelefonoPrincipal" msprop:Generator_ColumnPropNameInRow="TelefonoPrincipal" msprop:Generator_ColumnPropNameInTable="TelefonoPrincipalColumn" msprop:Generator_UserColumnName="TelefonoPrincipal" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="TipoRopa" msprop:Generator_ColumnVarNameInTable="columnTipoRopa" msprop:Generator_ColumnPropNameInRow="TipoRopa" msprop:Generator_ColumnPropNameInTable="TipoRopaColumn" msprop:Generator_UserColumnName="TipoRopa" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -74,8 +64,6 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
-              <xs:element name="CantidadRestante" msprop:Generator_ColumnVarNameInTable="columnCantidadRestante" msprop:Generator_ColumnPropNameInRow="CantidadRestante" msprop:Generator_ColumnPropNameInTable="CantidadRestanteColumn" msprop:Generator_UserColumnName="CantidadRestante" type="xs:double" />
-              <xs:element name="CantidadPagada" msprop:Generator_ColumnVarNameInTable="columnCantidadPagada" msprop:Generator_ColumnPropNameInRow="CantidadPagada" msprop:Generator_ColumnPropNameInTable="CantidadPagadaColumn" msprop:Generator_UserColumnName="CantidadPagada" type="xs:double" />
               <xs:element name="EmpleadoRealizo" msprop:Generator_ColumnVarNameInTable="columnEmpleadoRealizo" msprop:Generator_ColumnPropNameInRow="EmpleadoRealizo" msprop:Generator_ColumnPropNameInTable="EmpleadoRealizoColumn" msprop:Generator_UserColumnName="EmpleadoRealizo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -107,13 +95,6 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="NombreServicio" msprop:Generator_ColumnVarNameInTable="columnNombreServicio" msprop:Generator_ColumnPropNameInRow="NombreServicio" msprop:Generator_ColumnPropNameInTable="NombreServicioColumn" msprop:Generator_UserColumnName="NombreServicio" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Imagen" msprop:Generator_ColumnVarNameInTable="columnImagen" msprop:Generator_ColumnPropNameInRow="Imagen" msprop:Generator_ColumnPropNameInTable="ImagenColumn" msprop:Generator_UserColumnName="Imagen" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />

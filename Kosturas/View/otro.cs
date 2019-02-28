@@ -28,11 +28,14 @@ namespace Kosturas.View
 
             try
             {
-                this.sp_ReporteFActuraTableAdapter.Fill(this.dSServicios.sp_ReporteFActura, DetalleId);
+
+                this.sp_ReporteFActuradosTableAdapter1.Fill(this.dataSet11.sp_ReporteFActurados, DetalleId);
                 ReportParameter report = new ReportParameter("Path", @"file://C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\CodigosBarras\" + OrdenId.ToString() +
                     ".png", true);
                 this.reportViewer1.LocalReport.SetParameters(report);
 
+                //AutoPrintCls autoprintme = new AutoPrintCls(reportViewer1.LocalReport);
+                //autoprintme.Print();
                 this.reportViewer1.RefreshReport();
 
 
@@ -43,10 +46,14 @@ namespace Kosturas.View
                 ReportParameter report = new ReportParameter("Path", @"file://C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\CodigosBarras\" + OrdenId.ToString() +
                    ".png", true);
                 this.reportViewer1.LocalReport.SetParameters(report);
+
+
+                //AutoPrintCls autoprintme = new AutoPrintCls(reportViewer1.LocalReport);
+                //autoprintme.Print();
                 this.reportViewer1.RefreshReport();
             }
 
-            this.reportViewer1.RefreshReport();
+
         }
     }
 }

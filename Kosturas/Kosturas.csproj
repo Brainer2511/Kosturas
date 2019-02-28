@@ -115,6 +115,9 @@
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -153,6 +156,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\ApiService.cs" />
+    <Compile Include="API\LoginRequest.cs" />
+    <Compile Include="API\Response.cs" />
+    <Compile Include="API\ResultJson.cs" />
     <Compile Include="Autoprint.cs" />
     <Compile Include="AutoPrintCls.cs">
       <SubType>Component</SubType>
@@ -161,6 +168,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet5.xsd</DependentUpon>
     </Compile>
     <Compile Include="DSReporteFactura.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -177,6 +199,9 @@
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\ListViewExtender.cs" />
     <Compile Include="InfraExtructura\AutoMapperPerfil.cs" />
+    <Compile Include="JsonModels\Detalle.cs" />
+    <Compile Include="JsonModels\Factura.cs" />
+    <Compile Include="JsonModels\FacturaJSON.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DataContextLocal.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
@@ -188,6 +213,18 @@
     </Compile>
     <Compile Include="View\EditarOrdenes.Designer.cs">
       <DependentUpon>EditarOrdenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FacturaElectronica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FacturaElectronica.Designer.cs">
+      <DependentUpon>FacturaElectronica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmCierreCaja.cs">
       <SubType>Form</SubType>
@@ -474,11 +511,20 @@
     <EmbeddedResource Include="Reportes\Report1.rdlc" />
     <EmbeddedResource Include="Reportes\Report2.rdlc" />
     <EmbeddedResource Include="Reportes\Report3.rdlc" />
+    <EmbeddedResource Include="Reportes\Report4.rdlc" />
+    <EmbeddedResource Include="Reportes\Report5.rdlc" />
+    <EmbeddedResource Include="Reportes\Report6.rdlc" />
     <EmbeddedResource Include="Reportes\Reporte.rdlc" />
     <EmbeddedResource Include="Reportes\ReportePorPrenda.rdlc" />
     <EmbeddedResource Include="Reportes\ReportOrdenTrabajo.rdlc" />
     <EmbeddedResource Include="View\EditarOrdenes.resx">
       <DependentUpon>EditarOrdenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FacturaElectronica.resx">
+      <DependentUpon>FacturaElectronica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmCierreCaja.resx">
       <DependentUpon>frmCierreCaja.cs</DependentUpon>
@@ -625,6 +671,39 @@
     </None>
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet3.xsc">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet3.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet3.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet3.xss">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet4.xsc">
+      <DependentUpon>DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet4.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet4.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet4.xss">
+      <DependentUpon>DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet5.xsc">
+      <DependentUpon>DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet5.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet5.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet5.xss">
+      <DependentUpon>DataSet5.xsd</DependentUpon>
     </None>
     <None Include="DSReporteFactura.xsc">
       <DependentUpon>DSReporteFactura.xsd</DependentUpon>

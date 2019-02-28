@@ -49,8 +49,7 @@ namespace Kosturas
             }
             catch (Exception)
             {
-
-                throw;
+                
             }
         }
 

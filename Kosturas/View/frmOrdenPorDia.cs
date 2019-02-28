@@ -161,7 +161,7 @@ private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
             try
             {
                 rowCount = 0;
-
+                listaOrdenes = new List<OrdenViewModel>();
 
                 BorrarPanelDetalleOrdenes();
                 BorrarPanelOrdenes();

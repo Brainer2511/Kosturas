@@ -25,3 +25,30 @@ C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Domain\obj\Releas
 C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Domain\obj\Release\Domain.csproj.CopyComplete
 C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Domain\obj\Release\Domain.dll
 C:\Users\Erickxon\Desktop\Nueva carpeta\Nueva carpeta\Kosturas\Domain\obj\Release\Domain.pdb
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\Domain.dll.config
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\Domain.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\Domain.pdb
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\EntityFramework.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\Microsoft.Web.Infrastructure.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\Newtonsoft.Json.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.Helpers.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.Mvc.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.Razor.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.WebPages.Deployment.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.WebPages.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.WebPages.Razor.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\EntityFramework.xml
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\Newtonsoft.Json.xml
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.Helpers.xml
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.Mvc.xml
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.Razor.xml
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.WebPages.xml
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.WebPages.Deployment.xml
+C:\Users\Donovan\Desktop\KosturasTry\Domain\bin\Release\System.Web.WebPages.Razor.xml
+C:\Users\Donovan\Desktop\KosturasTry\Domain\obj\Release\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Donovan\Desktop\KosturasTry\Domain\obj\Release\Domain.csproj.CopyComplete
+C:\Users\Donovan\Desktop\KosturasTry\Domain\obj\Release\Domain.dll
+C:\Users\Donovan\Desktop\KosturasTry\Domain\obj\Release\Domain.pdb
+C:\Users\Donovan\Desktop\KosturasTry\Domain\obj\Release\Domain.csprojAssemblyReference.cache

@@ -111,8 +111,7 @@ namespace Kosturas
 
         private void pvMensajes_Click(object sender, EventArgs e)
         {
-            frmReportesSMS reportesSMS = new frmReportesSMS();
-            reportesSMS.ShowDialog();
+         
         }
 
         private void btnNuevaOrden_Click(object sender, EventArgs e)
@@ -1222,14 +1221,16 @@ namespace Kosturas
 
                 var idDetalle = db.OrdenDetallePrendas.Where(q => q.DetalleOrdenPrendaId == id).FirstOrDefault().OrdenId;
 
-                ReporteImagen reporte = new ReporteImagen(idDetalle);
+                ReporteImagen reporte = new ReporteImagen(id);
                 reporte.ShowDialog();
-                FrmFactura frm = new FrmFactura(idDetalle);
+                FrmFactura frm = new FrmFactura(id);
                 frm.ShowDialog();
                 frmReporteFactura form = new frmReporteFactura(idDetalle);
                 form.ShowDialog();
                 otro otro = new otro(idDetalle, id);
                 otro.ShowDialog();
+                Form2 otros = new Form2(idDetalle, id);
+                otros.ShowDialog();
             }
             catch (Exception)
             {
@@ -1837,10 +1838,10 @@ namespace Kosturas
             catch (Exception)
             {
 
-               
+
             }
 
-          
+
 
         }
 

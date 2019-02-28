@@ -114,7 +114,7 @@ namespace Kosturas.View
                 {
                     var Orden = new Ordenes
                     {
-                        FeEnt = DateTime.Now,
+                        FeEnt = DateTime.Today,
 
 
                     };
@@ -165,7 +165,7 @@ namespace Kosturas.View
                 {
                     var Orden = new Ordenes
                     {
-                        FeEnt = DateTime.Now,
+                        FeEnt = DateTime.Today,
                         ClienteId = ClienteId
 
 
@@ -683,14 +683,19 @@ namespace Kosturas.View
          
             using (var db=new DataContextLocal())
             {
+                var ordenPrenda = new TemDetallesOrdenPrenda();
+                var ultimaPrenda = listaprendas.Last();
                 var ordenDetalleTarea = new TemDetallesOrdenes();
                 var ultimaTarea = listatareas.Last();
                 ultimaTarea.Precio = double.Parse(ultimaTarea.txtPrecio.Text);
+                ultimaPrenda.Cantidad = ultimaPrenda.Cantidad;
                 AutoMapper.Mapper.Map(listatareas.Last(), ordenDetalleTarea);
                
                 try
                 {
                     db.Entry(ordenDetalleTarea).State = EntityState.Modified;
+                    db.SaveChanges();
+                    db.Entry(ordenPrenda).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 catch(Exception ex) 

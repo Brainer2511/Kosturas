@@ -11,7 +11,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet4">
+    <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>DSServicios</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -64,11 +64,11 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSServicios</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Erickxon\Desktop\Kosturas\Kosturas\DSServicios.xsd</rd:SchemaPath>
-        <rd:TableName>sp_ReporteFActura</rd:TableName>
+        <rd:SchemaPath>C:\Users\Donovan\Desktop\KosturasTry\Kosturas\DSServicios.xsd</rd:SchemaPath>
+        <rd:TableName>sp_ReporteFActurados</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>sp_ReporteFActuraTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>sp_ReporteFActuradosTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -91,12 +91,6 @@
                   <TextRun>
                     <Value xml:space="preserve"> </Value>
                     <Style />
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Fields!OrdenId.Value</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -124,12 +118,6 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Nombre Cliente: </Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Fields!Nombre.Value</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -175,10 +163,6 @@
                     <Value>Fecha Orden: </Value>
                     <Style />
                   </TextRun>
-                  <TextRun>
-                    <Value>=Fields!FeEnt.Value</Value>
-                    <Style />
-                  </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
@@ -209,10 +193,6 @@
                     <Value>Realizado Por: </Value>
                     <Style />
                   </TextRun>
-                  <TextRun>
-                    <Value>=Fields!EmpleadoRealizo.Value</Value>
-                    <Style />
-                  </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
@@ -241,12 +221,6 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Fecha Entrega:</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Fields!FechaSalida.Value</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -303,10 +277,6 @@
                     <Value>Detalles Orden </Value>
                     <Style />
                   </TextRun>
-                  <TextRun>
-                    <Value>=Fields!OrdenId.Value</Value>
-                    <Style />
-                  </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
@@ -337,10 +307,6 @@
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Fields!FechaSalida.Value</Value>
-                    <Style />
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -376,7 +342,7 @@
               </Border>
             </Style>
           </Image>
-          <Tablix Name="Tablix7">
+          <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
@@ -395,25 +361,25 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="DetalleTareas">
+                        <Textbox Name="Textbox1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!DetalleTareas.Value</Value>
+                                  <Value>Nombre Tareas</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>DetalleTareas</rd:DefaultName>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>None</Style>
+                              <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -423,6 +389,71 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Nombre Tareas</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Detalle Tareas</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="NombreTareas">
@@ -443,7 +474,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>None</Style>
+                              <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -455,25 +486,55 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="NombreServicio">
+                        <Textbox Name="NombreTareas1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!NombreServicio.Value</Value>
+                                  <Value>=Fields!NombreTareas.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>NombreServicio</rd:DefaultName>
+                          <rd:DefaultName>NombreTareas1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>None</Style>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="DetalleTareas">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!DetalleTareas.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>DetalleTareas</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -497,59 +558,18 @@
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="TipoRopa">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!TipoRopa.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!TipoRopa.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
-                  <TablixHeader>
-                    <Size>2.5cm</Size>
-                    <CellContents>
-                      <Textbox Name="TipoRopa">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>=Fields!TipoRopa.Value</Value>
-                                <Style />
-                              </TextRun>
-                            </TextRuns>
-                            <Style />
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>TipoRopa</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>None</Style>
-                          </Border>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <TablixMembers>
-                    <TablixMember>
-                      <Group Name="Detalles" />
-                    </TablixMember>
-                  </TablixMembers>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Detalles" />
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DataSet4</DataSetName>
-            <Top>6.58495cm</Top>
-            <Height>0.6cm</Height>
-            <Width>10cm</Width>
+            <DataSetName>DataSet1</DataSetName>
+            <Top>13.10693cm</Top>
+            <Left>5.44724cm</Left>
+            <Height>1.2cm</Height>
+            <Width>7.5cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -561,7 +581,7 @@
         <Height>6.38037in</Height>
         <Style />
       </Body>
-      <Width>4.15984in</Width>
+      <Width>7.32651in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

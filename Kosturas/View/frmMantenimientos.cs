@@ -110,9 +110,7 @@ namespace Kosturas.View
         private void tretretertreToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            frmSeguimientos seguimientos = new frmSeguimientos();
-            seguimientos.Location = new Point(173, 150);
-            seguimientos.ShowDialog();
+          
         }
 
         private void busToolStripMenuItem_MouseEnter(object sender, EventArgs e)

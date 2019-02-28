@@ -29,55 +29,49 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dSServicios = new Kosturas.DSServicios();
-            this.spReporteFActuraBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_ReporteFActuraTableAdapter = new Kosturas.DSServiciosTableAdapters.sp_ReporteFActuraTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dSServicios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spReporteFActuraBindingSource)).BeginInit();
+            this.sp_ReporteFActuradosTableAdapter1 = new Kosturas.DataSet1TableAdapters.sp_ReporteFActuradosTableAdapter();
+            this.spReporteFActuradosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet11 = new Kosturas.DataSet1();
+            ((System.ComponentModel.ISupportInitialize)(this.spReporteFActuradosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet4";
-            reportDataSource1.Value = this.spReporteFActuraBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.EnableExternalImages = true;
-            this.reportViewer1.LocalReport.EnableHyperlinks = true;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Kosturas.Reportes.Report3.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Kosturas.Reportes.Report4.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.reportViewer1.Size = new System.Drawing.Size(1600, 865);
             this.reportViewer1.TabIndex = 0;
             // 
-            // dSServicios
+            // sp_ReporteFActuradosTableAdapter1
             // 
-            this.dSServicios.DataSetName = "DSServicios";
-            this.dSServicios.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.sp_ReporteFActuradosTableAdapter1.ClearBeforeFill = true;
             // 
-            // spReporteFActuraBindingSource
+            // spReporteFActuradosBindingSource
             // 
-            this.spReporteFActuraBindingSource.DataMember = "sp_ReporteFActura";
-            this.spReporteFActuraBindingSource.DataSource = this.dSServicios;
+            this.spReporteFActuradosBindingSource.DataMember = "sp_ReporteFActurados";
             // 
-            // sp_ReporteFActuraTableAdapter
+            // dataSet11
             // 
-            this.sp_ReporteFActuraTableAdapter.ClearBeforeFill = true;
+            this.dataSet11.DataSetName = "DataSet1";
+            this.dataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // otro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1600, 865);
             this.Controls.Add(this.reportViewer1);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "otro";
             this.Text = "otro";
             this.Load += new System.EventHandler(this.otro_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dSServicios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spReporteFActuraBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spReporteFActuradosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -85,8 +79,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource spReporteFActuraBindingSource;
-        private DSServicios dSServicios;
-        private DSServiciosTableAdapters.sp_ReporteFActuraTableAdapter sp_ReporteFActuraTableAdapter;
+        private DataSet1TableAdapters.sp_ReporteFActuradosTableAdapter sp_ReporteFActuradosTableAdapter1;
+        private System.Windows.Forms.BindingSource spReporteFActuradosBindingSource;
+        private DataSet1 dataSet11;
     }
 }

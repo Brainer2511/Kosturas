@@ -42,9 +42,11 @@ namespace Kosturas.View
                 if (consulta.Any())
 
                 {
+                    
                     MessageBox.Show("Bienvenido");
                     frmPrincipal principal = new frmPrincipal();
                     principal.ShowDialog();
+                     this.Close();
                 }
                 else
                 {
