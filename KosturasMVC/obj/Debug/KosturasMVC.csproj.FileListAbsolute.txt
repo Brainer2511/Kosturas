@@ -490,3 +490,203 @@ C:\Users\Donovan\Desktop\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.dll
 C:\Users\Donovan\Desktop\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.pdb
 C:\Users\Donovan\Desktop\KosturasTry\KosturasMVC\bin\System.Net.Http.Formatting.dll
 C:\Users\Donovan\Desktop\KosturasTry\KosturasMVC\bin\System.Net.Http.Formatting.xml
+G:\KosturasTry\KosturasMVC\bin\KosturasMVC.dll.config
+G:\KosturasTry\KosturasMVC\bin\KosturasMVC.dll
+G:\KosturasTry\KosturasMVC\bin\KosturasMVC.pdb
+G:\KosturasTry\KosturasMVC\bin\roslyn\csc.exe
+G:\KosturasTry\KosturasMVC\bin\roslyn\csc.exe.config
+G:\KosturasTry\KosturasMVC\bin\roslyn\csc.rsp
+G:\KosturasTry\KosturasMVC\bin\roslyn\csi.exe
+G:\KosturasTry\KosturasMVC\bin\roslyn\csi.exe.config
+G:\KosturasTry\KosturasMVC\bin\roslyn\csi.rsp
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.Managed.Core.targets
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.Win32.Primitives.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.AppContext.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Collections.Immutable.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Console.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Diagnostics.StackTrace.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Globalization.Calendars.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.IO.Compression.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.IO.Compression.ZipFile.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.IO.FileSystem.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Net.Http.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Net.Sockets.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Reflection.Metadata.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Text.Encoding.CodePages.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Threading.Tasks.Extensions.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.ValueTuple.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Xml.ReaderWriter.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Xml.XmlDocument.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Xml.XPath.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\System.Xml.XPath.XDocument.dll
+G:\KosturasTry\KosturasMVC\bin\roslyn\vbc.exe
+G:\KosturasTry\KosturasMVC\bin\roslyn\vbc.exe.config
+G:\KosturasTry\KosturasMVC\bin\roslyn\vbc.rsp
+G:\KosturasTry\KosturasMVC\bin\roslyn\VBCSCompiler.exe
+G:\KosturasTry\KosturasMVC\bin\roslyn\VBCSCompiler.exe.config
+G:\KosturasTry\KosturasMVC\bin\Antlr3.Runtime.dll
+G:\KosturasTry\KosturasMVC\bin\Domain.dll
+G:\KosturasTry\KosturasMVC\bin\EntityFramework.dll
+G:\KosturasTry\KosturasMVC\bin\EntityFramework.SqlServer.dll
+G:\KosturasTry\KosturasMVC\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+G:\KosturasTry\KosturasMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+G:\KosturasTry\KosturasMVC\bin\Microsoft.Web.Infrastructure.dll
+G:\KosturasTry\KosturasMVC\bin\Newtonsoft.Json.dll
+G:\KosturasTry\KosturasMVC\bin\System.Diagnostics.DiagnosticSource.dll
+G:\KosturasTry\KosturasMVC\bin\System.Net.Http.Formatting.dll
+G:\KosturasTry\KosturasMVC\bin\System.Web.Helpers.dll
+G:\KosturasTry\KosturasMVC\bin\System.Web.Mvc.dll
+G:\KosturasTry\KosturasMVC\bin\System.Web.Optimization.dll
+G:\KosturasTry\KosturasMVC\bin\System.Web.Razor.dll
+G:\KosturasTry\KosturasMVC\bin\System.Web.WebPages.Deployment.dll
+G:\KosturasTry\KosturasMVC\bin\System.Web.WebPages.dll
+G:\KosturasTry\KosturasMVC\bin\System.Web.WebPages.Razor.dll
+G:\KosturasTry\KosturasMVC\bin\WebGrease.dll
+G:\KosturasTry\KosturasMVC\bin\Domain.pdb
+G:\KosturasTry\KosturasMVC\bin\Domain.dll.config
+G:\KosturasTry\KosturasMVC\bin\EntityFramework.xml
+G:\KosturasTry\KosturasMVC\bin\EntityFramework.SqlServer.xml
+G:\KosturasTry\KosturasMVC\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+G:\KosturasTry\KosturasMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\KosturasTry\KosturasMVC\bin\Newtonsoft.Json.pdb
+G:\KosturasTry\KosturasMVC\bin\Newtonsoft.Json.xml
+G:\KosturasTry\KosturasMVC\bin\System.Diagnostics.DiagnosticSource.xml
+G:\KosturasTry\KosturasMVC\bin\System.Net.Http.Formatting.xml
+G:\KosturasTry\KosturasMVC\bin\System.Web.Helpers.xml
+G:\KosturasTry\KosturasMVC\bin\System.Web.Mvc.xml
+G:\KosturasTry\KosturasMVC\bin\System.Web.Razor.xml
+G:\KosturasTry\KosturasMVC\bin\System.Web.WebPages.xml
+G:\KosturasTry\KosturasMVC\bin\System.Web.WebPages.Deployment.xml
+G:\KosturasTry\KosturasMVC\bin\System.Web.WebPages.Razor.xml
+G:\KosturasTry\KosturasMVC\bin\System.Web.Optimization.xml
+G:\KosturasTry\KosturasMVC\bin\Antlr3.Runtime.pdb
+G:\KosturasTry\KosturasMVC\bin\es\System.Web.Helpers.resources.dll
+G:\KosturasTry\KosturasMVC\bin\es\System.Web.Mvc.resources.dll
+G:\KosturasTry\KosturasMVC\bin\es\System.Web.Razor.resources.dll
+G:\KosturasTry\KosturasMVC\bin\es\System.Web.WebPages.resources.dll
+G:\KosturasTry\KosturasMVC\bin\es\System.Web.WebPages.Deployment.resources.dll
+G:\KosturasTry\KosturasMVC\bin\es\System.Web.WebPages.Razor.resources.dll
+G:\KosturasTry\KosturasMVC\bin\es\System.Web.Optimization.resources.dll
+G:\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.csprojAssemblyReference.cache
+G:\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.csproj.CoreCompileInputs.cache
+G:\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.csproj.CopyComplete
+G:\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.dll
+G:\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.pdb
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\KosturasMVC.dll.config
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\KosturasMVC.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\KosturasMVC.pdb
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\csc.exe
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\csc.exe.config
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\csc.rsp
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\csi.exe
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\csi.exe.config
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\csi.rsp
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.AppContext.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Console.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.IO.Compression.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Net.Http.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Net.Sockets.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.ValueTuple.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Xml.XPath.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\vbc.exe
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\vbc.exe.config
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\vbc.rsp
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Antlr3.Runtime.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Domain.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\EntityFramework.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Newtonsoft.Json.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.Helpers.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.Mvc.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.Optimization.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.Razor.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.WebPages.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\WebGrease.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Domain.pdb
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Domain.dll.config
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\EntityFramework.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Newtonsoft.Json.pdb
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Newtonsoft.Json.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.Helpers.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.Mvc.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.Razor.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.WebPages.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\System.Web.Optimization.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\Antlr3.Runtime.pdb
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\es\System.Web.Helpers.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\es\System.Web.Mvc.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\es\System.Web.Razor.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\es\System.Web.WebPages.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\bin\es\System.Web.Optimization.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.csprojAssemblyReference.cache
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.csproj.CoreCompileInputs.cache
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.csproj.CopyComplete
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\KosturasMVC\obj\Debug\KosturasMVC.pdb

@@ -146,13 +146,13 @@ namespace Kosturas.View
 
 
 
-                    panelViewSMS.lblLocalizacion.Text = itemdos.Cliente.Calle.ToString();
+                    panelViewSMS.lblLocalizacion.Text = itemdos.Cliente.Direcion.ToString();
 
                     panelViewSMS.lblLocalizacion.Size = new Size(100, 25);
                     panelViewSMS.lblLocalizacion.Location = new Point(430, 8);
 
 
-                    panelViewSMS.lblFechaEntrada.Text = itemdos.Cliente.Ciudad.ToString();
+                    panelViewSMS.lblFechaEntrada.Text = itemdos.Cliente.Direcion.ToString();
 
                     panelViewSMS.lblFechaEntrada.Location = new Point(570, 8);
                     panelViewSMS.lblFechaEntrada.Size = new Size(130, 25);
@@ -185,7 +185,7 @@ namespace Kosturas.View
                         panelViewSMS.lblMontoRestante.Location = new Point(990, 8);
                         panelViewSMS.lblMontoRestante.Size = new Size(100, 25);
                     }
-                    panelViewSMS.lblEstado.Text = itemdos.Cliente.Notas.ToString();
+                    panelViewSMS.lblEstado.Text = itemdos.Cliente.Direcion.ToString();
 
                     panelViewSMS.lblEstado.Location = new Point(1130, 8);
 

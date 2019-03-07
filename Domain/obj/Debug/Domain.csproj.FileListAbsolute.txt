@@ -189,3 +189,111 @@ C:\Users\Donovan\Desktop\KosturasTry\Domain\obj\Debug\Domain.csproj.CoreCompileI
 C:\Users\Donovan\Desktop\KosturasTry\Domain\obj\Debug\Domain.csproj.CopyComplete
 C:\Users\Donovan\Desktop\KosturasTry\Domain\obj\Debug\Domain.dll
 C:\Users\Donovan\Desktop\KosturasTry\Domain\obj\Debug\Domain.pdb
+G:\KosturasTry\Domain\bin\Debug\Domain.dll.config
+G:\KosturasTry\Domain\bin\Debug\Domain.dll
+G:\KosturasTry\Domain\bin\Debug\Domain.pdb
+G:\KosturasTry\Domain\bin\Debug\EntityFramework.dll
+G:\KosturasTry\Domain\bin\Debug\EntityFramework.SqlServer.dll
+G:\KosturasTry\Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
+G:\KosturasTry\Domain\bin\Debug\Newtonsoft.Json.dll
+G:\KosturasTry\Domain\bin\Debug\System.Net.Http.Formatting.dll
+G:\KosturasTry\Domain\bin\Debug\System.Web.Helpers.dll
+G:\KosturasTry\Domain\bin\Debug\System.Web.Mvc.dll
+G:\KosturasTry\Domain\bin\Debug\System.Web.Razor.dll
+G:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Deployment.dll
+G:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.dll
+G:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Razor.dll
+G:\KosturasTry\Domain\bin\Debug\EntityFramework.xml
+G:\KosturasTry\Domain\bin\Debug\EntityFramework.SqlServer.xml
+G:\KosturasTry\Domain\bin\Debug\Newtonsoft.Json.pdb
+G:\KosturasTry\Domain\bin\Debug\Newtonsoft.Json.xml
+G:\KosturasTry\Domain\bin\Debug\System.Net.Http.Formatting.xml
+G:\KosturasTry\Domain\bin\Debug\System.Web.Helpers.xml
+G:\KosturasTry\Domain\bin\Debug\System.Web.Mvc.xml
+G:\KosturasTry\Domain\bin\Debug\System.Web.Razor.xml
+G:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.xml
+G:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Deployment.xml
+G:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Razor.xml
+G:\KosturasTry\Domain\bin\Debug\es\System.Web.Helpers.resources.dll
+G:\KosturasTry\Domain\bin\Debug\es\System.Web.Mvc.resources.dll
+G:\KosturasTry\Domain\bin\Debug\es\System.Web.Razor.resources.dll
+G:\KosturasTry\Domain\bin\Debug\es\System.Web.WebPages.resources.dll
+G:\KosturasTry\Domain\bin\Debug\es\System.Web.WebPages.Deployment.resources.dll
+G:\KosturasTry\Domain\bin\Debug\es\System.Web.WebPages.Razor.resources.dll
+G:\KosturasTry\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+G:\KosturasTry\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+G:\KosturasTry\Domain\obj\Debug\Domain.csproj.CopyComplete
+G:\KosturasTry\Domain\obj\Debug\Domain.dll
+G:\KosturasTry\Domain\obj\Debug\Domain.pdb
+E:\KosturasTry\Domain\bin\Debug\Domain.dll.config
+E:\KosturasTry\Domain\bin\Debug\Domain.dll
+E:\KosturasTry\Domain\bin\Debug\Domain.pdb
+E:\KosturasTry\Domain\bin\Debug\EntityFramework.dll
+E:\KosturasTry\Domain\bin\Debug\EntityFramework.SqlServer.dll
+E:\KosturasTry\Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\KosturasTry\Domain\bin\Debug\Newtonsoft.Json.dll
+E:\KosturasTry\Domain\bin\Debug\System.Net.Http.Formatting.dll
+E:\KosturasTry\Domain\bin\Debug\System.Web.Helpers.dll
+E:\KosturasTry\Domain\bin\Debug\System.Web.Mvc.dll
+E:\KosturasTry\Domain\bin\Debug\System.Web.Razor.dll
+E:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.dll
+E:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Razor.dll
+E:\KosturasTry\Domain\bin\Debug\EntityFramework.xml
+E:\KosturasTry\Domain\bin\Debug\EntityFramework.SqlServer.xml
+E:\KosturasTry\Domain\bin\Debug\Newtonsoft.Json.pdb
+E:\KosturasTry\Domain\bin\Debug\Newtonsoft.Json.xml
+E:\KosturasTry\Domain\bin\Debug\System.Net.Http.Formatting.xml
+E:\KosturasTry\Domain\bin\Debug\System.Web.Helpers.xml
+E:\KosturasTry\Domain\bin\Debug\System.Web.Mvc.xml
+E:\KosturasTry\Domain\bin\Debug\System.Web.Razor.xml
+E:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.xml
+E:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Razor.xml
+E:\KosturasTry\Domain\bin\Debug\es\System.Web.Helpers.resources.dll
+E:\KosturasTry\Domain\bin\Debug\es\System.Web.Mvc.resources.dll
+E:\KosturasTry\Domain\bin\Debug\es\System.Web.Razor.resources.dll
+E:\KosturasTry\Domain\bin\Debug\es\System.Web.WebPages.resources.dll
+E:\KosturasTry\Domain\bin\Debug\es\System.Web.WebPages.Deployment.resources.dll
+E:\KosturasTry\Domain\bin\Debug\es\System.Web.WebPages.Razor.resources.dll
+E:\KosturasTry\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+E:\KosturasTry\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+E:\KosturasTry\Domain\obj\Debug\Domain.csproj.CopyComplete
+E:\KosturasTry\Domain\obj\Debug\Domain.dll
+E:\KosturasTry\Domain\obj\Debug\Domain.pdb
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\Domain.dll.config
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\Domain.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\Domain.pdb
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\EntityFramework.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\Newtonsoft.Json.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.Helpers.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.Mvc.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.Razor.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.WebPages.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\EntityFramework.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\Newtonsoft.Json.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.Helpers.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.Mvc.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.Razor.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.WebPages.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\es\System.Web.Helpers.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\es\System.Web.Mvc.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\es\System.Web.Razor.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\es\System.Web.WebPages.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\bin\Debug\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\obj\Debug\Domain.csproj.CopyComplete
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\obj\Debug\Domain.dll
+C:\Users\BRAINER\Desktop\New folder\KosturasTry\Domain\obj\Debug\Domain.pdb

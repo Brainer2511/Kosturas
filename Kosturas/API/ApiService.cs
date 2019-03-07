@@ -50,11 +50,15 @@ namespace Kosturas.API
           
                 foreach (var item in ordenes.ToList())
                 {
-                 
+
                     cliente.Nombre = item.Cliente.Nombre;
                     cliente.Email = item.Cliente.Email;
                     cliente.TelefonoPrincipal = item.Cliente.TelefonoPrincipal;
-
+                    cliente.Cedula = item.Cliente.Cedula;
+                    cliente.numeroProvincia = item.Cliente.numeroProvincia;
+                    cliente.numeroCanton = item.Cliente.numeroCanton;
+                    cliente.numeroDistrito = item.Cliente.numeroDistrito;
+                    cliente.Direcion = item.Cliente.Direcion;
                     factura.factura = new Factura
                     {
                         condicion_venta = "01",
@@ -64,18 +68,18 @@ namespace Kosturas.API
                         tipo_cambio = 560,
                         receptor_nombre = cliente.Nombre,
                         receptor_tipo_identificacion = "01",
-                        receptor_numero_identificacion = "206680137",
-                        receptor_provincia = 1,
-                        receptor_canton = 1,
-                        receptor_distrito = 1,
-                        receptor_otras_senas = "los angeles",
+                        receptor_numero_identificacion = cliente.Cedula,
+                        receptor_provincia = cliente.numeroProvincia.Value,
+                        receptor_canton = cliente.numeroCanton.Value,
+                        receptor_distrito = cliente.numeroDistrito.Value,
+                        receptor_otras_senas = cliente.Direcion,
                         receptor_codigo_telefono = 506,
                         receptor_telefono = int.Parse(cliente.TelefonoPrincipal),
                         receptor_email = cliente.Email
                     };
 
-                 
-                        foreach (var itemT in item.Prendas)
+
+                    foreach (var itemT in item.Prendas)
                         {
                             ordenPrenda.Cantidad = itemT.Cantidad;
                             ordenPrenda.Prenda = itemT.Prenda;

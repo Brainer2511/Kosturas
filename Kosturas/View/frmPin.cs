@@ -44,9 +44,7 @@ namespace Kosturas.View
                     else if (Program.abrirform == 2)
                     {
                         this.Close();
-                        frmPrincipal frm = new frmPrincipal();
-                        frm.Opacity = 1;
-                        frm.Show();
+                     
 
                         frmMantenimientos mantenimientos = new frmMantenimientos();
 
@@ -143,6 +141,62 @@ namespace Kosturas.View
             id = btr.BackColor = ColorEntrada;
 
             id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void txtPin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                {
+                    var consulta = from p in db.Empleados
+                               where p.Clave == txtPin.Text
+
+                               select p;
+                Program.Pin = consulta.FirstOrDefault().Nombre;
+                if (consulta.Any())
+
+                {
+
+                    this.Close();
+                    if (Program.abrirform == 1)
+                    {
+                        frmEmpleado empleado = new frmEmpleado();
+
+                        empleado.ShowDialog();
+                    }
+                    else if (Program.abrirform == 2)
+                    {
+                        this.Close();
+
+
+                        frmMantenimientos mantenimientos = new frmMantenimientos();
+
+                        mantenimientos.Location = new Point(0, 150);
+                        mantenimientos.ShowDialog();
+                    }
+                    else if (Program.abrirform == 3)
+                    {
+                        this.Close();
+
+
+
+                    }
+                    
+                }
+                else
+                {
+
+                    MessageBox.Show("Pin incorrecto");
+                    txtPin.Clear();
+
+                   }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

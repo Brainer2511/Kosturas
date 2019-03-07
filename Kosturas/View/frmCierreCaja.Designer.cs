@@ -124,6 +124,7 @@
             this.label68 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
             this.btnCerrarCaja = new System.Windows.Forms.Button();
+            this.btnEnviarHacienda = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
@@ -145,7 +146,7 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(1181, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(46, 39);
             this.pictureBox1.TabIndex = 13;
@@ -1036,12 +1037,26 @@
             this.btnCerrarCaja.MouseEnter += new System.EventHandler(this.btnActualizaRegistros_MouseEnter);
             this.btnCerrarCaja.MouseLeave += new System.EventHandler(this.btnActualizaRegistros_MouseLeave);
             // 
+            // btnEnviarHacienda
+            // 
+            this.btnEnviarHacienda.BackColor = System.Drawing.Color.White;
+            this.btnEnviarHacienda.Location = new System.Drawing.Point(376, 62);
+            this.btnEnviarHacienda.Name = "btnEnviarHacienda";
+            this.btnEnviarHacienda.Size = new System.Drawing.Size(227, 69);
+            this.btnEnviarHacienda.TabIndex = 213;
+            this.btnEnviarHacienda.Text = "ENVIAR FACTURAS HACIENDA";
+            this.btnEnviarHacienda.UseVisualStyleBackColor = false;
+            this.btnEnviarHacienda.Click += new System.EventHandler(this.btnEnviarHacienda_Click);
+            this.btnEnviarHacienda.MouseEnter += new System.EventHandler(this.btnEnviarHacienda_MouseEnter);
+            this.btnEnviarHacienda.MouseLeave += new System.EventHandler(this.btnEnviarHacienda_MouseLeave);
+            // 
             // frmCierreCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1241, 750);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.Controls.Add(this.btnEnviarHacienda);
             this.Controls.Add(this.btnCerrarCaja);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.label52);
@@ -1246,5 +1261,6 @@
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Button btnCerrarCaja;
+        private System.Windows.Forms.Button btnEnviarHacienda;
     }
 }

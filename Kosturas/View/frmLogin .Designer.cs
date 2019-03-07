@@ -49,7 +49,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(544, 400);
+            this.panel1.Location = new System.Drawing.Point(560, 350);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(355, 193);
             this.panel1.TabIndex = 0;
@@ -91,6 +91,7 @@
             this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(244, 35);
             this.txtClave.TabIndex = 4;
+            this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
             // 
             // txtUsuario
             // 
@@ -134,7 +135,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1428, 632);
+            this.ClientSize = new System.Drawing.Size(1452, 912);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";

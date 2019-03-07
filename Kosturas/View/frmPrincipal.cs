@@ -84,7 +84,7 @@ namespace Kosturas
         {
             frmPrincipal frm = new frmPrincipal();
             var mn=frm.MinimizeBox;
-            Close();
+            //Close();
         }
 
         private void pvEmpleado_Click(object sender, EventArgs e)
@@ -190,7 +190,7 @@ namespace Kosturas
 
             try
             {
-                var query = db.Clientes.Where(j => j.Nombre.Contains(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
+                var query = db.Clientes.Where(j => j.Nombre.Contains(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email }).ToList();
 
                 foreach (var item in query)
 
@@ -241,8 +241,7 @@ namespace Kosturas
                     botonecinco.TabIndex = 143;
 
                     var botonesseis = new TextBox();
-                    botonesseis.Text = item.Notas;
-                    botonesseis.Name = item.Notas;
+                 
                     botonesseis.Multiline = true;
                     botonesseis.KeyPress += new KeyPressEventHandler(ClickTexbox5);
                     botonesseis.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -390,7 +389,7 @@ namespace Kosturas
 
             try
             {
-                var query = db.Clientes.Where(j => j.Nombre == (texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
+                var query = db.Clientes.Where(j => j.Nombre == (texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email }).ToList();
 
                 foreach (var item in query)
 
@@ -441,8 +440,7 @@ namespace Kosturas
                     botonecinco.TabIndex = 143;
 
                     var botonesseis = new TextBox();
-                    botonesseis.Text = item.Notas;
-                    botonesseis.Name = item.Notas;
+                 
                     botonesseis.Multiline = true;
                     botonesseis.KeyPress += new KeyPressEventHandler(ClickTexbox5);
                     botonesseis.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -589,7 +587,7 @@ namespace Kosturas
 
             try
             {
-                var query = db.Clientes.Where(j => j.TelefonoPrincipal.Contains(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Notas }).ToList();
+                var query = db.Clientes.Where(j => j.TelefonoPrincipal.Contains(texbox.ToString())).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.Nombre, t.Email, t.Direcion }).ToList();
 
                 foreach (var item in query)
 
@@ -634,8 +632,7 @@ namespace Kosturas
                     botonecinco.TabIndex = 143;
 
                     var botonesseis = new TextBox();
-                    botonesseis.Text = item.Notas;
-                    botonesseis.Name = item.Notas;
+                  
                     botonesseis.Multiline = true;
                     botonesseis.KeyPress += new KeyPressEventHandler(ClickTexbox5);
                     botonesseis.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1101,7 +1098,7 @@ namespace Kosturas
                 }
                 if (ClientePosicion == 5)
                 {
-                    sucursal.Notas = ClienteTex;
+                    sucursal.Direcion = ClienteTex;
                 }
 
                 db.Entry(sucursal).State = EntityState.Modified;
@@ -1221,16 +1218,16 @@ namespace Kosturas
 
                 var idDetalle = db.OrdenDetallePrendas.Where(q => q.DetalleOrdenPrendaId == id).FirstOrDefault().OrdenId;
 
-                ReporteImagen reporte = new ReporteImagen(id);
+                ReporteImagen reporte = new ReporteImagen(idDetalle, id);
                 reporte.ShowDialog();
-                FrmFactura frm = new FrmFactura(id);
-                frm.ShowDialog();
-                frmReporteFactura form = new frmReporteFactura(idDetalle);
-                form.ShowDialog();
-                otro otro = new otro(idDetalle, id);
-                otro.ShowDialog();
-                Form2 otros = new Form2(idDetalle, id);
-                otros.ShowDialog();
+                //FrmFactura frm = new FrmFactura(idDetalle);
+                //frm.ShowDialog();
+                //frmReporteFactura form = new frmReporteFactura(id);
+                //form.ShowDialog();
+                //otro otro = new otro(idDetalle, id);
+                //otro.ShowDialog();
+                //Form2 otros = new Form2(idDetalle, id);
+                //otros.ShowDialog();
             }
             catch (Exception)
             {
@@ -1543,6 +1540,7 @@ namespace Kosturas
                         panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnPrioridad);
 
                         panelViewPrenda.btnCantidad.Text = prenda.OrdenId.ToString();
+                        panelViewPrenda.btnCantidad.Image= Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Pago.png");
                         panelViewPrenda.btnCantidad.Location = new Point(1271, 0);
                         panelViewPrenda.btnCantidad.Click += new EventHandler(ClickRemoverPagos);
                         panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnCantidad);
@@ -1653,186 +1651,193 @@ namespace Kosturas
         {
             try
             {
-                BorrarPanelOrdenes();
 
-                listaTareas = new List<OrdenDetalleViewModel>();
-                listaPrendas = new List<OrdenPrendaViewModel>();
 
-                Button btn = sender as Button;
-                var id = int.Parse(btn.Name);
-                IdOrden = id;
-
-                var Colores = true;
-
-                rowCount = 0;
-
-                var query = db.Ordenes.Where(q => q.ClienteId == id).ToList();
-                if (query.Count > 0 && query.FirstOrDefault().Pagos.Count > 0)
+                using (DataContextLocal cd=new DataContextLocal())
                 {
-                    var resultado = query.FirstOrDefault().Pagos.FirstOrDefault().Monto;
-                    lblTotalOrdenes.Text = resultado.ToString();
-                    var idDetale = query.FirstOrDefault().Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleOrdenesId;
-                    var detallesO = db.OrdenDetalleTareas.Find(idDetale).Subtotal;
-                }
+                    BorrarPanelOrdenes();
 
+                    listaTareas = new List<OrdenDetalleViewModel>();
+                    listaPrendas = new List<OrdenPrendaViewModel>();
 
+                    Button btn = sender as Button;
+                    var id = int.Parse(btn.Name);
+                    IdOrden = id;
 
-                foreach (var itemdos in query)
+                    var Colores = true;
 
-                {
+                    rowCount = 0;
 
-
-                    var orden = db.Ordenes.Find(itemdos.OrdenId);
-                    var idDetaleOrden = orden.Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleOrdenesId;
-                    var detallesOrden = db.OrdenDetalleTareas.Find(idDetaleOrden);
-
-                    if (detallesOrden.Estado == false)
+                    var query = cd.Ordenes.Where(q => q.ClienteId == id).ToList();
+                    if (query.Count > 0 && query.FirstOrDefault().Pagos.Count > 0)
                     {
-                        foreach (var prenda in orden.Prendas)
-
-                        {
-                            var panelViewPrenda = new OrdenPrendaViewModel(string.Empty);
-
-
-
-
-                            panelViewPrenda.panelPrenda.Click += new EventHandler(ClickCargarOrdenSinCompletar);
-                            panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
-                            if (query.FirstOrDefault().EstadoId == 6)
-                            {
-                                panelViewPrenda.panelPrenda.BackColor = Color.Gray;
-                                panelViewPrenda.btncompletarOrden.BackColor = Color.Gray;
-                                panelViewPrenda.btnPrioridad.BackColor = Color.Gray;
-                                panelViewPrenda.btnCantidad.BackColor = Color.Gray;
-                                panelViewPrenda.btnagregartarea.BackColor = Color.Gray;
-                            }
-                            if (query.FirstOrDefault().EstadoId == 5)
-                            {
-                                panelViewPrenda.panelPrenda.BackColor = Color.Lime;
-                                panelViewPrenda.btncompletarOrden.BackColor = Color.Lime;
-                                panelViewPrenda.btnPrioridad.BackColor = Color.Lime;
-                                panelViewPrenda.btnCantidad.BackColor = Color.Lime;
-                                panelViewPrenda.btnagregartarea.BackColor = Color.Lime;
-                            }
-                            panelViewPrenda.panelPrenda.Size = new Size(1380, 30);
-                            panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
-
-
-
-                            panelViewPrenda.btncompletarOrden.Text = prenda.OrdenId.ToString();//1345, 0
-                            panelViewPrenda.btncompletarOrden.Click += new EventHandler(ClickCompletarOrden);
-                            panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btncompletarOrden);
-
-                            panelViewPrenda.btnPrioridad.Text = prenda.OrdenId.ToString();
-                            panelViewPrenda.btnPrioridad.Location = new Point(1234, 0);
-                            panelViewPrenda.btnPrioridad.Click += new EventHandler(ClickEditarOrden);
-                            panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnPrioridad);
-
-                            panelViewPrenda.btnCantidad.Text = prenda.OrdenId.ToString();
-                            panelViewPrenda.btnCantidad.Location = new Point(1271, 0);
-                            panelViewPrenda.btnCantidad.Click += new EventHandler(ClickRemoverPagos);
-                            panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnCantidad);
-
-                            panelViewPrenda.btnagregartarea.Text = prenda.DetalleOrdenPrendaId.ToString();
-                            panelViewPrenda.btnagregartarea.Location = new Point(1308, 0);
-                            panelViewPrenda.btnagregartarea.Click += new EventHandler(ClickImprimirOrden);
-                            panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnagregartarea);
-
-
-                            panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
-
-                            listaPrendas.Add(panelViewPrenda);
-                            rowCount += 1;
-                            tlpOrdenesClientes.RowCount = rowCount;
-                            this.tlpOrdenesClientes.Controls.Add(listaPrendas.Last().panelPrenda, 0, rowCount);
-
-                            foreach (var tarea in prenda.DetalleTareas)
-                            {
-
-                                var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty, 0);
-
-
-
-                                panelViewTarea.panelTarea.Click += new EventHandler(ClickCargarOrdenSinCompletar);
-                                panelViewTarea.panelTarea.Size = new Size(1380, 30);
-                                panelViewTarea.panelTarea.MouseEnter += new EventHandler(MouseoverDos);
-                                panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
-                                panelViewTarea.panelTarea.Name = tarea.DetalleOrdenesId.ToString();
-                                panelViewTarea.DetalleOrdenesId = tarea.DetalleOrdenesId;
-                                if (Colores == true)
-                                {
-                                    panelViewTarea.panelTarea.BackColor = Color.White;
-                                    Colores = false;
-                                }
-                                else
-                                {
-                                    panelViewTarea.panelTarea.BackColor = Color.WhiteSmoke;
-                                    Colores = true;
-                                }
-
-
-
-                                panelViewTarea.lblTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
-
-                                panelViewTarea.lblTarea.Location = new Point(80, 10);
-                                panelViewTarea.lblTarea.Size = new Size(110, 45);
-
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
-
-                                panelViewTarea.lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
-
-                                panelViewTarea.lblDetalleTarea.Location = new Point(200, 10);
-                                panelViewTarea.lblDetalleTarea.Size = new System.Drawing.Size(150, 34);
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
-
-                                panelViewTarea.lblPrecio.Text = tarea.Detalle.Precio.ToString();
-
-                                panelViewTarea.lblPrecio.Location = new Point(400, 10);
-
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblPrecio);
-
-                                panelViewTarea.txtTotalPrecio.Text = (tarea.Descuento).ToString() + "%";
-
-                                panelViewTarea.txtTotalPrecio.Location = new Point(600, 10);
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtTotalPrecio);
-
-                                panelViewTarea.lblSubTotal.Text = (tarea.Subtotal).ToString();
-
-                                panelViewTarea.lblSubTotal.Location = new Point(800, 10);
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblSubTotal);
-                                if (tarea.AfiliadoId > 0)
-                                {
-                                    var nombre = db.Afiliados.Find(tarea.AfiliadoId);
-                                    panelViewTarea.lblAfiliado.Text = (nombre.Nombre);
-                                }
-                                else
-                                {
-                                    panelViewTarea.lblAfiliado.Text = "";
-                                }
-
-
-                                panelViewTarea.lblAfiliado.Location = new Point(1100, 10);
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblAfiliado);
-
-                                panelViewTarea.lblDescripcion.Text = (tarea.Descripcion).ToString();
-                                panelViewTarea.lblDescripcion.Location = new Point(915, 10);
-                                panelViewTarea.lblDescripcion.Size = new Size(150, 34);
-
-
-                                panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescripcion);
-                                listaTareas.Add(panelViewTarea);
-                                rowCount += 1;
-                                tlpOrdenesClientes.RowCount = rowCount;
-                                this.tlpOrdenesClientes.Controls.Add(listaTareas.Last().panelTarea, 0, rowCount);
-                            }
-
-
-
-
-
-                        }
+                        var resultado = query.FirstOrDefault().Pagos.FirstOrDefault().Monto;
+                        lblTotalOrdenes.Text = resultado.ToString();
+                        var idDetale = query.FirstOrDefault().Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleOrdenesId;
+                        var detallesO = cd.OrdenDetalleTareas.Find(idDetale).Subtotal;
                     }
 
+
+
+                    foreach (var itemdos in query)
+
+                    {
+
+
+                        var orden = cd.Ordenes.Find(itemdos.OrdenId);
+                        var idDetaleOrden = orden.Prendas.FirstOrDefault().DetalleTareas.FirstOrDefault().DetalleOrdenesId;
+                        var detallesOrden = cd.OrdenDetalleTareas.Find(idDetaleOrden);
+
+                        if (detallesOrden.Estado == false)
+                        {
+                            foreach (var prenda in orden.Prendas)
+
+                            {
+                                var panelViewPrenda = new OrdenPrendaViewModel(string.Empty);
+
+
+
+
+                                panelViewPrenda.panelPrenda.Click += new EventHandler(ClickCargarOrdenSinCompletar);
+                                panelViewPrenda.panelPrenda.Name = prenda.DetalleOrdenPrendaId.ToString();
+                                if (query.FirstOrDefault().EstadoId == 6)
+                                {
+                                    panelViewPrenda.panelPrenda.BackColor = Color.Gray;
+                                    panelViewPrenda.btncompletarOrden.BackColor = Color.Gray;
+                                    panelViewPrenda.btnPrioridad.BackColor = Color.Gray;
+                                    panelViewPrenda.btnCantidad.BackColor = Color.Gray;
+                                    panelViewPrenda.btnagregartarea.BackColor = Color.Gray;
+                                }
+                                if (query.FirstOrDefault().EstadoId == 5)
+                                {
+                                    panelViewPrenda.panelPrenda.BackColor = Color.Lime;
+                                    panelViewPrenda.btncompletarOrden.BackColor = Color.Lime;
+                                    panelViewPrenda.btnPrioridad.BackColor = Color.Lime;
+                                    panelViewPrenda.btnCantidad.BackColor = Color.Lime;
+                                    panelViewPrenda.btnagregartarea.BackColor = Color.Lime;
+                                }
+                                panelViewPrenda.panelPrenda.Size = new Size(1380, 30);
+                                panelViewPrenda.lblPrenda.Text = prenda.Prenda.TipoRopa.ToString() + "X" + prenda.Cantidad;
+
+
+
+                                panelViewPrenda.btncompletarOrden.Text = prenda.OrdenId.ToString();//1345, 0
+                                panelViewPrenda.btncompletarOrden.Click += new EventHandler(ClickCompletarOrden);
+                                panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btncompletarOrden);
+
+                                panelViewPrenda.btnPrioridad.Text = prenda.OrdenId.ToString();
+                                panelViewPrenda.btnPrioridad.Location = new Point(1234, 0);
+                                panelViewPrenda.btnPrioridad.Click += new EventHandler(ClickEditarOrden);
+                                panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnPrioridad);
+
+                                panelViewPrenda.btnCantidad.Text = prenda.OrdenId.ToString();
+                                panelViewPrenda.btnCantidad.Image = Image.FromFile("C:\\Users\\Erickxon\\Desktop\\Nueva carpeta\\Nueva carpeta\\Kosturas\\Imagenes\\Pago.png");
+
+                                panelViewPrenda.btnCantidad.Location = new Point(1271, 0);
+                                panelViewPrenda.btnCantidad.Click += new EventHandler(ClickRemoverPagos);
+                                panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnCantidad);
+
+                                panelViewPrenda.btnagregartarea.Text = prenda.DetalleOrdenPrendaId.ToString();
+                                panelViewPrenda.btnagregartarea.Location = new Point(1308, 0);
+                                panelViewPrenda.btnagregartarea.Click += new EventHandler(ClickImprimirOrden);
+                                panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.btnagregartarea);
+
+
+                                panelViewPrenda.panelPrenda.Controls.Add(panelViewPrenda.lblPrenda);
+
+                                listaPrendas.Add(panelViewPrenda);
+                                rowCount += 1;
+                                tlpOrdenesClientes.RowCount = rowCount;
+                                this.tlpOrdenesClientes.Controls.Add(listaPrendas.Last().panelPrenda, 0, rowCount);
+
+                                foreach (var tarea in prenda.DetalleTareas)
+                                {
+
+                                    var panelViewTarea = new OrdenDetalleViewModel(string.Empty, string.Empty, 0);
+
+
+
+                                    panelViewTarea.panelTarea.Click += new EventHandler(ClickCargarOrdenSinCompletar);
+                                    panelViewTarea.panelTarea.Size = new Size(1380, 30);
+                                    panelViewTarea.panelTarea.MouseEnter += new EventHandler(MouseoverDos);
+                                    panelViewTarea.panelTarea.MouseLeave += new EventHandler(MouseleaveDos);
+                                    panelViewTarea.panelTarea.Name = tarea.DetalleOrdenesId.ToString();
+                                    panelViewTarea.DetalleOrdenesId = tarea.DetalleOrdenesId;
+                                    if (Colores == true)
+                                    {
+                                        panelViewTarea.panelTarea.BackColor = Color.White;
+                                        Colores = false;
+                                    }
+                                    else
+                                    {
+                                        panelViewTarea.panelTarea.BackColor = Color.WhiteSmoke;
+                                        Colores = true;
+                                    }
+
+
+
+                                    panelViewTarea.lblTarea.Text = tarea.Detalle.Tarea.NombreTareas.ToString();
+
+                                    panelViewTarea.lblTarea.Location = new Point(80, 10);
+                                    panelViewTarea.lblTarea.Size = new Size(110, 45);
+
+                                    panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblTarea);
+
+                                    panelViewTarea.lblDetalleTarea.Text = tarea.Detalle.DetalleTareas.ToString();
+
+                                    panelViewTarea.lblDetalleTarea.Location = new Point(200, 10);
+                                    panelViewTarea.lblDetalleTarea.Size = new System.Drawing.Size(150, 34);
+                                    panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDetalleTarea);
+
+                                    panelViewTarea.lblPrecio.Text = tarea.Detalle.Precio.ToString();
+
+                                    panelViewTarea.lblPrecio.Location = new Point(400, 10);
+
+                                    panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblPrecio);
+
+                                    panelViewTarea.txtTotalPrecio.Text = (tarea.Descuento).ToString() + "%";
+
+                                    panelViewTarea.txtTotalPrecio.Location = new Point(600, 10);
+                                    panelViewTarea.panelTarea.Controls.Add(panelViewTarea.txtTotalPrecio);
+
+                                    panelViewTarea.lblSubTotal.Text = (tarea.Subtotal).ToString();
+
+                                    panelViewTarea.lblSubTotal.Location = new Point(800, 10);
+                                    panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblSubTotal);
+                                    if (tarea.AfiliadoId > 0)
+                                    {
+                                        var nombre = cd.Afiliados.Find(tarea.AfiliadoId);
+                                        panelViewTarea.lblAfiliado.Text = (nombre.Nombre);
+                                    }
+                                    else
+                                    {
+                                        panelViewTarea.lblAfiliado.Text = "";
+                                    }
+
+
+                                    panelViewTarea.lblAfiliado.Location = new Point(1100, 10);
+                                    panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblAfiliado);
+
+                                    panelViewTarea.lblDescripcion.Text = (tarea.Descripcion).ToString();
+                                    panelViewTarea.lblDescripcion.Location = new Point(915, 10);
+                                    panelViewTarea.lblDescripcion.Size = new Size(150, 34);
+
+
+                                    panelViewTarea.panelTarea.Controls.Add(panelViewTarea.lblDescripcion);
+                                    listaTareas.Add(panelViewTarea);
+                                    rowCount += 1;
+                                    tlpOrdenesClientes.RowCount = rowCount;
+                                    this.tlpOrdenesClientes.Controls.Add(listaTareas.Last().panelTarea, 0, rowCount);
+                                }
+
+
+
+
+
+                            }
+                        }
+
+                    } 
                 }
             }
             catch (Exception)

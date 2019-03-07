@@ -88,7 +88,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Nombre Tareas</Value>
+                              <Value>Nombre Servicio</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -176,21 +176,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="NombreTareas1">
+                    <Textbox Name="NombreServicio">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!NombreTareas.Value</Value>
+                              <Value>=Fields!NombreServicio.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>NombreTareas1</rd:DefaultName>
+                      <rd:DefaultName>NombreServicio</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -225,9 +225,9 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>xxcvbmcvbn</DataSetName>
-        <Top>0.72271in</Top>
-        <Left>0.85292in</Left>
+        <DataSetName>DataSet1rgtgt</DataSetName>
+        <Top>0.51958in</Top>
+        <Left>1.55083in</Left>
         <Height>0.5in</Height>
         <Width>3in</Width>
         <Style>
@@ -255,11 +255,11 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>39b2e691-5c9a-4389-bf0f-ee06f7e7fead</rd:DataSourceID>
+      <rd:DataSourceID>e2ed2e3e-a9ce-4b53-85b7-881de257d205</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="xxcvbmcvbn">
+    <DataSet Name="DataSet1rgtgt">
       <Query>
         <DataSourceName>DataSet5</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -312,7 +312,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet5</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Donovan\Desktop\KosturasTry\Kosturas\DataSet5.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\BRAINER\Desktop\KosturasTry\Kosturas\DataSet5.xsd</rd:SchemaPath>
         <rd:TableName>sp_ReporteFActurados</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

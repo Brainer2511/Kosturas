@@ -42,11 +42,11 @@ namespace Kosturas.View
                 if (consulta.Any())
 
                 {
-                    
+                    this.Hide();
                     MessageBox.Show("Bienvenido");
                     frmPrincipal principal = new frmPrincipal();
                     principal.ShowDialog();
-                     this.Close();
+                    
                 }
                 else
                 {
@@ -95,6 +95,43 @@ namespace Kosturas.View
             id = btr.BackColor = ColorEntrada;
 
             id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void txtClave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                {
+                    var consulta = from p in db.Usuarios
+                               where p.Nombre == txtUsuario.Text
+                               && p.Clave == txtClave.Text
+                               select p;
+
+                if (consulta.Any())
+
+                {
+                    this.Hide();
+                    MessageBox.Show("Bienvenido");
+                    frmPrincipal principal = new frmPrincipal();
+                    principal.ShowDialog();
+
+                }
+                else
+                {
+
+                    MessageBox.Show("Usuario o Contraseña invalidos");
+                    txtUsuario.Clear();
+                    txtClave.Clear();
+                }
+                }
+            }
+            catch (Exception)
+            {
+
+
+            }
+
         }
     }
 }

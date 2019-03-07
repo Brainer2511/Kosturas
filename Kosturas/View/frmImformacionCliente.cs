@@ -65,13 +65,13 @@ namespace Kosturas.View
         {
             txtNombre.Text = cliente.Nombre;
             txtEmail.Text = cliente.Email;
-            txtCalle.Text = cliente.Calle;
-            txtCiudad.Text = cliente.Ciudad;
+            txtCalle.Text = cliente.Direcion;
+           
             txtTelefonoPrincipal.Text = cliente.TelefonoPrincipal;
             txtTelefono2.Text = cliente.TelefonoDos;
-            txtTelefono3.Text = cliente.Telefonotres;
+           
        
-            txtCodigoPostal.Text = cliente.Codigopostal;
+            txtCodigoPostal.Text = cliente.Cedula;
             label25.Text = cliente.EmpleadoInserta;
             label24.Text = cliente.Fecha;
             label28.Text = cliente.Empleadoactualiza;
@@ -94,13 +94,13 @@ namespace Kosturas.View
 
                 cliente.Nombre = txtNombre.Text;
                 cliente.Email = txtEmail.Text;
-                cliente.Calle = txtCalle.Text;
-                cliente.Ciudad = txtCiudad.Text;
+             
+                cliente.Direcion = txtCiudad.Text;
                 cliente.TelefonoPrincipal = txtTelefonoPrincipal.Text;
                 cliente.TelefonoDos = txtTelefono2.Text;
-                cliente.Telefonotres = txtTelefono3.Text;
+               
 
-                cliente.Codigopostal = txtCodigoPostal.Text;
+                cliente.Cedula = txtCodigoPostal.Text;
                 cliente.FechaModificacion = DateTime.Now.ToString("dd/MM/yyyy") + " " + DateTime.Now.ToString("HH:mm:ss");
                 cliente.Empleadoactualiza = Program.Pin;
 

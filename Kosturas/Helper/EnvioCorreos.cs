@@ -14,7 +14,7 @@ namespace Kosturas.Helper
         {
             var message = new MailMessage();
             message.To.Add(new MailAddress(to));
-            message.From = new MailAddress("branerhidalgo@gmail.com");
+            message.From = new MailAddress("kosturas-tienda@outlook.com");
             message.Subject = subject;
             message.Body = body;
             message.IsBodyHtml = true;
@@ -23,8 +23,8 @@ namespace Kosturas.Helper
             {
                 var credential = new NetworkCredential
                 {
-                    UserName = "branerhidalgo@gmail.com",
-                    Password = "GANAZO2519"
+                    UserName = "kosturas-tienda@outlook.com",
+                    Password = "KosturasClientes1"
                 };
 
                 smtp.Credentials = credential;

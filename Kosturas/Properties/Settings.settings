@@ -5,10 +5,10 @@
     <Setting Name="DB_A27AB6_djarquin01ConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=SQL5030.site4now.net;Initial Catalog=DB_A27AB6_djarquin01;Persist Security Info=True;User ID=DB_A27AB6_djarquin01_admin&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=SQL5030.site4now.net;Initial Catalog=DB_A27AB6_djarquin01;Persist Security Info=True;User ID=DB_A27AB6_djarquin01_admin;Password=Shenlong123&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=SQL5030.site4now.net;Initial Catalog=DB_A27AB6_djarquin01;Persist Security Info=True;User ID=DB_A27AB6_djarquin01_admin</Value>
+      <Value Profile="(Default)">Data Source=SQL5030.site4now.net;Initial Catalog=DB_A27AB6_djarquin01;Persist Security Info=True;User ID=DB_A27AB6_djarquin01_admin;Password=Shenlong123</Value>
     </Setting>
     <Setting Name="KosturasDBConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;

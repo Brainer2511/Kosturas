@@ -224,6 +224,9 @@ namespace Kosturas.View
                 DetallePrenda += "</tbody></table>";
                 Email = Email.Replace("{OrderDetails}", DetallePrenda);
                 await EnvioCorreos.SendMail(txtEmail.Text, Subjet, Email);
+
+                FrmFactura frm = new FrmFactura(OrdenId);
+                frm.ShowDialog();
             }
             catch (Exception)
             {

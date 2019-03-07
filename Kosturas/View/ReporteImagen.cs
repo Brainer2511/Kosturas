@@ -16,9 +16,12 @@ namespace Kosturas.View
     public partial class ReporteImagen : Form
     {
         DataContextLocal db = new DataContextLocal();
+
         public int OrdenId { get; set; }
-        public ReporteImagen(int idOrden=0)
+        public int DetalleId { get; set; }
+        public ReporteImagen(int idOrden = 0, int idDetalle = 0)
         {
+            DetalleId = idDetalle;
             OrdenId = idOrden;
             InitializeComponent();
         }
@@ -29,8 +32,8 @@ namespace Kosturas.View
 
             try
             {
-                this.sp_ReporteFActuradosTableAdapter.Fill(this.dataSet1.sp_ReporteFActurados, OrdenId);
-                ReportParameter report = new ReportParameter("Path", @"file://C:\Users\Erickxon\Desktop\Kosturas\Kosturas\bin\Debug\CodigosBarras\" + OrdenId.ToString() +
+                this.sp_ReporteFActuradosTableAdapter.Fill(this.dataSet1.sp_ReporteFActurados, DetalleId);
+                ReportParameter report = new ReportParameter("Path", @"file://" + Path.GetDirectoryName(Application.ExecutablePath) + @"\CodigosBarras\" + OrdenId.ToString() +
                     ".png", true);
                 this.reportViewer1.LocalReport.SetParameters(report);
 
@@ -53,7 +56,7 @@ namespace Kosturas.View
                 this.reportViewer1.RefreshReport();
             }
 
-            this.reportViewer1.RefreshReport();
+   
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -20,6 +20,7 @@ namespace Kosturas.View
     public partial class frmNuevaVenta : Form
     {
         public DataContextLocal db = new DataContextLocal();
+        public int? ClienteId { get; set; }
         int pagina = 1;
         int paginas = 0;
         Color ColorEntrada;
@@ -47,7 +48,53 @@ namespace Kosturas.View
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+
+                using (var db = new DataContextLocal())
+                {
+                    var Mensaje = MessageBox.Show("Esta Seguro desea Salir Y Borrar Esa Venta Del Sistema", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (Mensaje == DialogResult.Yes)
+                    {
+
+
+                  
+                        var detalle = db.DetalleVentas.Where(q => q.VentaId == ventaId).ToList();
+                        if (detalle.Count > 0)
+
+                        {
+                            foreach (var item in detalle)
+                            {
+                                db.DetalleVentas.Remove(item);
+                                db.SaveChanges();
+                            }
+                          
+
+                        }
+
+
+
+
+
+
+
+
+                        Ventas venta = db.Ventas.Find(ventaId);
+                        db.Ventas.Remove(venta);
+                        db.SaveChanges();
+
+
+
+
+
+                        this.Close();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -59,6 +106,11 @@ namespace Kosturas.View
         {
             try
             {
+
+                cmbProvincia.DataSource = db.Provincias.ToList();
+                cmbProvincia.DisplayMember = "nombre";
+                cmbProvincia.ValueMember = "numeroProvincia";
+
                 var Venta = new Ventas
                 {
                     FeEnt = DateTime.Today,
@@ -107,11 +159,7 @@ namespace Kosturas.View
 
                     var botones = new Button();
                     botones.BackgroundImageLayout = ImageLayout.Center;
-                    if (!string.IsNullOrEmpty(item.Imagen))
-                    {
-                        botones.Image = Image.FromFile(@item.Imagen);
-                    }
-
+                 
                     botones.Text = item.Nombre;
                     botones.Name = item.ProductoId.ToString();
                     botones.Location = new Point(x, y);
@@ -529,7 +577,7 @@ namespace Kosturas.View
 
 
 
-                    var query = db.Clientes.Where(j => j.TelefonoPrincipal.StartsWith(x.ToString())).Select(t => new { t.ClienteId, t.TelefonoPrincipal, t.Nombre }).ToList();
+                    var query = db.Clientes.Where(j => j.TelefonoPrincipal==x.ToString()).Select(t => new { t.ClienteId, t.TelefonoPrincipal, t.Nombre }).ToList();
                     if (query.Count > 0)
                     {
                         cmbDatosClientes.Visible = true;
@@ -541,6 +589,10 @@ namespace Kosturas.View
 
 
                         }
+                    }
+                    else
+                    {
+                        cmbDatosClientes.Visible = false;
                     }
 
                 }
@@ -573,39 +625,43 @@ namespace Kosturas.View
 
 
 
-
+                
 
 
                 var CantidadCaracteres = btr.SelectedItem.ToString();
                 var CantidadTotalCaracteres = CantidadCaracteres.Length;
                 var CantidadReal = CantidadTotalCaracteres - 8;
                 var Telefono = CantidadCaracteres.Remove(0, CantidadReal);
-                var query = db.Clientes.Where(j => j.TelefonoPrincipal.StartsWith(Telefono)).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.TelefonoDos, t.Telefonotres, t.Nombre, t.Email, t.Notas, t.Calle, t.Ciudad, t.Codigopostal }).ToList();
+                var query = db.Clientes.Where(j => j.TelefonoPrincipal==Telefono).Select(t => new { t.ClienteId, t.Abreviatura, t.TelefonoPrincipal, t.TelefonoDos, t.Nombre, t.Email, t.Direcion, t.Cedula }).ToList();
 
                 if (query.Count > 0)
                 {
                     cmbabreviatura.SelectedItem = query.FirstOrDefault().Abreviatura;
                     txtNombre.Text = query.FirstOrDefault().Nombre;
-                    txtCalle.Text = query.FirstOrDefault().Calle;
-                    txtCiudad.Text = query.FirstOrDefault().Ciudad;
-                    txtCodigoPostal.Text = query.FirstOrDefault().Codigopostal;
+                   
+                
+                    txtCodigoPostal.Text = query.FirstOrDefault().Cedula;
                     txtEmail.Text = query.FirstOrDefault().Email;
-                    txtNotas.Text = query.FirstOrDefault().Notas;
+                    txtDirecion.Text= query.FirstOrDefault().Direcion;
                     txttelefonodos.Text = query.FirstOrDefault().TelefonoDos;
-                    txttelefonotres.Text = query.FirstOrDefault().Telefonotres;
+                  
                     txttelefonoprincipal.Text = query.FirstOrDefault().TelefonoPrincipal;
 
                     txtNombre.ForeColor = Color.Black;
-                    txtCalle.ForeColor = Color.Black;
-                    txtCiudad.ForeColor = Color.Black;
+                    txtDirecion.ForeColor = Color.Black;
+                 
                     txtCodigoPostal.ForeColor = Color.Black;
                     txtEmail.ForeColor = Color.Black;
-                    txtNotas.ForeColor = Color.Black;
+                  
                     txttelefonodos.ForeColor = Color.Black;
-                    txttelefonotres.ForeColor = Color.Black;
+                   
                     txttelefonoprincipal.ForeColor = Color.Black;
 
                     cmbDatosClientes.Visible = false;
+                    ClienteId = query.FirstOrDefault().ClienteId;
+
+
+              
                 }
             }
             catch (Exception)
@@ -658,42 +714,21 @@ namespace Kosturas.View
 
         private void txttelefonotres_MouseEnter(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txttelefonotres.Text.Trim()) || txttelefonotres.Text.Trim() == "Telefono 3")
-            {
-
-                txttelefonotres.Text = "";
-              
-                txttelefonotres.ForeColor = Color.Black;
-            }
+          
         }
 
         private void txttelefonotres_MouseLeave(object sender, EventArgs e)
         {
-            if (txttelefonotres.Text == "")
-            {
-                txttelefonotres.Text = "Telefono 3";
-                txttelefonotres.ForeColor = Color.Silver;
-            }
+           
         }
 
         private void txtCalle_MouseEnter(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCalle.Text.Trim()) || txtCalle.Text.Trim() == "Calle")
-            {
-
-                txtCalle.Text = "";
-             
-                txtCalle.ForeColor = Color.Black;
-            }
+          
         }
 
         private void txtCalle_MouseLeave(object sender, EventArgs e)
         {
-            if (txtCalle.Text == "")
-            {
-                txtCalle.Text = "Calle";
-                txtCalle.ForeColor = Color.Silver;
-            }
         }
 
         private void txtNombre_MouseEnter(object sender, EventArgs e)
@@ -738,42 +773,22 @@ namespace Kosturas.View
 
         private void txtCiudad_MouseEnter(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCiudad.Text.Trim()) || txtCiudad.Text.Trim() == "Ciudad")
-            {
-
-                txtCiudad.Text = "";
-                
-                txtCiudad.ForeColor = Color.Black;
-            }
+           
         }
 
         private void txtCiudad_MouseLeave(object sender, EventArgs e)
         {
-            if (txtCiudad.Text == "")
-            {
-                txtCiudad.Text = "Ciudad";
-                txtCiudad.ForeColor = Color.Silver;
-            }
+           
         }
 
         private void txtNotas_MouseEnter(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNotas.Text.Trim()) || txtNotas.Text.Trim() == "Notas")
-            {
-
-                txtNotas.Text = "";
-              
-                txtNotas.ForeColor = Color.Black;
-            }
+         
         }
 
         private void txtNotas_MouseLeave(object sender, EventArgs e)
         {
-            if (txtNotas.Text == "")
-            {
-                txtNotas.Text = "Notas";
-                txtNotas.ForeColor = Color.Silver;
-            }
+         
         }
 
         private void txtCodigoPostal_MouseEnter(object sender, EventArgs e)
@@ -892,6 +907,134 @@ namespace Kosturas.View
         {
             try
             {
+
+                if (ClienteId == null)
+                {
+
+
+
+
+
+
+
+
+                    if (txtEmail.Text.Trim() == "Correo Cliente")
+                    {
+
+                        txtEmail.Text = "";
+
+                    }
+
+
+                    if (txttelefonodos.Text.Trim() == "Teléfono 2")
+                    {
+
+                        txttelefonodos.Text = "";
+
+                    }
+
+
+
+                    if (txtDirecion.Text.Trim() == "Dirrecion")
+                    {
+
+                        txtDirecion.Text = "";
+
+                    }
+
+                    if (txtCodigoPostal.Text.Trim() == "Cedula")
+                    {
+
+                        txtCodigoPostal.Text = "";
+
+                    }
+
+                    if (txtDirecion.Text.Trim() == "Ciudad")
+                    {
+
+                        txtDirecion.Text = "";
+
+                    }
+
+
+                    {
+                        Cliente cliente = new Cliente();
+                        cliente.Nombre = txtNombre.Text;
+                        cliente.Email = txtEmail.Text;
+                        cliente.TelefonoPrincipal = txttelefonoprincipal.Text;
+                        cliente.Direcion = txttelefonodos.Text;
+                        cliente.TelefonoDos = txtDirecion.Text;
+                        cliente.numeroProvincia = int.Parse(cmbProvincia.SelectedValue.ToString());
+                        cliente.numeroDistrito = int.Parse(cmbDistrito.SelectedValue.ToString());
+                        cliente.numeroCanton = int.Parse(cmbCanton.SelectedValue.ToString());
+                        cliente.Cedula = txtCodigoPostal.Text;
+                        if (cmbabreviatura.SelectedValue != null)
+                        {
+                            cliente.Abreviatura = cmbabreviatura.SelectedValue.ToString();
+                        }
+                        db.Clientes.Add(cliente);
+                        db.SaveChanges();
+                        var querys = db.Clientes.ToList();
+                        var ultimoIdCliente = querys.LastOrDefault().ClienteId;
+
+                        var querydos = db.Ordenes.ToList();
+                        var ultimaIdOrden = querydos.LastOrDefault().OrdenId;
+
+                        Ordenes orden = db.Ordenes.Find(ultimaIdOrden);
+
+                        orden.ClienteId = ultimoIdCliente;
+
+
+                        db.Entry(orden).State = EntityState.Modified;
+                        db.SaveChanges();
+
+
+
+                        GuardarCambiosProductos();
+
+
+                        frmPin pins = new frmPin();
+                        this.Opacity = 0.80;
+                        pins.ShowDialog();
+
+                        this.Opacity = 1;
+
+                        var querysr = db.Clientes.Where(q => q.TelefonoPrincipal == txttelefonoprincipal.Text).ToList();
+                        if (querysr.Count > 0)
+                        {
+                           
+
+                            using (var db = new DataContextLocal())
+                            {
+                                var Ventas = db.Ventas.Find(ventaId);
+
+
+
+                                var TotalVenta = int.Parse(Ventas.TotalOrden.ToString());
+                                var CantidadPagada = int.Parse(txtpangandoahora.Text);
+                                var Resultado = TotalVenta - CantidadPagada;
+                                Ventas.CantidadRestante = Resultado;
+                                Ventas.EmpleadoRealizo = Program.Pin;
+                                Ventas.CantidadPagada = double.Parse(txtpangandoahora.Text);
+                                Ventas.ClienteId = ultimoIdCliente;
+
+                                db.Entry(Ventas).State = EntityState.Modified;
+                                db.SaveChanges();
+
+                            }
+
+
+
+
+                        }
+                        this.Close();
+
+                    }
+
+
+                }else
+
+                { 
                 GuardarCambiosProductos();
 
 
@@ -930,6 +1073,7 @@ namespace Kosturas.View
 
                 }
                 this.Close();
+                }
             }
             catch (Exception)
             {
@@ -938,6 +1082,120 @@ namespace Kosturas.View
             }
 
            
+        }
+
+        private void txtDirecion_MouseEnter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDirecion.Text.Trim()) || txtDirecion.Text.Trim() == "Dirrecion")
+            {
+
+                txtDirecion.Text = "";
+
+                txtDirecion.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtDirecion_MouseLeave(object sender, EventArgs e)
+        {
+            if (txtDirecion.Text == "")
+            {
+                txtDirecion.Text = "Dirrecion";
+                txtDirecion.ForeColor = Color.Silver;
+            }
+        }
+
+        private void txtDirecion_Validated(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDirecion.Text.Trim()) || txtDirecion.Text.Trim() == "Dirrecion")
+            {
+                MessageBox.Show("LA Dirrecion Es un dato Obligatorio");
+                txtDirecion.Text = "";
+                txtDirecion.Focus();
+
+            }
+        }
+
+        private void txtCodigoPostal_Validated(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodigoPostal.Text.Trim()) || txtCodigoPostal.Text.Trim() == "Cedula")
+            {
+                MessageBox.Show("El Numero Cedula Es un dato Obligatorio");
+                txtCodigoPostal.Text = "";
+                txtCodigoPostal.Focus();
+
+            }
+        }
+
+        private void txtEmail_Validated(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEmail.Text.Trim()) || txtEmail.Text.Trim() == "Correo Cliente")
+            {
+                MessageBox.Show("El Correo Es un dato Obligatorio");
+                txtEmail.Text = "";
+                txtEmail.Focus();
+
+            }
+        }
+
+        private void txtNombre_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNombre.Text.Trim()) || txtNombre.Text.Trim() == "Nombre Cliente")
+            {
+                MessageBox.Show("El Nombre Es un dato Obligatorio");
+                txtNombre.Text = "";
+                txtNombre.Focus();
+
+            }
+        }
+
+
+        public void GetCantones(int numeroProvincia)
+        {
+
+            var cantones = db.Cantones.Where(m => m.numeroProvincia == numeroProvincia).OrderBy(c => c.nombre);
+            cmbCanton.DataSource = cantones.ToList();
+            cmbCanton.DisplayMember = "nombre";
+            cmbCanton.ValueMember = "numeroCanton";
+        }
+
+        public void GetDistritos(int numeroProvincia, int numeroCanton)
+        {
+
+            var distritos = db.Distritos.Where(m => m.numeroProvincia == numeroProvincia && m.numeroCanton == numeroCanton).OrderBy(c => c.nombre);
+            cmbDistrito.DataSource = distritos.ToList();
+            cmbDistrito.DisplayMember = "nombre";
+            cmbDistrito.ValueMember = "numeroDistrito";
+        }
+
+        private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (cmbProvincia.SelectedIndex != -1)
+            {
+                var item = (Provincia)this.cmbProvincia.SelectedItem;
+                GetCantones(item.numeroProvincia);
+            }
+
+        }
+
+        private void cmbCanton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCanton.SelectedIndex != -1)
+            {
+                var item = (Canton)this.cmbCanton.SelectedItem;
+                GetDistritos(item.numeroProvincia, item.numeroCanton);
+            }
+        }
+
+        private void txttelefonodos_Validated(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txttelefonodos.Text.Trim()) || txttelefonodos.Text.Trim() == "Dirrecion")
+            {
+                MessageBox.Show("LA Dirrecion Es un dato Obligatorio");
+                txttelefonodos.Text = "";
+                txttelefonodos.Focus();
+
+            }
         }
     }
 }

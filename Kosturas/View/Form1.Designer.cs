@@ -40,7 +40,6 @@
             this.btnTelefonoDos = new System.Windows.Forms.Button();
             this.btnTelefonoPrincipal = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
-            this.btnTelefonoTres = new System.Windows.Forms.Button();
             this.btnDatosExtra = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.button32 = new System.Windows.Forms.Button();
@@ -49,14 +48,11 @@
             this.button31 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
-            this.txttelefonotres = new System.Windows.Forms.TextBox();
             this.txttelefonodos = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtCalle = new System.Windows.Forms.TextBox();
-            this.txtCiudad = new System.Windows.Forms.TextBox();
+            this.txtDirecion = new System.Windows.Forms.TextBox();
             this.txtCodigoPostal = new System.Windows.Forms.TextBox();
-            this.txtNotas = new System.Windows.Forms.TextBox();
             this.txttelefonoprincipal = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -72,9 +68,12 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tbpDatos = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbDatosClientes = new System.Windows.Forms.ComboBox();
             this.grbNewOrder = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbDatosClientes = new System.Windows.Forms.ComboBox();
+            this.cmbDistrito = new System.Windows.Forms.ComboBox();
+            this.cmbCanton = new System.Windows.Forms.ComboBox();
+            this.cmbProvincia = new System.Windows.Forms.ComboBox();
             this.Prueba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pv1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pv2)).BeginInit();
@@ -200,19 +199,6 @@
             this.button37.MouseEnter += new System.EventHandler(this.button37_MouseEnter);
             this.button37.MouseLeave += new System.EventHandler(this.button37_MouseLeave);
             // 
-            // btnTelefonoTres
-            // 
-            this.btnTelefonoTres.BackColor = System.Drawing.SystemColors.Control;
-            this.btnTelefonoTres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTelefonoTres.Location = new System.Drawing.Point(499, 49);
-            this.btnTelefonoTres.Name = "btnTelefonoTres";
-            this.btnTelefonoTres.Size = new System.Drawing.Size(62, 23);
-            this.btnTelefonoTres.TabIndex = 68;
-            this.btnTelefonoTres.Text = "telefono";
-            this.btnTelefonoTres.UseVisualStyleBackColor = false;
-            this.btnTelefonoTres.MouseEnter += new System.EventHandler(this.btnTelefonoTres_MouseEnter);
-            this.btnTelefonoTres.MouseLeave += new System.EventHandler(this.btnTelefonoTres_MouseLeave);
-            // 
             // btnDatosExtra
             // 
             this.btnDatosExtra.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -319,16 +305,6 @@
             this.button29.MouseEnter += new System.EventHandler(this.button29_MouseEnter);
             this.button29.MouseLeave += new System.EventHandler(this.button29_MouseLeave);
             // 
-            // txttelefonotres
-            // 
-            this.txttelefonotres.Location = new System.Drawing.Point(410, 49);
-            this.txttelefonotres.Name = "txttelefonotres";
-            this.txttelefonotres.Size = new System.Drawing.Size(83, 20);
-            this.txttelefonotres.TabIndex = 59;
-            this.txttelefonotres.Text = "Telefono 3";
-            this.txttelefonotres.Enter += new System.EventHandler(this.txttelefonotres_Enter);
-            this.txttelefonotres.Leave += new System.EventHandler(this.txttelefonotres_Leave);
-            // 
             // txttelefonodos
             // 
             this.txttelefonodos.Location = new System.Drawing.Point(254, 46);
@@ -341,17 +317,18 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(673, 14);
+            this.txtEmail.Location = new System.Drawing.Point(683, 14);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 57;
             this.txtEmail.Text = "Correo Cliente";
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
+            this.txtEmail.Validated += new System.EventHandler(this.txtEmail_Validated);
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(567, 14);
+            this.txtNombre.Location = new System.Drawing.Point(789, 14);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 56;
@@ -360,45 +337,27 @@
             this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             this.txtNombre.Validated += new System.EventHandler(this.txtNombre_Validated);
             // 
-            // txtCalle
+            // txtDirecion
             // 
-            this.txtCalle.Location = new System.Drawing.Point(567, 51);
-            this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(100, 20);
-            this.txtCalle.TabIndex = 55;
-            this.txtCalle.Text = "Calle";
-            this.txtCalle.Enter += new System.EventHandler(this.txtCalle_Enter);
-            this.txtCalle.Leave += new System.EventHandler(this.txtCalle_Leave);
-            // 
-            // txtCiudad
-            // 
-            this.txtCiudad.Location = new System.Drawing.Point(673, 51);
-            this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(100, 20);
-            this.txtCiudad.TabIndex = 54;
-            this.txtCiudad.Text = "Ciudad";
-            this.txtCiudad.Enter += new System.EventHandler(this.txtCiudad_Enter);
-            this.txtCiudad.Leave += new System.EventHandler(this.txtCiudad_Leave);
+            this.txtDirecion.Location = new System.Drawing.Point(410, 46);
+            this.txtDirecion.Name = "txtDirecion";
+            this.txtDirecion.Size = new System.Drawing.Size(151, 20);
+            this.txtDirecion.TabIndex = 54;
+            this.txtDirecion.Text = "Dirrecion";
+            this.txtDirecion.Enter += new System.EventHandler(this.txtCiudad_Enter);
+            this.txtDirecion.Leave += new System.EventHandler(this.txtCiudad_Leave);
+            this.txtDirecion.Validated += new System.EventHandler(this.txtDirecion_Validated);
             // 
             // txtCodigoPostal
             // 
-            this.txtCodigoPostal.Location = new System.Drawing.Point(779, 51);
+            this.txtCodigoPostal.Location = new System.Drawing.Point(567, 12);
             this.txtCodigoPostal.Name = "txtCodigoPostal";
-            this.txtCodigoPostal.Size = new System.Drawing.Size(100, 20);
+            this.txtCodigoPostal.Size = new System.Drawing.Size(110, 20);
             this.txtCodigoPostal.TabIndex = 53;
-            this.txtCodigoPostal.Text = "Codigo Postal";
+            this.txtCodigoPostal.Text = "Cedula";
             this.txtCodigoPostal.Enter += new System.EventHandler(this.txtCodigoPostal_Enter);
             this.txtCodigoPostal.Leave += new System.EventHandler(this.txtCodigoPostal_Leave);
-            // 
-            // txtNotas
-            // 
-            this.txtNotas.Location = new System.Drawing.Point(779, 15);
-            this.txtNotas.Name = "txtNotas";
-            this.txtNotas.Size = new System.Drawing.Size(110, 20);
-            this.txtNotas.TabIndex = 52;
-            this.txtNotas.Text = "Notas";
-            this.txtNotas.Enter += new System.EventHandler(this.txttelefonoprincipal_Enter);
-            this.txtNotas.Leave += new System.EventHandler(this.txttelefonoprincipal_Leave);
+            this.txtCodigoPostal.Validated += new System.EventHandler(this.txtCodigoPostal_Validated);
             // 
             // txttelefonoprincipal
             // 
@@ -572,25 +531,24 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cmbDatosClientes);
-            this.groupBox2.Controls.Add(this.txtNotas);
+            this.groupBox2.Controls.Add(this.cmbProvincia);
+            this.groupBox2.Controls.Add(this.cmbCanton);
+            this.groupBox2.Controls.Add(this.cmbDistrito);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.tbpDatos);
             this.groupBox2.Controls.Add(this.txttelefonoprincipal);
             this.groupBox2.Controls.Add(this.txtCodigoPostal);
-            this.groupBox2.Controls.Add(this.txtCiudad);
-            this.groupBox2.Controls.Add(this.txtCalle);
+            this.groupBox2.Controls.Add(this.txtDirecion);
             this.groupBox2.Controls.Add(this.txtNombre);
             this.groupBox2.Controls.Add(this.txtEmail);
             this.groupBox2.Controls.Add(this.txttelefonodos);
             this.groupBox2.Controls.Add(this.cmbabreviatura);
-            this.groupBox2.Controls.Add(this.txttelefonotres);
             this.groupBox2.Controls.Add(this.btnTelefonoDos);
             this.groupBox2.Controls.Add(this.button29);
             this.groupBox2.Controls.Add(this.btnTelefonoPrincipal);
             this.groupBox2.Controls.Add(this.button30);
             this.groupBox2.Controls.Add(this.button37);
             this.groupBox2.Controls.Add(this.button31);
-            this.groupBox2.Controls.Add(this.btnTelefonoTres);
             this.groupBox2.Controls.Add(this.button34);
             this.groupBox2.Controls.Add(this.btnDatosExtra);
             this.groupBox2.Controls.Add(this.button33);
@@ -603,6 +561,17 @@
             this.groupBox2.Size = new System.Drawing.Size(914, 762);
             this.groupBox2.TabIndex = 99;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // cmbDatosClientes
+            // 
+            this.cmbDatosClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbDatosClientes.FormattingEnabled = true;
+            this.cmbDatosClientes.Location = new System.Drawing.Point(254, 11);
+            this.cmbDatosClientes.Name = "cmbDatosClientes";
+            this.cmbDatosClientes.Size = new System.Drawing.Size(239, 150);
+            this.cmbDatosClientes.TabIndex = 102;
+            this.cmbDatosClientes.SelectedIndexChanged += new System.EventHandler(this.cmbDatosClientes_SelectedIndexChanged);
             // 
             // grbNewOrder
             // 
@@ -626,22 +595,40 @@
             this.groupBox1.TabIndex = 101;
             this.groupBox1.TabStop = false;
             // 
-            // cmbDatosClientes
+            // cmbDistrito
             // 
-            this.cmbDatosClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.cmbDatosClientes.FormattingEnabled = true;
-            this.cmbDatosClientes.Location = new System.Drawing.Point(254, 10);
-            this.cmbDatosClientes.Name = "cmbDatosClientes";
-            this.cmbDatosClientes.Size = new System.Drawing.Size(239, 150);
-            this.cmbDatosClientes.TabIndex = 102;
-            this.cmbDatosClientes.SelectedIndexChanged += new System.EventHandler(this.cmbDatosClientes_SelectedIndexChanged);
+            this.cmbDistrito.FormattingEnabled = true;
+            this.cmbDistrito.Location = new System.Drawing.Point(779, 51);
+            this.cmbDistrito.Name = "cmbDistrito";
+            this.cmbDistrito.Size = new System.Drawing.Size(110, 21);
+            this.cmbDistrito.TabIndex = 99;
+            this.cmbDistrito.SelectedIndexChanged += new System.EventHandler(this.cmbDistrito_SelectedIndexChanged);
+            this.cmbDistrito.SelectionChangeCommitted += new System.EventHandler(this.cmbDistrito_SelectionChangeCommitted);
+            // 
+            // cmbCanton
+            // 
+            this.cmbCanton.FormattingEnabled = true;
+            this.cmbCanton.Location = new System.Drawing.Point(673, 51);
+            this.cmbCanton.Name = "cmbCanton";
+            this.cmbCanton.Size = new System.Drawing.Size(100, 21);
+            this.cmbCanton.TabIndex = 100;
+            this.cmbCanton.SelectedIndexChanged += new System.EventHandler(this.cmbCanton_SelectedIndexChanged);
+            // 
+            // cmbProvincia
+            // 
+            this.cmbProvincia.FormattingEnabled = true;
+            this.cmbProvincia.Location = new System.Drawing.Point(567, 48);
+            this.cmbProvincia.Name = "cmbProvincia";
+            this.cmbProvincia.Size = new System.Drawing.Size(100, 21);
+            this.cmbProvincia.TabIndex = 101;
+            this.cmbProvincia.SelectedIndexChanged += new System.EventHandler(this.cmbProvincia_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1336, 920);
+            this.ClientSize = new System.Drawing.Size(1386, 912);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbNewOrder);
             this.Controls.Add(this.groupBox2);
@@ -676,7 +663,6 @@
         private System.Windows.Forms.Button btnTelefonoDos;
         private System.Windows.Forms.Button btnTelefonoPrincipal;
         private System.Windows.Forms.Button button37;
-        private System.Windows.Forms.Button btnTelefonoTres;
         private System.Windows.Forms.Button btnDatosExtra;
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.Button button32;
@@ -685,14 +671,11 @@
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.TextBox txttelefonotres;
         private System.Windows.Forms.TextBox txttelefonodos;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtCalle;
-        private System.Windows.Forms.TextBox txtCiudad;
+        private System.Windows.Forms.TextBox txtDirecion;
         private System.Windows.Forms.TextBox txtCodigoPostal;
-        private System.Windows.Forms.TextBox txtNotas;
         private System.Windows.Forms.TextBox txttelefonoprincipal;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnporsentaje;
@@ -715,5 +698,8 @@
         private System.Windows.Forms.GroupBox grbNewOrder;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbDatosClientes;
+        private System.Windows.Forms.ComboBox cmbProvincia;
+        private System.Windows.Forms.ComboBox cmbCanton;
+        private System.Windows.Forms.ComboBox cmbDistrito;
     }
 }

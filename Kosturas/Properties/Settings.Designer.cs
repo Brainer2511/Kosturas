@@ -27,7 +27,7 @@ namespace Kosturas.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5030.site4now.net;Initial Catalog=DB_A27AB6_djarquin01;Persist Sec" +
-            "urity Info=True;User ID=DB_A27AB6_djarquin01_admin")]
+            "urity Info=True;User ID=DB_A27AB6_djarquin01_admin;Password=Shenlong123")]
         public string DB_A27AB6_djarquin01ConnectionString {
             get {
                 return ((string)(this["DB_A27AB6_djarquin01ConnectionString"]));

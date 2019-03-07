@@ -111,6 +111,7 @@
             this.txtPin.Name = "txtPin";
             this.txtPin.Size = new System.Drawing.Size(178, 20);
             this.txtPin.TabIndex = 108;
+            this.txtPin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPin_KeyPress);
             // 
             // label4
             // 

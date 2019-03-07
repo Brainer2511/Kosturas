@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Kosturas.API;
 using Kosturas.Model;
 using Kosturas.ViewModels;
 using System;
@@ -822,6 +823,40 @@ namespace Kosturas.View
             frmVerDetalles detalles = new frmVerDetalles(id);
             detalles.Location = new Point(560, 550);
             detalles.ShowDialog();
+        }
+
+        private void btnEnviarHacienda_MouseEnter(object sender, EventArgs e)
+        {
+
+
+            Button btr = sender as Button;
+
+
+
+
+            object id = btr.Name;
+            ColorEntrada = btr.BackColor;
+            id = btr.BackColor = Color.FromArgb(238, 141, 88);
+            id = btr.ForeColor = Color.White;
+        }
+
+        private void btnEnviarHacienda_MouseLeave(object sender, EventArgs e)
+        {
+            Button btr = sender as Button;
+
+
+            object id = btr.Name;
+            id = btr.BackColor = ColorEntrada;
+
+            id = btr.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private async void btnEnviarHacienda_Click(object sender, EventArgs e)
+        {
+
+
+            ApiService api = new ApiService();
+            await api.Facturar();
         }
     }
 }
